@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c82g88gd8ddo5"
-path="res://.godot/imported/white_pixel.png-d59dbc89a0278b9b8f44bd82a180b7f5.ctex"
+uid="uid://t1elksb35dd3"
+path="res://.godot/imported/ruby_energy_big.png-471a3354eb1b1f1e1ee12a3a8bbdff51.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/ui/white_pixel.png"
-dest_files=["res://.godot/imported/white_pixel.png-d59dbc89a0278b9b8f44bd82a180b7f5.ctex"]
+source_file="res://Oshinogo/images/ui/ruby_energy_big.png"
+dest_files=["res://.godot/imported/ruby_energy_big.png-471a3354eb1b1f1e1ee12a3a8bbdff51.ctex"]
 
 [params]
 

@@ -20,11 +20,11 @@ namespace Oshinogo.Scripts.Relics
         protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1)];
 
         // 小图标
-        public override string PackedIconPath => $"res://images/relics/{GetType().Name}.png";
+        public override string PackedIconPath => $"res://Oshinogo/images/relics/{GetType().Name}.png";
         // 轮廓图标
-        protected override string PackedIconOutlinePath => $"res://images/relics/{GetType().Name}.png";
+        protected override string PackedIconOutlinePath => $"res://Oshinogo/images/relics/{GetType().Name}.png";
         // 大图标
-        protected override string BigIconPath => $"res://images/relics/{GetType().Name}.png";
+        protected override string BigIconPath => $"res://Oshinogo/images/relics/{GetType().Name}.png";
 
         public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
         {

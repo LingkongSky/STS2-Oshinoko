@@ -24,18 +24,18 @@ public class Ruby : PlaceholderCharacterModel
     // 人物模型tscn路径。要自定义见下。
     //public override string CustomVisualPath => "res://test/scenes/test_character.tscn";
     // 卡牌拖尾场景。
-    public override string CustomTrailPath => "res://scenes/vfx/card_trail_ironclad.tscn";
+    public override string CustomTrailPath => "res://Oshinogo/scenes/vfx/card_trail_ironclad.tscn";
 
     // 人物头像路径。
-    //public override string CustomIconTexturePath => "res://images/ui/ruby.svg";
+    //public override string CustomIconTexturePath => "res://Oshinogo/images/ui/ruby.svg";
     // 人物头像2号。
-    //public override string CustomIconPath => "res://scenes/ui/ironclad_icon.tscn";
+    //public override string CustomIconPath => "res://Oshinogo/scenes/ui/ironclad_icon.tscn";
     // 能量表盘tscn路径。要自定义见下。
     //public override string CustomEnergyCounterPath => "res://test/scenes/test_energy_counter.tscn";
     // 篝火休息场景。
-    // public override string CustomRestSiteAnimPath => "res://scenes/rest_site/characters/ironclad_rest_site.tscn";
+    // public override string CustomRestSiteAnimPath => "res://Oshinogo/scenes/rest_site/characters/ironclad_rest_site.tscn";
     // 商店人物场景。
-    // public override string CustomMerchantAnimPath => "res://scenes/merchant/characters/ironclad_merchant.tscn";
+    // public override string CustomMerchantAnimPath => "res://Oshinogo/scenes/merchant/characters/ironclad_merchant.tscn";
     // 多人模式-手指。
     // public override string CustomArmPointingTexturePath => null;
     // 多人模式剪刀石头布-石头。
@@ -46,9 +46,9 @@ public class Ruby : PlaceholderCharacterModel
     // public override string CustomArmScissorsTexturePath => null;
 
     // 人物选择背景。
-    public override string CustomCharacterSelectBg => "res://scenes/ui/ruby_background.tscn";
+    public override string CustomCharacterSelectBg => "res://Oshinogo/scenes/ui/ruby_background.tscn";
     // 人物选择图标。
-    public override string CustomCharacterSelectIconPath => "res://images/ui/ruby_icon.png";
+    public override string CustomCharacterSelectIconPath => "res://Oshinogo/images/ui/ruby_icon.png";
     // 人物选择图标-锁定状态。
     //public override string CustomCharacterSelectLockedIconPath => "res://test/images/char_select_test_locked.png";
     // 人物选择过渡动画。

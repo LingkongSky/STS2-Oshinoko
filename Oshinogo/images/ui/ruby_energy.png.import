@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du1mbhbqrpfx0"
-path="res://.godot/imported/ruby_energy.png-82f696a8f4528bff510154cca5fadad4.ctex"
+uid="uid://3766bwrlitnu"
+path="res://.godot/imported/ruby_energy.png-90e52cc3787a0c9419dd9c8eed76b039.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/ui/ruby_energy.png"
-dest_files=["res://.godot/imported/ruby_energy.png-82f696a8f4528bff510154cca5fadad4.ctex"]
+source_file="res://Oshinogo/images/ui/ruby_energy.png"
+dest_files=["res://.godot/imported/ruby_energy.png-90e52cc3787a0c9419dd9c8eed76b039.ctex"]
 
 [params]
 
