@@ -1,4 +1,6 @@
 {
-	"OSHINOGO-TEST_CARD.title": "测试卡牌",
-	"OSHINOGO-TEST_CARD.description": "造成{Damage:diff()}点伤害。"
+	"OSHINOGO-STRIKE.title": "打击",
+	"OSHINOGO-STRIKE.description": "造成{Damage:diff()}点伤害。",
+	"OSHINOGO-DEFEND.title": "防御",
+	"OSHINOGO-DEFEND.description": "获得{Block:diff()}点[gold]格挡[/gold]。"
 }

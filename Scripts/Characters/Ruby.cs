@@ -72,11 +72,16 @@ public class Ruby : PlaceholderCharacterModel
 
     // 初始卡组
     public override IEnumerable<CardModel> StartingDeck => [
-        ModelDb.Card<TestCard>(),
-        ModelDb.Card<TestCard>(),
-        ModelDb.Card<TestCard>(),
-        ModelDb.Card<TestCard>(),
-        ModelDb.Card<TestCard>(),
+        ModelDb.Card<Strike>(),
+        ModelDb.Card<Strike>(),
+        ModelDb.Card<Strike>(),
+        ModelDb.Card<Strike>(),
+        ModelDb.Card<Strike>(),
+        ModelDb.Card<Defend>(),
+        ModelDb.Card<Defend>(),
+        ModelDb.Card<Defend>(),
+        ModelDb.Card<Defend>(),
+        ModelDb.Card<Defend>()  
     ];
 
     // 初始遗物

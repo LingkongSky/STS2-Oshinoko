@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://rg6linnyhfp0"]
 
 [ext_resource type="Script" uid="uid://cbjx2fm7q3fxa" path="res://Scripts/UI/RubyBackground.cs" id="1"]
-[ext_resource type="Texture2D" uid="uid://c82g88gd8ddo5" path="res://images/ui/white_pixel.png" id="2"]
-[ext_resource type="Shader" uid="uid://cx25c706bjuy2" path="res://shaders/ui/ruby_backdrop.gdshader" id="3"]
-[ext_resource type="Shader" uid="uid://6sg0i0rvk1rk" path="res://shaders/ui/ruby_spotlight_beam.gdshader" id="6"]
-[ext_resource type="Texture2D" uid="uid://c5yekukqjcwoa" path="res://images/ui/ruby_icon.png" id="6_hbcuj"]
-[ext_resource type="Shader" uid="uid://brrwgnl4itwai" path="res://shaders/ui/ruby_glow.gdshader" id="7"]
+[ext_resource type="Texture2D" uid="uid://iond1ufq7fkc" path="res://Oshinogo/images/ui/white_pixel.png" id="2"]
+[ext_resource type="Shader" uid="uid://cx25c706bjuy2" path="res://Oshinogo/shaders/ui/ruby_backdrop.gdshader" id="3"]
+[ext_resource type="Shader" uid="uid://6sg0i0rvk1rk" path="res://Oshinogo/shaders/ui/ruby_spotlight_beam.gdshader" id="6"]
+[ext_resource type="Texture2D" uid="uid://yas7wt2jldna" path="res://Oshinogo/images/ui/ruby_icon.png" id="6_hbcuj"]
+[ext_resource type="Shader" uid="uid://brrwgnl4itwai" path="res://Oshinogo/shaders/ui/ruby_glow.gdshader" id="7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_backdrop"]
 shader = ExtResource("3")

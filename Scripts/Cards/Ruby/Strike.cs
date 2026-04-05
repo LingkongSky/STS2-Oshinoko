@@ -10,7 +10,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 
 // 加入哪个卡池
 [Pool(typeof(RubyCardPool))]
-public class TestCard : OshiCardModel
+public class Strike : OshiCardModel
 {
     // 基础耗能
     private const int energyCost = 1;
@@ -23,25 +23,29 @@ public class TestCard : OshiCardModel
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
-    // 卡牌的基础属性（例如这里是12点伤害）
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(12, ValueProp.Move)];
+    // 卡牌的基础属性（例如这里是9点伤害）
 
-    public TestCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(9, ValueProp.Move)];
+
+
+    public Strike() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
     }
 
     // 打出时的效果逻辑
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue) // 造成伤害，数值来源于卡牌的基础伤害属性
             .FromCard(this) // 伤害来源于这张卡牌
             .Targeting(cardPlay.Target) // 伤害目标是玩家选择的目标
             .Execute(choiceContext);
     }
 
+
     // 升级后的效果逻辑
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4); // 升级后增加4点伤害
+        DynamicVars.Damage.UpgradeValueBy(3); // 升级后增加3点伤害
     }
 }
