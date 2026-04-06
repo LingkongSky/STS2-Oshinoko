@@ -7,7 +7,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Other;
 
-// 标记“闪耀加成”应作用到哪一种基础动态数值。
+// 标记“闪耀/复仇加成”作用到哪一种基础动态值。
 public enum ShineValueType
 {
     Damage,
@@ -16,7 +16,8 @@ public enum ShineValueType
     Energy,
 }
 
-// 通用的“基础值 + 闪耀值”计算变量，可用于伤害/格挡/抽牌/能量等数值展示。
+// 通用计算变量：基础值 +（闪耀与复仇规则）后的额外值。
+// 适用于抽牌、能量、格挡等非伤害显示字段。
 public class ShineCalculatedDamageVar : CalculatedVar
 {
     private readonly ShineValueType _valueType;
@@ -29,7 +30,6 @@ public class ShineCalculatedDamageVar : CalculatedVar
     protected override DynamicVar GetBaseVar()
     {
         var card = (CardModel)_owner!;
-        // 按类型绑定对应的基础动态变量，最终值由 CalculatedVar 统一计算。
         return _valueType switch
         {
             ShineValueType.Damage => card.DynamicVars.Damage,
@@ -41,7 +41,7 @@ public class ShineCalculatedDamageVar : CalculatedVar
     }
 }
 
-// 专用于闪耀加成的伤害变量，改写基础值与额外值来源，避免依赖默认 CalculationBase/ExtraDamage 键。
+// 专用于伤害显示的变量，继承 CalculatedDamageVar 以走引擎伤害预览链路。
 public class ShineCalculatedDamageDisplayVar : CalculatedDamageVar
 {
     public ShineCalculatedDamageDisplayVar(ValueProp props) : base(props)
@@ -59,33 +59,57 @@ public class ShineCalculatedDamageDisplayVar : CalculatedDamageVar
     }
 }
 
-// 闪耀加成卡牌的复用工具：创建变量与读取计算值都统一走这里。
+// 闪耀/复仇缩放复用入口：统一创建计算变量与读取计算结果。
 public static class ShineScaling
 {
-    // 创建一个“基础值 + 闪耀值”的伤害变量，走引擎内置 CalculatedDamage 通道，
-    // 以便卡面攻击数值和实际结算保持一致。
+    // 创建伤害变量，确保卡面显示值和战斗结算值一致。
     public static CalculatedDamageVar CreateCalculatedDamageVar(ValueProp props)
     {
         var calculatedDamageVar = new ShineCalculatedDamageDisplayVar(props);
-        calculatedDamageVar.WithMultiplier(GetShineMultiplier);
+        calculatedDamageVar.WithMultiplier((card, _) => GetCombinedMultiplier(card, ShineValueType.Damage));
         return calculatedDamageVar;
     }
 
-    // 创建一个“基础值 + 闪耀值”的计算变量，自动绑定闪耀倍率计算函数。
+    // 创建通用计算变量，用于抽牌/格挡/能量等字段。
     public static CalculatedVar CreateCalculatedVar(string name, ShineValueType valueType)
     {
-        return new ShineCalculatedDamageVar(name, valueType).WithMultiplier(GetShineMultiplier);
+        return new ShineCalculatedDamageVar(name, valueType).WithMultiplier((card, _) => GetCombinedMultiplier(card, valueType));
     }
 
-    // 读取指定 key 的计算结果，便于在 OnPlay 中复用。
+    // 统一读取计算结果，避免卡牌里重复写类型转换。
     public static decimal Calculate(DynamicVarSet dynamicVars, string key, Creature? target)
     {
         return ((CalculatedVar)dynamicVars[key]).Calculate(target);
     }
 
-    // 闪耀倍率：当前角色的总闪耀值（永久 + 回合 + 临时）。
-    private static decimal GetShineMultiplier(CardModel card, Creature? _)
+    // 规则：先叠加闪耀，再按复仇乘算（无复仇按 1 倍）。
+    private static decimal GetCombinedMultiplier(CardModel card, ShineValueType valueType)
     {
-        return ShinePowerHelper.GetTotalShine(card.Owner.Creature);
+        var baseVar = GetBaseVarByType(card, valueType);
+        var extraVar = card.DynamicVars.CalculationExtra;
+        if (extraVar.BaseValue == 0)
+        {
+            return 0;
+        }
+
+        var shine = ShinePowerHelper.GetTotalShine(card.Owner.Creature);
+        var revenge = RevengePowerHelper.GetTotalRevenge(card.Owner.Creature);
+        var revengeMultiplier = revenge > 0 ? revenge : 1;
+
+        var valueAfterShine = baseVar.BaseValue + extraVar.BaseValue * shine;
+        var finalValue = valueAfterShine * revengeMultiplier;
+        return (finalValue - baseVar.BaseValue) / extraVar.BaseValue;
+    }
+
+    private static DynamicVar GetBaseVarByType(CardModel card, ShineValueType valueType)
+    {
+        return valueType switch
+        {
+            ShineValueType.Damage => card.DynamicVars.Damage,
+            ShineValueType.Block => card.DynamicVars.Block,
+            ShineValueType.Cards => card.DynamicVars.Cards,
+            ShineValueType.Energy => card.DynamicVars.Energy,
+            _ => card.DynamicVars.Damage,
+        };
     }
 }

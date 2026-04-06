@@ -6,5 +6,9 @@
 	"OSHINOGO-IDOL_ADMIRATION.title": "偶像憧憬",
 	"OSHINOGO-IDOL_ADMIRATION.description": "造成{CalculatedDamage:diff()}点伤害，抽{CalculatedCards:diff()}张牌。",
 	"OSHINOGO-IDOL_PASSION.title": "偶像热情",
-	"OSHINOGO-IDOL_PASSION.description": "在本回合获得{Shine:diff()}点[gold]闪耀[/gold]。"
+	"OSHINOGO-IDOL_PASSION.description": "在本回合获得{Shine:diff()}点[gold]闪耀[/gold]。",
+	"OSHINOGO-REVEAL_TRUTH.title": "揭露真相",
+	"OSHINOGO-REVEAL_TRUTH.description": "获得{Revenge:diff()}点[gold]复仇值[/gold]。",
+	"OSHINOGO-FUSION.title": "融合",
+	"OSHINOGO-FUSION.description": "获得1层[gold]融合[/gold]。[gold]融合[/gold]状态下，闪耀值和复仇值不再互相抵消。"
 }

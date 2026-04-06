@@ -21,7 +21,7 @@ public class IdolPassion : OshiCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<TurnShinePower>(Owner.Creature, DynamicVars[ShineDymicVar.Key].BaseValue, Owner.Creature, this);
+        await ShinePowerHelper.ApplyShine(Owner.Creature, DynamicVars[ShineDymicVar.Key].BaseValue, ValueDuration.Turn, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
