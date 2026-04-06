@@ -1,0 +1,8 @@
+{
+	"OSHINOGO-SHINE_POWER.title": "闪耀",
+	"OSHINOGO-SHINE_POWER.description": "闪耀值。",
+	"OSHINOGO-TURN_SHINE_POWER.title": "回合闪耀",
+	"OSHINOGO-TURN_SHINE_POWER.description": "本回合生效的闪耀值，回合结束时移除。",
+	"OSHINOGO-TEMP_SHINE_POWER.title": "临时闪耀",
+	"OSHINOGO-TEMP_SHINE_POWER.description": "打出一张带有闪耀的牌后移除。"
+}

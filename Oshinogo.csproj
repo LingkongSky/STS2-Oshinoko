@@ -33,11 +33,7 @@
     <MakeDir Directories="$(Sts2Dir)\mods\" />
     <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(Sts2Dir)\mods\$(MSBuildProjectName)\" />
     <Copy SourceFiles="$(MSBuildProjectName).json" DestinationFolder="$(Sts2Dir)/mods/$(MSBuildProjectName)/" />
-    <Copy SourceFiles="$(MSBuildProjectName).pck"
-          DestinationFolder="$(Sts2Dir)/mods/$(MSBuildProjectName)/"
-          Condition="Exists('$(MSBuildProjectName).pck')" />
-    <Message Text="Warning: $(MSBuildProjectName).pck not found; character select background resources may be outdated."
-             Importance="high"
-             Condition="!Exists('$(MSBuildProjectName).pck')" />
+    <Copy SourceFiles="$(MSBuildProjectName).pck" DestinationFolder="$(Sts2Dir)/mods/$(MSBuildProjectName)/" Condition="Exists('$(MSBuildProjectName).pck')" />
+    <Message Text="Warning: $(MSBuildProjectName).pck not found; character select background resources may be outdated." Importance="high" Condition="!Exists('$(MSBuildProjectName).pck')" />
   </Target>
 </Project>

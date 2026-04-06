@@ -25,8 +25,9 @@ public class Strike : OshiCardModel
 
     // 卡牌的基础属性（例如这里是9点伤害）
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(9, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6, ValueProp.Move)];
 
+    protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Strike };
 
     public Strike() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {

@@ -24,7 +24,7 @@ public class Ruby : PlaceholderCharacterModel
     // 人物模型tscn路径。要自定义见下。
     //public override string CustomVisualPath => "res://test/scenes/test_character.tscn";
     // 卡牌拖尾场景。
-    public override string CustomTrailPath => "res://Oshinogo/scenes/vfx/card_trail_ironclad.tscn";
+    //public override string CustomTrailPath => "res://Oshinogo/scenes/vfx/card_trail_ironclad.tscn";
 
     // 人物头像路径。
     //public override string CustomIconTexturePath => "res://Oshinogo/images/ui/ruby.svg";
@@ -49,6 +49,7 @@ public class Ruby : PlaceholderCharacterModel
     public override string CustomCharacterSelectBg => "res://Oshinogo/scenes/ui/ruby_background.tscn";
     // 人物选择图标。
     public override string CustomCharacterSelectIconPath => "res://Oshinogo/images/ui/ruby_icon.png";
+
     // 人物选择图标-锁定状态。
     //public override string CustomCharacterSelectLockedIconPath => "res://test/images/char_select_test_locked.png";
     // 人物选择过渡动画。
@@ -64,7 +65,7 @@ public class Ruby : PlaceholderCharacterModel
     // 角色选择音效
     // public override string CharacterSelectSfx => null;
     // 过渡音效。这个不能删。
-    public override string CharacterTransitionSfx => "event:/sfx/ui/wipe_ironclad";
+    //public override string CharacterTransitionSfx => "event:/sfx/ui/wipe_ironclad";
 
     public override CardPoolModel CardPool => ModelDb.CardPool<RubyCardPool>();
     public override RelicPoolModel RelicPool => ModelDb.RelicPool<RubyRelicPool>();
@@ -81,7 +82,9 @@ public class Ruby : PlaceholderCharacterModel
         ModelDb.Card<Defend>(),
         ModelDb.Card<Defend>(),
         ModelDb.Card<Defend>(),
-        ModelDb.Card<Defend>()  
+        ModelDb.Card<Defend>(),
+        ModelDb.Card<IdolAdmiration>(),
+        ModelDb.Card<IdolPassion>()
     ];
 
     // 初始遗物

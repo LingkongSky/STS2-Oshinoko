@@ -1,7 +1,7 @@
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using BaseLib.Extensions;
 
-namespace Oshinogo.Scripts.Cards
+namespace Oshinogo.Scripts.Cards.Other
 {
     public class ShineDymicVar : DynamicVar
     {

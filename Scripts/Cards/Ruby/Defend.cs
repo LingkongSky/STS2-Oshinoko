@@ -19,14 +19,14 @@ public class Defend : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(5, ValueProp.Move)];
 
-    public Defend() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self,true)
+    public Defend() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self,true)
     {
     }
 
     // 打出时的效果逻辑
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
     }
 
     // 升级后的效果逻辑

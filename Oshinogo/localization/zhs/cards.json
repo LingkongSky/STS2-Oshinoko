@@ -2,5 +2,9 @@
 	"OSHINOGO-STRIKE.title": "打击",
 	"OSHINOGO-STRIKE.description": "造成{Damage:diff()}点伤害。",
 	"OSHINOGO-DEFEND.title": "防御",
-	"OSHINOGO-DEFEND.description": "获得{Block:diff()}点[gold]格挡[/gold]。"
+	"OSHINOGO-DEFEND.description": "获得{Block:diff()}点[gold]格挡[/gold]。",
+	"OSHINOGO-IDOL_ADMIRATION.title": "偶像憧憬",
+	"OSHINOGO-IDOL_ADMIRATION.description": "造成{CalculatedDamage:diff()}点伤害，抽{CalculatedCards:diff()}张牌。",
+	"OSHINOGO-IDOL_PASSION.title": "偶像热情",
+	"OSHINOGO-IDOL_PASSION.description": "在本回合获得{Shine:diff()}点[gold]闪耀[/gold]。"
 }
