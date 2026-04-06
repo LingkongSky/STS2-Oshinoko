@@ -11,6 +11,10 @@
 	"OSHINOGO-TURN_REVENGE_POWER.description": "本回合生效的复仇值，回合结束时移除。",
 	"OSHINOGO-TEMP_REVENGE_POWER.title": "临时复仇值",
 	"OSHINOGO-TEMP_REVENGE_POWER.description": "打出一张带有闪耀的牌后移除。",
+	"OSHINOGO-REVENGE_REFUND_POWER.title": "复仇返还",
+	"OSHINOGO-REVENGE_REFUND_POWER.description": "返回对应的复仇值。",
+	"OSHINOGO-SHINE_REFUND_POWER.title": "闪耀返还",
+	"OSHINOGO-SHINE_REFUND_POWER.description": "返回对应的闪耀值。",
 	"OSHINOGO-FUSION_POWER.title": "融合",
-	"OSHINOGO-FUSION_POWER.description": "闪耀值和复仇值不再互相抵消。闪耀牌将先计算闪耀值，再计算复仇值"
+	"OSHINOGO-FUSION_POWER.description": "闪耀值和复仇值不再互相抵消。闪耀牌将先计算闪耀值，再计算复仇值"	
 }

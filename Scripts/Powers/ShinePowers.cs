@@ -40,7 +40,7 @@ public class TurnShinePower : CustomPowerModel
     }
 }
 
-// 临时闪耀值：打出一张带“闪耀”关键词的牌后移除。
+// 临时闪耀值：下一次打出一张带“闪耀”关键词的牌后移除。
 public class TempShinePower : CustomPowerModel
 {
     public override PowerType Type => PowerType.Buff;
@@ -58,6 +58,13 @@ public class TempShinePower : CustomPowerModel
             return;
         }
 
+        // 如果临时闪耀是由“当前这张牌”赋予的，那么跳过这一次，
+        // 避免出现“刚获得就立刻被消耗”。
+        if (TempPowerSourceTracker.ShouldSkipTempShine(Owner, cardPlay.Card))
+        {
+            return;
+        }
+
         if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine))
         {
             return;
@@ -65,31 +72,14 @@ public class TempShinePower : CustomPowerModel
 
         await PowerCmd.Remove(this);
     }
-}
 
-// 隐藏返还层：用于回合结束返还被“临时/回合复仇”过度抵消的永久闪耀。
-public class ShineRefundPower : CustomPowerModel
-{
-    public override PowerType Type => PowerType.Buff;
-
-    public override PowerStackType StackType => PowerStackType.Counter;
-
-    protected override bool IsVisibleInternal => false;
-
-    public override bool ShouldPlayVfx => false;
-
+    // 回合结束时清空所有临时闪耀层数
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (side != Owner.Side)
+        if (side == Owner.Side)
         {
-            return;
+            TempPowerSourceTracker.Clear(Owner);
+            await PowerCmd.Remove(this);
         }
-
-        if (Amount > 0)
-        {
-            await PowerCmd.Apply<ShinePower>(Owner, Amount, Owner, null, silent: true);
-        }
-
-        await PowerCmd.Remove(this);
     }
 }

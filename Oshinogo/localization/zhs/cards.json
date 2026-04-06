@@ -8,7 +8,9 @@
 	"OSHINOGO-IDOL_PASSION.title": "偶像热情",
 	"OSHINOGO-IDOL_PASSION.description": "在本回合获得{Shine:diff()}点[gold]闪耀[/gold]。",
 	"OSHINOGO-REVEAL_TRUTH.title": "揭露真相",
-	"OSHINOGO-REVEAL_TRUTH.description": "获得{Revenge:diff()}点[gold]复仇值[/gold]。",
+	"OSHINOGO-REVEAL_TRUTH.description": "获得{Revenge:diff()}点[gold]复仇[/gold]。",
 	"OSHINOGO-FUSION.title": "融合",
-	"OSHINOGO-FUSION.description": "获得1层[gold]融合[/gold]。[gold]融合[/gold]状态下，闪耀值和复仇值不再互相抵消。"
+	"OSHINOGO-FUSION.description": "获得[gold]融合[/gold]。[gold]融合[/gold]状态下，[gold]闪耀[/gold]和[gold]复仇[/gold]不再互相抵消。",
+    "OSHINOGO-PASSION_STRIKE.title": "热情打击",
+    "OSHINOGO-PASSION_STRIKE.description": "造成{CalculatedDamage:diff()}点伤害，获得1点[gold]临时闪耀[/gold]"
 }

@@ -6,26 +6,27 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
+using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
-// 造成5(8)点伤害，抽1张牌  闪耀
+
+// 造成6(9)点伤害，获得一点临时闪耀 闪耀
+
 [Pool(typeof(RubyCardPool))]
-public class IdolAdmiration : OshiCardModel
+public class PassionStrike : OshiCardModel
 {
-    private const string CalculatedCardsKey = "CalculatedCards";
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(5m, ValueProp.Move),
-        new CardsVar(1),
+        new ShineDymicVar(1m),
+        new DamageVar(6m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
-        ShineScaling.CreateCalculatedVar(CalculatedCardsKey, ShineValueType.Cards)
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
-    public IdolAdmiration() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, true)
+    public PassionStrike() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, true)
     {
     }
 
@@ -33,14 +34,13 @@ public class IdolAdmiration : OshiCardModel
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
         var finalDamage = DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);
-        var finalDraw = ShineScaling.Calculate(DynamicVars, CalculatedCardsKey, cardPlay.Target);
 
         await DamageCmd.Attack(finalDamage)
             .FromCard(this)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        await CardPileCmd.Draw(choiceContext, finalDraw, Owner);
+        await ShinePowerHelper.ApplyShine(Owner.Creature, DynamicVars[ShineDymicVar.Key].BaseValue, ValueDuration.Temp, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

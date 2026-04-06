@@ -71,40 +71,30 @@ public class TempRevengePower : CustomPowerModel
             return;
         }
 
+        // 如果临时复仇是由“当前这张牌”赋予的，那么跳过这一次，
+        // 避免出现“刚获得就立刻被消耗”。
+        if (TempPowerSourceTracker.ShouldSkipTempRevenge(Owner, cardPlay.Card))
+        {
+            return;
+        }
+
         if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine))
         {
             return;
         }
 
         await RevengePowerHelper.TriggerShineCardCost(context, this, cardPlay);
+
         await PowerCmd.Remove(this);
     }
-}
-
-// 隐藏返还层：用于回合结束返还被“临时/回合闪耀”过度抵消的永久复仇。
-public class RevengeRefundPower : CustomPowerModel
-{
-    public override PowerType Type => PowerType.Buff;
-
-    public override PowerStackType StackType => PowerStackType.Counter;
-
-    protected override bool IsVisibleInternal => false;
-
-    public override bool ShouldPlayVfx => false;
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (side != Owner.Side)
+        if (side == Owner.Side)
         {
-            return;
+            TempPowerSourceTracker.Clear(Owner);
+            await PowerCmd.Remove(this);
         }
-
-        if (Amount > 0)
-        {
-            await PowerCmd.Apply<RevengePower>(Owner, Amount, Owner, null, silent: true);
-        }
-
-        await PowerCmd.Remove(this);
     }
 }
 
@@ -119,38 +109,11 @@ public static class RevengePowerHelper
              + creature.GetPowerAmount<TempRevengePower>();
     }
 
-    // 获得复仇时按照“临时 -> 回合 -> 永久”顺序抵消闪耀值。
-    // 若临时/回合复仇抵消了永久闪耀，会在回合结束后返还。
+    // 获得复仇时不再抵消闪耀值，直接添加对应层数。
     public static async Task ApplyRevenge(Creature target, decimal amount, ValueDuration duration, Creature? applier, CardModel? cardSource)
     {
-        var remaining = (int)amount;
-        if (remaining <= 0)
-        {
-            return;
-        }
-
-        if (!target.HasPower<FusionPower>())
-        {
-            var borrowedPermanentShine = 0;
-
-            remaining -= await PowerOffsetUtility.ConsumePowerAmount<TempShinePower>(target, remaining, applier, cardSource);
-            remaining -= await PowerOffsetUtility.ConsumePowerAmount<TurnShinePower>(target, remaining, applier, cardSource);
-
-            var consumedPermanentShine = await PowerOffsetUtility.ConsumePowerAmount<ShinePower>(target, remaining, applier, cardSource);
-            remaining -= consumedPermanentShine;
-
-            if (duration != ValueDuration.Permanent)
-            {
-                borrowedPermanentShine += consumedPermanentShine;
-            }
-
-            if (borrowedPermanentShine > 0)
-            {
-                await PowerCmd.Apply<ShineRefundPower>(target, borrowedPermanentShine, applier, cardSource, silent: true);
-            }
-        }
-
-        if (remaining <= 0)
+        var value = (int)amount;
+        if (value <= 0)
         {
             return;
         }
@@ -158,13 +121,14 @@ public static class RevengePowerHelper
         switch (duration)
         {
             case ValueDuration.Permanent:
-                await PowerCmd.Apply<RevengePower>(target, remaining, applier, cardSource);
+                await PowerCmd.Apply<RevengePower>(target, value, applier, cardSource);
                 break;
             case ValueDuration.Turn:
-                await PowerCmd.Apply<TurnRevengePower>(target, remaining, applier, cardSource);
+                await PowerCmd.Apply<TurnRevengePower>(target, value, applier, cardSource);
                 break;
             case ValueDuration.Temp:
-                await PowerCmd.Apply<TempRevengePower>(target, remaining, applier, cardSource);
+                TempPowerSourceTracker.RegisterTempRevengeSource(target, cardSource);
+                await PowerCmd.Apply<TempRevengePower>(target, value, applier, cardSource);
                 break;
         }
     }

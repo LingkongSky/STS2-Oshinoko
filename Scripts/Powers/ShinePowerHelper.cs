@@ -13,6 +13,94 @@ public enum ValueDuration
     Temp,
 }
 
+// 用于记录“临时资源是由哪张牌赋予的”，从而在该牌自己的 AfterCardPlayed 中跳过一次，
+// 避免出现“刚获得就立刻被消耗”的问题。
+// 注意：这里只对 cardSource != null 的情况生效，因此非打牌时机获得的临时资源不会被额外跳过。
+public static class TempPowerSourceTracker
+{
+    private static readonly Dictionary<Creature, HashSet<CardModel>> TempShineSources = new();
+
+    private static readonly Dictionary<Creature, HashSet<CardModel>> TempRevengeSources = new();
+
+    public static void RegisterTempShineSource(Creature target, CardModel? cardSource)
+    {
+        if (cardSource == null)
+        {
+            return;
+        }
+
+        if (!TempShineSources.TryGetValue(target, out var sources))
+        {
+            sources = new HashSet<CardModel>();
+            TempShineSources[target] = sources;
+        }
+
+        sources.Add(cardSource);
+    }
+
+    public static void RegisterTempRevengeSource(Creature target, CardModel? cardSource)
+    {
+        if (cardSource == null)
+        {
+            return;
+        }
+
+        if (!TempRevengeSources.TryGetValue(target, out var sources))
+        {
+            sources = new HashSet<CardModel>();
+            TempRevengeSources[target] = sources;
+        }
+
+        sources.Add(cardSource);
+    }
+
+    public static bool ShouldSkipTempShine(Creature target, CardModel currentCard)
+    {
+        if (!TempShineSources.TryGetValue(target, out var sources))
+        {
+            return false;
+        }
+
+        if (!sources.Remove(currentCard))
+        {
+            return false;
+        }
+
+        if (sources.Count == 0)
+        {
+            TempShineSources.Remove(target);
+        }
+
+        return true;
+    }
+
+    public static bool ShouldSkipTempRevenge(Creature target, CardModel currentCard)
+    {
+        if (!TempRevengeSources.TryGetValue(target, out var sources))
+        {
+            return false;
+        }
+
+        if (!sources.Remove(currentCard))
+        {
+            return false;
+        }
+
+        if (sources.Count == 0)
+        {
+            TempRevengeSources.Remove(target);
+        }
+
+        return true;
+    }
+
+    public static void Clear(Creature target)
+    {
+        TempShineSources.Remove(target);
+        TempRevengeSources.Remove(target);
+    }
+}
+
 // 闪耀值的统一规则入口。
 public static class ShinePowerHelper
 {
@@ -24,38 +112,11 @@ public static class ShinePowerHelper
              + creature.GetPowerAmount<TempShinePower>();
     }
 
-    // 获得闪耀时按照“临时 -> 回合 -> 永久”顺序抵消复仇值。
-    // 若临时/回合闪耀抵消了永久复仇，会在回合结束后返还。
+    // 获得闪耀时不再抵消复仇值，直接添加对应层数。
     public static async Task ApplyShine(Creature target, decimal amount, ValueDuration duration, Creature? applier, CardModel? cardSource)
     {
-        var remaining = (int)amount;
-        if (remaining <= 0)
-        {
-            return;
-        }
-
-        if (!target.HasPower<FusionPower>())
-        {
-            var borrowedPermanentRevenge = 0;
-
-            remaining -= await PowerOffsetUtility.ConsumePowerAmount<TempRevengePower>(target, remaining, applier, cardSource);
-            remaining -= await PowerOffsetUtility.ConsumePowerAmount<TurnRevengePower>(target, remaining, applier, cardSource);
-
-            var consumedPermanentRevenge = await PowerOffsetUtility.ConsumePowerAmount<RevengePower>(target, remaining, applier, cardSource);
-            remaining -= consumedPermanentRevenge;
-
-            if (duration != ValueDuration.Permanent)
-            {
-                borrowedPermanentRevenge += consumedPermanentRevenge;
-            }
-
-            if (borrowedPermanentRevenge > 0)
-            {
-                await PowerCmd.Apply<RevengeRefundPower>(target, borrowedPermanentRevenge, applier, cardSource, silent: true);
-            }
-        }
-
-        if (remaining <= 0)
+        var value = (int)amount;
+        if (value <= 0)
         {
             return;
         }
@@ -63,40 +124,15 @@ public static class ShinePowerHelper
         switch (duration)
         {
             case ValueDuration.Permanent:
-                await PowerCmd.Apply<ShinePower>(target, remaining, applier, cardSource);
+                await PowerCmd.Apply<ShinePower>(target, value, applier, cardSource);
                 break;
             case ValueDuration.Turn:
-                await PowerCmd.Apply<TurnShinePower>(target, remaining, applier, cardSource);
+                await PowerCmd.Apply<TurnShinePower>(target, value, applier, cardSource);
                 break;
             case ValueDuration.Temp:
-                await PowerCmd.Apply<TempShinePower>(target, remaining, applier, cardSource);
+                TempPowerSourceTracker.RegisterTempShineSource(target, cardSource);
+                await PowerCmd.Apply<TempShinePower>(target, value, applier, cardSource);
                 break;
         }
-    }
-}
-
-// 抵消层数的通用工具，避免闪耀/复仇规则重复实现。
-internal static class PowerOffsetUtility
-{
-    public static async Task<int> ConsumePowerAmount<T>(Creature target, int amount, Creature? applier, CardModel? cardSource) where T : PowerModel
-    {
-        if (amount <= 0)
-        {
-            return 0;
-        }
-
-        var power = target.GetPower<T>();
-        if (power == null)
-        {
-            return 0;
-        }
-
-        var consumed = Math.Min(amount, power.Amount);
-        if (consumed > 0)
-        {
-            await PowerCmd.ModifyAmount(power, -consumed, applier, cardSource, silent: true);
-        }
-
-        return consumed;
     }
 }
