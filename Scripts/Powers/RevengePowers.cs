@@ -22,6 +22,16 @@ public class RevengePower : CustomPowerModel
 
     public override string? CustomBigIconPath => "res://Oshinogo/images/ui/ruby_energy_big.png";
 
+    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    {
+        if (Owner.Player != null)
+        {
+            ResourceUsageTracker.OnRevengeChanged(Owner.Player, (int)amount);
+        }
+
+        return Task.CompletedTask;
+    }
+
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
         await RevengePowerHelper.TriggerShineCardCost(context, this, cardPlay);
@@ -38,6 +48,16 @@ public class TurnRevengePower : CustomPowerModel
     public override string? CustomPackedIconPath => "res://Oshinogo/images/ui/ruby_energy.png";
 
     public override string? CustomBigIconPath => "res://Oshinogo/images/ui/ruby_energy_big.png";
+
+    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    {
+        if (Owner.Player != null)
+        {
+            ResourceUsageTracker.OnRevengeChanged(Owner.Player, (int)amount);
+        }
+
+        return Task.CompletedTask;
+    }
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
@@ -63,6 +83,16 @@ public class TempRevengePower : CustomPowerModel
     public override string? CustomPackedIconPath => "res://Oshinogo/images/ui/ruby_energy.png";
 
     public override string? CustomBigIconPath => "res://Oshinogo/images/ui/ruby_energy_big.png";
+
+    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    {
+        if (Owner.Player != null)
+        {
+            ResourceUsageTracker.OnRevengeChanged(Owner.Player, (int)amount);
+        }
+
+        return Task.CompletedTask;
+    }
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
@@ -131,6 +161,42 @@ public static class RevengePowerHelper
                 await PowerCmd.Apply<TempRevengePower>(target, value, applier, cardSource);
                 break;
         }
+    }
+
+    public static async Task LoseRevenge(Creature target, int amount, Creature? applier, CardModel? cardSource)
+    {
+        if (amount <= 0)
+        {
+            return;
+        }
+
+        var remaining = amount;
+        remaining = await ReducePower<TempRevengePower>(target, remaining, applier, cardSource);
+        remaining = await ReducePower<TurnRevengePower>(target, remaining, applier, cardSource);
+        await ReducePower<RevengePower>(target, remaining, applier, cardSource);
+    }
+
+    private static async Task<int> ReducePower<T>(Creature target, int amount, Creature? applier, CardModel? cardSource) where T : PowerModel
+    {
+        if (amount <= 0)
+        {
+            return 0;
+        }
+
+        var power = target.GetPower<T>();
+        if (power == null)
+        {
+            return amount;
+        }
+
+        var remove = Math.Min(amount, power.Amount);
+        if (remove <= 0)
+        {
+            return amount;
+        }
+
+        await PowerCmd.ModifyAmount(power, -remove, applier, cardSource);
+        return amount - remove;
     }
 
     // 仅让一种复仇来源触发扣血，避免永久/回合/临时并存时重复触发。

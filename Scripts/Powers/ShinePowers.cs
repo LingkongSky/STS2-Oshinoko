@@ -2,8 +2,10 @@ using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
 using Oshinogo.Scripts.Cards.Other;
 
 namespace Oshinogo.Scripts.Powers;
@@ -18,6 +20,16 @@ public class ShinePower : CustomPowerModel
     public override string? CustomPackedIconPath => "res://Oshinogo/images/ui/ruby_energy.png";
 
     public override string? CustomBigIconPath => "res://Oshinogo/images/ui/ruby_energy_big.png";
+
+    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    {
+        if (Owner.Player != null)
+        {
+            ResourceUsageTracker.OnShineChanged(Owner.Player, (int)amount);
+        }
+
+        return Task.CompletedTask;
+    }
 }
 
 // 回合闪耀值：回合结束后移除。
@@ -30,6 +42,16 @@ public class TurnShinePower : CustomPowerModel
     public override string? CustomPackedIconPath => "res://Oshinogo/images/ui/ruby_energy.png";
 
     public override string? CustomBigIconPath => "res://Oshinogo/images/ui/ruby_energy_big.png";
+
+    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    {
+        if (Owner.Player != null)
+        {
+            ResourceUsageTracker.OnShineChanged(Owner.Player, (int)amount);
+        }
+
+        return Task.CompletedTask;
+    }
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
@@ -50,6 +72,16 @@ public class TempShinePower : CustomPowerModel
     public override string? CustomPackedIconPath => "res://Oshinogo/images/ui/ruby_energy.png";
 
     public override string? CustomBigIconPath => "res://Oshinogo/images/ui/ruby_energy_big.png";
+
+    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    {
+        if (Owner.Player != null)
+        {
+            ResourceUsageTracker.OnShineChanged(Owner.Player, (int)amount);
+        }
+
+        return Task.CompletedTask;
+    }
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {

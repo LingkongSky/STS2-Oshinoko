@@ -19,7 +19,7 @@ public class Defend : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(5, ValueProp.Move)];
 
-    public Defend() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self,true)
+    public Defend() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self, true)
     {
     }
 

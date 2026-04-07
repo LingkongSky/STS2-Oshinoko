@@ -1,7 +1,4 @@
 using BaseLib.Abstracts;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Oshinogo.Scripts.Pools.RelicPools
 {

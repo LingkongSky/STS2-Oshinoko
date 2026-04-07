@@ -1,5 +1,4 @@
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Models;
 
@@ -134,5 +133,41 @@ public static class ShinePowerHelper
                 await PowerCmd.Apply<TempShinePower>(target, value, applier, cardSource);
                 break;
         }
+    }
+
+    public static async Task LoseShine(Creature target, int amount, Creature? applier, CardModel? cardSource)
+    {
+        if (amount <= 0)
+        {
+            return;
+        }
+
+        var remaining = amount;
+        remaining = await ReducePower<TempShinePower>(target, remaining, applier, cardSource);
+        remaining = await ReducePower<TurnShinePower>(target, remaining, applier, cardSource);
+        await ReducePower<ShinePower>(target, remaining, applier, cardSource);
+    }
+
+    private static async Task<int> ReducePower<T>(Creature target, int amount, Creature? applier, CardModel? cardSource) where T : PowerModel
+    {
+        if (amount <= 0)
+        {
+            return 0;
+        }
+
+        var power = target.GetPower<T>();
+        if (power == null)
+        {
+            return amount;
+        }
+
+        var remove = Math.Min(amount, power.Amount);
+        if (remove <= 0)
+        {
+            return amount;
+        }
+
+        await PowerCmd.ModifyAmount(power, -remove, applier, cardSource);
+        return amount - remove;
     }
 }
