@@ -12,6 +12,8 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class CodeB : OshiCardModel
 {
+    private const string CalculatedBlockKey = "CalculatedBlock";
+
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
     public override bool GainsBlock => true;
@@ -22,6 +24,7 @@ public class CodeB : OshiCardModel
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
         new BlockVar(5m, ValueProp.Move),
+        ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),
     ];
 
     public CodeB() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies, true)
@@ -31,6 +34,7 @@ public class CodeB : OshiCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var finalDamage = DynamicVars.CalculatedDamage.Calculate(null);
+        var block = ShineScaling.Calculate(DynamicVars, CalculatedBlockKey, cardPlay.Target);
 
         await DamageCmd.Attack(finalDamage)
             .FromCard(this)
@@ -38,8 +42,8 @@ public class CodeB : OshiCardModel
             .WithHitCount(2)
             .Execute(choiceContext);
 
-        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
+        await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move, cardPlay);
+        await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move, cardPlay);
     }
 
     protected override void OnUpgrade()

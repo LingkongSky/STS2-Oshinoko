@@ -13,11 +13,18 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class BackstageSupport : OshiCardModel
 {
+    private const string CalculatedBlockKey = "CalculatedBlock";
+
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
     public override bool GainsBlock => true;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(6m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new BlockVar(6m, ValueProp.Move),
+        new CalculationExtraVar(1m),
+        ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),
+    ];
 
     public BackstageSupport() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self, true)
     {
@@ -25,7 +32,8 @@ public class BackstageSupport : OshiCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
+        var block = ShineScaling.Calculate(DynamicVars, CalculatedBlockKey, cardPlay.Target);
+        await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move, cardPlay);
         await PowerCmd.Apply<GainTempRevengeNextTurnPower>(Owner.Creature, 1, Owner.Creature, this);
 
     }

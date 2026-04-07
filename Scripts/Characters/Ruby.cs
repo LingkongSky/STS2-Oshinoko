@@ -77,14 +77,13 @@ public class Ruby : PlaceholderCharacterModel
         ModelDb.Card<Strike>(),
         ModelDb.Card<Strike>(),
         ModelDb.Card<Strike>(),
-        ModelDb.Card<Strike>(),
-        ModelDb.Card<Defend>(),
         ModelDb.Card<Defend>(),
         ModelDb.Card<Defend>(),
         ModelDb.Card<Defend>(),
         ModelDb.Card<Defend>(),
         ModelDb.Card<IdolAdmiration>(),
         ModelDb.Card<IdolPassion>()
+
     ];
 
     // 初始遗物

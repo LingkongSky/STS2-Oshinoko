@@ -12,6 +12,8 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class MirrorStage : OshiCardModel
 {
+    private const string CalculatedBlockKey = "CalculatedBlock";
+
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
     public override bool GainsBlock => true;
@@ -22,6 +24,7 @@ public class MirrorStage : OshiCardModel
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
         new BlockVar(10m, ValueProp.Move),
+        ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),
     ];
 
     public MirrorStage() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies, true)
@@ -31,13 +34,14 @@ public class MirrorStage : OshiCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var finalDamage = DynamicVars.CalculatedDamage.Calculate(null);
+        var block = ShineScaling.Calculate(DynamicVars, CalculatedBlockKey, cardPlay.Target);
 
         await DamageCmd.Attack(finalDamage)
             .FromCard(this)
             .TargetingAllOpponents(Owner.Creature.CombatState)
             .Execute(choiceContext);
 
-        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
+        await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move, cardPlay);
     }
 
     protected override void OnUpgrade()

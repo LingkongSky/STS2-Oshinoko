@@ -12,11 +12,18 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class IdolDisguise : OshiCardModel
 {
+    private const string CalculatedBlockKey = "CalculatedBlock";
+
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
     public override bool GainsBlock => true;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(5m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new BlockVar(5m, ValueProp.Move),
+        new CalculationExtraVar(1m),
+        ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),
+    ];
 
     public IdolDisguise() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
     {
@@ -26,7 +33,8 @@ public class IdolDisguise : OshiCardModel
     {
         var combatState = Owner.Creature.CombatState;
         var count = combatState?.Enemies.Count(e => e.IsAlive) ?? 0;
-        var totalBlock = DynamicVars.Block.BaseValue * count;
+        var blockPerEnemy = ShineScaling.Calculate(DynamicVars, CalculatedBlockKey, cardPlay.Target);
+        var totalBlock = blockPerEnemy * count;
         await CreatureCmd.GainBlock(Owner.Creature, totalBlock, ValueProp.Move, cardPlay);
     }
 
