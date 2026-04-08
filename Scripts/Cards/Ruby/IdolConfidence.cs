@@ -17,7 +17,7 @@ public class IdolConfidence : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(12m, ValueProp.Move),
+        new DamageVar(10m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
         new ShineDymicVar(1m),
@@ -43,7 +43,7 @@ public class IdolConfidence : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2);
+        DynamicVars.Damage.UpgradeValueBy(3);
         DynamicVars[ShineDymicVar.Key].UpgradeValueBy(1);
     }
 }

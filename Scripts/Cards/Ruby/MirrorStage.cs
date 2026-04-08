@@ -46,7 +46,7 @@ public class MirrorStage : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2);
-        DynamicVars.Block.UpgradeValueBy(2);
+        DynamicVars.Damage.UpgradeValueBy(5);
+        DynamicVars.Block.UpgradeValueBy(5);
     }
 }

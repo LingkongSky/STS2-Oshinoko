@@ -18,7 +18,7 @@ public class StarfallOath : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(18m, ValueProp.Move),
+        new DamageVar(16m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
     ];
@@ -46,6 +46,6 @@ public class StarfallOath : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(6);
+        DynamicVars.Damage.UpgradeValueBy(4);
     }
 }

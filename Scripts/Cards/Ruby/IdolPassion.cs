@@ -11,10 +11,10 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class IdolPassion : OshiCardModel
 {
-    // 在本回合获得1(2)点回合闪耀值，消耗（保留）
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new ShineDymicVar(2m)];
+    // 在本回合获得1(2)点回合闪耀值
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new ShineDymicVar(1m)];
 
-    public IdolPassion() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
+    public IdolPassion() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
     {
     }
 

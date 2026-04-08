@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Players;
 
@@ -67,29 +66,7 @@ public static class ResourceUsageTracker
         return EnsureState(player).TotalRevengeSpent;
     }
 
-    public static bool TryTriggerFirstChangeThisTurn(Player player)
-    {
-        var state = EnsureState(player);
-        if (state.FirstChangeTriggeredThisTurn)
-        {
-            return false;
-        }
 
-        state.FirstChangeTriggeredThisTurn = true;
-        return true;
-    }
-
-    public static bool TryTriggerRevengeGainThisTurn(Player player)
-    {
-        var state = EnsureState(player);
-        if (state.RevengeGainTriggeredThisTurn)
-        {
-            return false;
-        }
-
-        state.RevengeGainTriggeredThisTurn = true;
-        return true;
-    }
 
     private static State EnsureState(Player player)
     {

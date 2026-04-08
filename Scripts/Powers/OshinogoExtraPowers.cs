@@ -9,7 +9,6 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
 
 namespace Oshinogo.Scripts.Powers;
 
@@ -229,7 +228,7 @@ public class LastMinuteStudyPower : CustomPowerModel
     {
         if (player == Owner.Player)
         {
-            await ShinePowerHelper.ApplyShine(Owner, 1, ValueDuration.Temp, Owner, null);
+            await ShinePowerHelper.ApplyShine(Owner, 1, ValueDuration.Turn, Owner, null);
         }
     }
 }
@@ -243,7 +242,7 @@ public class StayIndoorsPower : CustomPowerModel
     {
         if (player == Owner.Player)
         {
-            await RevengePowerHelper.ApplyRevenge(Owner, 1, ValueDuration.Temp, Owner, null);
+            await RevengePowerHelper.ApplyRevenge(Owner, 1, ValueDuration.Turn, Owner, null);
         }
     }
 }
@@ -370,10 +369,6 @@ public class RubyLegacyPower : CustomPowerModel
 
         if (power is RevengePower or TurnRevengePower or TempRevengePower)
         {
-            if (!ResourceUsageTracker.TryTriggerRevengeGainThisTurn(Owner.Player))
-            {
-                return;
-            }
 
             await CreatureCmd.Damage(
                 new BlockingPlayerChoiceContext(),
@@ -405,13 +400,7 @@ public class DualMirrorPower : CustomPowerModel
             return;
         }
 
-        if (!ResourceUsageTracker.TryTriggerFirstChangeThisTurn(Owner.Player))
-        {
-            return;
-        }
-
         await CardPileCmd.Draw(new BlockingPlayerChoiceContext(), 1, Owner.Player);
-        await PlayerCmd.GainEnergy(1, Owner.Player);
     }
 }
 

@@ -15,7 +15,7 @@ public class FinalPose : OshiCardModel
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain, OshinogoKeywords.Shine];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DamageVar(16m, ValueProp.Move),
+        new DamageVar(18m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
         ];
@@ -35,6 +35,6 @@ public class FinalPose : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4);
+        DynamicVars.Damage.UpgradeValueBy(6);
     }
 }

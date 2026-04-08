@@ -10,7 +10,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class DualMirror : OshiCardModel
 {
-    public DualMirror() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true)
+    public DualMirror() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self, true)
     {
     }
 
@@ -23,4 +23,6 @@ public class DualMirror : OshiCardModel
     {
         EnergyCost.UpgradeBy(-1);
     }
+
+
 }
