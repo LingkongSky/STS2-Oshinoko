@@ -7,9 +7,13 @@ namespace Oshinogo.Scripts.Cards.Other;
 [Pool(typeof(StatusCardPool))]
 public class Stunned : OshiCardModel
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Unplayable, CardKeyword.Exhaust];
+    public override int MaxUpgradeLevel => 0;
 
-    public Stunned() : base(1, CardType.Status, CardRarity.Status, TargetType.None, false)
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [        CardKeyword.Ethereal,
+        CardKeyword.Unplayable];
+
+
+    public Stunned() : base(-1, CardType.Status, CardRarity.Status, TargetType.None, false)
     {
     }
 }
