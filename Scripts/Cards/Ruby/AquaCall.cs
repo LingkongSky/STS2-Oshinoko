@@ -11,13 +11,12 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 
 // 描述: 获得1(2)点临时闪耀值，抽1张牌
 [Pool(typeof(RubyCardPool))]
-public class HonestApplause : OshiCardModel
+public class AquaCall : OshiCardModel
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new ShineDymicVar(1m)];
 
-    public HonestApplause() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self, true)
+    public AquaCall() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self, true)
     {
     }
 

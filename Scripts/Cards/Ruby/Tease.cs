@@ -18,7 +18,7 @@ public class Tease : OshiCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(6m, ValueProp.Move),
-        new DynamicVar(VulnerableKey, 1),
+        new DynamicVar(VulnerableKey, 2),
     ];
 
     public Tease() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy, true)
@@ -39,7 +39,7 @@ public class Tease : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3);
+        DynamicVars.Damage.UpgradeValueBy(2);
         DynamicVars[VulnerableKey].UpgradeValueBy(1);
     }
 }

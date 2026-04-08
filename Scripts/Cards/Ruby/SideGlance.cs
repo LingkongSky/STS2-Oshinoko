@@ -17,8 +17,8 @@ public class SideGlance : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8m, ValueProp.Move),
-        new DynamicVar(WeakKey, 1),
+        new DamageVar(6m, ValueProp.Move),
+        new DynamicVar(WeakKey, 2),
     ];
 
     public SideGlance() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy, true)

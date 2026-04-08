@@ -19,7 +19,7 @@ public class ActSpoiled : OshiCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.Heal(Owner.Creature, 3);
+        await CreatureCmd.Heal(Owner.Creature, 4);
     }
 
     protected override void OnUpgrade()

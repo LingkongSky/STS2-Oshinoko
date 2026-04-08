@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class TakeTheStage : OshiCardModel
 {
-    public TakeTheStage() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self, true)
+    public TakeTheStage() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true)
     {
     }
 

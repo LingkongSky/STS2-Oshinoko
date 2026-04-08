@@ -13,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 获得2点复仇值
 public class RevealTruth : OshiCardModel
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new RevengeDynamicVar(2m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new RevengeDynamicVar(1m)];
 
     public RevealTruth() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true)
     {

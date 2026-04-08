@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class NotAsFragileAsImagined : OshiCardModel
 {
-    public NotAsFragileAsImagined() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
+    public NotAsFragileAsImagined() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
     {
     }
 

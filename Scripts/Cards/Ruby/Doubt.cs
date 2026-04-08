@@ -19,8 +19,8 @@ public class Doubt : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(9m, ValueProp.Move),
-        new DynamicVar(ThresholdKey, 15),
+        new DamageVar(8m, ValueProp.Move),
+        new DynamicVar(ThresholdKey, 13),
         new RevengeDynamicVar(2m),
     ];
 

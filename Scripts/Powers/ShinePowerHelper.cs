@@ -1,10 +1,11 @@
-using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Models;
 
 namespace Oshinogo.Scripts.Powers;
 
-// 数值持续类型：永久、回合、临时。
+// Value duration types: permanent, turn, temp.
 public enum ValueDuration
 {
     Permanent,
@@ -12,85 +13,97 @@ public enum ValueDuration
     Temp,
 }
 
-// 用于记录“临时资源是由哪张牌赋予的”，从而在该牌自己的 AfterCardPlayed 中跳过一次，
-// 避免出现“刚获得就立刻被消耗”的问题。
-// 注意：这里只对 cardSource != null 的情况生效，因此非打牌时机获得的临时资源不会被额外跳过。
+// Track temp resource sources so we can preserve only the amount granted by the current card.
 public static class TempPowerSourceTracker
 {
-    private static readonly Dictionary<Creature, HashSet<CardModel>> TempShineSources = new();
+    private static readonly Dictionary<Creature, Dictionary<CardModel, int>> TempShineSources = new();
 
-    private static readonly Dictionary<Creature, HashSet<CardModel>> TempRevengeSources = new();
+    private static readonly Dictionary<Creature, Dictionary<CardModel, int>> TempRevengeSources = new();
 
-    public static void RegisterTempShineSource(Creature target, CardModel? cardSource)
+    public static void RegisterTempShineSource(Creature target, CardModel? cardSource, int amount)
     {
-        if (cardSource == null)
+        if (cardSource == null || amount <= 0)
         {
             return;
         }
 
         if (!TempShineSources.TryGetValue(target, out var sources))
         {
-            sources = new HashSet<CardModel>();
+            sources = new Dictionary<CardModel, int>();
             TempShineSources[target] = sources;
         }
 
-        sources.Add(cardSource);
+        if (sources.TryGetValue(cardSource, out var existing))
+        {
+            sources[cardSource] = existing + amount;
+            return;
+        }
+
+        sources[cardSource] = amount;
     }
 
-    public static void RegisterTempRevengeSource(Creature target, CardModel? cardSource)
+    public static void RegisterTempRevengeSource(Creature target, CardModel? cardSource, int amount)
     {
-        if (cardSource == null)
+        if (cardSource == null || amount <= 0)
         {
             return;
         }
 
         if (!TempRevengeSources.TryGetValue(target, out var sources))
         {
-            sources = new HashSet<CardModel>();
+            sources = new Dictionary<CardModel, int>();
             TempRevengeSources[target] = sources;
         }
 
-        sources.Add(cardSource);
+        if (sources.TryGetValue(cardSource, out var existing))
+        {
+            sources[cardSource] = existing + amount;
+            return;
+        }
+
+        sources[cardSource] = amount;
     }
 
-    public static bool ShouldSkipTempShine(Creature target, CardModel currentCard)
+    public static int PopTempShineSourceAmount(Creature target, CardModel currentCard)
     {
         if (!TempShineSources.TryGetValue(target, out var sources))
         {
-            return false;
+            return 0;
         }
 
-        if (!sources.Remove(currentCard))
+        if (!sources.TryGetValue(currentCard, out var amount))
         {
-            return false;
+            return 0;
         }
 
+        sources.Remove(currentCard);
         if (sources.Count == 0)
         {
             TempShineSources.Remove(target);
         }
 
-        return true;
+        return amount;
     }
 
-    public static bool ShouldSkipTempRevenge(Creature target, CardModel currentCard)
+    public static int PopTempRevengeSourceAmount(Creature target, CardModel currentCard)
     {
         if (!TempRevengeSources.TryGetValue(target, out var sources))
         {
-            return false;
+            return 0;
         }
 
-        if (!sources.Remove(currentCard))
+        if (!sources.TryGetValue(currentCard, out var amount))
         {
-            return false;
+            return 0;
         }
 
+        sources.Remove(currentCard);
         if (sources.Count == 0)
         {
             TempRevengeSources.Remove(target);
         }
 
-        return true;
+        return amount;
     }
 
     public static void Clear(Creature target)
@@ -100,10 +113,10 @@ public static class TempPowerSourceTracker
     }
 }
 
-// 闪耀值的统一规则入口。
+// Unified shine rules.
 public static class ShinePowerHelper
 {
-    // 总闪耀 = 永久 + 回合 + 临时。
+    // Total shine = permanent + turn + temp.
     public static int GetTotalShine(Creature creature)
     {
         return creature.GetPowerAmount<ShinePower>()
@@ -111,7 +124,7 @@ public static class ShinePowerHelper
              + creature.GetPowerAmount<TempShinePower>();
     }
 
-    // 获得闪耀时不再抵消复仇值，直接添加对应层数。
+    // Gaining shine no longer offsets revenge; it stacks directly.
     public static async Task ApplyShine(Creature target, decimal amount, ValueDuration duration, Creature? applier, CardModel? cardSource)
     {
         var value = (int)amount;
@@ -129,7 +142,7 @@ public static class ShinePowerHelper
                 await PowerCmd.Apply<TurnShinePower>(target, value, applier, cardSource);
                 break;
             case ValueDuration.Temp:
-                TempPowerSourceTracker.RegisterTempShineSource(target, cardSource);
+                TempPowerSourceTracker.RegisterTempShineSource(target, cardSource, value);
                 await PowerCmd.Apply<TempShinePower>(target, value, applier, cardSource);
                 break;
         }

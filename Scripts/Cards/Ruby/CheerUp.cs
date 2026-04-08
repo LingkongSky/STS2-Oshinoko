@@ -13,7 +13,7 @@ public class CheerUp : OshiCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
-    public CheerUp() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self, true)
+    public CheerUp() : base(2, CardType.Skill, CardRarity.Common, TargetType.Self, true)
     {
     }
 

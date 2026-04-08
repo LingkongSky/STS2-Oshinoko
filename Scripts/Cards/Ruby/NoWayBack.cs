@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class NoWayBack : OshiCardModel
 {
-    public NoWayBack() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
+    public NoWayBack() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
     {
     }
 

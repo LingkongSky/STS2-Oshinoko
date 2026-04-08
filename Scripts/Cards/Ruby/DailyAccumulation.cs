@@ -16,7 +16,7 @@ public class DailyAccumulation : OshiCardModel
 
     public override bool GainsBlock => true;
 
-    public DailyAccumulation() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
+    public DailyAccumulation() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
     {
     }
 

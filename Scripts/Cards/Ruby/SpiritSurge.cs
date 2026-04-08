@@ -19,7 +19,7 @@ public class SpiritSurge : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(9m, ValueProp.Move),
+        new DamageVar(8m, ValueProp.Move),
     new CalculationExtraVar(1m),
     ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
 ];
@@ -39,7 +39,7 @@ public class SpiritSurge : OshiCardModel
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        await PowerCmd.Apply<GainTempShineNextTurnPower>(Owner.Creature, 2, Owner.Creature, this);
+        await PowerCmd.Apply<GainTempShineNextTurnPower>(Owner.Creature, 3, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class LastMinuteStudy : OshiCardModel
 {
-    public LastMinuteStudy() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
+    public LastMinuteStudy() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
     {
     }
 

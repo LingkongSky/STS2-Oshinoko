@@ -10,7 +10,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class DoctorBones : OshiCardModel
 {
-    public DoctorBones() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
+    public DoctorBones() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {
     }
 

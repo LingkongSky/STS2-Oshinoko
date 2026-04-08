@@ -14,7 +14,7 @@ public class MiyaADream : OshiCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new ShineDymicVar(3m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new ShineDymicVar(2m)];
 
     public MiyaADream() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self, true)
     {

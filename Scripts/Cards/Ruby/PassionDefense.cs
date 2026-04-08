@@ -22,8 +22,8 @@ public class PassionDefense : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(7m, ValueProp.Move),
-        new ShineDymicVar(1m),
+        new BlockVar(6m, ValueProp.Move),
+        new ShineDymicVar(2m),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),
     ];

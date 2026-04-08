@@ -18,7 +18,7 @@ public class PlaceOfLight : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(30m, ValueProp.Move),
+        new DamageVar(27m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
     ];
@@ -48,6 +48,6 @@ public class PlaceOfLight : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(15);
+        DynamicVars.Damage.UpgradeValueBy(13);
     }
 }

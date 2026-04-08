@@ -20,8 +20,8 @@ public class PassionStrike : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new ShineDymicVar(1m),
-        new DamageVar(6m, ValueProp.Move),
+        new ShineDymicVar(2m),
+        new DamageVar(5m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
     ];

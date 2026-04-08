@@ -14,7 +14,7 @@ public class ChasingLight : OshiCardModel
 {
     private const string ThresholdKey = "Threshold";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar(ThresholdKey, 4)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar(ThresholdKey, 5)];
 
     public ChasingLight() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
     {

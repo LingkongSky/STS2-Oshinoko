@@ -15,7 +15,7 @@ public class Pain : OshiCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Ethereal];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(9m, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8m, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move)];
 
     public Pain() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies, true)
     {
@@ -29,6 +29,6 @@ public class Pain : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(5);
+        DynamicVars.Damage.UpgradeValueBy(4);
     }
 }

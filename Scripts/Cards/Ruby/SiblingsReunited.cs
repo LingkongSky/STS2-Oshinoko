@@ -10,7 +10,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class SiblingsReunited : OshiCardModel
 {
-    public SiblingsReunited() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
+    public SiblingsReunited() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {
     }
 

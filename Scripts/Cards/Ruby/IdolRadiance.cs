@@ -16,7 +16,7 @@ public class IdolRadiance : OshiCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await ShinePowerHelper.ApplyShine(Owner.Creature, 3, ValueDuration.Permanent, Owner.Creature, this);
+        await ShinePowerHelper.ApplyShine(Owner.Creature, 2, ValueDuration.Permanent, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

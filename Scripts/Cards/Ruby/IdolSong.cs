@@ -31,7 +31,7 @@ public class IdolSong : OshiCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var totalShine = ShinePowerHelper.GetTotalShine(Owner.Creature);
-        var hits = 5 + totalShine / 2;
+        var hits = 4 + totalShine / 2;
 
         if (totalShine > 0)
         {

@@ -18,7 +18,7 @@ public class InfectiousPassion : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6m, ValueProp.Move),
+        new DamageVar(7m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
     ];
@@ -41,7 +41,7 @@ public class InfectiousPassion : OshiCardModel
         var dealtDamage = command.Results.Where(r => r.Receiver == cardPlay.Target)
             .Sum(r => r.UnblockedDamage + r.OverkillDamage);
 
-        if (dealtDamage >= 12)
+        if (dealtDamage >= 10)
         {
             await ShinePowerHelper.ApplyShine(Owner.Creature, 1, ValueDuration.Permanent, Owner.Creature, this);
         }

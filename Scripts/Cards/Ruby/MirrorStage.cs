@@ -21,10 +21,10 @@ public class MirrorStage : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(10m, ValueProp.Move),
+        new DamageVar(9m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
-        new BlockVar(10m, ValueProp.Move),
+        new BlockVar(9m, ValueProp.Move),
         ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),
     ];
 
@@ -47,7 +47,7 @@ public class MirrorStage : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(5);
-        DynamicVars.Block.UpgradeValueBy(5);
+        DynamicVars.Damage.UpgradeValueBy(4);
+        DynamicVars.Block.UpgradeValueBy(4);
     }
 }

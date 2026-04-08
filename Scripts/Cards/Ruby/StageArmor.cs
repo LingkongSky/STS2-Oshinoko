@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class StageArmor : OshiCardModel
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("BlockPerHp", 3)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("BlockPerHp", 2)];
 
     public StageArmor() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
     {

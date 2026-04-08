@@ -15,7 +15,7 @@ public class RubyShine : OshiCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(1m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(2m, ValueProp.Move)];
 
     public RubyShine() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy, true)
     {

@@ -18,7 +18,7 @@ public class VengeanceBell : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(9m, ValueProp.Move),
+        new DamageVar(8m, ValueProp.Move),
         new DynamicVar(ThresholdKey, 2),
     ];
 

@@ -18,7 +18,7 @@ public class BackstageLive : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(10m, ValueProp.Move),
+        new BlockVar(8m, ValueProp.Move),
         new RevengeDynamicVar(2m),
     ];
 

@@ -14,7 +14,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class OnlineBacklash : OshiCardModel
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new RevengeDynamicVar(1m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new RevengeDynamicVar(2m)];
 
     public OnlineBacklash() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
     {

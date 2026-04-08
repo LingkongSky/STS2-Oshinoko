@@ -101,7 +101,7 @@ public class VengeanceBellNextTurnPower : CustomPowerModel
 
         var opponents = combatState.GetOpponentsOf(Owner).ToList();
 
-        await CreatureCmd.Damage(new BlockingPlayerChoiceContext(), opponents, 9, ValueProp.Move, Owner, null);
+        await CreatureCmd.Damage(new BlockingPlayerChoiceContext(), opponents, 8, ValueProp.Move, Owner, null);
 
         await PowerCmd.Remove(this);
     }
@@ -419,7 +419,7 @@ public class ShellForgedByLiesPower : CustomPowerModel
             return;
         }
 
-        var damage = revenge * 5;
+        var damage = revenge * 4;
         var opponents = combatState.GetOpponentsOf(Owner).ToList();
         await CreatureCmd.Damage(choiceContext, opponents, damage, ValueProp.Move, Owner, null);
     }
@@ -443,7 +443,7 @@ public class LightFromPassionPower : CustomPowerModel
             return;
         }
 
-        var block = shine * 5;
+        var block = shine * 4;
         await CreatureCmd.GainBlock(Owner, block, ValueProp.Move, null);
     }
 }

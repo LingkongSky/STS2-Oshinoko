@@ -22,10 +22,10 @@ public class HeartFlutterAttack : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8m, ValueProp.Move),
+        new DamageVar(7m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
-        new DynamicVar(ThresholdKey, 10),
+        new DynamicVar(ThresholdKey, 11),
         new DynamicVar(RefundEnergyKey, 1),
     ];
 

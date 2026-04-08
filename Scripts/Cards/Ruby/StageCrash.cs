@@ -33,7 +33,7 @@ public class StageCrash : OshiCardModel
         await CreatureCmd.Damage(
             choiceContext,
             Owner.Creature,
-            3,
+            2,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
             Owner.Creature
         );

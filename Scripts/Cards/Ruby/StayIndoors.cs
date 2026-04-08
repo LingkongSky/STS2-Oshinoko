@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class StayIndoors : OshiCardModel
 {
-    public StayIndoors() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
+    public StayIndoors() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
     {
     }
 

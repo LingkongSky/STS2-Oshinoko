@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class RetreatBackstage : OshiCardModel
 {
-    public RetreatBackstage() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self, true)
+    public RetreatBackstage() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true)
     {
     }
 

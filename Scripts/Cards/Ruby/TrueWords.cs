@@ -27,7 +27,7 @@ public class TrueWords : OshiCardModel
             await CreatureCmd.LoseBlock(cardPlay.Target, block);
         }
 
-        if (block > 25)
+        if (block > 20)
         {
             await ShinePowerHelper.ApplyShine(Owner.Creature, 1, ValueDuration.Permanent, Owner.Creature, this);
             await CardPileCmd.Draw(choiceContext, 1, Owner);

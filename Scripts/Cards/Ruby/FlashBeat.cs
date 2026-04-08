@@ -19,10 +19,10 @@ public class FlashBeat : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7m, ValueProp.Move),
+        new DamageVar(6m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
-        new DynamicVar(BonusDamageKey, 3),
+        new DynamicVar(BonusDamageKey, 6),
     ];
 
     public FlashBeat() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, true)
@@ -48,6 +48,5 @@ public class FlashBeat : OshiCardModel
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(3);
-        DynamicVars[BonusDamageKey].UpgradeValueBy(1);
     }
 }

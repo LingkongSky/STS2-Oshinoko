@@ -1,4 +1,4 @@
-using BaseLib.Abstracts;
+﻿using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -11,7 +11,7 @@ using Oshinogo.Scripts.Cards.Other;
 
 namespace Oshinogo.Scripts.Powers;
 
-// 永久复仇值：长期存在，并在打出闪耀牌时触发失去生命。
+// Permanent revenge: persists and triggers HP loss when a Shine card is played.
 public class RevengePower : CustomPowerModel
 {
     public override PowerType Type => PowerType.Buff;
@@ -38,7 +38,7 @@ public class RevengePower : CustomPowerModel
     }
 }
 
-// 回合复仇值：本回合生效，回合结束后移除。
+// Turn revenge: expires at end of turn.
 public class TurnRevengePower : CustomPowerModel
 {
     public override PowerType Type => PowerType.Buff;
@@ -73,7 +73,7 @@ public class TurnRevengePower : CustomPowerModel
     }
 }
 
-// 临时复仇值：下一次打出闪耀牌后触发并移除。
+// Temp revenge: removed after the next Shine card is played.
 public class TempRevengePower : CustomPowerModel
 {
     public override PowerType Type => PowerType.Buff;
@@ -101,13 +101,6 @@ public class TempRevengePower : CustomPowerModel
             return;
         }
 
-        // 如果临时复仇是由“当前这张牌”赋予的，那么跳过这一次，
-        // 避免出现“刚获得就立刻被消耗”。
-        if (TempPowerSourceTracker.ShouldSkipTempRevenge(Owner, cardPlay.Card))
-        {
-            return;
-        }
-
         if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine))
         {
             return;
@@ -115,7 +108,12 @@ public class TempRevengePower : CustomPowerModel
 
         await RevengePowerHelper.TriggerShineCardCost(context, this, cardPlay);
 
+        var preserve = TempPowerSourceTracker.PopTempRevengeSourceAmount(Owner, cardPlay.Card);
         await PowerCmd.Remove(this);
+        if (preserve > 0)
+        {
+            await PowerCmd.Apply<TempRevengePower>(Owner, preserve, Owner, cardPlay.Card);
+        }
     }
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
@@ -128,10 +126,10 @@ public class TempRevengePower : CustomPowerModel
     }
 }
 
-// 复仇值的统一规则入口。
+// Unified revenge rules.
 public static class RevengePowerHelper
 {
-    // 总复仇 = 永久 + 回合 + 临时。
+    // Total revenge = permanent + turn + temp.
     public static int GetTotalRevenge(Creature creature)
     {
         return creature.GetPowerAmount<RevengePower>()
@@ -139,7 +137,7 @@ public static class RevengePowerHelper
              + creature.GetPowerAmount<TempRevengePower>();
     }
 
-    // 获得复仇时不再抵消闪耀值，直接添加对应层数。
+    // Gaining revenge no longer offsets shine; it stacks directly.
     public static async Task ApplyRevenge(Creature target, decimal amount, ValueDuration duration, Creature? applier, CardModel? cardSource)
     {
         var value = (int)amount;
@@ -157,7 +155,7 @@ public static class RevengePowerHelper
                 await PowerCmd.Apply<TurnRevengePower>(target, value, applier, cardSource);
                 break;
             case ValueDuration.Temp:
-                TempPowerSourceTracker.RegisterTempRevengeSource(target, cardSource);
+                TempPowerSourceTracker.RegisterTempRevengeSource(target, cardSource, value);
                 await PowerCmd.Apply<TempRevengePower>(target, value, applier, cardSource);
                 break;
         }
@@ -199,7 +197,7 @@ public static class RevengePowerHelper
         return amount - remove;
     }
 
-    // 仅让一种复仇来源触发扣血，避免永久/回合/临时并存时重复触发。
+    // Ensure only one revenge source handles loss to avoid double-triggering.
     public static bool ShouldHandleLoss(PowerModel power)
     {
         if (power.Owner.HasPower<RevengePower>())
@@ -215,7 +213,7 @@ public static class RevengePowerHelper
         return power is TempRevengePower;
     }
 
-    // 打出带闪耀关键词的牌时，失去等同于当前总复仇值的生命。
+    // On playing a Shine card, lose HP equal to total revenge.
     public static async Task TriggerShineCardCost(PlayerChoiceContext context, PowerModel power, CardPlay cardPlay)
     {
         if (cardPlay.Card.Owner?.Creature != power.Owner)

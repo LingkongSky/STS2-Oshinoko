@@ -12,7 +12,7 @@ public class FirmBelief : OshiCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
-    public FirmBelief() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
+    public FirmBelief() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
     {
     }
 
