@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 造成8(10)点伤害，给予1(2)层虚弱
 [Pool(typeof(RubyCardPool))]
 public class SideGlance : OshiCardModel
 {

@@ -10,11 +10,11 @@ using Oshinogo.Scripts.Powers;
 namespace Oshinogo.Scripts.Cards.Ruby;
 
 [Pool(typeof(RubyCardPool))]
-public class SarinaForm : OshiCardModel
+public class ShadowEcho : OshiCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new RevengeDynamicVar(2m)];
 
-    public SarinaForm() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
+    public ShadowEcho() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {
     }
 

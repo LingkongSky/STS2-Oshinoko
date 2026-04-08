@@ -7,6 +7,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 本回合获得25%的减伤
 [Pool(typeof(RubyCardPool))]
 public class ActCute : OshiCardModel
 {

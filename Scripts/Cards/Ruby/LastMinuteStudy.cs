@@ -7,6 +7,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 每回合获得1点回合闪耀
 [Pool(typeof(RubyCardPool))]
 public class LastMinuteStudy : OshiCardModel
 {

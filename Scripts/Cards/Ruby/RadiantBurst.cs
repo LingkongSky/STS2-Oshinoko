@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 对所有敌人造成3(4)点伤害2次
 [Pool(typeof(RubyCardPool))]
 public class RadiantBurst : OshiCardModel
 {

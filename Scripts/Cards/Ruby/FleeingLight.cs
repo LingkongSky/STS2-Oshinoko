@@ -8,6 +8,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 每使用3(2)点复仇值，抽1张牌
 [Pool(typeof(RubyCardPool))]
 public class FleeingLight : OshiCardModel
 {

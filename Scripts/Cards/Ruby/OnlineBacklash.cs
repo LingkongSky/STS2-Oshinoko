@@ -10,6 +10,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 失去2点生命，获得1(2)点临时复仇值
 [Pool(typeof(RubyCardPool))]
 public class OnlineBacklash : OshiCardModel
 {

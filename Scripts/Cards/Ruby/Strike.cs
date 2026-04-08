@@ -10,6 +10,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 namespace Oshinogo.Scripts.Cards.Ruby;
 
 // 加入哪个卡池
+// 描述: 造成6(9)点伤害
 [Pool(typeof(RubyCardPool))]
 public class Strike : OshiCardModel
 {
@@ -20,7 +21,7 @@ public class Strike : OshiCardModel
     // 卡牌类型
     private const CardType type = CardType.Attack;
     // 卡牌稀有度
-    private const CardRarity rarity = CardRarity.Common;
+    private const CardRarity rarity = CardRarity.Basic;
     // 目标类型（AnyEnemy表示任意敌人）
     private const TargetType targetType = TargetType.AnyEnemy;
     // 是否在卡牌图鉴中显示

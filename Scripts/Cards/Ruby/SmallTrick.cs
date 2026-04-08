@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 获得3(5)点防御，抽1张牌
 [Pool(typeof(RubyCardPool))]
 public class SmallTrick : OshiCardModel
 {

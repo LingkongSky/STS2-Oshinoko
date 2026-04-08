@@ -7,6 +7,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 获得闪耀值时，获得1点格挡。获得复仇值时，失去1点生命并获得1点能量
 [Pool(typeof(RubyCardPool))]
 public class RubyLegacy : OshiCardModel
 {

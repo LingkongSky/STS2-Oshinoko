@@ -10,6 +10,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 每有1点闪耀值，该卡的费用减少1，对敌人造成30(45)点伤害
 [Pool(typeof(RubyCardPool))]
 public class PlaceOfLight : OshiCardModel
 {

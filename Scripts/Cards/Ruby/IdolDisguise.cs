@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 场上每有一名敌人，额外获得5(7)点防御
 [Pool(typeof(RubyCardPool))]
 public class IdolDisguise : OshiCardModel
 {

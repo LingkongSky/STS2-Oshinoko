@@ -100,17 +100,8 @@ public class VengeanceBellNextTurnPower : CustomPowerModel
         }
 
         var opponents = combatState.GetOpponentsOf(Owner).ToList();
-        for (int i = 0; i < Amount; i++)
-        {
-            await CreatureCmd.Damage(
-                new BlockingPlayerChoiceContext(),
-                opponents,
-                3,
-                ValueProp.Move,
-                Owner,
-                null
-            );
-        }
+
+        await CreatureCmd.Damage(new BlockingPlayerChoiceContext(), opponents, 9, ValueProp.Move, Owner, null);
 
         await PowerCmd.Remove(this);
     }

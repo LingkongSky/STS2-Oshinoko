@@ -7,6 +7,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 回复3点生命
 [Pool(typeof(RubyCardPool))]
 public class ActSpoiled : OshiCardModel
 {

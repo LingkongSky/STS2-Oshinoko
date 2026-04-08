@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 随机对敌人造成3(4)点伤害3次
 [Pool(typeof(RubyCardPool))]
 public class SpinningStep : OshiCardModel
 {

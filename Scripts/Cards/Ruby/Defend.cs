@@ -10,6 +10,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 namespace Oshinogo.Scripts.Cards.Ruby;
 
 // 加入哪个卡池
+// 描述: 获得5(8)点防御
 [Pool(typeof(RubyCardPool))]
 public class Defend : OshiCardModel
 {
@@ -28,7 +29,7 @@ public class Defend : OshiCardModel
         ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),
         ];
 
-    public Defend() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self, true)
+    public Defend() : base(1, CardType.Skill, CardRarity.Basic, TargetType.Self, true)
     {
     }
 

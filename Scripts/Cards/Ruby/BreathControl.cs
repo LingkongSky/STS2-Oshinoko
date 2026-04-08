@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 获得4(6)点格挡，抽1张牌
 [Pool(typeof(RubyCardPool))]
 public class BreathControl : OshiCardModel
 {

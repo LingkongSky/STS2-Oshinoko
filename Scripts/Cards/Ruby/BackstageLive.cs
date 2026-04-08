@@ -10,6 +10,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 失去3点生命，获得2点复仇值与10点格挡
 [Pool(typeof(RubyCardPool))]
 public class BackstageLive : OshiCardModel
 {

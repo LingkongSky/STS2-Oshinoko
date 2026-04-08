@@ -10,6 +10,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 造成6(8)点伤害，如果这张卡牌造成了12点伤害以上，则获得1点闪耀值
 [Pool(typeof(RubyCardPool))]
 public class InfectiousPassion : OshiCardModel
 {

@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 获得12(16)点防御，在卡组里增加1张眩晕
 [Pool(typeof(RubyCardPool))]
 public class FirstAppearance : OshiCardModel
 {

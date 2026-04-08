@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 造成11(13)点伤害，抽3张牌，并免费打出其中的闪耀牌
 [Pool(typeof(RubyCardPool))]
 public class ScatteredLight : OshiCardModel
 {

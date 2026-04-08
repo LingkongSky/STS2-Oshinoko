@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 对所有敌人造成5(7)点伤害两次，自己获得5(7)点防御2次
 [Pool(typeof(RubyCardPool))]
 public class CodeB : OshiCardModel
 {

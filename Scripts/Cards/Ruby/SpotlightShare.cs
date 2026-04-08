@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 获得2点回合闪耀值，抽1张牌
 [Pool(typeof(RubyCardPool))]
 public class SpotlightShare : OshiCardModel
 {

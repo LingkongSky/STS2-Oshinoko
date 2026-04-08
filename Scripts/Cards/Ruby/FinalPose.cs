@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 造成18(24)点伤害
 [Pool(typeof(RubyCardPool))]
 public class FinalPose : OshiCardModel
 {

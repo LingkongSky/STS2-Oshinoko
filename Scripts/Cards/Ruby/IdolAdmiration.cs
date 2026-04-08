@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 // 造成5(8)点伤害，抽1张牌  闪耀
+// 描述: 造成5(8)点伤害，抽1张牌
 [Pool(typeof(RubyCardPool))]
 public class IdolAdmiration : OshiCardModel
 {

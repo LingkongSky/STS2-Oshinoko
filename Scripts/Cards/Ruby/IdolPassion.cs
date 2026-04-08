@@ -8,6 +8,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 获得1(2)点回合闪耀值。
 [Pool(typeof(RubyCardPool))]
 public class IdolPassion : OshiCardModel
 {

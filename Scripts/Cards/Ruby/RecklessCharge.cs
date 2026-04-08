@@ -11,6 +11,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 造成4(6)点伤害2次，消耗1张牌，并获取等同于该卡费用的临时闪耀值
 [Pool(typeof(RubyCardPool))]
 public class RecklessCharge : OshiCardModel
 {

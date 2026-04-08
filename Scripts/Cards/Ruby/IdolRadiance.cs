@@ -6,6 +6,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 获得3点闪耀值
 [Pool(typeof(RubyCardPool))]
 public class IdolRadiance : OshiCardModel
 {

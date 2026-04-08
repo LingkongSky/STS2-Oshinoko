@@ -10,6 +10,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 
 [Pool(typeof(RubyCardPool))]
 // 揭露真相：提供永久复仇值。
+// 描述: 获得2点复仇值
 public class RevealTruth : OshiCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new RevengeDynamicVar(2m)];

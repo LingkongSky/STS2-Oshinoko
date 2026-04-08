@@ -1,6 +1,7 @@
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -9,15 +10,16 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 失去2(1)点生命，令所有敌人失去9点生命，下回合开始时令所有敌人失去9点生命。
 [Pool(typeof(RubyCardPool))]
 public class VengeanceBell : OshiCardModel
 {
-    private const string HitsKey = "Hits";
+    private const string ThresholdKey = "Threshold";
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(3m, ValueProp.Move),
-        new DynamicVar(HitsKey, 3),
+        new DamageVar(9m, ValueProp.Move),
+        new DynamicVar(ThresholdKey, 2),
     ];
 
     public VengeanceBell() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies, true)
@@ -29,24 +31,21 @@ public class VengeanceBell : OshiCardModel
         await CreatureCmd.Damage(
             choiceContext,
             Owner.Creature,
-            3,
+            DynamicVars[ThresholdKey].BaseValue,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
             Owner.Creature
         );
 
-        var hitCount = (int)DynamicVars[HitsKey].BaseValue;
+        var opponents = Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature) ?? Enumerable.Empty<Creature>();
+        await CreatureCmd.Damage(choiceContext, opponents, DynamicVars.Damage.BaseValue, DynamicVars.Damage.Props, Owner.Creature, this);
 
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
-            .TargetingAllOpponents(Owner.Creature.CombatState)
-            .WithHitCount(hitCount)
-            .Execute(choiceContext);
-
-        await PowerCmd.Apply<VengeanceBellNextTurnPower>(Owner.Creature, hitCount, Owner.Creature, this);
+        await PowerCmd.Apply<VengeanceBellNextTurnPower>(Owner.Creature, 1, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars[HitsKey].UpgradeValueBy(1);
+        EnergyCost.UpgradeBy(-1);
+        DynamicVars[ThresholdKey].UpgradeValueBy(-1);
+
     }
 }

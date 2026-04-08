@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 对所有敌人造成10(15)点伤害，获得10(15)点格挡
 [Pool(typeof(RubyCardPool))]
 public class MirrorStage : OshiCardModel
 {

@@ -10,6 +10,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 对所有敌人造成12(16)点伤害，失去3点生命,获得1点复仇值
 [Pool(typeof(RubyCardPool))]
 public class StageCrash : OshiCardModel
 {

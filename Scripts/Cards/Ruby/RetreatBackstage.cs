@@ -7,6 +7,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 每获得1点复仇值，获得1点能量
 [Pool(typeof(RubyCardPool))]
 public class RetreatBackstage : OshiCardModel
 {

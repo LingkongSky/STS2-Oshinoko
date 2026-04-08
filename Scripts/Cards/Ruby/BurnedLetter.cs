@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 去除自身的所有负面效果，下回合获得1(2)点能量
 [Pool(typeof(RubyCardPool))]
 public class BurnedLetter : OshiCardModel
 {

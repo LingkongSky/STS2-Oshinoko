@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 获得15点格挡，下回合获得2点回合复仇值
 [Pool(typeof(RubyCardPool))]
 public class CarefulPlan : OshiCardModel
 {

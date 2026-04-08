@@ -7,6 +7,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 不再受到脆弱影响
 [Pool(typeof(RubyCardPool))]
 public class NotAsFragileAsImagined : OshiCardModel
 {

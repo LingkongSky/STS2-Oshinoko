@@ -7,6 +7,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 回合结束时获取等同于闪耀值*5的格挡
 [Pool(typeof(RubyCardPool))]
 public class LightFromPassion : OshiCardModel
 {

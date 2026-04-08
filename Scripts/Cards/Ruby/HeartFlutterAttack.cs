@@ -11,6 +11,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 造成8(10)点伤害。若造成的伤害大于10(13)，返还1(2)点费用并获得1点临时闪耀值
 [Pool(typeof(RubyCardPool))]
 public class HeartFlutterAttack : OshiCardModel
 {

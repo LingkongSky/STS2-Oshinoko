@@ -8,6 +8,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 获得3(4)点临时闪耀值
 [Pool(typeof(RubyCardPool))]
 public class MiyaADream : OshiCardModel
 {

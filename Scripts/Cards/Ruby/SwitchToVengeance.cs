@@ -7,6 +7,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 将你的闪耀值全部转换为复仇值。获得等量能量
 [Pool(typeof(RubyCardPool))]
 public class SwitchToVengeance : OshiCardModel
 {

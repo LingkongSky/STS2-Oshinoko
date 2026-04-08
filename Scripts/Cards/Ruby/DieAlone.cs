@@ -10,6 +10,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 失去5点血量，获得4点复仇值
 [Pool(typeof(RubyCardPool))]
 public class DieAlone : OshiCardModel
 {

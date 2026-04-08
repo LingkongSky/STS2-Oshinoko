@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 所有敌人失去9(14)点生命值
 [Pool(typeof(RubyCardPool))]
 public class Pain : OshiCardModel
 {

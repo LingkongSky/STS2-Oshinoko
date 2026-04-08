@@ -12,6 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 
 // 造成6(9)点伤害，获得一点临时闪耀 闪耀
 
+// 描述: 造成6(9)点伤害，获得1点临时闪耀值
 [Pool(typeof(RubyCardPool))]
 public class PassionStrike : OshiCardModel
 {

@@ -11,6 +11,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 消耗所有闪耀值，对所有敌人造成2点伤害X次，X=5+消耗闪耀值的一半(向下取整)
 [Pool(typeof(RubyCardPool))]
 public class IdolSong : OshiCardModel
 {

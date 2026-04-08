@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 造成7(10)点伤害。本回合若你获得过能量，额外造成4点伤害
 [Pool(typeof(RubyCardPool))]
 public class FlashBeat : OshiCardModel
 {

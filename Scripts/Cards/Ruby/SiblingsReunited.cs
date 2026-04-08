@@ -6,6 +6,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 将复仇值全部转换为闪耀值
 [Pool(typeof(RubyCardPool))]
 public class SiblingsReunited : OshiCardModel
 {

@@ -8,6 +8,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 每使用4(3)点闪耀值，获得1点能量
 [Pool(typeof(RubyCardPool))]
 public class ChasingLight : OshiCardModel
 {

@@ -11,6 +11,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 造成6(9)点伤害。选择1张牌使其在下回合仍留在手牌中
 [Pool(typeof(RubyCardPool))]
 public class Rehearsal : OshiCardModel
 {

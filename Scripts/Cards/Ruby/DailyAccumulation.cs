@@ -8,6 +8,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 获得本场所获得过的闪耀值总量的格挡
 [Pool(typeof(RubyCardPool))]
 public class DailyAccumulation : OshiCardModel
 {

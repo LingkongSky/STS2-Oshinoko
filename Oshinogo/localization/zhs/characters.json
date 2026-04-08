@@ -1,4 +1,17 @@
 {
     "RUBY.title": "星野瑠美衣",
-    "RUBY.description": "一个充满着热情与偶像光环的女孩子。在舞台上的她总是充满着自信，同时也总是在观众中搜寻着某人。没人知道她为何总是如此执着于观众席。"
+    "RUBY.description": "一个充满着热情与偶像光环的女孩子。在舞台上的她总是充满着自信，同时也总是在观众中搜寻着某人。没人知道她为何总是如此执着于观众席。",
+    "Ruby.aromaPrinciple": "[sine][blue]……等待……[/blue][/sine]",
+    "Ruby.banter.alive.endTurnPing": "我绝对要成为偶像、毕竟妈妈也曾那么耀眼……",
+    "Ruby.banter.dead.endTurnPing": "对不起，医生，我还是没能找到你……",
+    "Ruby.cardsModifierDescription": "露比的卡牌现在会出现在奖励和商店中。",
+    "Ruby.cardsModifierTitle": "露比卡牌",
+    "Ruby.eventDeathPrevention": "医生，妈妈，我来见你们了……",
+    "Ruby.goldMonologue": "[sine]这些金币……也许能派上用场……[/sine]",
+    "Ruby.possessiveAdjective": "露比的",
+    "Ruby.pronounObject": "露比",
+    "Ruby.pronounPossessive": "露比的",
+    "Ruby.pronounSubject": "露比",
+    "Ruby.titleObject": "露比",
+    "Ruby.unlockText": "用[pink]{Prerequisite}[/pink]进行一局游戏来解锁这个角色。"
 }

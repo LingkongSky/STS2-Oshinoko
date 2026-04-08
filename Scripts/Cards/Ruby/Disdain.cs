@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 给予所有敌人1(2)层虚弱和易伤
 [Pool(typeof(RubyCardPool))]
 public class Disdain : OshiCardModel
 {

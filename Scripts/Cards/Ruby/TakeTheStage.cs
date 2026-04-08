@@ -7,6 +7,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 每获得1点闪耀值，抽取1张卡牌
 [Pool(typeof(RubyCardPool))]
 public class TakeTheStage : OshiCardModel
 {

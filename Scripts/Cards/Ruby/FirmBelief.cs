@@ -6,6 +6,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 将闪耀值减半后转换为永久闪耀
 [Pool(typeof(RubyCardPool))]
 public class FirmBelief : OshiCardModel
 {

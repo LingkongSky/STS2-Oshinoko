@@ -9,6 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 造成1点伤害1次，本场战斗中每使用一次闪耀值，攻击次数+1
 [Pool(typeof(RubyCardPool))]
 public class RubyShine : OshiCardModel
 {

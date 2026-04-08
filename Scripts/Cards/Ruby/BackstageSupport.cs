@@ -10,6 +10,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 获得6(8)点格挡，下回合获得1点回合闪耀值
 [Pool(typeof(RubyCardPool))]
 public class BackstageSupport : OshiCardModel
 {

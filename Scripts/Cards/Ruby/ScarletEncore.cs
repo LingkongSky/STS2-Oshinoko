@@ -11,6 +11,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 对所有敌人造成11(13)点伤害。若本回合抽过牌，则改为造成2次
 [Pool(typeof(RubyCardPool))]
 public class ScarletEncore : OshiCardModel
 {

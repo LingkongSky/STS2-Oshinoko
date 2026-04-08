@@ -8,6 +8,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 获得12(15)点格挡，失去2点生命
 [Pool(typeof(RubyCardPool))]
 public class ColdSmile : OshiCardModel
 {

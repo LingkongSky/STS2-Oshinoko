@@ -10,6 +10,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 获得7(10)点防御，获得1点临时闪耀值
 [Pool(typeof(RubyCardPool))]
 public class PassionDefense : OshiCardModel
 {

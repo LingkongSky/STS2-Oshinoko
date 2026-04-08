@@ -11,6 +11,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 造成16(20)点伤害。若当前闪耀值大于5，下回合获得2点能量
 [Pool(typeof(RubyCardPool))]
 public class StarfallOath : OshiCardModel
 {
