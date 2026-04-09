@@ -10,6 +10,10 @@ using Oshinogo.Scripts.Relics;
 
 public class Ruby : PlaceholderCharacterModel
 {
+
+    //public override string PlaceholderID => "ruby";
+
+
     // 角色名称颜色
     public override Color NameColor => new(1f, 0.4f, 0.8f);
     // 能量图标轮廓颜色
@@ -24,7 +28,7 @@ public class Ruby : PlaceholderCharacterModel
     // 人物模型tscn路径。要自定义见下。
     public override string CustomVisualPath => "res://Oshinogo/scenes/character/ruby.tscn";
     // 卡牌拖尾场景。
-    //public override string CustomTrailPath => "res://Oshinogo/scenes/vfx/card_trail_ironclad.tscn";
+    public override string CustomTrailPath => "res://Oshinogo/scenes/vfx/card_trail_ruby.tscn";
 
     // 人物头像路径。
     public override string CustomIconTexturePath => "res://Oshinogo/images/ui/ruby.svg";
