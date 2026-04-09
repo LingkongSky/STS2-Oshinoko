@@ -10,17 +10,21 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 失去3点生命，去除所有敌人的人工制品，并添加3层易伤和虚弱
+// 描述: 失去4点生命，去除所有敌人的人工制品，并添加5层易伤和虚弱。
+
 [Pool(typeof(RubyCardPool))]
 public class SpikesOfLies : OshiCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("Weak", 3),
-        new DynamicVar("Vulnerable", 3),
+        new DynamicVar("Weak", 5),
+        new DynamicVar("Vulnerable", 5),
     ];
 
-    public SpikesOfLies() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies, true)
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+
+
+    public SpikesOfLies() : base(2, CardType.Skill, CardRarity.Rare, TargetType.AllEnemies, true)
     {
     }
 

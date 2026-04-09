@@ -8,14 +8,14 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得1(2)点回合闪耀值。
+// 描述: 获得2(3)点回合闪耀值。
+
 [Pool(typeof(RubyCardPool))]
 public class IdolPassion : OshiCardModel
 {
-    // 在本回合获得1(2)点回合闪耀值
     protected override IEnumerable<DynamicVar> CanonicalVars => [new ShineDymicVar(1m)];
 
-    public IdolPassion() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
+    public IdolPassion() : base(0, CardType.Skill, CardRarity.Basic, TargetType.Self, true)
     {
     }
 

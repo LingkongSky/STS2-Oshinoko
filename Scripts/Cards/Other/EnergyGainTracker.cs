@@ -19,6 +19,12 @@ public static class EnergyGainTracker
 
     public static bool GainedEnergyThisTurn(Player player)
     {
+        if (player.PlayerCombatState == null)
+        {
+            // Outside combat or no combat state; treat as no energy gain.
+            return false;
+        }
+
         EnsureTracking(player);
         if (!States.TryGetValue(player, out var state))
         {
@@ -44,6 +50,12 @@ public static class EnergyGainTracker
 
         if (!state.IsSubscribed)
         {
+            if (player.PlayerCombatState == null)
+            {
+                // No combat state to subscribe to.
+                return;
+            }
+
             player.PlayerCombatState.EnergyChanged += (_, newEnergy) =>
             {
                 var combatState = player.Creature.CombatState;
@@ -67,7 +79,7 @@ public static class EnergyGainTracker
         if (currentCombat != null)
         {
             SyncTurnState(player, state, currentCombat);
-            state.LastEnergy = player.PlayerCombatState.Energy;
+            state.LastEnergy = player.PlayerCombatState?.Energy ?? state.LastEnergy;
         }
     }
 
@@ -81,6 +93,6 @@ public static class EnergyGainTracker
         state.LastRound = combatState.RoundNumber;
         state.LastSide = combatState.CurrentSide;
         state.GainedThisTurn = false;
-        state.LastEnergy = player.PlayerCombatState.Energy;
+        state.LastEnergy = player.PlayerCombatState?.Energy ?? state.LastEnergy;
     }
 }

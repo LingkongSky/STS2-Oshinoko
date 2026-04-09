@@ -9,7 +9,8 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成8(10)点伤害，给予1(2)层虚弱
+// 描述: 造成5(7)点伤害,给予1(2)层虚弱
+
 [Pool(typeof(RubyCardPool))]
 public class SideGlance : OshiCardModel
 {
@@ -17,8 +18,8 @@ public class SideGlance : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6m, ValueProp.Move),
-        new DynamicVar(WeakKey, 2),
+        new DamageVar(5m, ValueProp.Move),
+        new DynamicVar(WeakKey, 1),
     ];
 
     public SideGlance() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy, true)

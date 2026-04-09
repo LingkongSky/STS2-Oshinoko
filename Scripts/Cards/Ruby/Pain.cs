@@ -9,13 +9,14 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 所有敌人失去9(14)点生命值
+// 描述: 所有敌人失去9(13)点生命值。
+
 [Pool(typeof(RubyCardPool))]
 public class Pain : OshiCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Ethereal];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8m, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(9m, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move)];
 
     public Pain() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies, true)
     {

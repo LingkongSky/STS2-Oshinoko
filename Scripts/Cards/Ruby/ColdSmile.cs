@@ -5,10 +5,12 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Pools.CardPools;
+using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得12(15)点格挡，失去2点生命
+// 描述: 失去2点生命，获得12(15)点格挡，获得1点临时复仇值。
+
 [Pool(typeof(RubyCardPool))]
 public class ColdSmile : OshiCardModel
 {
@@ -30,6 +32,7 @@ public class ColdSmile : OshiCardModel
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
             Owner.Creature
         );
+        await RevengePowerHelper.ApplyRevenge(Owner.Creature, 1, ValueDuration.Temp, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

@@ -77,6 +77,50 @@ public static class ShineScaling
     }
 
     // 统一读取计算结果，避免卡牌里重复写类型转换。
+    public static int GetShineUsedByCard(CardModel card)
+    {
+        if (card.Owner?.Creature == null)
+        {
+            return 0;
+        }
+
+        if (!card.Keywords.Contains(OshinogoKeywords.Shine))
+        {
+            return 0;
+        }
+
+        var extraVar = card.DynamicVars.CalculationExtra;
+        if (extraVar == null || extraVar.BaseValue == 0)
+        {
+            return 0;
+        }
+
+        var shine = ShinePowerHelper.GetTotalShine(card.Owner.Creature);
+        return Math.Max(0, shine);
+    }
+
+    public static int GetRevengeUsedByCard(CardModel card)
+    {
+        if (card.Owner?.Creature == null)
+        {
+            return 0;
+        }
+
+        if (!card.Keywords.Contains(OshinogoKeywords.Shine))
+        {
+            return 0;
+        }
+
+        var extraVar = card.DynamicVars.CalculationExtra;
+        if (extraVar == null || extraVar.BaseValue == 0)
+        {
+            return 0;
+        }
+
+        var revenge = RevengePowerHelper.GetTotalRevenge(card.Owner.Creature);
+        return Math.Max(0, revenge);
+    }
+
     public static decimal Calculate(DynamicVarSet dynamicVars, string key, Creature? target)
     {
         return ((CalculatedVar)dynamicVars[key]).Calculate(target);

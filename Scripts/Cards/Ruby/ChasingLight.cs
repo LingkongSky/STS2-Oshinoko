@@ -8,15 +8,16 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 每使用4(3)点闪耀值，获得1点能量
+// 描述: 每使用6(5)点闪耀值，获得1点能量。
+
 [Pool(typeof(RubyCardPool))]
 public class ChasingLight : OshiCardModel
 {
     private const string ThresholdKey = "Threshold";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar(ThresholdKey, 5)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar(ThresholdKey, 6)];
 
-    public ChasingLight() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
+    public ChasingLight() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self, true)
     {
     }
 

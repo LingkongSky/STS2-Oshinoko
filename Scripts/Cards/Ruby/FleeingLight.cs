@@ -8,15 +8,18 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 每使用3(2)点复仇值，抽1张牌
+// 描述: 每使用5(4)点复仇值，抽1张牌。
+
 [Pool(typeof(RubyCardPool))]
 public class FleeingLight : OshiCardModel
 {
     private const string ThresholdKey = "Threshold";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar(ThresholdKey, 4)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [
+        new DynamicVar(ThresholdKey, 5),
+        ];
 
-    public FleeingLight() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
+    public FleeingLight() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self, true)
     {
     }
 

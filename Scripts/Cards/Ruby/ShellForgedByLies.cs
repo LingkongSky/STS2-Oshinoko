@@ -7,7 +7,8 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 回合结束时对所有敌人造成复仇值*5的伤害
+// 描述: 回合结束时对所有敌人造成复仇值*4的伤害。若本回合你失去过生命，伤害+2。
+
 [Pool(typeof(RubyCardPool))]
 public class ShellForgedByLies : OshiCardModel
 {

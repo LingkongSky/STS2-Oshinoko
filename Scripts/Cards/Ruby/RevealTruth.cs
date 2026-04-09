@@ -1,4 +1,5 @@
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -8,9 +9,9 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 获得1点复仇值。回合开始时，若你的生命低于一半，获得1点临时复仇值。
+
 [Pool(typeof(RubyCardPool))]
-// 揭露真相：提供永久复仇值。
-// 描述: 获得2点复仇值
 public class RevealTruth : OshiCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new RevengeDynamicVar(1m)];
@@ -21,8 +22,8 @@ public class RevealTruth : OshiCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 自动处理与闪耀值的抵消与返还逻辑。
         await RevengePowerHelper.ApplyRevenge(Owner.Creature, DynamicVars[RevengeDynamicVar.Key].BaseValue, ValueDuration.Permanent, Owner.Creature, this);
+        await PowerCmd.Apply<RevealTruthPower>(Owner.Creature, 1, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

@@ -8,7 +8,8 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 每失去1点生命，获得3(4)点格挡
+// 描述: 每失去1点生命，获得2(3)点格挡。
+
 [Pool(typeof(RubyCardPool))]
 public class StageArmor : OshiCardModel
 {

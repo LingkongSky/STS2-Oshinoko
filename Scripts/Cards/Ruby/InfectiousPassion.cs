@@ -10,7 +10,8 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成6(8)点伤害，如果这张卡牌造成了12点伤害以上，则获得1点闪耀值
+// 描述: 造成6(8)点伤害，如果这张卡牌造成了9点伤害以上，则获得2点临时闪耀值。
+
 [Pool(typeof(RubyCardPool))]
 public class InfectiousPassion : OshiCardModel
 {
@@ -18,12 +19,12 @@ public class InfectiousPassion : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7m, ValueProp.Move),
+        new DamageVar(6m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
     ];
 
-    public InfectiousPassion() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy, true)
+    public InfectiousPassion() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy, true)
     {
     }
 
@@ -41,9 +42,9 @@ public class InfectiousPassion : OshiCardModel
         var dealtDamage = command.Results.Where(r => r.Receiver == cardPlay.Target)
             .Sum(r => r.UnblockedDamage + r.OverkillDamage);
 
-        if (dealtDamage >= 10)
+        if (dealtDamage >= 9)
         {
-            await ShinePowerHelper.ApplyShine(Owner.Creature, 1, ValueDuration.Permanent, Owner.Creature, this);
+            await ShinePowerHelper.ApplyShine(Owner.Creature, 2, ValueDuration.Temp, Owner.Creature, this);
         }
     }
 

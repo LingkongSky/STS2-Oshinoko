@@ -7,7 +7,8 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 随机消耗手牌中的1张卡，将其打出并获得等同于费用的临时复仇值
+// 描述: 随机消耗手牌中的1张卡，并获得等同于费用的临时复仇值。
+
 [Pool(typeof(RubyCardPool))]
 public class NoWayBack : OshiCardModel
 {
@@ -36,8 +37,7 @@ public class NoWayBack : OshiCardModel
             cost = 0;
         }
 
-        selected.ExhaustOnNextPlay = true;
-        await CardCmd.AutoPlay(choiceContext, selected, null);
+        await CardCmd.Exhaust(choiceContext, selected);
 
         await RevengePowerHelper.ApplyRevenge(Owner.Creature, cost, ValueDuration.Temp, Owner.Creature, this);
     }

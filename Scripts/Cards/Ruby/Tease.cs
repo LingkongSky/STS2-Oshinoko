@@ -9,7 +9,8 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成7(9)点伤害，给予1(2)层易伤
+// 描述: 造成6(8)点伤害，给予1(2)层易伤。
+
 [Pool(typeof(RubyCardPool))]
 public class Tease : OshiCardModel
 {
@@ -18,7 +19,7 @@ public class Tease : OshiCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(6m, ValueProp.Move),
-        new DynamicVar(VulnerableKey, 2),
+        new DynamicVar(VulnerableKey, 1),
     ];
 
     public Tease() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy, true)

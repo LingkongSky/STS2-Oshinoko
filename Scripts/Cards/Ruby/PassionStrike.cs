@@ -10,9 +10,9 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 造成6(9)点伤害，获得一点临时闪耀 闪耀
+// 描述: 造成4(7)点伤害，获得2点临时闪耀值。
 
-// 描述: 造成6(9)点伤害，获得1点临时闪耀值
+
 [Pool(typeof(RubyCardPool))]
 public class PassionStrike : OshiCardModel
 {
@@ -21,13 +21,13 @@ public class PassionStrike : OshiCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new ShineDymicVar(2m),
-        new DamageVar(5m, ValueProp.Move),
+        new DamageVar(4m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
     ];
 
 
-    public PassionStrike() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, true)
+    public PassionStrike() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy, true)
     {
     }
 

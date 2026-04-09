@@ -1,4 +1,3 @@
-﻿using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -11,7 +10,7 @@ using Oshinogo.Scripts.Cards.Other;
 namespace Oshinogo.Scripts.Powers;
 
 // Permanent shine.
-public class ShinePower : CustomPowerModel
+public class ShinePower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
 
@@ -33,7 +32,7 @@ public class ShinePower : CustomPowerModel
 }
 
 // Turn shine: removed at end of turn.
-public class TurnShinePower : CustomPowerModel
+public class TurnShinePower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
 
@@ -63,7 +62,7 @@ public class TurnShinePower : CustomPowerModel
 }
 
 // Temp shine: removed after the next Shine card is played.
-public class TempShinePower : CustomPowerModel
+public class TempShinePower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
 

@@ -2,12 +2,14 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.ValueProps;
+using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 将你的闪耀值全部转换为复仇值。获得等量能量
+// 描述: 失去2点生命，获得12点格挡。若本回合你失去过生命，抽1张牌。
+
 [Pool(typeof(RubyCardPool))]
 public class SwitchToVengeance : OshiCardModel
 {
@@ -19,15 +21,18 @@ public class SwitchToVengeance : OshiCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var total = ShinePowerHelper.GetTotalShine(Owner.Creature);
-        if (total <= 0)
+        await CreatureCmd.Damage(
+            choiceContext,
+            Owner.Creature,
+            2,
+            ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
+            Owner.Creature
+        );
+        await CreatureCmd.GainBlock(Owner.Creature, 12, ValueProp.Move, cardPlay);
+        if (CombatHistoryHelper.HasLostHpThisTurn(Owner))
         {
-            return;
+            await CardPileCmd.Draw(choiceContext, 1, Owner);
         }
-
-        await ShinePowerHelper.LoseShine(Owner.Creature, total, Owner.Creature, this);
-        await RevengePowerHelper.ApplyRevenge(Owner.Creature, total, ValueDuration.Permanent, Owner.Creature, this);
-        await PlayerCmd.GainEnergy(total, Owner);
     }
 
     protected override void OnUpgrade()

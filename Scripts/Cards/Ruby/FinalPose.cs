@@ -6,17 +6,21 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
+using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成18(24)点伤害
+// 描述: 仅当闪耀值大于5时才能打出。造成24(34)点伤害。
+
 [Pool(typeof(RubyCardPool))]
 public class FinalPose : OshiCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain, OshinogoKeywords.Shine];
 
+    private const int RequiredShine = 5;
+
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DamageVar(16m, ValueProp.Move),
+        new DamageVar(24m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
         ];
@@ -25,10 +29,13 @@ public class FinalPose : OshiCardModel
     {
     }
 
+    protected override bool IsPlayable => Owner?.Creature != null && ShinePowerHelper.GetTotalShine(Owner.Creature) > RequiredShine;
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+        var finalDamage = DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);
+        await DamageCmd.Attack(finalDamage)
             .FromCard(this)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
@@ -36,6 +43,6 @@ public class FinalPose : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(6);
+        DynamicVars.Damage.UpgradeValueBy(10);
     }
 }

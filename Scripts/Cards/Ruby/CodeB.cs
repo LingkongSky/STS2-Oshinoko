@@ -9,7 +9,8 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 对所有敌人造成5(7)点伤害两次，自己获得5(7)点防御2次
+// 描述: 对所有敌人造成6(8)点伤害2次，自己获得6(8)点防御2次。
+
 [Pool(typeof(RubyCardPool))]
 public class CodeB : OshiCardModel
 {
@@ -21,10 +22,10 @@ public class CodeB : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(4m, ValueProp.Move),
+        new DamageVar(6m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
-        new BlockVar(4m, ValueProp.Move),
+        new BlockVar(6m, ValueProp.Move),
         ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),
     ];
 
@@ -35,11 +36,17 @@ public class CodeB : OshiCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var finalDamage = DynamicVars.CalculatedDamage.Calculate(null);
-        var block = ShineScaling.Calculate(DynamicVars, CalculatedBlockKey, cardPlay.Target);
+        var block = ShineScaling.Calculate(DynamicVars, CalculatedBlockKey, Owner.Creature);
+        var combatState = Owner.Creature.CombatState;
+        if (combatState == null)
+        {
+            // No combat state to target opponents.
+            return;
+        }
 
         await DamageCmd.Attack(finalDamage)
             .FromCard(this)
-            .TargetingAllOpponents(Owner.Creature.CombatState)
+            .TargetingAllOpponents(combatState)
             .WithHitCount(2)
             .Execute(choiceContext);
 

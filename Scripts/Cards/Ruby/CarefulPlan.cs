@@ -1,30 +1,39 @@
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.Models.Powers;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得15点格挡，下回合获得2点回合复仇值
+// 描述: 查看抽牌堆上的5张牌，选择1张置于抽牌堆顶，下一回合额外获得1点能量和回合闪耀。
+
 [Pool(typeof(RubyCardPool))]
 public class CarefulPlan : OshiCardModel
 {
-    public override bool GainsBlock => true;
-
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(13m, ValueProp.Move)];
-
     public CarefulPlan() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        await PowerCmd.Apply<GainTurnRevengeNextTurnPower>(Owner.Creature, 2, Owner.Creature, this);
+        var drawPile = PileType.Draw.GetPile(Owner);
+        var topCards = drawPile.Cards.Take(5).ToList();
+        if (topCards.Count > 0)
+        {
+            var prefs = new CardSelectorPrefs(SelectionScreenPrompt, 1);
+            var selected = (await CardSelectCmd.FromSimpleGrid(choiceContext, topCards, Owner, prefs)).FirstOrDefault();
+            if (selected != null)
+            {
+                await CardPileCmd.Add(selected, PileType.Draw, CardPilePosition.Top);
+            }
+        }
+
+        await PowerCmd.Apply<EnergyNextTurnPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<GainTurnShineNextTurnPower>(Owner.Creature, 1, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

@@ -10,7 +10,8 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 每有1点闪耀值，该卡的费用减少1，对敌人造成30(45)点伤害
+// 描述: 每有1点闪耀值，该卡的费用减少1，对敌人造成32(48)点伤害。若费用变为0，获得1点能量。
+
 [Pool(typeof(RubyCardPool))]
 public class PlaceOfLight : OshiCardModel
 {
@@ -18,12 +19,12 @@ public class PlaceOfLight : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(27m, ValueProp.Move),
+        new DamageVar(32m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
     ];
 
-    public PlaceOfLight() : base(3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy, true)
+    public PlaceOfLight() : base(4, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy, true)
     {
     }
 
@@ -48,6 +49,6 @@ public class PlaceOfLight : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(13);
+        DynamicVars.Damage.UpgradeValueBy(16);
     }
 }

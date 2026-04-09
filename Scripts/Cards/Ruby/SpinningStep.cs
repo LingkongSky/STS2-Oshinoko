@@ -1,4 +1,6 @@
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -9,7 +11,8 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 随机对敌人造成3(4)点伤害3次
+// 描述: 随机对敌人造成3(4)点伤害3次。本回合若你打出过2张闪耀牌，改为4次。
+
 [Pool(typeof(RubyCardPool))]
 public class SpinningStep : OshiCardModel
 {
@@ -22,16 +25,32 @@ public class SpinningStep : OshiCardModel
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
     ];
 
-    public SpinningStep() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.RandomEnemy, true)
+    public SpinningStep() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies, true)
     {
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        var combatState = Owner.Creature.CombatState;
+        if (combatState == null)
+        {
+            // No combat state to target opponents.
+            return;
+        }
+
+        // Count finished plays to avoid cancelled plays.
+        var shinePlaysThisTurn = CombatManager.Instance.History.Entries
+            .OfType<CardPlayFinishedEntry>()
+            .Count(entry => entry.Actor == Owner.Creature
+                && entry.HappenedThisTurn(combatState)
+                && entry.CardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine));
+
+        var hitCount = shinePlaysThisTurn >= 2 ? 4 : 3;
+
         await DamageCmd.Attack(DynamicVars.CalculatedDamage)
             .FromCard(this)
-            .TargetingRandomOpponents(Owner.Creature.CombatState)
-            .WithHitCount(3)
+            .TargetingRandomOpponents(combatState)
+            .WithHitCount(hitCount)
             .Execute(choiceContext);
     }
 

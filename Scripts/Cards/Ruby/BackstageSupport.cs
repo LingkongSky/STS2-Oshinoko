@@ -10,21 +10,17 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得6(8)点格挡，下回合获得1点回合闪耀值
+// 描述: 获得6(8)点格挡，下回合获得1点回合闪耀值。
+
 [Pool(typeof(RubyCardPool))]
 public class BackstageSupport : OshiCardModel
 {
-    private const string CalculatedBlockKey = "CalculatedBlock";
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(6m, ValueProp.Move),
-        new CalculationExtraVar(1m),
-        ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),
     ];
 
     public BackstageSupport() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self, true)
@@ -33,9 +29,12 @@ public class BackstageSupport : OshiCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var block = ShineScaling.Calculate(DynamicVars, CalculatedBlockKey, cardPlay.Target);
-        await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move, cardPlay);
-        await PowerCmd.Apply<GainTempRevengeNextTurnPower>(Owner.Creature, 1, Owner.Creature, this);
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block.BaseValue, ValueProp.Move, cardPlay);
+        await PowerCmd.Apply<GainTurnShineNextTurnPower>(Owner.Creature, 1, Owner.Creature, this);
+        if (CombatHistoryHelper.HasGainedShineThisTurn(Owner))
+        {
+            await CreatureCmd.GainBlock(Owner.Creature, 2, ValueProp.Move, cardPlay);
+        }
 
     }
 

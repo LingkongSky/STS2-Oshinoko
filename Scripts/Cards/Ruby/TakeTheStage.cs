@@ -7,11 +7,12 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 每获得1点闪耀值，抽取1张卡牌
+// 描述: 每回合第一次获得闪耀值时，抽1张牌并获得2点格挡。
+
 [Pool(typeof(RubyCardPool))]
 public class TakeTheStage : OshiCardModel
 {
-    public TakeTheStage() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true)
+    public TakeTheStage() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
     {
     }
 

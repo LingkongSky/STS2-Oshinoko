@@ -11,15 +11,15 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成4(6)点伤害2次，消耗1张牌，并获取等同于该卡费用的临时闪耀值
+// 描述: 造成6(8)点伤害2次，消耗1张牌，并获取等同于该卡费用的临时复仇。
+
 [Pool(typeof(RubyCardPool))]
 public class RecklessCharge : OshiCardModel
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(5m, ValueProp.Move),
+        new DamageVar(6m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
     ];
@@ -54,7 +54,7 @@ public class RecklessCharge : OshiCardModel
         }
 
         await CardCmd.Exhaust(choiceContext, selected);
-        await ShinePowerHelper.ApplyShine(Owner.Creature, cost, ValueDuration.Temp, Owner.Creature, this);
+        await RevengePowerHelper.ApplyRevenge(Owner.Creature, cost, ValueDuration.Temp, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

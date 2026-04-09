@@ -9,10 +9,15 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
+// 描述: 获得2点复仇值。若当前复仇值大于4，抽2张牌。
+
+
 [Pool(typeof(RubyCardPool))]
 public class ShadowEcho : OshiCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new RevengeDynamicVar(2m)];
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     public ShadowEcho() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {

@@ -10,7 +10,8 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 失去5点血量，获得4点复仇值
+// 描述: 失去4点血量，获得4点复仇值。每回合第一次失去生命时，获得3点格挡。
+
 [Pool(typeof(RubyCardPool))]
 public class DieAlone : OshiCardModel
 {
@@ -30,6 +31,7 @@ public class DieAlone : OshiCardModel
             Owner.Creature
         );
         await RevengePowerHelper.ApplyRevenge(Owner.Creature, DynamicVars[RevengeDynamicVar.Key].BaseValue, ValueDuration.Permanent, Owner.Creature, this);
+        await PowerCmd.Apply<DieAlonePower>(Owner.Creature, 1, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

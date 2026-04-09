@@ -7,11 +7,11 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成8(10)点伤害。若造成的伤害大于10(13)，返还1(2)点费用并获得1点临时闪耀值
+// 描述: 造成8(10)点伤害。若造成的伤害大于12(15)，返还1(2)点费用。
+
 [Pool(typeof(RubyCardPool))]
 public class HeartFlutterAttack : OshiCardModel
 {
@@ -22,10 +22,10 @@ public class HeartFlutterAttack : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7m, ValueProp.Move),
+        new DamageVar(8m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
-        new DynamicVar(ThresholdKey, 11),
+        new DynamicVar(ThresholdKey, 12),
         new DynamicVar(RefundEnergyKey, 1),
     ];
 
@@ -48,7 +48,6 @@ public class HeartFlutterAttack : OshiCardModel
         if (dealtDamage > DynamicVars[ThresholdKey].BaseValue)
         {
             await PlayerCmd.GainEnergy(DynamicVars[RefundEnergyKey].BaseValue, Owner);
-            await ShinePowerHelper.ApplyShine(Owner.Creature, 1, ValueDuration.Temp, Owner.Creature, this);
         }
     }
 

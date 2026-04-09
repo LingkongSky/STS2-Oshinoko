@@ -11,7 +11,8 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 对敌人造成9(12)点伤害，如果造成的伤害大于15(19)则获得2点临时复仇值
+// 描述: 对敌人造成9(12)点伤害，如果造成的伤害大于14(18)则获得2点临时复仇值。
+
 [Pool(typeof(RubyCardPool))]
 public class Doubt : OshiCardModel
 {
@@ -19,8 +20,8 @@ public class Doubt : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8m, ValueProp.Move),
-        new DynamicVar(ThresholdKey, 13),
+        new DamageVar(9m, ValueProp.Move),
+        new DynamicVar(ThresholdKey, 14),
         new RevengeDynamicVar(2m),
     ];
 

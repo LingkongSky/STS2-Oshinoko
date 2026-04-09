@@ -1,12 +1,16 @@
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.ValueProps;
+using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 将临时闪耀值转换为永久闪耀值
+// 描述: 获得2点回合闪耀值，并获得8点格挡。若本回合你使用过闪耀值，获得1点能量。
+
 [Pool(typeof(RubyCardPool))]
 public class NeverGiveUp : OshiCardModel
 {
@@ -18,16 +22,12 @@ public class NeverGiveUp : OshiCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-
-        var total = ShinePowerHelper.GetTotalShine(Owner.Creature);
-        if (total <= 0)
+        await ShinePowerHelper.ApplyShine(Owner.Creature, 2, ValueDuration.Turn, Owner.Creature, this);
+        await CreatureCmd.GainBlock(Owner.Creature, 8, ValueProp.Move, cardPlay);
+        if (CombatHistoryHelper.HasSpentShineThisTurn(Owner))
         {
-            return;
+            await PlayerCmd.GainEnergy(1, Owner);
         }
-
-
-        await ShinePowerHelper.LoseShine(Owner.Creature, total, Owner.Creature, this);
-        await ShinePowerHelper.ApplyShine(Owner.Creature, total, ValueDuration.Permanent, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

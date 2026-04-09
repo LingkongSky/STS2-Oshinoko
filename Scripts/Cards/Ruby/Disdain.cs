@@ -9,19 +9,18 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 给予所有敌人1(2)层虚弱和易伤
+// 描述: 给予所有敌人1(2)层虚弱和1(2)层易伤。
+
 [Pool(typeof(RubyCardPool))]
 public class Disdain : OshiCardModel
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
-
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DynamicVar("Weak", 1),
         new DynamicVar("Vulnerable", 1),
     ];
 
-    public Disdain() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies, true)
+    public Disdain() : base(1, CardType.Skill, CardRarity.Event, TargetType.AllEnemies, true)
     {
     }
 

@@ -2,29 +2,45 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得2点回合闪耀值，抽1张牌
+// 描述: 所有队友获得1点回合闪耀值并抽1张牌。
+
 [Pool(typeof(RubyCardPool))]
 public class SpotlightShare : OshiCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new ShineDymicVar(2m)];
-
-    public SpotlightShare() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
+    public SpotlightShare() : base(2, CardType.Skill, CardRarity.Event, TargetType.Self, true)
     {
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await ShinePowerHelper.ApplyShine(Owner.Creature, DynamicVars[ShineDymicVar.Key].BaseValue, ValueDuration.Turn, Owner.Creature, this);
-        await CardPileCmd.Draw(choiceContext, 1, Owner);
+        var combatState = Owner.Creature.CombatState;
+        if (combatState == null)
+        {
+            return;
+        }
+
+        var teammates = combatState.GetTeammatesOf(Owner.Creature);
+        foreach (var teammate in teammates)
+        {
+            if (teammate == Owner.Creature)
+            {
+                continue;
+            }
+
+            await ShinePowerHelper.ApplyShine(teammate, 1, ValueDuration.Turn, Owner.Creature, this);
+            if (teammate.Player != null)
+            {
+                await CardPileCmd.Draw(choiceContext, 1, teammate.Player);
+            }
+        }
     }
 
     protected override void OnUpgrade()

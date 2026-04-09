@@ -10,30 +10,39 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 对所有敌人造成12(16)点伤害，失去3点生命,获得1点复仇值
+// 描述: 对所有敌人造成16(22)点伤害，失去3点生命，获得2点复仇值。
+
 [Pool(typeof(RubyCardPool))]
 public class StageCrash : OshiCardModel
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DamageVar(12m, ValueProp.Move),
-        new RevengeDynamicVar(1m),
-];
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DamageVar(16m, ValueProp.Move),
+        new RevengeDynamicVar(2m),
+    ];
 
-    public StageCrash() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies, true)
+    public StageCrash() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies, true)
     {
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        var combatState = Owner.Creature.CombatState;
+        if (combatState == null)
+        {
+            // No combat state to target opponents.
+            return;
+        }
+
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
-            .TargetingAllOpponents(Owner.Creature.CombatState)
+            .TargetingAllOpponents(combatState)
             .Execute(choiceContext);
 
         await CreatureCmd.Damage(
             choiceContext,
             Owner.Creature,
-            2,
+            3,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
             Owner.Creature
         );
@@ -43,6 +52,6 @@ public class StageCrash : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4);
+        DynamicVars.Damage.UpgradeValueBy(6);
     }
 }

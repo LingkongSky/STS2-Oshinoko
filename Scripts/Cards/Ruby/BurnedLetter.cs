@@ -9,7 +9,8 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 去除自身的所有负面效果，下回合获得1(2)点能量
+// 描述: 去除所有队友的负面效果。下回合你与所有队友获得1(2)点能量。
+
 [Pool(typeof(RubyCardPool))]
 public class BurnedLetter : OshiCardModel
 {
@@ -17,19 +18,29 @@ public class BurnedLetter : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(1)];
 
-    public BurnedLetter() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
+    public BurnedLetter() : base(1, CardType.Skill, CardRarity.Event, TargetType.Self, true)
     {
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var debuffs = Owner.Creature.Powers.Where(p => p.Type == PowerType.Debuff).ToList();
-        foreach (var debuff in debuffs)
+        var combatState = Owner.Creature.CombatState;
+        if (combatState == null)
         {
-            await PowerCmd.Remove(debuff);
+            return;
         }
 
-        await PowerCmd.Apply<EnergyNextTurnPower>(Owner.Creature, DynamicVars.Energy.BaseValue, Owner.Creature, this);
+        var teammates = combatState.GetTeammatesOf(Owner.Creature);
+        foreach (var teammate in teammates)
+        {
+            var debuffs = teammate.Powers.Where(p => p.Type == PowerType.Debuff).ToList();
+            foreach (var debuff in debuffs)
+            {
+                await PowerCmd.Remove(debuff);
+            }
+
+            await PowerCmd.Apply<EnergyNextTurnPower>(teammate, DynamicVars.Energy.BaseValue, Owner.Creature, this);
+        }
     }
 
     protected override void OnUpgrade()

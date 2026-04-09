@@ -8,7 +8,8 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得本场所获得过的闪耀值总量的格挡
+// 描述: 获得本场获得过的闪耀值与复仇值总和的格挡。
+
 [Pool(typeof(RubyCardPool))]
 public class DailyAccumulation : OshiCardModel
 {
@@ -22,7 +23,8 @@ public class DailyAccumulation : OshiCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var total = ResourceUsageTracker.GetTotalShineGained(Owner);
+        var total = ResourceUsageTracker.GetTotalShineGained(Owner)
+            + ResourceUsageTracker.GetTotalRevengeGained(Owner);
         if (total > 0)
         {
             await CreatureCmd.GainBlock(Owner.Creature, total, ValueProp.Move, cardPlay);
@@ -31,6 +33,6 @@ public class DailyAccumulation : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Exhaust);
+        EnergyCost.UpgradeBy(-1);
     }
 }

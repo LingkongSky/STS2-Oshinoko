@@ -2,12 +2,13 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 将你的复仇值全部转换为闪耀值。抽等量卡牌
+// 描述: 抽3张牌,获得8点格挡。
+
 [Pool(typeof(RubyCardPool))]
 public class SwitchToShine : OshiCardModel
 {
@@ -19,15 +20,8 @@ public class SwitchToShine : OshiCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var total = RevengePowerHelper.GetTotalRevenge(Owner.Creature);
-        if (total <= 0)
-        {
-            return;
-        }
-
-        await RevengePowerHelper.LoseRevenge(Owner.Creature, total, Owner.Creature, this);
-        await ShinePowerHelper.ApplyShine(Owner.Creature, total, ValueDuration.Permanent, Owner.Creature, this);
-        await CardPileCmd.Draw(choiceContext, total, Owner);
+        await CardPileCmd.Draw(choiceContext, 3, Owner);
+        await CreatureCmd.GainBlock(Owner.Creature, 8, ValueProp.Move, cardPlay);
     }
 
     protected override void OnUpgrade()

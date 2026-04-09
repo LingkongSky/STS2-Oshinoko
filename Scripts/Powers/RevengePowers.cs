@@ -1,4 +1,3 @@
-﻿using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -12,7 +11,7 @@ using Oshinogo.Scripts.Cards.Other;
 namespace Oshinogo.Scripts.Powers;
 
 // Permanent revenge: persists and triggers HP loss when a Shine card is played.
-public class RevengePower : CustomPowerModel
+public class RevengePower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
 
@@ -39,7 +38,7 @@ public class RevengePower : CustomPowerModel
 }
 
 // Turn revenge: expires at end of turn.
-public class TurnRevengePower : CustomPowerModel
+public class TurnRevengePower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
 
@@ -74,7 +73,7 @@ public class TurnRevengePower : CustomPowerModel
 }
 
 // Temp revenge: removed after the next Shine card is played.
-public class TempRevengePower : CustomPowerModel
+public class TempRevengePower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
 

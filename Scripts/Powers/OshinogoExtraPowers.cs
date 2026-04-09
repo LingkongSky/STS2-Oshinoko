@@ -1,7 +1,6 @@
-using BaseLib.Abstracts;
-using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -9,10 +8,11 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using Oshinogo.Scripts.Cards.Other;
 
 namespace Oshinogo.Scripts.Powers;
 
-public class GainTempShineNextTurnPower : CustomPowerModel
+public class GainTempShineNextTurnPower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -29,7 +29,7 @@ public class GainTempShineNextTurnPower : CustomPowerModel
     }
 }
 
-public class GainTurnShineNextTurnPower : CustomPowerModel
+public class GainTurnShineNextTurnPower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -46,7 +46,7 @@ public class GainTurnShineNextTurnPower : CustomPowerModel
     }
 }
 
-public class GainTempRevengeNextTurnPower : CustomPowerModel
+public class GainTempRevengeNextTurnPower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -63,7 +63,7 @@ public class GainTempRevengeNextTurnPower : CustomPowerModel
     }
 }
 
-public class GainTurnRevengeNextTurnPower : CustomPowerModel
+public class GainTurnRevengeNextTurnPower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -80,7 +80,7 @@ public class GainTurnRevengeNextTurnPower : CustomPowerModel
     }
 }
 
-public class VengeanceBellNextTurnPower : CustomPowerModel
+public class VengeanceBellNextTurnPower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -101,30 +101,79 @@ public class VengeanceBellNextTurnPower : CustomPowerModel
 
         var opponents = combatState.GetOpponentsOf(Owner).ToList();
 
-        await CreatureCmd.Damage(new BlockingPlayerChoiceContext(), opponents, 8, ValueProp.Move, Owner, null);
+        await CreatureCmd.Damage(new BlockingPlayerChoiceContext(), opponents, 10, ValueProp.Move, Owner, null);
 
         await PowerCmd.Remove(this);
     }
 }
 
-public class ActCutePower : CustomPowerModel
+public class ActCuteNextTurnPower : CustomRubyPower
+{
+    public override PowerType Type => PowerType.Buff;
+    public override PowerStackType StackType => PowerStackType.Counter;
+
+    public override async Task AfterEnergyReset(Player player)
+    {
+        if (player != Owner.Player)
+        {
+            return;
+        }
+
+        await PowerCmd.Apply<IntangiblePower>(Owner, 1, Owner, null);
+        await PowerCmd.Apply<ActCuteLockoutPower>(Owner, Amount, Owner, null);
+        await PowerCmd.Remove(this);
+    }
+}
+
+public class ActCuteLockoutPower : CustomRubyPower
+{
+    public override PowerType Type => PowerType.Buff;
+    public override PowerStackType StackType => PowerStackType.Counter;
+
+    public override bool ShouldPlay(CardModel card, AutoPlayType autoPlayType)
+    {
+        if (card.Owner.Creature != Owner)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    {
+        if (side == Owner.Side)
+        {
+            // Use engine heal signature (creature, amount).
+            await CreatureCmd.Heal(Owner, Amount);
+            await PowerCmd.Remove(this);
+        }
+    }
+}
+
+public class MirrorStagePower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
 
-    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
         if (target != Owner)
         {
-            return 1m;
+            return;
         }
 
-        if (!props.IsPoweredAttack_())
+        if (dealer == null)
         {
-            return 1m;
+            return;
         }
 
-        return 0.75m;
+        if (result.BlockedDamage <= 0)
+        {
+            return;
+        }
+
+        await CreatureCmd.Damage(choiceContext, dealer, result.BlockedDamage, ValueProp.Move, Owner, null);
     }
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
@@ -136,31 +185,133 @@ public class ActCutePower : CustomPowerModel
     }
 }
 
-public class ChasingLightPower : CustomPowerModel
+public class MothersLiePower : CustomRubyPower
+{
+    public override PowerType Type => PowerType.Buff;
+    public override PowerStackType StackType => PowerStackType.Counter;
+
+    public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
+    {
+        if (target != Owner)
+        {
+            return;
+        }
+
+        if (result.UnblockedDamage <= 0)
+        {
+            return;
+        }
+
+        var combatState = Owner.CombatState;
+        if (combatState == null)
+        {
+            return;
+        }
+
+        var opponents = combatState.GetOpponentsOf(Owner).ToList();
+        await CreatureCmd.Damage(choiceContext, opponents, Amount, ValueProp.Move, Owner, null);
+    }
+
+    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    {
+        if (side == Owner.Side)
+        {
+            await PowerCmd.Remove(this);
+        }
+    }
+}
+
+public class NextShineDiscountPower : CustomRubyPower
+{
+    public override PowerType Type => PowerType.Buff;
+    public override PowerStackType StackType => PowerStackType.Single;
+
+    private CardModel? _sourceCard;
+    private bool _skipRemovalForSource;
+
+    public override Task AfterApplied(Creature? applier, CardModel? cardSource)
+    {
+        _sourceCard = cardSource;
+        _skipRemovalForSource = true;
+        return Task.CompletedTask;
+    }
+
+    public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
+    {
+        if (card.Owner.Creature != Owner || !card.Keywords.Contains(OshinogoKeywords.Shine))
+        {
+            modifiedCost = originalCost;
+            return false;
+        }
+
+        if (originalCost <= 0)
+        {
+            modifiedCost = originalCost;
+            return false;
+        }
+
+        modifiedCost = Math.Max(0, originalCost - 1);
+        return true;
+    }
+
+    public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
+    {
+        if (cardPlay.Card.Owner.Creature != Owner)
+        {
+            return;
+        }
+
+        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine))
+        {
+            return;
+        }
+
+        if (_skipRemovalForSource && _sourceCard != null && ReferenceEquals(cardPlay.Card, _sourceCard))
+        {
+            _skipRemovalForSource = false;
+            return;
+        }
+
+        _skipRemovalForSource = false;
+        await PowerCmd.Remove(this);
+    }
+}
+
+public class ChasingLightPower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
     private int _spent;
 
-    public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override int DisplayAmount => Amount - _spent % Amount;
+
+
+    public override async Task BeforeCardPlayed(CardPlay cardPlay)
     {
-        if (power.Owner != Owner)
+        if (cardPlay.Card.Owner.Creature != Owner)
         {
             return;
         }
 
-        if (amount >= 0)
+        var usedShine = ShineScaling.GetShineUsedByCard(cardPlay.Card);
+        if (usedShine <= 0)
         {
             return;
         }
 
-        if (power is not ShinePower and not TurnShinePower and not TempShinePower)
+        _spent += usedShine;
+        InvokeDisplayAmountChanged();
+
+        if (_spent < Amount)
         {
             return;
         }
 
-        _spent += (int)(-amount);
+        var triggers = (int)Math.Floor((decimal)_spent / Amount);
+        _spent = _spent % triggers;
+
+        /*
         var threshold = Math.Max(1, Amount);
         var triggers = _spent / threshold;
         if (triggers <= 0)
@@ -169,76 +320,127 @@ public class ChasingLightPower : CustomPowerModel
         }
 
         _spent -= triggers * threshold;
+        if (Owner.Player == null)
+        {
+            // No player to draw for.
+            return;
+        }
+        */
         await PlayerCmd.GainEnergy(triggers, Owner.Player);
+        InvokeDisplayAmountChanged();
+
     }
+
 }
 
-public class FleeingLightPower : CustomPowerModel
+public class FleeingLightPower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
     private int _spent;
 
-    public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override async Task BeforeCardPlayed(CardPlay cardPlay)
     {
-        if (power.Owner != Owner)
+        if (cardPlay.Card.Owner.Creature != Owner)
         {
             return;
         }
 
-        if (amount >= 0)
+        var usedRevenge = ShineScaling.GetRevengeUsedByCard(cardPlay.Card);
+        if (usedRevenge <= 0)
         {
             return;
         }
 
-        if (power is not RevengePower and not TurnRevengePower and not TempRevengePower)
+        _spent += usedRevenge;
+        InvokeDisplayAmountChanged();
+
+        if (_spent < Amount)
         {
             return;
         }
 
-        _spent += (int)(-amount);
-        var threshold = Math.Max(1, Amount);
-        var triggers = _spent / threshold;
-        if (triggers <= 0)
-        {
-            return;
-        }
+        var triggers = (int)Math.Floor((decimal)_spent / Amount);
+        _spent = _spent % triggers;
 
-        _spent -= triggers * threshold;
+
         await CardPileCmd.Draw(new BlockingPlayerChoiceContext(), triggers, Owner.Player);
+        InvokeDisplayAmountChanged();
+
     }
+
 }
 
-public class LastMinuteStudyPower : CustomPowerModel
+public class LastMinuteStudyPower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override async Task AfterEnergyReset(Player player)
+    private int _lastRound;
+    private CombatSide _lastSide;
+    private int _skillsPlayedThisTurn;
+
+    public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (player == Owner.Player)
+        if (cardPlay.Card.Owner.Creature != Owner)
+        {
+            return;
+        }
+
+        var combatState = Owner.CombatState;
+        if (combatState == null)
+        {
+            return;
+        }
+
+        if (_lastRound != combatState.RoundNumber || _lastSide != combatState.CurrentSide)
+        {
+            _lastRound = combatState.RoundNumber;
+            _lastSide = combatState.CurrentSide;
+            _skillsPlayedThisTurn = 0;
+        }
+
+        if (cardPlay.Card.Type != CardType.Skill)
+        {
+            return;
+        }
+
+        _skillsPlayedThisTurn++;
+        if (_skillsPlayedThisTurn == 1)
+        {
+            await ShinePowerHelper.ApplyShine(Owner, 1, ValueDuration.Temp, Owner, null);
+        }
+        else if (_skillsPlayedThisTurn == 3)
         {
             await ShinePowerHelper.ApplyShine(Owner, 1, ValueDuration.Turn, Owner, null);
         }
     }
 }
 
-public class StayIndoorsPower : CustomPowerModel
+public class StayIndoorsPower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override async Task AfterEnergyReset(Player player)
+    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (player == Owner.Player)
+        if (side != Owner.Side)
         {
-            await RevengePowerHelper.ApplyRevenge(Owner, 1, ValueDuration.Turn, Owner, null);
+            return;
         }
+
+        if (!CombatHistoryHelper.HasLostHpThisTurn(Owner.Player))
+        {
+            return;
+        }
+
+        await RevengePowerHelper.ApplyRevenge(Owner, 1, ValueDuration.Temp, Owner, null);
+        await CreatureCmd.GainBlock(Owner, 3, ValueProp.Move, null);
     }
 }
 
-public class NotAsFragileAsImaginedPower : CustomPowerModel
+public class NotAsFragileAsImaginedPower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
@@ -264,7 +466,7 @@ public class NotAsFragileAsImaginedPower : CustomPowerModel
     }
 }
 
-public class RumorNetworkPower : CustomPowerModel
+public class RumorNetworkPower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
@@ -309,11 +511,18 @@ public class RumorNetworkPower : CustomPowerModel
         }
 
         _triggeredThisTurn = true;
-        await CardPileCmd.Draw(new BlockingPlayerChoiceContext(), 1, Owner.Player);
+        var drawCount = Math.Max(1, (int)Amount);
+        if (Owner.Player == null)
+        {
+            // No player to draw for.
+            return;
+        }
+
+        await CardPileCmd.Draw(new BlockingPlayerChoiceContext(), drawCount, Owner.Player);
     }
 }
 
-public class StageArmorPower : CustomPowerModel
+public class StageArmorPower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -335,10 +544,61 @@ public class StageArmorPower : CustomPowerModel
     }
 }
 
-public class RubyLegacyPower : CustomPowerModel
+public class DieAlonePower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
+
+    private int _lastRound;
+    private CombatSide _lastSide;
+    private bool _triggeredThisTurn;
+
+    public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
+    {
+        if (target != Owner)
+        {
+            return;
+        }
+
+        if (result.UnblockedDamage <= 0)
+        {
+            return;
+        }
+
+        var combatState = Owner.CombatState;
+        if (combatState == null)
+        {
+            return;
+        }
+
+        if (_lastRound != combatState.RoundNumber || _lastSide != combatState.CurrentSide)
+        {
+            _lastRound = combatState.RoundNumber;
+            _lastSide = combatState.CurrentSide;
+            _triggeredThisTurn = false;
+        }
+
+        if (_triggeredThisTurn)
+        {
+            return;
+        }
+
+        _triggeredThisTurn = true;
+        await CreatureCmd.GainBlock(Owner, 3, ValueProp.Move, null);
+    }
+}
+
+public class RubyLegacyPower : CustomRubyPower
+{
+    public override PowerType Type => PowerType.Buff;
+    public override PowerStackType StackType => PowerStackType.Single;
+
+    private int _lastRound;
+    private CombatSide _lastSide;
+    private bool _gainedShineThisTurn;
+    private bool _gainedRevengeThisTurn;
+    private bool _drewThisTurn;
+    private bool _firstShineTriggeredThisTurn;
 
     public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
@@ -352,15 +612,36 @@ public class RubyLegacyPower : CustomPowerModel
             return;
         }
 
-        if (power is ShinePower or TurnShinePower or TempShinePower)
+        var combatState = Owner.CombatState;
+        if (combatState == null)
         {
-            await CreatureCmd.GainBlock(Owner, amount, ValueProp.Move, null);
             return;
         }
 
-        if (power is RevengePower or TurnRevengePower or TempRevengePower)
+        if (_lastRound != combatState.RoundNumber || _lastSide != combatState.CurrentSide)
         {
+            _lastRound = combatState.RoundNumber;
+            _lastSide = combatState.CurrentSide;
+            _gainedShineThisTurn = false;
+            _gainedRevengeThisTurn = false;
+            _drewThisTurn = false;
+            _firstShineTriggeredThisTurn = false;
+        }
 
+        if (power is ShinePower or TurnShinePower or TempShinePower)
+        {
+            _gainedShineThisTurn = true;
+            await CreatureCmd.GainBlock(Owner, 3, ValueProp.Move, null);
+
+            if (!_firstShineTriggeredThisTurn)
+            {
+                _firstShineTriggeredThisTurn = true;
+                await ShinePowerHelper.ApplyShine(Owner, 1, ValueDuration.Temp, Owner, null);
+            }
+        }
+        else if (power is RevengePower or TurnRevengePower or TempRevengePower)
+        {
+            _gainedRevengeThisTurn = true;
             await CreatureCmd.Damage(
                 new BlockingPlayerChoiceContext(),
                 Owner,
@@ -368,12 +649,13 @@ public class RubyLegacyPower : CustomPowerModel
                 ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
                 Owner
             );
-            await PlayerCmd.GainEnergy(1, Owner.Player);
+            await CreatureCmd.GainBlock(Owner, 8, ValueProp.Move, null);
         }
+
     }
 }
 
-public class DualMirrorPower : CustomPowerModel
+public class DualMirrorPower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
@@ -391,11 +673,17 @@ public class DualMirrorPower : CustomPowerModel
             return;
         }
 
+        if (Owner.Player == null)
+        {
+            // No player to draw for.
+            return;
+        }
+
         await CardPileCmd.Draw(new BlockingPlayerChoiceContext(), 1, Owner.Player);
     }
 }
 
-public class ShellForgedByLiesPower : CustomPowerModel
+public class ShellForgedByLiesPower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
@@ -420,12 +708,16 @@ public class ShellForgedByLiesPower : CustomPowerModel
         }
 
         var damage = revenge * 4;
+        if (CombatHistoryHelper.HasLostHpThisTurn(Owner.Player))
+        {
+            damage += 2;
+        }
         var opponents = combatState.GetOpponentsOf(Owner).ToList();
         await CreatureCmd.Damage(choiceContext, opponents, damage, ValueProp.Move, Owner, null);
     }
 }
 
-public class LightFromPassionPower : CustomPowerModel
+public class LightFromPassionPower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
@@ -448,10 +740,14 @@ public class LightFromPassionPower : CustomPowerModel
     }
 }
 
-public class RetreatBackstagePower : CustomPowerModel
+public class RetreatBackstagePower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
+
+    private int _lastRound;
+    private CombatSide _lastSide;
+    private bool _triggeredThisTurn;
 
     public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
@@ -465,14 +761,44 @@ public class RetreatBackstagePower : CustomPowerModel
             return;
         }
 
-        await PlayerCmd.GainEnergy(amount, Owner.Player);
+        var combatState = Owner.CombatState;
+        if (combatState == null)
+        {
+            return;
+        }
+
+        if (_lastRound != combatState.RoundNumber || _lastSide != combatState.CurrentSide)
+        {
+            _lastRound = combatState.RoundNumber;
+            _lastSide = combatState.CurrentSide;
+            _triggeredThisTurn = false;
+        }
+
+        if (_triggeredThisTurn)
+        {
+            return;
+        }
+
+        _triggeredThisTurn = true;
+        if (Owner.Player == null)
+        {
+            // No player to grant energy to.
+            return;
+        }
+
+        await PlayerCmd.GainEnergy(1, Owner.Player);
+        await CreatureCmd.GainBlock(Owner, 2, ValueProp.Move, null);
     }
 }
 
-public class TakeTheStagePower : CustomPowerModel
+public class TakeTheStagePower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
+
+    private int _lastRound;
+    private CombatSide _lastSide;
+    private bool _triggeredThisTurn;
 
     public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
@@ -486,6 +812,101 @@ public class TakeTheStagePower : CustomPowerModel
             return;
         }
 
-        await CardPileCmd.Draw(new BlockingPlayerChoiceContext(), amount, Owner.Player);
+        var combatState = Owner.CombatState;
+        if (combatState == null)
+        {
+            return;
+        }
+
+        if (_lastRound != combatState.RoundNumber || _lastSide != combatState.CurrentSide)
+        {
+            _lastRound = combatState.RoundNumber;
+            _lastSide = combatState.CurrentSide;
+            _triggeredThisTurn = false;
+        }
+
+        if (_triggeredThisTurn)
+        {
+            return;
+        }
+
+        _triggeredThisTurn = true;
+        if (Owner.Player == null)
+        {
+            // No player to draw for.
+            return;
+        }
+
+        await CardPileCmd.Draw(new BlockingPlayerChoiceContext(), 1, Owner.Player);
+        await CreatureCmd.GainBlock(Owner, 2, ValueProp.Move, null);
+    }
+}
+
+public class IdolRadiancePower : CustomRubyPower
+{
+    public override PowerType Type => PowerType.Buff;
+    public override PowerStackType StackType => PowerStackType.Single;
+
+    private int _lastRound;
+    private CombatSide _lastSide;
+    private bool _triggeredThisTurn;
+
+    public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
+    {
+        if (cardPlay.Card.Owner.Creature != Owner)
+        {
+            return;
+        }
+
+        var combatState = Owner.CombatState;
+        if (combatState == null)
+        {
+            return;
+        }
+
+        if (_lastRound != combatState.RoundNumber || _lastSide != combatState.CurrentSide)
+        {
+            _lastRound = combatState.RoundNumber;
+            _lastSide = combatState.CurrentSide;
+            _triggeredThisTurn = false;
+        }
+
+        if (_triggeredThisTurn)
+        {
+            return;
+        }
+
+        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine))
+        {
+            return;
+        }
+
+        _triggeredThisTurn = true;
+        await ShinePowerHelper.ApplyShine(Owner, 1, ValueDuration.Temp, Owner, null);
+    }
+}
+
+public class RevealTruthPower : CustomRubyPower
+{
+    public override PowerType Type => PowerType.Buff;
+    public override PowerStackType StackType => PowerStackType.Single;
+
+    public override async Task AfterEnergyReset(Player player)
+    {
+        if (player != Owner.Player)
+        {
+            return;
+        }
+
+        if (Owner.MaxHp <= 0)
+        {
+            return;
+        }
+
+        // Use current HP for half-health check.
+        if (Owner.CurrentHp < Owner.MaxHp / 2m)
+        {
+            await RevengePowerHelper.ApplyRevenge(Owner, 1, ValueDuration.Permanent, Owner, null);
+        }
     }
 }

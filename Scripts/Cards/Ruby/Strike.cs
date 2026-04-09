@@ -9,25 +9,19 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 加入哪个卡池
-// 描述: 造成6(9)点伤害
+// 描述: 造成6(9)点伤害。
+
 [Pool(typeof(RubyCardPool))]
 public class Strike : OshiCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
-    // 基础耗能
     private const int energyCost = 1;
-    // 卡牌类型
     private const CardType type = CardType.Attack;
-    // 卡牌稀有度
     private const CardRarity rarity = CardRarity.Basic;
-    // 目标类型（AnyEnemy表示任意敌人）
     private const TargetType targetType = TargetType.AnyEnemy;
-    // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
-    // 卡牌的基础属性（例如这里是9点伤害）
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DamageVar(6, ValueProp.Move),
@@ -37,25 +31,29 @@ public class Strike : OshiCardModel
 
     protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Strike };
 
-    public Strike() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
+    public Strike() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy, true)
     {
     }
 
-    // 打出时的效果逻辑
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        if (cardPlay.Target == null)
+        {
+            // No target selected; skip.
+            return;
+        }
+
         var finalDamage = DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);
 
-        await DamageCmd.Attack(finalDamage) // 造成伤害，数值来源于卡牌的基础伤害属性
-            .FromCard(this) // 伤害来源于这张卡牌
-            .Targeting(cardPlay.Target) // 伤害目标是玩家选择的目标
+        await DamageCmd.Attack(finalDamage)
+            .FromCard(this)
+            .Targeting(cardPlay.Target)
             .Execute(choiceContext);
     }
 
 
-    // 升级后的效果逻辑
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3); // 升级后增加3点伤害
+        DynamicVars.Damage.UpgradeValueBy(3);
     }
 }

@@ -11,7 +11,8 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 消耗所有闪耀值，对所有敌人造成2点伤害X次，X=5+消耗闪耀值的一半(向下取整)
+// 描述: 消耗所有闪耀值，对所有敌人造成3点伤害X次，X=4+消耗闪耀值的一半(向下取整)。
+
 [Pool(typeof(RubyCardPool))]
 public class IdolSong : OshiCardModel
 {
@@ -19,7 +20,7 @@ public class IdolSong : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(2m, ValueProp.Move),
+        new DamageVar(3m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
     ];
@@ -43,9 +44,16 @@ public class IdolSong : OshiCardModel
             return;
         }
 
+        var combatState = Owner.Creature.CombatState;
+        if (combatState == null)
+        {
+            // No combat state to target opponents.
+            return;
+        }
+
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
-            .TargetingAllOpponents(Owner.Creature.CombatState)
+            .TargetingAllOpponents(combatState)
             .WithHitCount(hits)
             .Execute(choiceContext);
     }

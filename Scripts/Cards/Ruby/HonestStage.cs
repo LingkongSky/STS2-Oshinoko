@@ -9,32 +9,32 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得2点临时闪耀值。若当前闪耀值大于5(4)，获得1点能量
+// 描述: 获得2点闪耀值。若当前闪耀值大于5，获得2点能量。
+
 [Pool(typeof(RubyCardPool))]
 public class HonestStage : OshiCardModel
 {
-    private const string ThresholdKey = "Threshold";
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new ShineDymicVar(2m),
-        new DynamicVar(ThresholdKey, 5),
         ];
 
-    public HonestStage() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
+    public HonestStage() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await ShinePowerHelper.ApplyShine(Owner.Creature, DynamicVars[ShineDymicVar.Key].BaseValue, ValueDuration.Temp, Owner.Creature, this);
-        if (ShinePowerHelper.GetTotalShine(Owner.Creature) > DynamicVars[ThresholdKey].BaseValue)
+        await ShinePowerHelper.ApplyShine(Owner.Creature, DynamicVars[ShineDymicVar.Key].BaseValue, ValueDuration.Permanent, Owner.Creature, this);
+        if (ShinePowerHelper.GetTotalShine(Owner.Creature) > 5)
         {
-            await PlayerCmd.GainEnergy(1, Owner);
+            await PlayerCmd.GainEnergy(2, Owner);
         }
     }
     protected override void OnUpgrade()
     {
-        DynamicVars[ThresholdKey].UpgradeValueBy(-1);
+        EnergyCost.UpgradeBy(-1);
     }
 
 }

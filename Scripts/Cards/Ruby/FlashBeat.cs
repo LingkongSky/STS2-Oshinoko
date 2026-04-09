@@ -9,7 +9,8 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成7(10)点伤害。本回合若你获得过能量，额外造成4点伤害
+// 描述: 造成7(10)点伤害。本回合若你使用过闪耀值，额外造成7点伤害。
+
 [Pool(typeof(RubyCardPool))]
 public class FlashBeat : OshiCardModel
 {
@@ -19,10 +20,10 @@ public class FlashBeat : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6m, ValueProp.Move),
+        new DamageVar(7m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
-        new DynamicVar(BonusDamageKey, 6),
+        new DynamicVar(BonusDamageKey, 7),
     ];
 
     public FlashBeat() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, true)
@@ -34,7 +35,7 @@ public class FlashBeat : OshiCardModel
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
         var finalDamage = DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);
-        if (EnergyGainTracker.GainedEnergyThisTurn(Owner))
+        if (CombatHistoryHelper.HasSpentShineThisTurn(Owner))
         {
             finalDamage += DynamicVars[BonusDamageKey].BaseValue;
         }

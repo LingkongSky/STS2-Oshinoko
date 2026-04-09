@@ -11,7 +11,8 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 对所有敌人造成11(13)点伤害。若本回合抽过牌，则改为造成2次
+// 描述: 对所有敌人造成8(10)点伤害。若本回合抽过牌，则改为造成2次。
+
 [Pool(typeof(RubyCardPool))]
 public class ScarletEncore : OshiCardModel
 {
@@ -19,18 +20,24 @@ public class ScarletEncore : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(9m, ValueProp.Move),
+        new DamageVar(8m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
     ];
 
-    public ScarletEncore() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies, true)
+    public ScarletEncore() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies, true)
     {
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var combatState = Owner.Creature.CombatState;
+        if (combatState == null)
+        {
+            // No combat state to target opponents.
+            return;
+        }
+
         var drewThisTurn = CombatManager.Instance.History.Entries
             .OfType<CardDrawnEntry>()
             .Any(entry => entry.Actor == Owner.Creature && entry.HappenedThisTurn(combatState));

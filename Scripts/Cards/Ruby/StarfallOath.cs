@@ -11,15 +11,18 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成16(20)点伤害。若当前闪耀值大于5，下回合获得2点能量
+// 描述: 仅当闪耀值大于6时才能打出。造成24(30)点伤害。下回合获得2点能量。
+
 [Pool(typeof(RubyCardPool))]
 public class StarfallOath : OshiCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
+    private const int RequiredShine = 6;
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(15m, ValueProp.Move),
+        new DamageVar(24m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
     ];
@@ -27,6 +30,8 @@ public class StarfallOath : OshiCardModel
     public StarfallOath() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy, true)
     {
     }
+
+    protected override bool IsPlayable => Owner?.Creature != null && ShinePowerHelper.GetTotalShine(Owner.Creature) > RequiredShine;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -39,14 +44,11 @@ public class StarfallOath : OshiCardModel
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        if (ShinePowerHelper.GetTotalShine(Owner.Creature) > 5)
-        {
-            await PowerCmd.Apply<EnergyNextTurnPower>(Owner.Creature, 2, Owner.Creature, this);
-        }
+        await PowerCmd.Apply<EnergyNextTurnPower>(Owner.Creature, 2, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4);
+        DynamicVars.Damage.UpgradeValueBy(6);
     }
 }

@@ -7,11 +7,12 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 每获得1点复仇值，获得1点能量
+// 描述: 每回合第一次获得复仇值时，获得1点能量，并获得2点格挡。
+
 [Pool(typeof(RubyCardPool))]
 public class RetreatBackstage : OshiCardModel
 {
-    public RetreatBackstage() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true)
+    public RetreatBackstage() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
     {
     }
 

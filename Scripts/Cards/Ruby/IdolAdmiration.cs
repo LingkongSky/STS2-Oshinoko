@@ -8,25 +8,22 @@ using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
-// 造成5(8)点伤害，抽1张牌  闪耀
-// 描述: 造成5(8)点伤害，抽1张牌
+
+// 描述: 造成7(9)点伤害，抽1张牌。
 [Pool(typeof(RubyCardPool))]
 public class IdolAdmiration : OshiCardModel
 {
-    private const string CalculatedCardsKey = "CalculatedCards";
-
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(5m, ValueProp.Move),
+        new DamageVar(6m, ValueProp.Move),
         new CardsVar(1),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
-        ShineScaling.CreateCalculatedVar(CalculatedCardsKey, ShineValueType.Cards)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
-    public IdolAdmiration() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, true)
+    public IdolAdmiration() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy, true)
     {
     }
 
@@ -34,7 +31,7 @@ public class IdolAdmiration : OshiCardModel
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
         var finalDamage = DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);
-        var finalDraw = ShineScaling.Calculate(DynamicVars, CalculatedCardsKey, cardPlay.Target);
+        var finalDraw = DynamicVars.Cards.BaseValue;
 
         await DamageCmd.Attack(finalDamage)
             .FromCard(this)
@@ -46,6 +43,6 @@ public class IdolAdmiration : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2);
+        DynamicVars.Damage.UpgradeValueBy(3);
     }
 }
