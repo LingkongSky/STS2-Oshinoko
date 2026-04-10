@@ -11,6 +11,11 @@ public static class CombatHistoryHelper
 {
     public static bool HasDrewCardThisTurn(Player? player)
     {
+        return HasDrewCardThisTurn(player, includeHandDraw: true);
+    }
+
+    public static bool HasDrewCardThisTurn(Player? player, bool includeHandDraw)
+    {
         if (player == null)
         {
             return false;
@@ -24,7 +29,9 @@ public static class CombatHistoryHelper
 
         return CombatManager.Instance.History.Entries
             .OfType<CardDrawnEntry>()
-            .Any(entry => entry.Actor == player.Creature && entry.HappenedThisTurn(combatState));
+            .Any(entry => entry.Actor == player.Creature
+                && entry.HappenedThisTurn(combatState)
+                && (includeHandDraw || !entry.FromHandDraw));
     }
 
     public static bool HasPlayedAttackThisTurn(Player? player)

@@ -8,7 +8,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 将当前闪耀值减半后转换为回合闪耀值，获得4点格挡。
+// 描述: 将当前所有闪耀减半后转换为回合闪耀，获得4点格挡。
 
 [Pool(typeof(RubyCardPool))]
 public class FirmBelief : OshiCardModel

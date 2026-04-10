@@ -80,7 +80,7 @@
   "OSHINOGO-TRUE_WORDS.title": "真心话",
   "OSHINOGO-TRUE_WORDS.description": "去除一名敌人的所有防御。若其防御大于20，则获得1点[gold]闪耀[/gold]并抽1张牌。",
   "OSHINOGO-FIRM_BELIEF.title": "笃定信念",
-  "OSHINOGO-FIRM_BELIEF.description": "将当前[gold]闪耀[/gold]减半后转换为[gold]回合闪耀[/gold]，获得4点[gold]格挡[/gold]。",
+  "OSHINOGO-FIRM_BELIEF.description": "将当前的所有[gold]闪耀[/gold]减半后转换为[gold]回合闪耀[/gold]，获得4点[gold]格挡[/gold]。",
   "OSHINOGO-ACT_CUTE.title": "卖萌",
   "OSHINOGO-ACT_CUTE.description": "下回合获得无实体，且不能出牌。下回合结束后回复{Heal:diff()}点生命。",
   "OSHINOGO-NO_WAY_BACK.title": "无路可退",

@@ -23,6 +23,10 @@ project/assembly_name="Oshinogo"
 
 export/convert_text_resources_to_binary=false
 
+[editor_plugins]
+
+enabled=PackedStringArray()
+
 [rendering]
 
 renderer/rendering_method="mobile"

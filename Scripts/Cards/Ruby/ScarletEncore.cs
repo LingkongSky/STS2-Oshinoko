@@ -40,7 +40,10 @@ public class ScarletEncore : OshiCardModel
 
         var drewThisTurn = CombatManager.Instance.History.Entries
             .OfType<CardDrawnEntry>()
-            .Any(entry => entry.Actor == Owner.Creature && entry.HappenedThisTurn(combatState));
+            .Any(entry => entry.Actor == Owner.Creature
+                && entry.RoundNumber == combatState.RoundNumber
+                && entry.CurrentSide == combatState.CurrentSide
+                && !entry.FromHandDraw);
 
         var hitCount = drewThisTurn ? 2 : 1;
 

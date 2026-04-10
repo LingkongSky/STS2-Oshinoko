@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bxpsc88hi51b2"
+path="res://.godot/imported/restsite_ruby.atlas-3c385894dd55e6928d1093868c010221.spatlas"
+
+[deps]
+
+source_file="res://Oshinogo/animations/rest_site/ruby/restsite_ruby.atlas"
+dest_files=["res://.godot/imported/restsite_ruby.atlas-3c385894dd55e6928d1093868c010221.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"
