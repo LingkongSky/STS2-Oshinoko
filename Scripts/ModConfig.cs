@@ -1,5 +1,4 @@
 using BaseLib.Config;
-using BaseLib.Config.UI;
 
 namespace Oshinogo.Scripts;
 
@@ -25,32 +24,13 @@ public sealed class ModConfig : SimpleModConfig
 
     [ConfigSection("HarborTokens")]
     [ConfigTextInput(TextInputPreset.SafeDisplayName)]
-    public static string GlintHarborAlias { get; set; } = "rift_op";
+    public static string GlintHarborAlias { get; set; } = "露比模型来源：";
 
     [ConfigTextInput("[A-Z0-9_]+")]
     public static string KiteVaultCode { get; set; } = "X9";
 
     public static FjordMosaicMode CruxEnumPick { get; set; } = FjordMosaicMode.Beta;
 
-    [ConfigHoverTip(false)]
-    public static bool SilentSporeGate { get; set; }
 
-    [ConfigIgnore]
-    public static double OrphanLedgerAmt { get; set; } = -1;
 
-    [ConfigHideInUI]
-    public static string NimbusVaultToken { get; set; } = "";
-
-    [ConfigButton("QrkvVaultPing")]
-    public static void OnVaultPing(ModConfig cfg, NConfigOptionRow row)
-    {
-        _ = cfg;
-        _ = row;
-    }
-
-    [ConfigButton("QrkvRowClear")]
-    public void OnRowClear(NConfigButton btn)
-    {
-        _ = btn;
-    }
 }

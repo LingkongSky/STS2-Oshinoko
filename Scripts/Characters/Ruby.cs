@@ -40,11 +40,11 @@ public class Ruby : PlaceholderCharacterModel
 
 
     // 篝火休息场景。
-    // public override string CustomRestSiteAnimPath => "res://Oshinogo/scenes/rest_site/characters/ironclad_rest_site.tscn";
+    public override string CustomRestSiteAnimPath => "res://Oshinogo/scenes/rest_site/characters/ruby_rest_site.tscn";
 
 
     // 商店人物场景。
-    // public override string CustomMerchantAnimPath => "res://Oshinogo/scenes/merchant/characters/ironclad_merchant.tscn";
+    public override string CustomMerchantAnimPath => "res://Oshinogo/scenes/merchant/characters/ruby_merchant.tscn";
     // 多人模式-手指。
     // public override string CustomArmPointingTexturePath => null;
     // 多人模式剪刀石头布-石头。
@@ -60,7 +60,9 @@ public class Ruby : PlaceholderCharacterModel
     public override string CustomCharacterSelectIconPath => "res://Oshinogo/images/ui/ruby_icon.png";
 
     // 人物选择图标-锁定状态。
-    //public override string CustomCharacterSelectLockedIconPath => "res://test/images/char_select_test_locked.png";
+    public override string CustomCharacterSelectLockedIconPath => "res://Oshinogo/images/packed/character_select/char_select_ruby_locked.png";
+
+
     // 人物选择过渡动画。
     // public override string CustomCharacterSelectTransitionPath => "res://materials/transitions/ironclad_transition_mat.tres";
     // 地图上的角色标记图标、表情轮盘上的角色头像

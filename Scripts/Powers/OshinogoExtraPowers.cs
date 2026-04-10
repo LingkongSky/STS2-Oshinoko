@@ -1,3 +1,4 @@
+using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -158,29 +159,17 @@ public class MirrorStagePower : CustomRubyPower
 
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (target != Owner)
+        if (target == Owner && result.BlockedDamage > 0 && props.IsPoweredAttack_() && dealer != null)
         {
-            return;
+            await CreatureCmd.Damage(choiceContext, dealer, result.BlockedDamage, ValueProp.Unpowered, Owner, null);
         }
-
-        if (dealer == null)
-        {
-            return;
-        }
-
-        if (result.BlockedDamage <= 0)
-        {
-            return;
-        }
-
-        await CreatureCmd.Damage(choiceContext, dealer, result.BlockedDamage, ValueProp.Move, Owner, null);
     }
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
     {
         if (side == Owner.Side)
         {
-            await PowerCmd.Remove(this);
+            await PowerCmd.Decrement(this);
         }
     }
 }
