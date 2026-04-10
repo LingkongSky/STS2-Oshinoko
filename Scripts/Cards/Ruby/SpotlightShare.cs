@@ -4,11 +4,10 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 所有队友获得1点回合闪耀值并抽1张牌。
+// 描述: 所有队友获得1点能量并抽1张牌。
 
 [Pool(typeof(RubyCardPool))]
 public class SpotlightShare : OshiCardModel
@@ -30,12 +29,7 @@ public class SpotlightShare : OshiCardModel
         var teammates = combatState.GetTeammatesOf(Owner.Creature);
         foreach (var teammate in teammates)
         {
-            if (teammate == Owner.Creature)
-            {
-                continue;
-            }
-
-            await ShinePowerHelper.ApplyShine(teammate, 1, ValueDuration.Turn, Owner.Creature, this);
+            teammate.Player?.PlayerCombatState?.GainEnergy(1);
             if (teammate.Player != null)
             {
                 await CardPileCmd.Draw(choiceContext, 1, teammate.Player);

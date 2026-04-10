@@ -116,7 +116,7 @@
   "OSHINOGO-DISDAIN.title": "蔑视",
   "OSHINOGO-DISDAIN.description": "对单个敌人造成6点伤害并施加{Weak:diff()}层虚弱与{Vulnerable:diff()}层易伤。",
   "OSHINOGO-SPOTLIGHT_SHARE.title": "聚光独占",
-  "OSHINOGO-SPOTLIGHT_SHARE.description": "所有队友获得1点[gold]回合闪耀[/gold]并抽1张牌。",
+  "OSHINOGO-SPOTLIGHT_SHARE.description": "所有队友获得1点能量并抽1张牌。",
   "OSHINOGO-ACT_SPOILED.title": "撒娇",
   "OSHINOGO-ACT_SPOILED.description": "所有队友回复{Heal:diff()}点生命，你额外回复{Heal:diff()}点生命。",
   "OSHINOGO-BURNED_LETTER.title": "烧毁的信",

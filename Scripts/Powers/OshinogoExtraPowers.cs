@@ -775,8 +775,8 @@ public class RetreatBackstagePower : CustomRubyPower
             return;
         }
 
-        await PlayerCmd.GainEnergy(1, Owner.Player);
-        await CreatureCmd.GainBlock(Owner, 2, ValueProp.Move, null);
+        await PlayerCmd.GainEnergy(2, Owner.Player);
+        await CreatureCmd.GainBlock(Owner, 10, ValueProp.Move, null);
     }
 }
 
@@ -826,8 +826,8 @@ public class TakeTheStagePower : CustomRubyPower
             return;
         }
 
-        await CardPileCmd.Draw(new BlockingPlayerChoiceContext(), 1, Owner.Player);
-        await CreatureCmd.GainBlock(Owner, 2, ValueProp.Move, null);
+        await CardPileCmd.Draw(new BlockingPlayerChoiceContext(), 2, Owner.Player);
+        await CreatureCmd.GainBlock(Owner, 6, ValueProp.Move, null);
     }
 }
 
