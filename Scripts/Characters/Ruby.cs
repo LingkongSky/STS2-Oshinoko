@@ -34,10 +34,15 @@ public class Ruby : PlaceholderCharacterModel
     public override string CustomIconTexturePath => "res://Oshinogo/images/ui/ruby.svg";
     // 人物头像2号。
     public override string CustomIconPath => "res://Oshinogo/scenes/ui/ruby_icon.tscn";
+
     // 能量表盘tscn路径。要自定义见下。
-    //public override string CustomEnergyCounterPath => "res://test/scenes/test_energy_counter.tscn";
+    public override string CustomEnergyCounterPath => "res://Oshinogo/scenes/ui/ruby_energy_counter.tscn";
+
+
     // 篝火休息场景。
     // public override string CustomRestSiteAnimPath => "res://Oshinogo/scenes/rest_site/characters/ironclad_rest_site.tscn";
+
+
     // 商店人物场景。
     // public override string CustomMerchantAnimPath => "res://Oshinogo/scenes/merchant/characters/ironclad_merchant.tscn";
     // 多人模式-手指。
