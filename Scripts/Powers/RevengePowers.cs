@@ -17,9 +17,9 @@ public class RevengePower : CustomRubyPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override string? CustomPackedIconPath => "res://Oshinogo/images/ui/ruby_energy.png";
+    public override string? CustomPackedIconPath => "res://Oshinogo/images/powers/ruby_energy_black.png";
 
-    public override string? CustomBigIconPath => "res://Oshinogo/images/ui/ruby_energy_big.png";
+    public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big_black.png";
 
     public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
@@ -44,9 +44,9 @@ public class TurnRevengePower : CustomRubyPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override string? CustomPackedIconPath => "res://Oshinogo/images/ui/ruby_energy.png";
+    public override string? CustomPackedIconPath => "res://Oshinogo/images/powers/ruby_energy_black.png";
 
-    public override string? CustomBigIconPath => "res://Oshinogo/images/ui/ruby_energy_big.png";
+    public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big_black.png";
 
     public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
@@ -79,9 +79,9 @@ public class TempRevengePower : CustomRubyPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override string? CustomPackedIconPath => "res://Oshinogo/images/ui/ruby_energy.png";
+    public override string? CustomPackedIconPath => "res://Oshinogo/images/powers/ruby_energy_black.png";
 
-    public override string? CustomBigIconPath => "res://Oshinogo/images/ui/ruby_energy_big.png";
+    public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big_black.png";
 
     public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {

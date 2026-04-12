@@ -22,6 +22,8 @@ public class MirrorStage : OshiCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(14m, ValueProp.Move),
+        new CalculationExtraVar(1m),
+        ShineScaling.CreateCalculatedVar("CalculatedBlock", ShineValueType.Block),
     ];
 
     public MirrorStage() : base(2, CardType.Skill, CardRarity.Rare, TargetType.AllEnemies, true)
@@ -30,8 +32,9 @@ public class MirrorStage : OshiCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // Use BlockVar overload to match engine signature.
-        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
+        // Use calculated block so shine bonuses apply.
+        var blockValue = ShineScaling.Calculate(DynamicVars, "CalculatedBlock", Owner.Creature);
+        await CreatureCmd.GainBlock(Owner.Creature, blockValue, ValueProp.Move, cardPlay);
         await PowerCmd.Apply<MirrorStagePower>(Owner.Creature, 1, Owner.Creature, this);
     }
 

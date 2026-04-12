@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
@@ -28,6 +29,18 @@ public class PlaceOfLight : OshiCardModel
     {
     }
 
+    public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
+    {
+        if (card != this)
+        {
+            return base.TryModifyEnergyCostInCombat(card, originalCost, out modifiedCost);
+        }
+
+        var shine = Owner?.Creature != null ? ShinePowerHelper.GetTotalShine(Owner.Creature) : 0;
+        modifiedCost = Math.Max(0m, originalCost - shine);
+        return true;
+    }
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
@@ -39,11 +52,9 @@ public class PlaceOfLight : OshiCardModel
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        var shine = ShinePowerHelper.GetTotalShine(Owner.Creature);
-        var refund = Math.Min(shine, EnergyCost.GetWithModifiers(CostModifiers.All));
-        if (refund > 0)
+        if (EnergyCost.GetWithModifiers(CostModifiers.All) == 0)
         {
-            await PlayerCmd.GainEnergy(refund, Owner);
+            await PlayerCmd.GainEnergy(1, Owner);
         }
     }
 

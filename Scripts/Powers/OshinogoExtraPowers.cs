@@ -412,6 +412,8 @@ public class StayIndoorsPower : CustomRubyPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
+    private bool _triggerNextTurn;
+
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
         if (side != Owner.Side)
@@ -424,8 +426,24 @@ public class StayIndoorsPower : CustomRubyPower
             return;
         }
 
-        await RevengePowerHelper.ApplyRevenge(Owner, 1, ValueDuration.Temp, Owner, null);
-        await CreatureCmd.GainBlock(Owner, 3, ValueProp.Move, null);
+        _triggerNextTurn = true;
+    }
+
+    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+    {
+        if (side != Owner.Side)
+        {
+            return;
+        }
+
+        if (!_triggerNextTurn)
+        {
+            return;
+        }
+
+        _triggerNextTurn = false;
+        await RevengePowerHelper.ApplyRevenge(Owner, 2, ValueDuration.Temp, Owner, null);
+        await CreatureCmd.GainBlock(Owner, 5, ValueProp.Move, null);
     }
 }
 
@@ -696,10 +714,10 @@ public class ShellForgedByLiesPower : CustomRubyPower
             return;
         }
 
-        var damage = revenge * 4;
+        var damage = revenge * 6;
         if (CombatHistoryHelper.HasLostHpThisTurn(Owner.Player))
         {
-            damage += 2;
+            damage += 8;
         }
         var opponents = combatState.GetOpponentsOf(Owner).ToList();
         await CreatureCmd.Damage(choiceContext, opponents, damage, ValueProp.Move, Owner, null);
@@ -711,7 +729,7 @@ public class LightFromPassionPower : CustomRubyPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
         if (side != Owner.Side)
         {
@@ -724,7 +742,7 @@ public class LightFromPassionPower : CustomRubyPower
             return;
         }
 
-        var block = shine * 4;
+        var block = shine * 6;
         await CreatureCmd.GainBlock(Owner, block, ValueProp.Move, null);
     }
 }

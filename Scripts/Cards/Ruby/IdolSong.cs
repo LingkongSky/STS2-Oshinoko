@@ -11,7 +11,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 消耗所有闪耀值，对所有敌人造成3点伤害X次，X=4+消耗闪耀值的一半(向下取整)。
+// 描述: 对所有敌人造成12点伤害，获得2点回合闪耀
 
 [Pool(typeof(RubyCardPool))]
 public class IdolSong : OshiCardModel
@@ -20,7 +20,7 @@ public class IdolSong : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(3m, ValueProp.Move),
+        new DamageVar(12m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
     ];
@@ -31,31 +31,15 @@ public class IdolSong : OshiCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var totalShine = ShinePowerHelper.GetTotalShine(Owner.Creature);
-        var hits = 4 + totalShine / 2;
+        ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
+        var finalDamage = DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);
 
-        if (totalShine > 0)
-        {
-            await ShinePowerHelper.LoseShine(Owner.Creature, totalShine, Owner.Creature, this);
-        }
-
-        if (hits <= 0)
-        {
-            return;
-        }
-
-        var combatState = Owner.Creature.CombatState;
-        if (combatState == null)
-        {
-            // No combat state to target opponents.
-            return;
-        }
-
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+        await DamageCmd.Attack(finalDamage)
             .FromCard(this)
-            .TargetingAllOpponents(combatState)
-            .WithHitCount(hits)
+            .Targeting(cardPlay.Target)
             .Execute(choiceContext);
+
+        await ShinePowerHelper.ApplyShine(Owner.Creature, 2, ValueDuration.Turn, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

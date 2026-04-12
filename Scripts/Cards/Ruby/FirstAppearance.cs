@@ -9,7 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得9(12)点格挡，在卡组里增加1张眩晕。
+// 描述: 获得12(16)点格挡，在卡组里增加1张眩晕。
 
 [Pool(typeof(RubyCardPool))]
 public class FirstAppearance : OshiCardModel
@@ -20,7 +20,7 @@ public class FirstAppearance : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(9m, ValueProp.Move),
+        new BlockVar(12m, ValueProp.Move),
     ];
 
     public FirstAppearance() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self, true)
@@ -58,6 +58,6 @@ public class FirstAppearance : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(3);
+        DynamicVars.Block.UpgradeValueBy(4);
     }
 }

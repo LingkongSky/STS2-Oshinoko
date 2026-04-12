@@ -7,7 +7,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 抽3张牌,获得8点格挡。
+// 描述: 抽4张牌,获得8点格挡。
 
 [Pool(typeof(RubyCardPool))]
 public class SwitchToShine : OshiCardModel
@@ -20,7 +20,7 @@ public class SwitchToShine : OshiCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CardPileCmd.Draw(choiceContext, 3, Owner);
+        await CardPileCmd.Draw(choiceContext, 4, Owner);
         await CreatureCmd.GainBlock(Owner.Creature, 8, ValueProp.Move, cardPlay);
     }
 

@@ -10,7 +10,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 失去2点生命，获得12(15)点格挡，获得1点临时复仇值。
+// 描述: 失去1点生命，获得12(15)点格挡，获得1点临时复仇值。
 
 [Pool(typeof(RubyCardPool))]
 public class ColdSmile : OshiCardModel
@@ -32,7 +32,7 @@ public class ColdSmile : OshiCardModel
         await CreatureCmd.Damage(
             choiceContext,
             Owner.Creature,
-            2,
+            1,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
             Owner.Creature
         );

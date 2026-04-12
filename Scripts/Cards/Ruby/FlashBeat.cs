@@ -1,4 +1,6 @@
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -6,6 +8,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
+using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
@@ -33,7 +36,15 @@ public class FlashBeat : OshiCardModel
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
         var finalDamage = DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);
-        if (CombatHistoryHelper.HasSpentShineThisTurn(Owner))
+        var combatState = Owner.Creature.CombatState;
+        var hadShine = ShinePowerHelper.GetTotalShine(Owner.Creature) > 0;
+        var playedShineEarlier = combatState != null && CombatManager.Instance.History.Entries
+            .OfType<CardPlayFinishedEntry>()
+            .Any(entry => entry.Actor == Owner.Creature
+                && entry.HappenedThisTurn(combatState)
+                && entry.CardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine));
+
+        if (hadShine && playedShineEarlier)
         {
             finalDamage += finalDamage;
         }

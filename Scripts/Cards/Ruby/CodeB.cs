@@ -9,7 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 对所有敌人造成6(8)点伤害2次，自己获得6(8)点防御2次。
+// 描述: 对所有敌人造成6(8)点伤害3次，自己获得6(8)点防御3次。
 
 [Pool(typeof(RubyCardPool))]
 public class CodeB : OshiCardModel
@@ -50,6 +50,7 @@ public class CodeB : OshiCardModel
             .WithHitCount(3)
             .Execute(choiceContext);
 
+        await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move, cardPlay);
         await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move, cardPlay);
         await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move, cardPlay);
     }

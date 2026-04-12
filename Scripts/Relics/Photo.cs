@@ -1,27 +1,21 @@
-using BaseLib.Abstracts;
+using System.Collections.Generic;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Entities.RestSite;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Rooms;
 using Oshinogo.Scripts.Pools.RelicPools;
 using Oshinogo.Scripts.Powers;
-
+using Oshinogo.Scripts.RestSite;
+// 每场战斗结束时，为露比回复3+2x闪耀+4x复仇的血量。
 namespace Oshinogo.Scripts.Relics
 {
-    // 加入哪个遗物池，此处为通用
     [Pool(typeof(RubyRelicPool))]
-    public class Photo : CustomRelicModel
+    public class Photo : RubyRelicModel
     {
         // 稀有度
         public override RelicRarity Rarity => RelicRarity.Common;
-
-
-        // 小图标
-        public override string PackedIconPath => $"res://Oshinogo/images/relics/{GetType().Name}.png";
-        // 轮廓图标
-        protected override string PackedIconOutlinePath => $"res://Oshinogo/images/relics/{GetType().Name}.png";
-        // 大图标
-        protected override string BigIconPath => $"res://Oshinogo/images/relics/{GetType().Name}.png";
 
         public override async Task AfterCombatEnd(CombatRoom room)
         {
@@ -40,6 +34,25 @@ namespace Oshinogo.Scripts.Relics
 
             Flash();
             await CreatureCmd.Heal(Owner.Creature, healAmount);
+        }
+
+        public override bool TryModifyRestSiteOptions(Player player, ICollection<RestSiteOption> options)
+        {
+            if (player != Owner)
+            {
+                return false;
+            }
+
+            foreach (RestSiteOption option in options)
+            {
+                if (option.OptionId == BKomachiGathering.OptionIdValue)
+                {
+                    return false;
+                }
+            }
+
+            options.Add(new BKomachiGathering(player));
+            return true;
         }
     }
 }

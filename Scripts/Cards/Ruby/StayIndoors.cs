@@ -7,7 +7,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 回合结束时，若本回合你失去过生命，获得1点临时复仇值并获得3点格挡。
+// 描述: 回合结束时，若本回合你失去过生命，下回合获得2点临时复仇值并获得5点格挡。
 
 [Pool(typeof(RubyCardPool))]
 public class StayIndoors : OshiCardModel

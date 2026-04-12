@@ -16,9 +16,9 @@ public class ShinePower : CustomRubyPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override string? CustomPackedIconPath => "res://Oshinogo/images/ui/ruby_energy.png";
+    public override string? CustomPackedIconPath => "res://Oshinogo/images/powers/ruby_energy.png";
 
-    public override string? CustomBigIconPath => "res://Oshinogo/images/ui/ruby_energy_big.png";
+    public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big.png";
 
     public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
@@ -38,9 +38,9 @@ public class TurnShinePower : CustomRubyPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override string? CustomPackedIconPath => "res://Oshinogo/images/ui/ruby_energy.png";
+    public override string? CustomPackedIconPath => "res://Oshinogo/images/powers/ruby_energy.png";
 
-    public override string? CustomBigIconPath => "res://Oshinogo/images/ui/ruby_energy_big.png";
+    public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big.png";
 
     public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
@@ -68,9 +68,9 @@ public class TempShinePower : CustomRubyPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override string? CustomPackedIconPath => "res://Oshinogo/images/ui/ruby_energy.png";
+    public override string? CustomPackedIconPath => "res://Oshinogo/images/powers/ruby_energy.png";
 
-    public override string? CustomBigIconPath => "res://Oshinogo/images/ui/ruby_energy_big.png";
+    public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big.png";
 
     public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {

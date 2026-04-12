@@ -2,5 +2,5 @@
 	"SHINE.title": "闪耀",
 	"SHINE.description": "对带有闪耀的卡牌生效。增加等同于闪耀的数值。",
 	"REVENGE.title": "复仇",
-	"REVENGE.description": "对带有闪耀的卡牌生效。根据复仇值对卡牌数值进行乘算；打出闪耀牌时会失去等同于复仇值的生命。"
+	"REVENGE.description": "对带有闪耀的卡牌生效。根据复仇对卡牌数值进行乘算；打出闪耀牌时会失去等同于复仇的生命。"
 }

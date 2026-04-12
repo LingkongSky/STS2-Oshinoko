@@ -1,0 +1,57 @@
+using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.Rooms;
+using Oshinogo.Scripts.Pools.CardPools;
+
+namespace Oshinogo.Scripts.Cards.Ruby;
+
+// 描述: ，获得1(2)层人工制品，战斗结束后随机升级一张卡牌。
+
+[Pool(typeof(RubyCardPool))]
+public class ChannelSubscribe : OshiCardModel
+{
+    private const string ArtifactKey = "ArtifactPower";
+
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DynamicVar(ArtifactKey, 1),
+    ];
+
+
+    public ChannelSubscribe() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
+    {
+    }
+
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        await PowerCmd.Apply<ArtifactPower>(Owner.Creature, DynamicVars[ArtifactKey].BaseValue, Owner.Creature, this);
+    }
+
+    public override Task AfterCombatEnd(CombatRoom _)
+    {
+        var upgradable = PileType.Deck.GetPile(Owner).Cards
+            .Where(card => card?.IsUpgradable ?? false)
+            .ToList();
+
+        if (upgradable.Count > 0)
+        {
+            var rng = Owner.RunState.Rng.CombatCardSelection;
+            var selected = rng.NextItem(upgradable);
+            if (selected != null)
+            {
+                CardCmd.Upgrade(selected);
+            }
+        }
+
+        return Task.CompletedTask;
+    }
+
+    protected override void OnUpgrade()
+    {
+        DynamicVars[ArtifactKey].UpgradeValueBy(1);
+    }
+}
