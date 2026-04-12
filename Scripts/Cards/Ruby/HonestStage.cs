@@ -9,7 +9,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得2点闪耀值。若当前闪耀值大于5，获得2点能量。
+// 描述: 获得2点闪耀值。若当前闪耀值大于4，获得2点能量。
 
 [Pool(typeof(RubyCardPool))]
 public class HonestStage : OshiCardModel
@@ -27,7 +27,7 @@ public class HonestStage : OshiCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await ShinePowerHelper.ApplyShine(Owner.Creature, DynamicVars[ShineDymicVar.Key].BaseValue, ValueDuration.Permanent, Owner.Creature, this);
-        if (ShinePowerHelper.GetTotalShine(Owner.Creature) > 5)
+        if (ShinePowerHelper.GetTotalShine(Owner.Creature) > 4)
         {
             await PlayerCmd.GainEnergy(2, Owner);
         }

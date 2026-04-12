@@ -10,7 +10,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得3(5)点格挡。你手牌中下一张闪耀牌本回合费用-1。
+// 描述: 获得3(5)点格挡。你手牌中下一张闪耀牌费用-1。
 
 [Pool(typeof(RubyCardPool))]
 public class BreathControl : OshiCardModel

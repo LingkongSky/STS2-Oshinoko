@@ -11,7 +11,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得5(7)点格挡。在弃牌堆中选择一张置入抽牌堆顶部。
+// 描述: 获得6(9)点格挡。在弃牌堆中选择一张置入抽牌堆顶部。
 
 [Pool(typeof(RubyCardPool))]
 public class SmallTrick : OshiCardModel
@@ -22,7 +22,7 @@ public class SmallTrick : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(5m, ValueProp.Move),
+        new BlockVar(6m, ValueProp.Move),
     ];
 
     public SmallTrick() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self, true)
@@ -44,6 +44,6 @@ public class SmallTrick : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(2);
+        DynamicVars.Block.UpgradeValueBy(3);
     }
 }

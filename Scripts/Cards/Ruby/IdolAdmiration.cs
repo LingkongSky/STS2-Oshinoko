@@ -9,13 +9,13 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成7(9)点伤害，抽1张牌。
+// 描述: 造成9(13)点伤害，抽1张牌。
 [Pool(typeof(RubyCardPool))]
 public class IdolAdmiration : OshiCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6m, ValueProp.Move),
+        new DamageVar(9m, ValueProp.Move),
         new CardsVar(1),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
@@ -43,6 +43,6 @@ public class IdolAdmiration : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3);
+        DynamicVars.Damage.UpgradeValueBy(4);
     }
 }

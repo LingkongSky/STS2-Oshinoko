@@ -7,7 +7,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 去除一名敌人的所有防御。若其防御大于20，则获得1点闪耀值并抽1张牌。
+// 描述: 去除一名敌人的所有防御。若其防御大于15，则获得1点闪耀值并抽1张牌。
 
 [Pool(typeof(RubyCardPool))]
 public class TrueWords : OshiCardModel
@@ -28,7 +28,7 @@ public class TrueWords : OshiCardModel
             await CreatureCmd.LoseBlock(cardPlay.Target, block);
         }
 
-        if (block > 20)
+        if (block > 15)
         {
             await ShinePowerHelper.ApplyShine(Owner.Creature, 1, ValueDuration.Permanent, Owner.Creature, this);
             await CardPileCmd.Draw(choiceContext, 1, Owner);

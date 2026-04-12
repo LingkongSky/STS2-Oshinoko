@@ -38,7 +38,6 @@ public class SpinningStep : OshiCardModel
             return;
         }
 
-        // Count finished plays to avoid cancelled plays.
         var shinePlaysThisTurn = CombatManager.Instance.History.Entries
             .OfType<CardPlayFinishedEntry>()
             .Count(entry => entry.Actor == Owner.Creature

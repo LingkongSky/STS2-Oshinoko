@@ -3,8 +3,11 @@
   "OSHINOGO-PHOTO.description": "每场战斗结束时，为露比回复3点生命。每有1点闪耀/复仇，额外回复2/4点生命。",
   "OSHINOGO-KANA_ARIMA.title": "有马加奈的指导",
   "OSHINOGO-KANA_ARIMA.description": "每场战斗开始时获得1点闪耀值。",
+  "OSHINOGO-KANA_ARIMA.flavor": "据说曾经是一个十秒就能哭出来的天才童星",
   "OSHINOGO-MEM.title": "MEM的运营",
   "OSHINOGO-MEM.description": "金钱获取时额外增加20%。",
+  "OSHINOGO-MEM.flavor": "JK系虚拟偶像，热情而充满活力，但是在加入时隐藏着一个秘密...",
   "OSHINOGO-NEW_B_KOMACHI.title": "新生B小町",
-  "OSHINOGO-NEW_B_KOMACHI.description": "将一张暗号B加入牌库。"
+  "OSHINOGO-NEW_B_KOMACHI.description": "将一张暗号B加入牌库。",
+  "OSHINOGO-NEW_B_KOMACHI.flavor": "由露比，加奈，Mem三人组成的新生B小町。"
 }

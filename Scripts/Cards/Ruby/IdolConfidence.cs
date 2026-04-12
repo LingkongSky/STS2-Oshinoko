@@ -10,7 +10,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成10(13)点伤害，本回合获得2点回合闪耀值。
+// 描述: 造成14(18)点伤害，本回合获得3点回合闪耀值。
 
 [Pool(typeof(RubyCardPool))]
 public class IdolConfidence : OshiCardModel
@@ -19,10 +19,10 @@ public class IdolConfidence : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(10m, ValueProp.Move),
+        new DamageVar(14m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
-        new ShineDymicVar(2m),
+        new ShineDymicVar(3m),
     ];
 
     public IdolConfidence() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy, true)
@@ -42,14 +42,10 @@ public class IdolConfidence : OshiCardModel
 
         await ShinePowerHelper.ApplyShine(Owner.Creature, DynamicVars[ShineDymicVar.Key].BaseValue, ValueDuration.Turn, Owner.Creature, this);
 
-        if (CombatHistoryHelper.HasGainedRevengeThisTurn(Owner))
-        {
-            await PlayerCmd.GainEnergy(1, Owner);
-        }
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3);
+        DynamicVars.Damage.UpgradeValueBy(4);
     }
 }

@@ -2,12 +2,13 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 随机消耗手牌中的1张卡，并获得等同于费用的临时复仇值。
+// 描述: 随机消耗手牌中的1张卡，并获得14(18)点格挡。
 
 [Pool(typeof(RubyCardPool))]
 public class NoWayBack : OshiCardModel
@@ -15,6 +16,11 @@ public class NoWayBack : OshiCardModel
     public NoWayBack() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
     {
     }
+
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+[
+    new BlockVar(14m, ValueProp.Move),
+    ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -31,19 +37,18 @@ public class NoWayBack : OshiCardModel
             return;
         }
 
-        var cost = selected.EnergyCost.GetWithModifiers(CostModifiers.All);
-        if (cost < 0)
-        {
-            cost = 0;
-        }
 
         await CardCmd.Exhaust(choiceContext, selected);
 
-        await RevengePowerHelper.ApplyRevenge(Owner.Creature, cost, ValueDuration.Temp, Owner.Creature, this);
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block.BaseValue, ValueProp.Move, cardPlay);
+
+
     }
 
     protected override void OnUpgrade()
     {
         EnergyCost.UpgradeBy(-1);
+        DynamicVars.Block.UpgradeValueBy(4);
+
     }
 }

@@ -2,13 +2,14 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 失去2点生命，获得12点格挡。若本回合你失去过生命，抽1张牌。
+// 描述: 失去2点生命，获得20点格挡。若本回合你失去过生命，抽3张牌。
 
 [Pool(typeof(RubyCardPool))]
 public class SwitchToVengeance : OshiCardModel
@@ -19,6 +20,11 @@ public class SwitchToVengeance : OshiCardModel
     {
     }
 
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+    new BlockVar(20m, ValueProp.Move),
+    ];
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.Damage(
@@ -28,10 +34,10 @@ public class SwitchToVengeance : OshiCardModel
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
             Owner.Creature
         );
-        await CreatureCmd.GainBlock(Owner.Creature, 12, ValueProp.Move, cardPlay);
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block.BaseValue, ValueProp.Move, cardPlay);
         if (CombatHistoryHelper.HasLostHpThisTurn(Owner))
         {
-            await CardPileCmd.Draw(choiceContext, 1, Owner);
+            await CardPileCmd.Draw(choiceContext, 3, Owner);
         }
     }
 

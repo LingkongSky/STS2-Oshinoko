@@ -34,7 +34,6 @@ public class RadiantBurst : OshiCardModel
         var combatState = Owner.Creature.CombatState;
         if (combatState == null)
         {
-            // No combat state to target opponents.
             return;
         }
 

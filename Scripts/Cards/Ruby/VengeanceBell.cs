@@ -11,7 +11,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 失去3(2)点生命，令所有敌人失去10点生命，下回合开始时再失去10点生命。获得2(3)点临时复仇值。
+// 描述: 失去1点生命，令所有敌人失去10点生命，下回合开始时再失去10点生命。获得2(3)点临时复仇值。
 
 [Pool(typeof(RubyCardPool))]
 public class VengeanceBell : OshiCardModel
@@ -21,7 +21,7 @@ public class VengeanceBell : OshiCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(10m, ValueProp.Move),
-        new DynamicVar(SelfDamageKey, 3),
+        new DynamicVar(SelfDamageKey, 1),
         new RevengeDynamicVar(2m),
     ];
 
@@ -50,12 +50,11 @@ public class VengeanceBell : OshiCardModel
             this
         );
 
-        await PowerCmd.Apply<VengeanceBellNextTurnPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<Powers.VengeanceBellPower>(Owner.Creature, 1, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
         DynamicVars[SelfDamageKey].UpgradeValueBy(-1);
         DynamicVars[RevengeDynamicVar.Key].UpgradeValueBy(1);
 

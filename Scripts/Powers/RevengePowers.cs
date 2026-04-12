@@ -2,6 +2,7 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
@@ -243,5 +244,41 @@ public static class RevengePowerHelper
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
             power.Owner
         );
+    }
+}
+
+
+
+public class GainTempRevengeNextTurnPower : CustomRubyPower
+{
+    public override PowerType Type => PowerType.Buff;
+    public override PowerStackType StackType => PowerStackType.Counter;
+
+    public override async Task AfterEnergyReset(Player player)
+    {
+        if (player != Owner.Player)
+        {
+            return;
+        }
+
+        await RevengePowerHelper.ApplyRevenge(Owner, Amount, ValueDuration.Temp, Owner, null);
+        await PowerCmd.Remove(this);
+    }
+}
+
+public class GainTurnRevengeNextTurnPower : CustomRubyPower
+{
+    public override PowerType Type => PowerType.Buff;
+    public override PowerStackType StackType => PowerStackType.Counter;
+
+    public override async Task AfterEnergyReset(Player player)
+    {
+        if (player != Owner.Player)
+        {
+            return;
+        }
+
+        await RevengePowerHelper.ApplyRevenge(Owner, Amount, ValueDuration.Turn, Owner, null);
+        await PowerCmd.Remove(this);
     }
 }

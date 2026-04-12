@@ -2,6 +2,7 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
@@ -109,5 +110,96 @@ public class TempShinePower : CustomRubyPower
             TempPowerSourceTracker.Clear(Owner);
             await PowerCmd.Remove(this);
         }
+    }
+}
+
+public class GainTempShineNextTurnPower : CustomRubyPower
+{
+    public override PowerType Type => PowerType.Buff;
+    public override PowerStackType StackType => PowerStackType.Counter;
+
+    public override async Task AfterEnergyReset(Player player)
+    {
+        if (player != Owner.Player)
+        {
+            return;
+        }
+
+        await ShinePowerHelper.ApplyShine(Owner, Amount, ValueDuration.Temp, Owner, null);
+        await PowerCmd.Remove(this);
+    }
+}
+
+public class GainTurnShineNextTurnPower : CustomRubyPower
+{
+    public override PowerType Type => PowerType.Buff;
+    public override PowerStackType StackType => PowerStackType.Counter;
+
+    public override async Task AfterEnergyReset(Player player)
+    {
+        if (player != Owner.Player)
+        {
+            return;
+        }
+
+        await ShinePowerHelper.ApplyShine(Owner, Amount, ValueDuration.Turn, Owner, null);
+        await PowerCmd.Remove(this);
+    }
+}
+
+
+public class NextShineDiscountPower : CustomRubyPower
+{
+    public override PowerType Type => PowerType.Buff;
+    public override PowerStackType StackType => PowerStackType.Single;
+
+    private CardModel? _sourceCard;
+    private bool _skipRemovalForSource;
+
+    public override Task AfterApplied(Creature? applier, CardModel? cardSource)
+    {
+        _sourceCard = cardSource;
+        _skipRemovalForSource = true;
+        return Task.CompletedTask;
+    }
+
+    public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
+    {
+        if (card.Owner.Creature != Owner || !card.Keywords.Contains(OshinogoKeywords.Shine))
+        {
+            modifiedCost = originalCost;
+            return false;
+        }
+
+        if (originalCost <= 0)
+        {
+            modifiedCost = originalCost;
+            return false;
+        }
+
+        modifiedCost = Math.Max(0, originalCost - 1);
+        return true;
+    }
+
+    public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
+    {
+        if (cardPlay.Card.Owner.Creature != Owner)
+        {
+            return;
+        }
+
+        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine))
+        {
+            return;
+        }
+
+        if (_skipRemovalForSource && _sourceCard != null && ReferenceEquals(cardPlay.Card, _sourceCard))
+        {
+            _skipRemovalForSource = false;
+            return;
+        }
+
+        _skipRemovalForSource = false;
+        await PowerCmd.Remove(this);
     }
 }

@@ -10,7 +10,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得6(9)点防御，获得2点临时闪耀值。
+// 描述: 获得7(10)点防御，获得2点临时闪耀值。
 
 [Pool(typeof(RubyCardPool))]
 public class PassionDefense : OshiCardModel
@@ -23,7 +23,7 @@ public class PassionDefense : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(6m, ValueProp.Move),
+        new BlockVar(7m, ValueProp.Move),
         new ShineDymicVar(2m),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),

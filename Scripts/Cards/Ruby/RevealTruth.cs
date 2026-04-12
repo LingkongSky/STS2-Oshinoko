@@ -23,7 +23,7 @@ public class RevealTruth : OshiCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await RevengePowerHelper.ApplyRevenge(Owner.Creature, DynamicVars[RevengeDynamicVar.Key].BaseValue, ValueDuration.Permanent, Owner.Creature, this);
-        await PowerCmd.Apply<RevealTruthPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<RevealTruthPower>(Owner.Creature, 2, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

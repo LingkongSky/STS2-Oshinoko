@@ -12,8 +12,8 @@ namespace Oshinogo.Scripts.Relics
         public override RelicRarity Rarity => RelicRarity.Common;
 
         // 小图标
-        //public override string PackedIconPath => $"res://Oshinogo/images/relics/{GetType().Name}.png";
-        public override string PackedIconPath => $"res://Oshinogo/images/relics/Photo.png";
+        public override string PackedIconPath => $"res://Oshinogo/images/relics/{GetType().Name}.png";
+        //public override string PackedIconPath => $"res://Oshinogo/images/relics/Photo.png";
 
         // 轮廓图标
         protected override string PackedIconOutlinePath => $"res://Oshinogo/images/relics/Photo.png";
