@@ -14,7 +14,6 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class FlashBeat : OshiCardModel
 {
-    private const string BonusDamageKey = "BonusDamage";
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
@@ -23,7 +22,6 @@ public class FlashBeat : OshiCardModel
         new DamageVar(7m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
-        new DynamicVar(BonusDamageKey, 7),
     ];
 
     public FlashBeat() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, true)
@@ -37,7 +35,7 @@ public class FlashBeat : OshiCardModel
         var finalDamage = DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);
         if (CombatHistoryHelper.HasSpentShineThisTurn(Owner))
         {
-            finalDamage += DynamicVars[BonusDamageKey].BaseValue;
+            finalDamage += finalDamage;
         }
 
         await DamageCmd.Attack(finalDamage)

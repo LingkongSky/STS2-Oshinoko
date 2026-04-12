@@ -11,7 +11,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 仅当闪耀值大于6时才能打出。造成24(30)点伤害。下回合获得2点能量。
+// 描述: 仅当闪耀值大于6时才能打出。造成35(45)点伤害。下回合获得2点能量。
 
 [Pool(typeof(RubyCardPool))]
 public class StarfallOath : OshiCardModel
@@ -22,7 +22,7 @@ public class StarfallOath : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(24m, ValueProp.Move),
+        new DamageVar(35m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
     ];
@@ -49,6 +49,6 @@ public class StarfallOath : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(6);
+        DynamicVars.Damage.UpgradeValueBy(10);
     }
 }

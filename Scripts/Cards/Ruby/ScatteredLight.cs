@@ -9,7 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成11(14)点伤害，抽3张牌，并免费打出其中1张闪耀牌。
+// 描述: 造成14(17)点伤害，抽3张牌，并免费打出其中1张闪耀牌。
 
 [Pool(typeof(RubyCardPool))]
 public class ScatteredLight : OshiCardModel
@@ -18,7 +18,7 @@ public class ScatteredLight : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(11m, ValueProp.Move),
+        new DamageVar(14m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
     ];

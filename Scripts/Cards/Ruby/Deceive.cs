@@ -10,7 +10,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得7(9)点格挡。若本回合你已失去过生命，获得1点临时复仇值。
+// 描述: 获得8(11)点格挡。若本回合你已失去过生命，获得1点临时复仇值。
 
 [Pool(typeof(RubyCardPool))]
 public class Deceive : OshiCardModel
@@ -19,7 +19,7 @@ public class Deceive : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(7m, ValueProp.Move),
+        new BlockVar(8m, ValueProp.Move),
         new RevengeDynamicVar(1m),
     ];
 
@@ -38,6 +38,6 @@ public class Deceive : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(2);
+        DynamicVars.Block.UpgradeValueBy(3);
     }
 }

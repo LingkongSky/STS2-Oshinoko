@@ -10,7 +10,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 失去2点生命，获得2(3)点临时复仇值。抽1张牌。
+// 描述: 失去1点生命，获得2(3)点临时复仇值。抽1张牌。
 
 [Pool(typeof(RubyCardPool))]
 public class OnlineBacklash : OshiCardModel
@@ -26,7 +26,7 @@ public class OnlineBacklash : OshiCardModel
         await CreatureCmd.Damage(
             choiceContext,
             Owner.Creature,
-            2,
+            1,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
             Owner.Creature
         );

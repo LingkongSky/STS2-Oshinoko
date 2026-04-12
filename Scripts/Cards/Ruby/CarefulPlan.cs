@@ -14,7 +14,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class CarefulPlan : OshiCardModel
 {
-    public CarefulPlan() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
+    public CarefulPlan() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {
     }
 
@@ -32,8 +32,8 @@ public class CarefulPlan : OshiCardModel
             }
         }
 
-        await PowerCmd.Apply<EnergyNextTurnPower>(Owner.Creature, 1, Owner.Creature, this);
-        await PowerCmd.Apply<GainTurnShineNextTurnPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<EnergyNextTurnPower>(Owner.Creature, 2, Owner.Creature, this);
+        await PowerCmd.Apply<GainTurnShineNextTurnPower>(Owner.Creature, 2, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

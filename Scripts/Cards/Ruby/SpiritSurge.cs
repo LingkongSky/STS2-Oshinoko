@@ -10,7 +10,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 对敌人造成9(12)点伤害，下回合获得3点临时闪耀值。
+// 描述: 对敌人造成9(14)点伤害，下回合获得3点临时闪耀值。
 
 
 [Pool(typeof(RubyCardPool))]
@@ -45,6 +45,6 @@ public class SpiritSurge : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3);
+        DynamicVars.Damage.UpgradeValueBy(5);
     }
 }

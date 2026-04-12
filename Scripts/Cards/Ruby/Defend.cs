@@ -23,7 +23,7 @@ public class Defend : OshiCardModel
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new BlockVar(6, ValueProp.Move),
+        new BlockVar(5, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),
         ];

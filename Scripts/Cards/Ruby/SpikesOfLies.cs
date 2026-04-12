@@ -33,7 +33,7 @@ public class SpikesOfLies : OshiCardModel
         await CreatureCmd.Damage(
             choiceContext,
             Owner.Creature,
-            4,
+            2,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
             Owner.Creature
         );

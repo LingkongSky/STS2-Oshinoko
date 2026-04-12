@@ -23,7 +23,7 @@ public class NeverGiveUp : OshiCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await ShinePowerHelper.ApplyShine(Owner.Creature, 2, ValueDuration.Turn, Owner.Creature, this);
-        await CreatureCmd.GainBlock(Owner.Creature, 8, ValueProp.Move, cardPlay);
+        await CreatureCmd.GainBlock(Owner.Creature, 15, ValueProp.Move, cardPlay);
         if (CombatHistoryHelper.HasSpentShineThisTurn(Owner))
         {
             await PlayerCmd.GainEnergy(1, Owner);

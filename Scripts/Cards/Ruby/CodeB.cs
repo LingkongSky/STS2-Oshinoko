@@ -22,10 +22,10 @@ public class CodeB : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6m, ValueProp.Move),
+        new DamageVar(5m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
-        new BlockVar(6m, ValueProp.Move),
+        new BlockVar(5m, ValueProp.Move),
         ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),
     ];
 
@@ -47,7 +47,7 @@ public class CodeB : OshiCardModel
         await DamageCmd.Attack(finalDamage)
             .FromCard(this)
             .TargetingAllOpponents(combatState)
-            .WithHitCount(2)
+            .WithHitCount(3)
             .Execute(choiceContext);
 
         await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move, cardPlay);

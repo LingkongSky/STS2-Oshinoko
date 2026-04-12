@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
 
@@ -16,7 +17,10 @@ public class ColdSmile : OshiCardModel
 {
     public override bool GainsBlock => true;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(12m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [
+        new BlockVar(12m, ValueProp.Move),
+        new RevengeDynamicVar(1m),
+        ];
 
     public ColdSmile() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
     {
@@ -32,7 +36,7 @@ public class ColdSmile : OshiCardModel
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
             Owner.Creature
         );
-        await RevengePowerHelper.ApplyRevenge(Owner.Creature, 1, ValueDuration.Temp, Owner.Creature, this);
+        await RevengePowerHelper.ApplyRevenge(Owner.Creature, DynamicVars[RevengeDynamicVar.Key].BaseValue, ValueDuration.Temp, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

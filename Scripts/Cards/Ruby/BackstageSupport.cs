@@ -40,6 +40,6 @@ public class BackstageSupport : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(2);
+        DynamicVars.Block.UpgradeValueBy(3);
     }
 }

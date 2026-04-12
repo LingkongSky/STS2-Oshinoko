@@ -1,17 +1,17 @@
-using System.Linq;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得3(5)点格挡。将弃牌堆中1张技能牌置入抽牌堆顶部。
+// 描述: 获得5(7)点格挡。在弃牌堆中选择一张置入抽牌堆顶部。
 
 [Pool(typeof(RubyCardPool))]
 public class SmallTrick : OshiCardModel
@@ -22,7 +22,7 @@ public class SmallTrick : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(3m, ValueProp.Move),
+        new BlockVar(5m, ValueProp.Move),
     ];
 
     public SmallTrick() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self, true)
@@ -33,18 +33,12 @@ public class SmallTrick : OshiCardModel
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block.BaseValue, ValueProp.Move, cardPlay);
 
-        var discardPile = PileType.Discard.GetPile(Owner);
-        var skills = discardPile.Cards.Where(card => card.Type == CardType.Skill).ToList();
-        if (skills.Count == 0)
+        CardSelectorPrefs prefs = new CardSelectorPrefs(base.SelectionScreenPrompt, 1);
+        CardPile pile = PileType.Discard.GetPile(base.Owner);
+        CardModel cardModel = (await CardSelectCmd.FromSimpleGrid(choiceContext, pile.Cards, base.Owner, prefs)).FirstOrDefault();
+        if (cardModel != null)
         {
-            return;
-        }
-
-        var prefs = new CardSelectorPrefs(SelectionScreenPrompt, 1);
-        var selected = (await CardSelectCmd.FromSimpleGrid(choiceContext, skills, Owner, prefs)).FirstOrDefault();
-        if (selected != null)
-        {
-            await CardPileCmd.Add(selected, PileType.Draw, CardPilePosition.Top);
+            await CardPileCmd.Add(cardModel, PileType.Draw, CardPilePosition.Top);
         }
     }
 

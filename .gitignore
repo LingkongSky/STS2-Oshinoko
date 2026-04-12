@@ -6,3 +6,4 @@ bin/
 settings/
 Oshinogo/images/*
 addons/
+.tools/
