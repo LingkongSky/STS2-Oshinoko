@@ -6,7 +6,7 @@ using Oshinogo.Scripts.Cards.Ruby;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Pools.PotionPools;
 using Oshinogo.Scripts.Pools.RelicPools;
-using Oshinogo.Scripts.Relics;
+using Oshinogo.Scripts.Relics.Ruby;
 
 public class Ruby : PlaceholderCharacterModel
 {
@@ -45,14 +45,15 @@ public class Ruby : PlaceholderCharacterModel
 
     // 商店人物场景。
     public override string CustomMerchantAnimPath => "res://Oshinogo/scenes/merchant/characters/ruby_merchant.tscn";
+
     // 多人模式-手指。
-    // public override string CustomArmPointingTexturePath => null;
+    public override string CustomArmPointingTexturePath => "res://Oshinogo/images/ui/hands/multiplayer_hand_ruby_point.png";
     // 多人模式剪刀石头布-石头。
-    // public override string CustomArmRockTexturePath => null;
+    public override string CustomArmRockTexturePath => "res://Oshinogo/images/ui/hands/multiplayer_hand_ruby_rock.png";
     // 多人模式剪刀石头布-布。
-    // public override string CustomArmPaperTexturePath => null;
+    public override string CustomArmPaperTexturePath => "res://Oshinogo/images/ui/hands/multiplayer_hand_ruby_paper.png";
     // 多人模式剪刀石头布-剪刀。
-    // public override string CustomArmScissorsTexturePath => null;
+    public override string CustomArmScissorsTexturePath => "res://Oshinogo/images/ui/hands/multiplayer_hand_ruby_scissors.png";
 
     // 人物选择背景。
     public override string CustomCharacterSelectBg => "res://Oshinogo/scenes/ui/ruby_background.tscn";

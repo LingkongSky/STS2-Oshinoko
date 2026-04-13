@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Models;
 using Oshinogo.Scripts.Cards.Ruby;
 using Oshinogo.Scripts.Pools.RelicPools;
 
-namespace Oshinogo.Scripts.Relics;
+namespace Oshinogo.Scripts.Relics.Ruby;
 // 将一张暗号B加入牌库
 [Pool(typeof(RubyRelicPool))]
 public class NewBKomachi : RubyRelicModel

@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.Entities.RestSite;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Map;
 using MegaCrit.Sts2.Core.Runs.History;
-using Oshinogo.Scripts.Relics;
+using Oshinogo.Scripts.Relics.Ruby;
 
 namespace Oshinogo.Scripts.RestSite;
 

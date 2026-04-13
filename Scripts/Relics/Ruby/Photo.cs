@@ -9,7 +9,7 @@ using Oshinogo.Scripts.Pools.RelicPools;
 using Oshinogo.Scripts.Powers;
 using Oshinogo.Scripts.RestSite;
 // 每场战斗结束时，为露比回复3+2x闪耀+4x复仇的血量。
-namespace Oshinogo.Scripts.Relics
+namespace Oshinogo.Scripts.Relics.Ruby
 {
     [Pool(typeof(RubyRelicPool))]
     public class Photo : RubyRelicModel

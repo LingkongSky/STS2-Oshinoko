@@ -33,7 +33,7 @@ public class MothersLiePower : CustomRubyPower
         }
 
         var opponents = combatState.GetOpponentsOf(Owner).ToList();
-        await CreatureCmd.Damage(choiceContext, opponents, Amount, ValueProp.Move, Owner, null);
+        await CreatureCmd.Damage(choiceContext, opponents, Amount, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, Owner, null);
     }
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)

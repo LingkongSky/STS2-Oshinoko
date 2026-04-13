@@ -3,7 +3,7 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using Oshinogo.Scripts.Pools.RelicPools;
 
-namespace Oshinogo.Scripts.Relics
+namespace Oshinogo.Scripts.Relics.Ruby
 {
     [Pool(typeof(RubyRelicPool))]
 

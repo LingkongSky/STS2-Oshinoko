@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using Oshinogo.Scripts.Pools.RelicPools;
 
-namespace Oshinogo.Scripts.Relics;
+namespace Oshinogo.Scripts.Relics.Ruby;
 // 金钱获取时额外增加20%
 [Pool(typeof(RubyRelicPool))]
 public class Mem : RubyRelicModel
