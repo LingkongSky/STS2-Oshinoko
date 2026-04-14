@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgy88bk44xxvk"]
 
-[ext_resource type="Script" uid="uid://c5r5415sjlbvc" path="res://Scripts/UI/RubyNSelectionReticle.cs" id="1_lc2fu"]
+[ext_resource type="Script" uid="uid://br45lmob2twsx" path="res://Scripts/UI/OshinogoNSelectionReticle.cs" id="1_lc2fu"]
 [ext_resource type="Texture2D" uid="uid://dh3e6axfobrrs" path="res://Oshinogo/images/ui/combat_reticle.png" id="2_75ikg"]
 
 [node name="SelectionReticle" type="Control"]

@@ -128,7 +128,7 @@
   "OSHINOGO-FLEEING_LIGHT.title": "逃离着光芒",
   "OSHINOGO-FLEEING_LIGHT.description": "每使用{Threshold:diff()}点[gold]复仇[/gold]，抽1张牌。",
   "OSHINOGO-LAST_MINUTE_STUDY.title": "临期复习",
-  "OSHINOGO-LAST_MINUTE_STUDY.description": "每回合第一次打出技能牌时，获得1点[gold]临时闪耀[/gold]。若这是本回合第3张技能牌，改为获得1点[gold]回合闪耀[/gold]。",
+  "OSHINOGO-LAST_MINUTE_STUDY.description": "打出技能牌时，获得1点[gold]临时闪耀[/gold]。",
   "OSHINOGO-STAY_INDOORS.title": "闭门不出",
   "OSHINOGO-STAY_INDOORS.description": "回合结束时，若本回合你失去过生命，下回合获得2点[gold]临时复仇[/gold]并获得5点[gold]格挡[/gold]。",
   "OSHINOGO-NOT_AS_FRAGILE_AS_IMAGINED.title": "没有想象的那么脆弱",

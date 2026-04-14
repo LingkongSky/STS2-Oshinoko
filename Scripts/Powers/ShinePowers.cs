@@ -151,15 +151,15 @@ public class GainTurnShineNextTurnPower : CustomRubyPower
 public class NextShineDiscountPower : CustomRubyPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
 
     private CardModel? _sourceCard;
-    private bool _skipRemovalForSource;
+    private int _pendingSkips;
 
     public override Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
         _sourceCard = cardSource;
-        _skipRemovalForSource = true;
+        _pendingSkips += 1;
         return Task.CompletedTask;
     }
 
@@ -177,7 +177,7 @@ public class NextShineDiscountPower : CustomRubyPower
             return false;
         }
 
-        modifiedCost = Math.Max(0, originalCost - 1);
+        modifiedCost = Math.Max(0, originalCost - Amount);
         return true;
     }
 
@@ -193,13 +193,19 @@ public class NextShineDiscountPower : CustomRubyPower
             return;
         }
 
-        if (_skipRemovalForSource && _sourceCard != null && ReferenceEquals(cardPlay.Card, _sourceCard))
+        if (_pendingSkips > 0 && _sourceCard != null && ReferenceEquals(cardPlay.Card, _sourceCard))
         {
-            _skipRemovalForSource = false;
+            _pendingSkips--;
             return;
         }
 
-        _skipRemovalForSource = false;
-        await PowerCmd.Remove(this);
+        if (Amount > 1)
+        {
+            await PowerCmd.ModifyAmount(this, -1, Owner, cardPlay.Card);
+        }
+        else
+        {
+            await PowerCmd.Remove(this);
+        }
     }
 }

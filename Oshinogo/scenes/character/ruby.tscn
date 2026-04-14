@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d0ps7570vrm7l"]
 
 [ext_resource type="Texture2D" uid="uid://dnwd5gkpywe43" path="res://Oshinogo/images/ui/Ruby_Hoshino_Anime.png" id="1_b247w"]
-[ext_resource type="Script" uid="uid://drc16guktk2br" path="res://Scripts/UI/RubyNCreatureVisuals.cs" id="1_gfusa"]
+[ext_resource type="Script" uid="uid://jeki6aoanxnb" path="res://Scripts/UI/OshinogoNCreatureVisuals.cs" id="1_gfusa"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://b8e4wst5vt8xh" path="res://Oshinogo/animations/characters/ruby/ironclad_skel_data.tres" id="2_gfusa"]
 
 [node name="Ruby" type="Node2D"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://fc5x7hciyofl"]
 
-[ext_resource type="Script" uid="uid://dqclrj46b15x6" path="res://Scripts/UI/RubyNRestSiteCharacter.cs" id="1_qpoiy"]
+[ext_resource type="Script" uid="uid://taunxv6w32lk" path="res://Scripts/UI/OshinogoNRestSiteCharacter.cs" id="1_qpoiy"]
 [ext_resource type="Texture2D" uid="uid://dnwd5gkpywe43" path="res://Oshinogo/images/ui/Ruby_Hoshino_Anime.png" id="2_t5fxv"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://b8nbwey4uwrqk" path="res://Oshinogo/animations/rest_site/ruby/rest_site_ruby_skel_data.tres" id="2_vhgsq"]
 [ext_resource type="PackedScene" uid="uid://bgy88bk44xxvk" path="res://Oshinogo/scenes/ui/selection_reticle.tscn" id="3_mt86d"]

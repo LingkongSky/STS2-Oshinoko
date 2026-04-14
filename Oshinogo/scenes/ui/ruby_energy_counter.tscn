@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=3 uid="uid://dprly68r2uxus"]
 
-[ext_resource type="Script" uid="uid://bmxawpve3uo8q" path="res://Scripts/UI/RubyNEnergyCounter.cs" id="1_xscxb"]
+[ext_resource type="Script" uid="uid://cj3us3tgs1ghk" path="res://Scripts/UI/OshinogoNEnergyCounter.cs" id="1_xscxb"]
 [ext_resource type="Texture2D" uid="uid://1p1vpwnj0545" path="res://Oshinogo/images/ui/necrobinder_orb_layer_1.png" id="2_dqav6"]
 [ext_resource type="Texture2D" uid="uid://bkrd1edyrnsgc" path="res://Oshinogo/images/ui/necrobinder_orb_layer_2.png" id="3_32sqm"]
 [ext_resource type="Texture2D" uid="uid://cpitarb58ymgy" path="res://Oshinogo/images/ui/energy_orb_shine.png" id="4_0vit1"]
 [ext_resource type="Texture2D" uid="uid://ckg4wse5n78jd" path="res://Oshinogo/images/ui/necrobinder_orb_layer_3.png" id="4_di1qg"]
 [ext_resource type="FontVariation" uid="uid://bylh0p8qhvsaa" path="res://Oshinogo/themes/kreon_bold_shared.tres" id="7_mve1y"]
 [ext_resource type="Texture2D" uid="uid://bicjrncxc85d4" path="res://Oshinogo/images/ui/energy_orb_burst.png" id="8_m210t"]
-[ext_resource type="Script" uid="uid://cdewd4623dqlx" path="res://Scripts/UI/RubyMegaLabel.cs" id="9_xscxb"]
+[ext_resource type="Script" uid="uid://b0ch4kk11ev6y" path="res://Scripts/UI/OshinogoMegaLabel.cs" id="9_xscxb"]
 [ext_resource type="Texture2D" uid="uid://c7bobi572nyh8" path="res://Oshinogo/images/ui/vfx/sparkle.png" id="10_star"]
 [ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://Oshinogo/themes/canvas_item_material_additive_shared.tres" id="shared_additive_mat"]
 
