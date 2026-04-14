@@ -27,18 +27,20 @@ public class SwitchToVengeance : OshiCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.Damage(
-            choiceContext,
-            Owner.Creature,
-            2,
-            ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
-            Owner.Creature
-        );
+
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block.BaseValue, ValueProp.Move, cardPlay);
         if (CombatHistoryHelper.HasLostHpThisTurn(Owner))
         {
             await CardPileCmd.Draw(choiceContext, 3, Owner);
         }
+
+        await CreatureCmd.Damage(
+        choiceContext,
+        Owner.Creature,
+        2,
+        ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
+        Owner.Creature
+        );
     }
 
     protected override void OnUpgrade()

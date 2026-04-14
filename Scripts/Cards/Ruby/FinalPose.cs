@@ -26,7 +26,7 @@ public class FinalPose : OshiCardModel
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
         ];
 
-    public FinalPose() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, true)
+    public FinalPose() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, true)
     {
     }
 

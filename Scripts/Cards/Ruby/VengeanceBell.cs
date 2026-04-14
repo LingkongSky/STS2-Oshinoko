@@ -55,7 +55,6 @@ public class VengeanceBell : OshiCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars[SelfDamageKey].UpgradeValueBy(-1);
         DynamicVars[RevengeDynamicVar.Key].UpgradeValueBy(1);
 
     }

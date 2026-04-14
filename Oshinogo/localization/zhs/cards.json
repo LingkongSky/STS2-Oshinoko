@@ -86,7 +86,7 @@
   "OSHINOGO-NO_WAY_BACK.title": "无路可退",
   "OSHINOGO-NO_WAY_BACK.description": "随机消耗手牌中的1张卡，获得{Block:diff()}点[gold]格挡[/gold]。",
   "OSHINOGO-IDOL_DISGUISE.title": "偶像伪装",
-  "OSHINOGO-IDOL_DISGUISE.description": "场上每有一名敌人，额外获得{Block:diff()}点[gold]格挡[/gold]。",
+  "OSHINOGO-IDOL_DISGUISE.description": "场上每有一名敌人，额外获得{CalculatedBlock:diff()}点[gold]格挡[/gold]。",
   "OSHINOGO-DAILY_ACCUMULATION.title": "日积月累",
   "OSHINOGO-DAILY_ACCUMULATION.description": "获得本场获得过的[gold]闪耀[/gold]与[gold]复仇[/gold]总和的[gold]格挡[/gold]。",
   "OSHINOGO-IDOL_PASSION.title": "偶像热情",
@@ -102,7 +102,7 @@
   "OSHINOGO-SIBLINGS_REUNITED.title": "兄妹相认",
   "OSHINOGO-SIBLINGS_REUNITED.description": "将你的[gold]复仇[/gold]全部转换为[gold]闪耀[/gold]。抽等量卡牌，并获得{Block:diff()}点[gold]格挡[/gold]。",
   "OSHINOGO-NEVER_GIVE_UP.title": "永不服输",
-  "OSHINOGO-NEVER_GIVE_UP.description": "获得2点[gold]回合闪耀[/gold]，并获得15点[gold]格挡[/gold]。若本回合你使用过[gold]闪耀[/gold]，获得1点能量。",
+  "OSHINOGO-NEVER_GIVE_UP.description": "获得2点[gold]闪耀[/gold]，并获得15点[gold]格挡[/gold]。若本回合你使用过[gold]闪耀[/gold]，获得1点能量。",
   "OSHINOGO-MOTHERS_LIE.title": "母亲的谎言",
   "OSHINOGO-MOTHERS_LIE.description": "获得3点[gold]回合复仇[/gold]。若本回合你每次失去生命，令所有敌人失去5点生命。",
   "OSHINOGO-CAREFUL_PLAN.title": "周密计划",
@@ -168,5 +168,7 @@
   "OSHINOGO-MOTHER.title": "妈妈...",
   "OSHINOGO-MOTHER.description": "获得2点[gold]回合闪耀[/gold]，2点能量，抽2张牌",
   "OSHINOGO-REACH_YOU_PACE.title": "追上你的步伐",
-  "OSHINOGO-REACH_YOU_PACE.description": "造成{Damage:diff()}点伤害，获取等同于造成伤害的格挡。"
+  "OSHINOGO-REACH_YOU_PACE.description": "造成{Damage:diff()}点伤害，获取等同于造成伤害的格挡。",
+  "OSHINOGO-DETERRENCE.title": "威慑",
+  "OSHINOGO-DETERRENCE.description": "对所有敌人造成{Damage:diff()}点伤害，给予{Vulnerable:diff()}层易伤。"
 }

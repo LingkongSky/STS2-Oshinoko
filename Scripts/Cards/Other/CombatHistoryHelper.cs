@@ -75,6 +75,54 @@ public static class CombatHistoryHelper
         return HasPowerChangeThisTurn<RevengePower, TurnRevengePower, TempRevengePower>(player, gained: false);
     }
 
+    public static bool HasPlayedShineCardWithShineThisTurn(Player? player)
+    {
+        if (player == null)
+        {
+            return false;
+        }
+
+        var combatState = player.Creature.CombatState;
+        if (combatState == null)
+        {
+            return false;
+        }
+
+        var currentShine = ShinePowerHelper.GetTotalShine(player.Creature);
+        var netShineDeltaThisTurn = CombatManager.Instance.History.Entries
+            .OfType<PowerReceivedEntry>()
+            .Where(entry => entry.Actor == player.Creature
+                && entry.HappenedThisTurn(combatState)
+                && entry.Power is ShinePower or TurnShinePower or TempShinePower)
+            .Sum(entry => entry.Amount);
+
+        var runningShine = currentShine - netShineDeltaThisTurn;
+
+        foreach (var entry in CombatManager.Instance.History.Entries)
+        {
+            if (entry.Actor != player.Creature || !entry.HappenedThisTurn(combatState))
+            {
+                continue;
+            }
+
+            if (entry is PowerReceivedEntry powerEntry
+                && powerEntry.Power is ShinePower or TurnShinePower or TempShinePower)
+            {
+                runningShine += powerEntry.Amount;
+                continue;
+            }
+
+            if (entry is CardPlayFinishedEntry playEntry
+                && playEntry.CardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine)
+                && runningShine > 0)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public static bool HasLostHpThisTurn(Player? player)
     {
         if (player == null)

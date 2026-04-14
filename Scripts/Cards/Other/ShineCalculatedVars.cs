@@ -1,5 +1,6 @@
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -42,6 +43,27 @@ public class ShineCalculatedDamageVar : CalculatedVar
 }
 
 // 专用于伤害显示的变量，继承 CalculatedDamageVar 以走引擎伤害预览链路。
+// 闂€€/澶嶄粐鏍cm尅鍙橀噺锛氭樉绀哄€间笂瀵瑰簲鍒拌兘閲忓鐩婁箣绫绘晥鏋溿€?
+public class ShineCalculatedBlockVar : ShineCalculatedDamageVar
+{
+    public ShineCalculatedBlockVar(string name) : base(name, ShineValueType.Block)
+    {
+    }
+
+    public override void UpdateCardPreview(CardModel card, CardPreviewMode previewMode, Creature? target, bool runGlobalHooks)
+    {
+        decimal value = Calculate(target);
+        if (runGlobalHooks && card.CombatState != null && card.Owner?.Creature != null)
+        {
+            var blockVar = card.DynamicVars.Block as BlockVar;
+            var props = blockVar?.Props ?? ValueProp.Move;
+            value = Hook.ModifyBlock(card.CombatState, card.Owner.Creature, value, props, card, null, out _);
+        }
+
+        PreviewValue = value;
+    }
+}
+
 public class ShineCalculatedDamageDisplayVar : CalculatedDamageVar
 {
     public ShineCalculatedDamageDisplayVar(ValueProp props) : base(props)
@@ -73,7 +95,11 @@ public static class ShineScaling
     // 创建通用计算变量，用于抽牌/格挡/能量等字段。
     public static CalculatedVar CreateCalculatedVar(string name, ShineValueType valueType)
     {
-        return new ShineCalculatedDamageVar(name, valueType).WithMultiplier((card, _) => GetCombinedMultiplier(card, valueType));
+        var calculatedVar = valueType == ShineValueType.Block
+            ? new ShineCalculatedBlockVar(name)
+            : new ShineCalculatedDamageVar(name, valueType);
+
+        return calculatedVar.WithMultiplier((card, _) => GetCombinedMultiplier(card, valueType));
     }
 
 
@@ -86,6 +112,11 @@ public static class ShineScaling
         }
 
         if (!card.Keywords.Contains(OshinogoKeywords.Shine))
+        {
+            return 0;
+        }
+
+        if (!card.DynamicVars.ContainsKey("CalculationExtra"))
         {
             return 0;
         }
@@ -108,6 +139,11 @@ public static class ShineScaling
         }
 
         if (!card.Keywords.Contains(OshinogoKeywords.Shine))
+        {
+            return 0;
+        }
+
+        if (!card.DynamicVars.ContainsKey("CalculationExtra"))
         {
             return 0;
         }
