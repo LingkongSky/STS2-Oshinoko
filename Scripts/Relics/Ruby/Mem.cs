@@ -15,7 +15,7 @@ public class Mem : RubyRelicModel
 
     private bool _isApplyingBonus;
 
-    public override RelicRarity Rarity => RelicRarity.Uncommon;
+    public override RelicRarity Rarity => RelicRarity.Event;
 
     public override bool ShouldGainGold(decimal amount, Player player)
     {

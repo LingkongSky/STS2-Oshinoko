@@ -10,12 +10,12 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 失去4点血量，获得4点复仇值。每回合第一次失去生命时，获得3点格挡。
+// 描述: 失去2点血量，获得3点复仇值。每回合第一次失去生命时，获得8点格挡。
 
 [Pool(typeof(RubyCardPool))]
 public class DieAlone : OshiCardModel
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new RevengeDynamicVar(4m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new RevengeDynamicVar(3m)];
 
     public DieAlone() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true)
     {

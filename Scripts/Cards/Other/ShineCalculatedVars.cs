@@ -76,6 +76,7 @@ public static class ShineScaling
         return new ShineCalculatedDamageVar(name, valueType).WithMultiplier((card, _) => GetCombinedMultiplier(card, valueType));
     }
 
+
     // 统一读取计算结果，避免卡牌里重复写类型转换。
     public static int GetShineUsedByCard(CardModel card)
     {

@@ -41,7 +41,7 @@
   "OSHINOGO-MOTHERS_LIE_POWER.description": "本回合每次失去生命时，令所有敌人失去生命。",
   "OSHINOGO-MOTHERS_LIE_POWER.smarterDescription": "本回合每次失去生命时，令所有敌人失去{Amount}点生命。",
   "OSHINOGO-NEXT_SHINE_DISCOUNT_POWER.title": "节奏调整",
-  "OSHINOGO-NEXT_SHINE_DISCOUNT_POWER.description": "本回合下一张闪耀牌费用-1。",
+  "OSHINOGO-NEXT_SHINE_DISCOUNT_POWER.description": "你的下一张闪耀牌费用-1。",
   "OSHINOGO-CHASING_LIGHT_POWER.title": "追寻着光芒",
   "OSHINOGO-CHASING_LIGHT_POWER.description": "每使用一定的[gold]闪耀[/gold]，获得1点能量。",
   "OSHINOGO-CHASING_LIGHT_POWER.smarterDescription": "每使用{Amount}点[gold]闪耀[/gold]，获得1点能量。",

@@ -13,7 +13,6 @@ public class Ruby : PlaceholderCharacterModel
 
     //public override string PlaceholderID => "ruby";
 
-
     // 角色名称颜色
     public override Color NameColor => new(1f, 0.4f, 0.8f);
     // 能量图标轮廓颜色
@@ -30,8 +29,12 @@ public class Ruby : PlaceholderCharacterModel
     // 卡牌拖尾场景。
     public override string CustomTrailPath => "res://Oshinogo/scenes/vfx/card_trail_ruby.tscn";
 
+    // IconOutlineTexturePath
+    public const string IconOutlineTexturePath = "res://Oshinogo/images/ui/ruby_outline.png";
+
     // 人物头像路径。
-    public override string CustomIconTexturePath => "res://Oshinogo/images/ui/ruby.svg";
+    public override string CustomIconTexturePath => "res://Oshinogo/images/ui/ruby.png";
+
     // 人物头像2号。
     public override string CustomIconPath => "res://Oshinogo/scenes/ui/ruby_icon.tscn";
 

@@ -45,7 +45,7 @@ public sealed class BKomachiGathering : RestSiteOption
         IsEnabled = _useCount < MaxUses;
     }
 
-    public override IEnumerable<string> AssetPaths => new[] { IconPath };
+    public override IEnumerable<string> AssetPaths => base.AssetPaths;
 
     public override async Task<bool> OnSelect()
     {

@@ -8,7 +8,7 @@ namespace Oshinogo.Scripts.Relics.Ruby;
 [Pool(typeof(RubyRelicPool))]
 public class KanaArima : RubyRelicModel
 {
-    public override RelicRarity Rarity => RelicRarity.Uncommon;
+    public override RelicRarity Rarity => RelicRarity.Event;
 
     public override async Task BeforeCombatStart()
     {

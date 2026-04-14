@@ -13,6 +13,10 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class DoctorBones : OshiCardModel
 {
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+
+
     public DoctorBones() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {
     }

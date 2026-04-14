@@ -10,7 +10,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 失去3点生命，获得2点复仇值与12点格挡。若本回合你已失去过生命，获得1点能量。
+// 描述: 失去2点生命，获得2点复仇值与12点格挡。
 
 [Pool(typeof(RubyCardPool))]
 public class BackstageLive : OshiCardModel
@@ -38,10 +38,6 @@ public class BackstageLive : OshiCardModel
         );
         await RevengePowerHelper.ApplyRevenge(Owner.Creature, DynamicVars[RevengeDynamicVar.Key].BaseValue, ValueDuration.Permanent, Owner.Creature, this);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        if (CombatHistoryHelper.HasLostHpThisTurn(Owner))
-        {
-            await PlayerCmd.GainEnergy(1, Owner);
-        }
     }
 
     protected override void OnUpgrade()

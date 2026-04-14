@@ -48,6 +48,6 @@ public class DieAlonePower : CustomRubyPower
         }
 
         _triggeredThisTurn = true;
-        await CreatureCmd.GainBlock(Owner, 3, ValueProp.Move, null);
+        await CreatureCmd.GainBlock(Owner, 8, ValueProp.Move, null);
     }
 }

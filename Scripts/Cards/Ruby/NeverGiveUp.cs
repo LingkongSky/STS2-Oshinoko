@@ -9,7 +9,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得2点回合闪耀值，并获得8点格挡。若本回合你使用过闪耀值，获得1点能量。
+// 描述: 获得2点回合闪耀值，并获得15点格挡。若本回合你使用过闪耀值，获得1点能量。
 
 [Pool(typeof(RubyCardPool))]
 public class NeverGiveUp : OshiCardModel

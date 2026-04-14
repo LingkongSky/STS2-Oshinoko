@@ -15,6 +15,11 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 public class ChannelSubscribe : OshiCardModel
 {
     private const string ArtifactKey = "ArtifactPower";
+    private bool _playedThisCombat;
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust, CardKeyword.Ethereal];
+
+
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -28,11 +33,17 @@ public class ChannelSubscribe : OshiCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        _playedThisCombat = true;
         await PowerCmd.Apply<ArtifactPower>(Owner.Creature, DynamicVars[ArtifactKey].BaseValue, Owner.Creature, this);
     }
 
     public override Task AfterCombatEnd(CombatRoom _)
     {
+        if (!_playedThisCombat)
+        {
+            return Task.CompletedTask;
+        }
+
         var upgradable = PileType.Deck.GetPile(Owner).Cards
             .Where(card => card?.IsUpgradable ?? false)
             .ToList();
@@ -50,8 +61,15 @@ public class ChannelSubscribe : OshiCardModel
         return Task.CompletedTask;
     }
 
+    public override Task BeforeCombatStart()
+    {
+        _playedThisCombat = false;
+        return Task.CompletedTask;
+    }
+
     protected override void OnUpgrade()
     {
         DynamicVars[ArtifactKey].UpgradeValueBy(1);
+        RemoveKeyword(CardKeyword.Ethereal);
     }
 }

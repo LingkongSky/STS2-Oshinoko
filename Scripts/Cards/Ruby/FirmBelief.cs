@@ -2,7 +2,6 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
 
@@ -21,20 +20,26 @@ public class FirmBelief : OshiCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var tempShine = Owner.Creature.GetPowerAmount<TempShinePower>();
-        if (tempShine > 0)
+        if (Owner?.Creature == null)
         {
-            await PowerCmd.ModifyAmount(Owner.Creature.GetPower<TempShinePower>(), -tempShine, Owner.Creature, this);
-            await ShinePowerHelper.ApplyShine(Owner.Creature, tempShine, ValueDuration.Turn, Owner.Creature, this);
+            return;
         }
 
-        var turnShine = Owner.Creature.GetPowerAmount<TurnShinePower>();
-        if (turnShine > 0)
+        var turnPower = Owner.Creature.GetPower<TurnShinePower>();
+        if (turnPower != null && turnPower.Amount > 0)
         {
-            await PowerCmd.ModifyAmount(Owner.Creature.GetPower<TurnShinePower>(), -turnShine, Owner.Creature, this);
+            var turnShine = turnPower.Amount;
+            await PowerCmd.ModifyAmount(turnPower, -turnShine, Owner.Creature, this);
             await ShinePowerHelper.ApplyShine(Owner.Creature, turnShine, ValueDuration.Permanent, Owner.Creature, this);
         }
-        await CreatureCmd.GainBlock(Owner.Creature, 4, ValueProp.Move, cardPlay);
+
+        var tempPower = Owner.Creature.GetPower<TempShinePower>();
+        if (tempPower != null && tempPower.Amount > 0)
+        {
+            var tempShine = tempPower.Amount;
+            await PowerCmd.ModifyAmount(tempPower, -tempShine, Owner.Creature, this);
+            await ShinePowerHelper.ApplyShine(Owner.Creature, tempShine, ValueDuration.Turn, Owner.Creature, this);
+        }
     }
 
     protected override void OnUpgrade()

@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Relics.Ruby;
 [Pool(typeof(RubyRelicPool))]
 public class NewBKomachi : RubyRelicModel
 {
-    public override RelicRarity Rarity => RelicRarity.Rare;
+    public override RelicRarity Rarity => RelicRarity.Event;
 
     public override bool HasUponPickupEffect => true;
 

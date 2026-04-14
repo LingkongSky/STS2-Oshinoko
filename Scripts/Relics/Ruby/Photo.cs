@@ -1,9 +1,8 @@
-using System.Collections.Generic;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Players;
-using MegaCrit.Sts2.Core.Entities.RestSite;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.Entities.RestSite;
 using MegaCrit.Sts2.Core.Rooms;
 using Oshinogo.Scripts.Pools.RelicPools;
 using Oshinogo.Scripts.Powers;
@@ -15,7 +14,7 @@ namespace Oshinogo.Scripts.Relics.Ruby
     public class Photo : RubyRelicModel
     {
         // 稀有度
-        public override RelicRarity Rarity => RelicRarity.Common;
+        public override RelicRarity Rarity => RelicRarity.Starter;
 
         public override async Task AfterCombatEnd(CombatRoom room)
         {
