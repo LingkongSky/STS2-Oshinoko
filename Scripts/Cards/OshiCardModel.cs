@@ -8,37 +8,33 @@ public abstract class OshiCardModel : CustomCardModel
     public override string PortraitPath => $"res://Oshinogo/images/cards/{GetType().Name}.png";
     //public override string PortraitPath => $"res://Oshinogo/images/cards/Strike.png";
 
-    private static readonly Dictionary<CardType, Color> _typeFrameColors = new()
-    {
-        { CardType.Attack, new Color(1f, 0.4f, 0.8f) },
-        { CardType.Skill, new Color(1f, 0.4f, 0.8f) },
-        { CardType.Power, new Color(1f, 0.4f, 0.8f) },
-        { CardType.Quest, new Color(1f, 0.4f, 0.8f) },
-    };
 
+    
     public OshiCardModel(int energyCost, CardType type, CardRarity rarity, TargetType targetType, bool shouldShowInCardLibrary) : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
     }
+
+
     public override Material? CreateCustomFrameMaterial
     {
         get
         {
-            Color color = ResolveFrameColorByType();
-            return ShaderUtils.GenerateHsv(color.H, color.S, color.V);
-        }
-    }
+            // 创建一个默认 ShaderMaterial，但不改变任何颜色
+            Shader shader = new Shader();
+            shader.Code = @"
+            shader_type canvas_item;
 
-    protected virtual Color ResolveFrameColorByType()
-    {
-        if (_typeFrameColors.TryGetValue(Type, out var color))
-        {
-            return color;
+            void fragment() {
+                // 直接输出纹理本身颜色，不做任何修改
+                COLOR = texture(TEXTURE, UV);
+            }
+        ";
+
+            ShaderMaterial mat = new ShaderMaterial();
+            mat.Shader = shader;
+
+            return mat;
         }
-        if (Pool is CustomCardPoolModel customPool)
-        {
-            return customPool.ShaderColor;
-        }
-        return new Color(1f, 0.3f, 0.4f);
     }
 
 }
