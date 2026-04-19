@@ -170,5 +170,9 @@
   "OSHINOGO-REACH_YOU_PACE.title": "追上你的步伐",
   "OSHINOGO-REACH_YOU_PACE.description": "造成{Damage:diff()}点伤害，获取等同于造成伤害的[gold]格挡[/gold]。",
   "OSHINOGO-DETERRENCE.title": "威慑",
-  "OSHINOGO-DETERRENCE.description": "对所有敌人造成{Damage:diff()}点伤害，给予{Vulnerable:diff()}层[gold]易伤[/gold]。"
+  "OSHINOGO-DETERRENCE.description": "对所有敌人造成{Damage:diff()}点伤害，给予{Vulnerable:diff()}层[gold]易伤[/gold]。",
+  "OSHINOGO-HOPE.title": "祈愿",
+  "OSHINOGO-HOPE.description": "获得2点[gold]闪耀[/gold]。",
+  "OSHINOGO-UNDER_CURTAIN.title": "幕布之下",
+  "OSHINOGO-UNDER_CURTAIN.description": "获得{Threshold:diff()}点[gold]临时复仇[/gold]。"
 }

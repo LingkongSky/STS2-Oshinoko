@@ -4,8 +4,8 @@ namespace Oshinogo.Scripts.UI;
 
 public partial class OshinogoNMerchantCharacter : NMerchantCharacter
 {
-    public override void _Ready()
-    {
-        return;
-    }
+	public override void _Ready()
+	{
+		return;
+	}
 }

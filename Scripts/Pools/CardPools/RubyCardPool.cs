@@ -22,9 +22,8 @@ namespace Oshinogo.Scripts.Pools.CardPools
         // 如果你使用默认的卡框，可以使用这个颜色来修改卡框的颜色。
         // public override Color ShaderColor => new(1f, 0.4f, 0.8f);
 
-        
 
-        // 如果你使用自定义卡框图片，重写CustomFrame方法并返回你的卡框图片。
+
         public override Texture2D? CustomFrame(CustomCardModel card)
         {
             return card.Type switch

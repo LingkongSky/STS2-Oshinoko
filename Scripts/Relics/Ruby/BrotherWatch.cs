@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Relics.Ruby;
 [Pool(typeof(RubyRelicPool))]
 public class BrotherWatch : RubyRelicModel
 {
-    public override RelicRarity Rarity => RelicRarity.Ancient;
+    public override RelicRarity Rarity => RelicRarity.Shop;
 
     public override async Task AfterDamageReceived(
         PlayerChoiceContext choiceContext,

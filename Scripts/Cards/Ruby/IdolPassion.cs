@@ -1,7 +1,9 @@
+using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
@@ -11,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 获得2(3)点回合闪耀值。
 
 [Pool(typeof(RubyCardPool))]
-public class IdolPassion : OshiCardModel
+public class IdolPassion : OshiCardModel, ITranscendenceCard
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new ShineDymicVar(1m)];
 
@@ -23,6 +25,8 @@ public class IdolPassion : OshiCardModel
     {
         await ShinePowerHelper.ApplyShine(Owner.Creature, DynamicVars[ShineDymicVar.Key].BaseValue, ValueDuration.Turn, Owner.Creature, this);
     }
+
+    public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<Hope>();
 
     protected override void OnUpgrade()
     {

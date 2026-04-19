@@ -16,7 +16,7 @@ public class FindTruth : OshiCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar(2),
+        new CardsVar(1),
     ];
 
     protected override bool IsPlayable => Owner?.Creature != null
