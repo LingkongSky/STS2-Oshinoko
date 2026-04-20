@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 造成6(9)点伤害,给予1(2)层虚弱
 
 [Pool(typeof(RubyCardPool))]
-public class SideGlance : OshiCardModel
+public class SideGlance : RubyCardModel
 {
     private const string WeakKey = "Weak";
 

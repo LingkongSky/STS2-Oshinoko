@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 获得2点复仇值。回合开始时，若你的生命低于一半，获得1点临时复仇值。
 
 [Pool(typeof(RubyCardPool))]
-public class RevealTruth : OshiCardModel
+public class RevealTruth : RubyCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new RevengeDynamicVar(2m)];
 

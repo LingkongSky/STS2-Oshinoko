@@ -13,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 造成8(11)点伤害。从抽牌堆中检索1张闪耀牌置入手牌。
 
 [Pool(typeof(RubyCardPool))]
-public class Rehearsal : OshiCardModel
+public class Rehearsal : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 

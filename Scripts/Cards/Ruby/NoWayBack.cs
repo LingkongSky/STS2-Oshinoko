@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 随机消耗手牌中的1张卡，并获得14(18)点格挡。
 
 [Pool(typeof(RubyCardPool))]
-public class NoWayBack : OshiCardModel
+public class NoWayBack : RubyCardModel
 {
     public NoWayBack() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
     {

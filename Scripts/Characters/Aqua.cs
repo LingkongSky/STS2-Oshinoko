@@ -2,6 +2,7 @@ using BaseLib.Abstracts;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
+using Oshinogo.Scripts.Cards.Aqua;
 using Oshinogo.Scripts.Cards.Ruby;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Pools.PotionPools;
@@ -80,20 +81,20 @@ public class Aqua : PlaceholderCharacterModel
     // 过渡音效。这个不能删。
     //public override string CharacterTransitionSfx => "event:/sfx/ui/wipe_ironclad";
 
-    public override CardPoolModel CardPool => ModelDb.CardPool<RubyCardPool>();
-    public override RelicPoolModel RelicPool => ModelDb.RelicPool<RubyRelicPool>();
-    public override PotionPoolModel PotionPool => ModelDb.PotionPool<RubyPotionPool>();
+    public override CardPoolModel CardPool => ModelDb.CardPool<AquaCardPool>();
+    public override RelicPoolModel RelicPool => ModelDb.RelicPool<AquaRelicPool>();
+    public override PotionPoolModel PotionPool => ModelDb.PotionPool<AquaPotionPool>();
 
     // 初始卡组
     public override IEnumerable<CardModel> StartingDeck => [
-        ModelDb.Card<Strike>(),
-        ModelDb.Card<Strike>(),
-        ModelDb.Card<Strike>(),
-        ModelDb.Card<Strike>(),
-        ModelDb.Card<Defend>(),
-        ModelDb.Card<Defend>(),
-        ModelDb.Card<Defend>(),
-        ModelDb.Card<Defend>(),
+        ModelDb.Card<AquaStrike>(),
+        ModelDb.Card<AquaStrike>(),
+        ModelDb.Card<AquaStrike>(),
+        ModelDb.Card<AquaStrike>(),
+        ModelDb.Card<AquaDefend>(),
+        ModelDb.Card<AquaDefend>(),
+        ModelDb.Card<AquaDefend>(),
+        ModelDb.Card<AquaDefend>(),
         ModelDb.Card<IdolAdmiration>(),
         ModelDb.Card<IdolPassion>()
 

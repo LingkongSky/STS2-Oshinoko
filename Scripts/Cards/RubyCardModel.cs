@@ -2,14 +2,12 @@ using BaseLib.Abstracts;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Cards;
 
-public abstract class OshiCardModel : CustomCardModel
+public abstract class RubyCardModel : CustomCardModel
 {
-    public override string PortraitPath => $"res://Oshinogo/images/cards/{GetType().Name}.png";
-    //public override string PortraitPath => $"res://Oshinogo/images/cards/Strike.png";
+    public override string PortraitPath => $"res://Oshinogo/images/cards/ruby/{GetType().Name}.png";
 
 
-
-    public OshiCardModel(int energyCost, CardType type, CardRarity rarity, TargetType targetType, bool shouldShowInCardLibrary) : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
+    public RubyCardModel(int energyCost, CardType type, CardRarity rarity, TargetType targetType, bool shouldShowInCardLibrary) : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
     }
 

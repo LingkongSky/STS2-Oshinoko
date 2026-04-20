@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 场上每有一名敌人，额外获得4(6)点格挡。
 
 [Pool(typeof(RubyCardPool))]
-public class IdolDisguise : OshiCardModel
+public class IdolDisguise : RubyCardModel
 {
     private const string CalculatedBlockKey = "CalculatedBlock";
 

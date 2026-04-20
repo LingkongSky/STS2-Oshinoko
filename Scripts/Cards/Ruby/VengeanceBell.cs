@@ -14,7 +14,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 失去1点生命，令所有敌人失去10点生命，下回合开始时再失去10点生命。获得2(3)点临时复仇值。
 
 [Pool(typeof(RubyCardPool))]
-public class VengeanceBell : OshiCardModel
+public class VengeanceBell : RubyCardModel
 {
     private const string SelfDamageKey = "SelfDamage";
 

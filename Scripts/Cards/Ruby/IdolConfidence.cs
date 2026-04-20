@@ -13,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 造成14(18)点伤害，本回合获得3点回合闪耀值。
 
 [Pool(typeof(RubyCardPool))]
-public class IdolConfidence : OshiCardModel
+public class IdolConfidence : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 

@@ -14,7 +14,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 造成6(8)点伤害2次，消耗1张牌，并获取等同于该卡费用的临时复仇。
 
 [Pool(typeof(RubyCardPool))]
-public class RecklessCharge : OshiCardModel
+public class RecklessCharge : RubyCardModel
 {
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>

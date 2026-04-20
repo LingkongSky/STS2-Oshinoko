@@ -1,13 +1,13 @@
-using System.Threading.Tasks;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Nodes.Potions;
 
-namespace Oshinogo.Scripts.UI;
+namespace Oshinogo.Scripts.Patchs;
 
 [HarmonyPatch(typeof(NPotionHolder), nameof(NPotionHolder.ShineOnStartOfCombat))]
 public static class NPotionHolderShineSafetyPatch
 {
+    // 修复potion报错
     public static bool Prefix(NPotionHolder __instance, ref Task __result)
     {
         if (!GodotObject.IsInstanceValid(__instance) || __instance.IsQueuedForDeletion())

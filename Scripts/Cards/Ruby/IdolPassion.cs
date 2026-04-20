@@ -13,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 获得2(3)点回合闪耀值。
 
 [Pool(typeof(RubyCardPool))]
-public class IdolPassion : OshiCardModel, ITranscendenceCard
+public class IdolPassion : RubyCardModel, ITranscendenceCard
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new ShineDymicVar(1m)];
 

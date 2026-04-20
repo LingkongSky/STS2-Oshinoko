@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 抽取等同于闪耀数量的卡牌。抽X张卡。
 
 [Pool(typeof(RubyCardPool))]
-public class LoveHardToConvey : OshiCardModel
+public class LoveHardToConvey : RubyCardModel
 {
     private const string CalculatedCardsKey = "CalculatedCards";
 

@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 给予所有敌人1(2)层虚弱和1(2)层易伤。
 
 [Pool(typeof(RubyCardPool))]
-public class Disdain : OshiCardModel
+public class Disdain : RubyCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

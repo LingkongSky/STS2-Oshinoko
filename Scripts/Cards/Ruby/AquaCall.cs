@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 获得1(2)点临时闪耀值。抽1张牌。
 
 [Pool(typeof(RubyCardPool))]
-public class AquaCall : OshiCardModel
+public class AquaCall : RubyCardModel
 {
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new ShineDymicVar(1m)];

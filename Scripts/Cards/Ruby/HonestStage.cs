@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 获得2点闪耀值。若当前闪耀值大于4，获得2点能量。
 
 [Pool(typeof(RubyCardPool))]
-public class HonestStage : OshiCardModel
+public class HonestStage : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 

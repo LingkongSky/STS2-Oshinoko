@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 造成7(10)点伤害，给予1(2)层易伤。
 
 [Pool(typeof(RubyCardPool))]
-public class Tease : OshiCardModel
+public class Tease : RubyCardModel
 {
     private const string VulnerableKey = "Vulnerable";
 

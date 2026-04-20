@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: ，获得1(2)层人工制品，战斗结束后随机升级一张卡牌。
 
 [Pool(typeof(RubyCardPool))]
-public class ChannelSubscribe : OshiCardModel
+public class ChannelSubscribe : RubyCardModel
 {
     private const string ArtifactKey = "ArtifactPower";
     private bool _playedThisCombat;

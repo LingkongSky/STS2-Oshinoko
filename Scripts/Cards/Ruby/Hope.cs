@@ -9,7 +9,7 @@ namespace Oshinogo.Scripts.Cards.Ruby
 
     [Pool(typeof(RubyCardPool))]
     // 获得2点闪耀
-    public class Hope : OshiCardModel
+    public class Hope : RubyCardModel
     {
         public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Innate];
 

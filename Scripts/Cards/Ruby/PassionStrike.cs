@@ -14,7 +14,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 
 
 [Pool(typeof(RubyCardPool))]
-public class PassionStrike : OshiCardModel
+public class PassionStrike : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 

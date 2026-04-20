@@ -13,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 获得8(11)点格挡。若本回合你已失去过生命，获得1点临时复仇值。
 
 [Pool(typeof(RubyCardPool))]
-public class Deceive : OshiCardModel
+public class Deceive : RubyCardModel
 {
     public override bool GainsBlock => true;
 

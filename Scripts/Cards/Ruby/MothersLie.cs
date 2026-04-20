@@ -10,7 +10,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 获得3点回合复仇值。若本回合你每次失去生命，令所有敌人失去5点生命。
 
 [Pool(typeof(RubyCardPool))]
-public class MothersLie : OshiCardModel
+public class MothersLie : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 

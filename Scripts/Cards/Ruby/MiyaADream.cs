@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 获得2(3)点临时闪耀值。
 
 [Pool(typeof(RubyCardPool))]
-public class MiyaADream : OshiCardModel
+public class MiyaADream : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 

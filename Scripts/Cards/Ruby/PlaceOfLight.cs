@@ -14,7 +14,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 每有1点闪耀值，该卡的费用减少1，对敌人造成32(48)点伤害。若费用变为0，获得1点能量。
 
 [Pool(typeof(RubyCardPool))]
-public class PlaceOfLight : OshiCardModel
+public class PlaceOfLight : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 

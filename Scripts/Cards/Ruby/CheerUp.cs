@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 获得1点费用。
 
 [Pool(typeof(RubyCardPool))]
-public class CheerUp : OshiCardModel
+public class CheerUp : RubyCardModel
 {
     private const string CalculatedEnergyKey = "CalculatedEnergy";
 

@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 造成6(9)点伤害。
 
 [Pool(typeof(RubyCardPool))]
-public class Strike : OshiCardModel
+public class RubyStrike : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
@@ -24,7 +24,7 @@ public class Strike : OshiCardModel
 
     protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Strike };
 
-    public Strike() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy, true)
+    public RubyStrike() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy, true)
     {
     }
 

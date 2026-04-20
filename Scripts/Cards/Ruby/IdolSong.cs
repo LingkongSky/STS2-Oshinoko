@@ -14,7 +14,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 对所有敌人造成14点伤害，获得2点回合闪耀
 
 [Pool(typeof(RubyCardPool))]
-public class IdolSong : OshiCardModel
+public class IdolSong : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 

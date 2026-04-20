@@ -13,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 对所有敌人造成3(4)点伤害2次。获得1点临时闪耀值。
 
 [Pool(typeof(RubyCardPool))]
-public class RadiantBurst : OshiCardModel
+public class RadiantBurst : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 

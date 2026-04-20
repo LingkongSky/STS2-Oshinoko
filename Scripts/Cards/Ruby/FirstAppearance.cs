@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 获得12(16)点格挡，在卡组里增加1张眩晕。
 
 [Pool(typeof(RubyCardPool))]
-public class FirstAppearance : OshiCardModel
+public class FirstAppearance : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine, CardKeyword.Exhaust];
 

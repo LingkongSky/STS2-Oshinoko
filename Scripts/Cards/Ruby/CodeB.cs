@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 对所有敌人造成6(8)点伤害3次，自己获得6(8)点防御3次。
 
 [Pool(typeof(RubyCardPool))]
-public class CodeB : OshiCardModel
+public class CodeB : RubyCardModel
 {
     private const string CalculatedBlockKey = "CalculatedBlock";
 

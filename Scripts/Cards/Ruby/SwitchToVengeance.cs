@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 失去2点生命，获得20点格挡。若本回合你失去过生命，抽3张牌。
 
 [Pool(typeof(RubyCardPool))]
-public class SwitchToVengeance : OshiCardModel
+public class SwitchToVengeance : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 

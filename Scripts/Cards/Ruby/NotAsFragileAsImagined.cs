@@ -10,7 +10,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 不再受到脆弱影响。
 
 [Pool(typeof(RubyCardPool))]
-public class NotAsFragileAsImagined : OshiCardModel
+public class NotAsFragileAsImagined : RubyCardModel
 {
     public NotAsFragileAsImagined() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
     {

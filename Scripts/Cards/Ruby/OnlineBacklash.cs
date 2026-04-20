@@ -13,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 失去1点生命，获得2(3)点临时复仇值。抽1张牌。
 
 [Pool(typeof(RubyCardPool))]
-public class OnlineBacklash : OshiCardModel
+public class OnlineBacklash : RubyCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new RevengeDynamicVar(2m)];
 

@@ -13,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 获得7(10)点防御，获得2点临时闪耀值。
 
 [Pool(typeof(RubyCardPool))]
-public class PassionDefense : OshiCardModel
+public class PassionDefense : RubyCardModel
 {
     private const string CalculatedBlockKey = "CalculatedBlock";
 

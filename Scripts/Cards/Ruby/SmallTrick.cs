@@ -14,7 +14,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 获得6(9)点格挡。在弃牌堆中选择一张置入抽牌堆顶部。
 
 [Pool(typeof(RubyCardPool))]
-public class SmallTrick : OshiCardModel
+public class SmallTrick : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 

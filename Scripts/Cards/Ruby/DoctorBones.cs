@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 将你的闪耀值全部转换为复仇值。获得等量能量，并失去2点生命。
 
 [Pool(typeof(RubyCardPool))]
-public class DoctorBones : OshiCardModel
+public class DoctorBones : RubyCardModel
 {
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];

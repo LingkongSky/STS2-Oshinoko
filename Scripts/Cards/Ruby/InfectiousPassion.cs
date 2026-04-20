@@ -13,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 造成6(8)点伤害，如果这张卡牌造成了9点伤害以上，则获得2点临时闪耀值。
 
 [Pool(typeof(RubyCardPool))]
-public class InfectiousPassion : OshiCardModel
+public class InfectiousPassion : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 

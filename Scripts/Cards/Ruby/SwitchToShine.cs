@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 抽4张牌,获得8点格挡。
 
 [Pool(typeof(RubyCardPool))]
-public class SwitchToShine : OshiCardModel
+public class SwitchToShine : RubyCardModel
 {
     private const string CalculatedBlockKey = "CalculatedBlock";
 

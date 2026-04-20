@@ -13,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 失去1点生命，获得12(15)点格挡，获得1点临时复仇值。
 
 [Pool(typeof(RubyCardPool))]
-public class ColdSmile : OshiCardModel
+public class ColdSmile : RubyCardModel
 {
     public override bool GainsBlock => true;
 

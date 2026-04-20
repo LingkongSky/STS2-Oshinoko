@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 获得2点闪耀值，并获得15点格挡。若本回合你使用过闪耀值，获得1点能量。
 
 [Pool(typeof(RubyCardPool))]
-public class NeverGiveUp : OshiCardModel
+public class NeverGiveUp : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 

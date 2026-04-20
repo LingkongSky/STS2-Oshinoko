@@ -9,7 +9,7 @@ namespace Oshinogo.Scripts.Cards.Ruby
 {
     [Pool(typeof(RubyCardPool))]
     // 获得4(5)点临时复仇
-    public class UnderCurtain : OshiCardModel
+    public class UnderCurtain : RubyCardModel
     {
         public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
 

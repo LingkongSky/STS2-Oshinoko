@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 namespace Oshinogo.Scripts.Cards.Other;
 
 [Pool(typeof(StatusCardPool))]
-public class Stunned : OshiCardModel
+public class Stunned : RubyCardModel
 {
     public override int MaxUpgradeLevel => 0;
 

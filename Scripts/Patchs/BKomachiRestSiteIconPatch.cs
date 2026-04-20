@@ -4,8 +4,9 @@ using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Nodes.RestSite;
 using Oshinogo.Scripts.RestSite;
 
-namespace Oshinogo.Scripts.UI;
+namespace Oshinogo.Scripts.Patchs;
 
+// 篝火选项Patch
 [HarmonyPatch(typeof(NRestSiteButton), "Reload")]
 public static class BKomachiRestSiteIconPatch
 {

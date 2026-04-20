@@ -10,7 +10,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 将临时闪耀转换为回合闪耀，将回合闪耀转换为永久闪耀。
 
 [Pool(typeof(RubyCardPool))]
-public class FirmBelief : OshiCardModel
+public class FirmBelief : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 

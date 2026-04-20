@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 查看抽牌堆上的5张牌，选择1张置于抽牌堆顶，下一回合额外获得1点能量和回合闪耀。
 
 [Pool(typeof(RubyCardPool))]
-public class CarefulPlan : OshiCardModel
+public class CarefulPlan : RubyCardModel
 {
     public CarefulPlan() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {

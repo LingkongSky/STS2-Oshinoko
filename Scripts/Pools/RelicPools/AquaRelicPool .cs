@@ -2,7 +2,7 @@ using BaseLib.Abstracts;
 
 namespace Oshinogo.Scripts.Pools.RelicPools
 {
-    public class RubyRelicPool : CustomRelicPoolModel
+    public class AquaRelicPool : CustomRelicPoolModel
     {
         // 描述中使用的能量图标。大小为24x24。
         public override string? TextEnergyIconPath => "res://Oshinogo/images/ui/ruby_energy.png";

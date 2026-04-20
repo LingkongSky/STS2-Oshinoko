@@ -14,7 +14,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 仅当闪耀值大于3时才能打出。造成24(34)点伤害，给予2层易伤。
 
 [Pool(typeof(RubyCardPool))]
-public class FinalPose : OshiCardModel
+public class FinalPose : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain, OshinogoKeywords.Shine];
 

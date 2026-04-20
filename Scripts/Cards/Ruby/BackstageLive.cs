@@ -13,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 失去2点生命，获得2点复仇值与12点格挡。
 
 [Pool(typeof(RubyCardPool))]
-public class BackstageLive : OshiCardModel
+public class BackstageLive : RubyCardModel
 {
     public override bool GainsBlock => true;
 

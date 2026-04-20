@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 获得本场获得过的闪耀值与复仇值总和的格挡。
 
 [Pool(typeof(RubyCardPool))]
-public class DailyAccumulation : OshiCardModel
+public class DailyAccumulation : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 

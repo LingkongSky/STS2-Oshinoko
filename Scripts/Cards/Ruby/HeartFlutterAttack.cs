@@ -13,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 造成8(10)点伤害。若造成的伤害大于12(15)，返还1(2)点费用。
 
 [Pool(typeof(RubyCardPool))]
-public class HeartFlutterAttack : OshiCardModel
+public class HeartFlutterAttack : RubyCardModel
 {
     private const string ThresholdKey = "Threshold";
     private const string RefundEnergyKey = "RefundEnergy";

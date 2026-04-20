@@ -10,7 +10,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 每回合第一次打出技能牌时，获得1点临时闪耀值。若这是本回合第3张技能牌，改为获得1点回合闪耀值。
 
 [Pool(typeof(RubyCardPool))]
-public class LastMinuteStudy : OshiCardModel
+public class LastMinuteStudy : RubyCardModel
 {
     public LastMinuteStudy() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
     {

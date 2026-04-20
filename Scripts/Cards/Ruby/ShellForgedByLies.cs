@@ -10,7 +10,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 回合结束时对所有敌人造成复仇值*4的伤害。若本回合你失去过生命，伤害+8。
 
 [Pool(typeof(RubyCardPool))]
-public class ShellForgedByLies : OshiCardModel
+public class ShellForgedByLies : RubyCardModel
 {
     public ShellForgedByLies() : base(2, CardType.Power, CardRarity.Rare, TargetType.AllEnemies, true)
     {

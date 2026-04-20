@@ -13,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 获得14(18)点格挡，本回合反弹所有被格挡的伤害。
 
 [Pool(typeof(RubyCardPool))]
-public class MirrorStage : OshiCardModel
+public class MirrorStage : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 

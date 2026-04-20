@@ -13,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 失去2点生命，去除所有敌人的人工制品，并添加3层易伤和虚弱。
 
 [Pool(typeof(RubyCardPool))]
-public class SpikesOfLies : OshiCardModel
+public class SpikesOfLies : RubyCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

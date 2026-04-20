@@ -13,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 
 
 [Pool(typeof(RubyCardPool))]
-public class ShadowEcho : OshiCardModel
+public class ShadowEcho : RubyCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new RevengeDynamicVar(2m)];
 

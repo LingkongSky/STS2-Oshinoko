@@ -9,7 +9,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 
 [Pool(typeof(RubyCardPool))]
 // 描述: 获得2点闪耀。获得2点能量，抽2张牌。
-public class Mother : OshiCardModel
+public class Mother : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust, CardKeyword.Ethereal];
 

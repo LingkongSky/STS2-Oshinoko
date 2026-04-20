@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 每回合第一次赋予虚弱或易伤时，抽1(2)张牌。
 
 [Pool(typeof(RubyCardPool))]
-public class RumorNetwork : OshiCardModel
+public class RumorNetwork : RubyCardModel
 {
 
     private const string ThresholdKey = "Threshold";

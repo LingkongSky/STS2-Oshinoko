@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 下回合获得无实体，且不能出牌。下回合结束后回复5(7)点生命。
 
 [Pool(typeof(RubyCardPool))]
-public class ActCute : OshiCardModel
+public class ActCute : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 

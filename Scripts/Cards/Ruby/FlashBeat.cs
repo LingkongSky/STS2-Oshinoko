@@ -15,7 +15,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 造成7(10)点伤害。本回合若你使用过闪耀值，额外造成7点伤害。
 
 [Pool(typeof(RubyCardPool))]
-public class FlashBeat : OshiCardModel
+public class FlashBeat : RubyCardModel
 {
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];

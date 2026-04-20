@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 每失去1点生命，获得2(3)点格挡。
 
 [Pool(typeof(RubyCardPool))]
-public class StageArmor : OshiCardModel
+public class StageArmor : RubyCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("BlockPerHp", 2)];
 

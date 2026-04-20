@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 每使用6(5)点闪耀值，获得1点能量。
 
 [Pool(typeof(RubyCardPool))]
-public class ChasingLight : OshiCardModel
+public class ChasingLight : RubyCardModel
 {
     private const string ThresholdKey = "Threshold";
 

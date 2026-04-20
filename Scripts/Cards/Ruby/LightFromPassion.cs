@@ -10,7 +10,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 回合结束时获取等同于闪耀值*4的格挡。
 
 [Pool(typeof(RubyCardPool))]
-public class LightFromPassion : OshiCardModel
+public class LightFromPassion : RubyCardModel
 {
     public LightFromPassion() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true)
     {

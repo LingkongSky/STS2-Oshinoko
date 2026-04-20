@@ -14,7 +14,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 仅当闪耀值大于6时才能打出。造成35(45)点伤害。下回合获得2点能量。
 
 [Pool(typeof(RubyCardPool))]
-public class StarfallOath : OshiCardModel
+public class StarfallOath : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 

@@ -75,6 +75,6 @@ texture = ExtResource("2")
 autoplay = "idle"
 
 [node name="RubyIcon" type="Sprite2D" parent="StageRoot"]
-position = Vector2(325, 154)
+position = Vector2(396, 158.00002)
 scale = Vector2(1.295, 1.295)
 texture = ExtResource("6_hbcuj")

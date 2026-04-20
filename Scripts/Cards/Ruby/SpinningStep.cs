@@ -14,7 +14,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 随机对敌人造成3(4)点伤害3次。本回合若你打出过2张闪耀牌，改为4次。
 
 [Pool(typeof(RubyCardPool))]
-public class SpinningStep : OshiCardModel
+public class SpinningStep : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 

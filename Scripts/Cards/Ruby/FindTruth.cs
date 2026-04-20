@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 
 [Pool(typeof(RubyCardPool))]
 // 从消耗牌堆中选择1(2)张牌加入手牌，至少需要3点闪耀才能打出
-public class FindTruth : OshiCardModel
+public class FindTruth : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 

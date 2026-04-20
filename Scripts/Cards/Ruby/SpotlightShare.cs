@@ -10,7 +10,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 所有队友获得1点能量并抽1张牌。
 
 [Pool(typeof(RubyCardPool))]
-public class SpotlightShare : OshiCardModel
+public class SpotlightShare : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 

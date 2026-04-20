@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 将你的复仇值全部转换为闪耀值。抽等量卡牌，并获得20点格挡。
 
 [Pool(typeof(RubyCardPool))]
-public class SiblingsReunited : OshiCardModel
+public class SiblingsReunited : RubyCardModel
 {
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];

@@ -13,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 失去2点血量，获得3点复仇值。每回合第一次失去生命时，获得8点格挡。
 
 [Pool(typeof(RubyCardPool))]
-public class DieAlone : OshiCardModel
+public class DieAlone : RubyCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new RevengeDynamicVar(3m)];
 

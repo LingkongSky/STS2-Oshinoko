@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 
 // 描述: 造成9(13)点伤害，抽1张牌。
 [Pool(typeof(RubyCardPool))]
-public class IdolAdmiration : OshiCardModel
+public class IdolAdmiration : RubyCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

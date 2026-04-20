@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 去除所有队友的负面效果。下回合你与所有队友获得1(2)点能量。
 
 [Pool(typeof(RubyCardPool))]
-public class BurnedLetter : OshiCardModel
+public class BurnedLetter : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 

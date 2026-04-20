@@ -14,7 +14,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 对所有敌人造成8(10)点伤害。若本回合抽过牌，则改为造成2次。
 
 [Pool(typeof(RubyCardPool))]
-public class ScarletEncore : OshiCardModel
+public class ScarletEncore : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 

@@ -10,7 +10,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 获得闪耀值时，获得3点格挡。获得复仇值时，失去1点生命并获得8点格挡.
 
 [Pool(typeof(RubyCardPool))]
-public class RubyLegacy : OshiCardModel
+public class RubyLegacy : RubyCardModel
 {
     public RubyLegacy() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true)
     {

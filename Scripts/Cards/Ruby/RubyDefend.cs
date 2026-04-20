@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 获得6(9)点格挡。
 
 [Pool(typeof(RubyCardPool))]
-public class Defend : OshiCardModel
+public class RubyDefend : RubyCardModel
 {
     private const string CalculatedBlockKey = "CalculatedBlock";
 
@@ -28,7 +28,7 @@ public class Defend : OshiCardModel
         ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),
         ];
 
-    public Defend() : base(1, CardType.Skill, CardRarity.Basic, TargetType.Self, true)
+    public RubyDefend() : base(1, CardType.Skill, CardRarity.Basic, TargetType.Self, true)
     {
     }
 

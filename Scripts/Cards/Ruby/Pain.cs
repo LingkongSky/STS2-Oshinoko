@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 // 描述: 所有敌人失去9(13)点生命值。
 
 [Pool(typeof(RubyCardPool))]
-public class Pain : OshiCardModel
+public class Pain : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Ethereal];
 
