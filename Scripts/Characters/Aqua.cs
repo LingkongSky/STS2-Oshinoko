@@ -8,61 +8,61 @@ using Oshinogo.Scripts.Pools.PotionPools;
 using Oshinogo.Scripts.Pools.RelicPools;
 using Oshinogo.Scripts.Relics.Ruby;
 
-public class Ruby : PlaceholderCharacterModel
+public class Aqua : PlaceholderCharacterModel
 {
 
     // 角色名称颜色
-    public override Color NameColor => new(1f, 0.4f, 0.8f);
+    public override Color NameColor => new(0.55f, 0.6f, 0.95f);
     // 能量图标轮廓颜色
-    public override Color EnergyLabelOutlineColor => new(1f, 0.4f, 0.8f);
+    public override Color EnergyLabelOutlineColor => new(0.55f, 0.6f, 0.95f);
 
     // 人物性别（男女中立）
-    public override CharacterGender Gender => CharacterGender.Feminine;
+    public override CharacterGender Gender => CharacterGender.Masculine;
 
     // 初始血量
-    public override int StartingHp => 75;
+    public override int StartingHp => 85;
 
     // 人物模型tscn路径。要自定义见下。
-    public override string CustomVisualPath => "res://Oshinogo/scenes/character/ruby.tscn";
+    public override string CustomVisualPath => "res://Oshinogo/scenes/character/aqua.tscn";
     // 卡牌拖尾场景。
-    public override string CustomTrailPath => "res://Oshinogo/scenes/vfx/card_trail_ruby.tscn";
+    public override string CustomTrailPath => "res://Oshinogo/scenes/vfx/card_trail_aqua.tscn";
 
     // IconOutlineTexturePath
-    public const string IconOutlineTexturePath = "res://Oshinogo/images/ui/ruby_outline.png";
+    public const string IconOutlineTexturePath = "res://Oshinogo/images/ui/aqua_outline.png";
 
     // 人物头像路径。
-    public override string CustomIconTexturePath => "res://Oshinogo/images/ui/ruby.png";
+    public override string CustomIconTexturePath => "res://Oshinogo/images/ui/aqua.png";
 
     // 人物头像2号。
-    public override string CustomIconPath => "res://Oshinogo/scenes/ui/ruby_icon.tscn";
+    public override string CustomIconPath => "res://Oshinogo/scenes/ui/aqua_icon.tscn";
 
     // 能量表盘tscn路径。要自定义见下。
-    public override string CustomEnergyCounterPath => "res://Oshinogo/scenes/ui/ruby_energy_counter.tscn";
+    public override string CustomEnergyCounterPath => "res://Oshinogo/scenes/ui/aqua_energy_counter.tscn";
 
 
     // 篝火休息场景。
-    public override string CustomRestSiteAnimPath => "res://Oshinogo/scenes/rest_site/characters/ruby_rest_site.tscn";
+    public override string CustomRestSiteAnimPath => "res://Oshinogo/scenes/rest_site/characters/aqua_rest_site.tscn";
 
 
     // 商店人物场景。
-    public override string CustomMerchantAnimPath => "res://Oshinogo/scenes/merchant/characters/ruby_merchant.tscn";
+    public override string CustomMerchantAnimPath => "res://Oshinogo/scenes/merchant/characters/aqua_merchant.tscn";
 
     // 多人模式-手指。
-    public override string CustomArmPointingTexturePath => "res://Oshinogo/images/ui/hands/multiplayer_hand_ruby_point.png";
+    public override string CustomArmPointingTexturePath => "res://Oshinogo/images/ui/hands/multiplayer_hand_aqua_point.png";
     // 多人模式剪刀石头布-石头。
-    public override string CustomArmRockTexturePath => "res://Oshinogo/images/ui/hands/multiplayer_hand_ruby_rock.png";
+    public override string CustomArmRockTexturePath => "res://Oshinogo/images/ui/hands/multiplayer_hand_aqua_rock.png";
     // 多人模式剪刀石头布-布。
-    public override string CustomArmPaperTexturePath => "res://Oshinogo/images/ui/hands/multiplayer_hand_ruby_paper.png";
+    public override string CustomArmPaperTexturePath => "res://Oshinogo/images/ui/hands/multiplayer_hand_aqua_paper.png";
     // 多人模式剪刀石头布-剪刀。
-    public override string CustomArmScissorsTexturePath => "res://Oshinogo/images/ui/hands/multiplayer_hand_ruby_scissors.png";
+    public override string CustomArmScissorsTexturePath => "res://Oshinogo/images/ui/hands/multiplayer_hand_aqua_scissors.png";
 
     // 人物选择背景。
-    public override string CustomCharacterSelectBg => "res://Oshinogo/scenes/ui/ruby_background.tscn";
+    public override string CustomCharacterSelectBg => "res://Oshinogo/scenes/ui/aqua_background.tscn";
     // 人物选择图标。
-    public override string CustomCharacterSelectIconPath => "res://Oshinogo/images/ui/ruby_icon.png";
+    public override string CustomCharacterSelectIconPath => "res://Oshinogo/images/ui/aqua_icon.png";
 
     // 人物选择图标-锁定状态。
-    public override string CustomCharacterSelectLockedIconPath => "res://Oshinogo/images/packed/character_select/char_select_ruby_locked.png";
+    public override string CustomCharacterSelectLockedIconPath => "res://Oshinogo/images/packed/character_select/char_select_aqua_locked.png";
 
 
     // 人物选择过渡动画。

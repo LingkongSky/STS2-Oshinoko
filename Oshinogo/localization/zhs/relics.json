@@ -1,9 +1,9 @@
 ﻿{
   "OSHINOGO-PHOTO.title": "相片",
-  "OSHINOGO-PHOTO.description": "每场战斗结束时，为露比回复3点生命。每有1点闪耀/复仇，额外回复2/4点生命。",
+  "OSHINOGO-PHOTO.description": "每场战斗结束时，为露比回复3点生命。每有1点闪耀/复仇，额外回复1/3点生命。",
   "OSHINOGO-PHOTO.flavor": "露比的珍藏相片。",
   "OSHINOGO-FAMILY_PHOTO.title": "家庭相片",
-  "OSHINOGO-FAMILY_PHOTO.description": "每场战斗结束时，为露比回复5点生命。每有1点闪耀/复仇，额外回复3/5点生命。",
+  "OSHINOGO-FAMILY_PHOTO.description": "每场战斗结束时，为露比回复5点生命。每有1点闪耀/复仇，额外回复3/4点生命。",
   "OSHINOGO-FAMILY_PHOTO.flavor": "露比的家庭相片。",
   "OSHINOGO-KANA_ARIMA.title": "有马加奈的指导",
   "OSHINOGO-KANA_ARIMA.description": "每场战斗开始时获得1点闪耀值。",

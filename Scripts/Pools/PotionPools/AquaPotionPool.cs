@@ -1,8 +1,8 @@
 using BaseLib.Abstracts;
 
-namespace Oshinogo.Scripts.Pools.RelicPools
+namespace Oshinogo.Scripts.Pools.PotionPools
 {
-    public class AAquaRelicPool : CustomRelicPoolModel
+    public class AquaPotionPool : CustomPotionPoolModel
     {
         // 描述中使用的能量图标。大小为24x24。
         public override string? TextEnergyIconPath => "res://Oshinogo/images/powers/aqua_energy.png";

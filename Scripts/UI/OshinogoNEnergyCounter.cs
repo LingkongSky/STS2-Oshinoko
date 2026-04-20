@@ -4,4 +4,5 @@ namespace Oshinogo.Scripts.UI;
 
 public partial class OshinogoNEnergyCounter : NEnergyCounter
 {
+
 }

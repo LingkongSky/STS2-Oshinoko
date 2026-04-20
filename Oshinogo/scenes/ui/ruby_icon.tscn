@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://yas7wt2jldna" path="res://Oshinogo/images/ui/ruby_icon.png" id="1_c48nt"]
 
-[node name="IroncladIcon" type="TextureRect"]
+[node name="RubyIcon" type="TextureRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

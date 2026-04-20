@@ -1,3 +1,4 @@
+using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -7,12 +8,12 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 namespace Oshinogo.Scripts.Cards.Colorless;
 
 // 描述: 洗去自身的所有Buff，回复10点生命。
-
-
 [Pool(typeof(ColorlessCardPool))]
-public class Rebirth : OshiCardModel
+public class Rebirth : CustomCardModel
 {
-    public Rebirth() : base(2, CardType.Skill, CardRarity.Event, TargetType.Self, true)
+    public override string PortraitPath => $"res://Oshinogo/images/cards/{GetType().Name}.png";
+
+    public Rebirth() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {
     }
 
@@ -21,7 +22,7 @@ public class Rebirth : OshiCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var buffs = Owner.Creature.Powers.Where(p => p.Type == MegaCrit.Sts2.Core.Entities.Powers.PowerType.Buff).ToList();
+        var buffs = Owner.Creature.Powers.ToList();
         foreach (var buff in buffs)
         {
             await PowerCmd.Remove(buff);

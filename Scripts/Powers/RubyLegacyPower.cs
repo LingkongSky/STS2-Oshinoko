@@ -15,9 +15,6 @@ public class RubyLegacyPower : CustomRubyPower
 
     private int _lastRound;
     private CombatSide _lastSide;
-    private bool _gainedShineThisTurn;
-    private bool _gainedRevengeThisTurn;
-    private bool _drewThisTurn;
     private bool _firstShineTriggeredThisTurn;
 
     public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
@@ -42,15 +39,11 @@ public class RubyLegacyPower : CustomRubyPower
         {
             _lastRound = combatState.RoundNumber;
             _lastSide = combatState.CurrentSide;
-            _gainedShineThisTurn = false;
-            _gainedRevengeThisTurn = false;
-            _drewThisTurn = false;
             _firstShineTriggeredThisTurn = false;
         }
 
         if (power is ShinePower or TurnShinePower or TempShinePower)
         {
-            _gainedShineThisTurn = true;
             await CreatureCmd.GainBlock(Owner, 3, ValueProp.Move, null);
 
             if (!_firstShineTriggeredThisTurn)
@@ -61,7 +54,6 @@ public class RubyLegacyPower : CustomRubyPower
         }
         else if (power is RevengePower or TurnRevengePower or TempRevengePower)
         {
-            _gainedRevengeThisTurn = true;
             await CreatureCmd.Damage(
                 new BlockingPlayerChoiceContext(),
                 Owner,

@@ -8,7 +8,7 @@ using Oshinogo.Scripts.Pools.RelicPools;
 using Oshinogo.Scripts.Powers;
 using Oshinogo.Scripts.RestSite;
 
-// 每场战斗结束时，为露比回复5+3x闪耀+5x复仇的血量。
+// 每场战斗结束时，为露比回复5+3x闪耀+4x复仇的血量。
 namespace Oshinogo.Scripts.Relics.Ruby
 {
     [Pool(typeof(RubyRelicPool))]
@@ -25,7 +25,7 @@ namespace Oshinogo.Scripts.Relics.Ruby
 
             var totalShine = ShinePowerHelper.GetTotalShine(Owner.Creature);
             var totalRevenge = RevengePowerHelper.GetTotalRevenge(Owner.Creature);
-            var healAmount = 5 + (totalShine * 3) + (totalRevenge * 5);
+            var healAmount = 5 + (totalShine * 3) + (totalRevenge * 4);
             if (healAmount <= 0)
             {
                 return;

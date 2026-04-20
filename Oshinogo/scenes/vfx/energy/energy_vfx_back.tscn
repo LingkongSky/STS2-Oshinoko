@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkp3jmhbo5axx"]
+
+[ext_resource type="Script" uid="uid://cts1as1lsnelt" path="res://Scripts/UI/vfx/OshinogoNParticlesContainer.cs" id="1_qt2ou"]
+
+[node name="necrobinder_energy_vfx_back" type="Node2D"]
+script = ExtResource("1_qt2ou")

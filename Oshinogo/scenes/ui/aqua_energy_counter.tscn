@@ -1,34 +1,34 @@
-[gd_scene load_steps=13 format=3 uid="uid://dprly68r2uxus"]
+[gd_scene load_steps=13 format=3 uid="uid://dvqbd0kt4lq3t"]
 
-[ext_resource type="Script" uid="uid://cj3us3tgs1ghk" path="res://Scripts/UI/OshinogoNEnergyCounter.cs" id="1_d5qw8"]
-[ext_resource type="PackedScene" uid="uid://dkp3jmhbo5axx" path="res://Oshinogo/scenes/vfx/energy/energy_vfx_back.tscn" id="2_xscxb"]
-[ext_resource type="Texture2D" uid="uid://mc2muy24ibj8" path="res://Oshinogo/images/ui/necrobinder_orb_layer_ruby_1.png" id="3_7d3f0"]
-[ext_resource type="Texture2D" uid="uid://bugilbn806jc3" path="res://Oshinogo/images/ui/necrobinder_orb_layer_ruby_2.png" id="4_pme8s"]
-[ext_resource type="Texture2D" uid="uid://r4p0thtwgl4y" path="res://Oshinogo/images/ui/necrobinder_orb_layer_ruby_3.png" id="5_eoken"]
-[ext_resource type="PackedScene" uid="uid://vc0rip4kaglo" path="res://Oshinogo/scenes/vfx/energy/energy_vfx_front.tscn" id="6_5byy2"]
-[ext_resource type="FontVariation" uid="uid://bylh0p8qhvsaa" path="res://Oshinogo/themes/kreon_bold_shared.tres" id="7_a6ex1"]
-[ext_resource type="Script" uid="uid://b0ch4kk11ev6y" path="res://Scripts/UI/OshinogoMegaLabel.cs" id="8_wlho4"]
-[ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://Oshinogo/themes/canvas_item_material_additive_shared.tres" id="9_eoken"]
-[ext_resource type="Texture2D" uid="uid://c7bobi572nyh8" path="res://Oshinogo/images/ui/vfx/sparkle.png" id="12_wlho4"]
+[ext_resource type="Script" uid="uid://cj3us3tgs1ghk" path="res://Scripts/UI/OshinogoNEnergyCounter.cs" id="1_p0y73"]
+[ext_resource type="PackedScene" uid="uid://dkp3jmhbo5axx" path="res://Oshinogo/scenes/vfx/energy/energy_vfx_back.tscn" id="2_dgs5d"]
+[ext_resource type="Texture2D" uid="uid://b3v2s3cu3fklt" path="res://Oshinogo/images/ui/necrobinder_orb_layer_aqua_1.png" id="3_p0y73"]
+[ext_resource type="Texture2D" uid="uid://7pydntlxpyc0" path="res://Oshinogo/images/ui/necrobinder_orb_layer_aqua_2.png" id="4_dgs5d"]
+[ext_resource type="Texture2D" uid="uid://c0qprwuwgnr21" path="res://Oshinogo/images/ui/necrobinder_orb_layer_aqua_3.png" id="5_kdmla"]
+[ext_resource type="PackedScene" uid="uid://vc0rip4kaglo" path="res://Oshinogo/scenes/vfx/energy/energy_vfx_front.tscn" id="6_rjiak"]
+[ext_resource type="FontVariation" uid="uid://bylh0p8qhvsaa" path="res://Oshinogo/themes/kreon_bold_shared.tres" id="7_kd5u8"]
+[ext_resource type="Script" uid="uid://b0ch4kk11ev6y" path="res://Scripts/UI/OshinogoMegaLabel.cs" id="8_b0fn1"]
+[ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://Oshinogo/themes/canvas_item_material_additive_shared.tres" id="9_68bt2"]
+[ext_resource type="Texture2D" uid="uid://c7bobi572nyh8" path="res://Oshinogo/images/ui/vfx/sparkle.png" id="10_l3btd"]
 
 [sub_resource type="FontVariation" id="FontVariation_x0k5t"]
-base_font = ExtResource("7_a6ex1")
+base_font = ExtResource("7_kd5u8")
 spacing_glyph = 2
 
 [sub_resource type="Gradient" id="Gradient_7d3f0"]
 offsets = PackedFloat32Array(0, 0.35, 0.7, 1)
 colors = PackedColorArray(1, 0.917647, 0.964706, 0, 1, 0.901961, 0.956863, 1, 1, 0.956863, 0.988235, 1, 1, 0.917647, 0.964706, 0)
 
-[node name="RubyEnergyCounter" type="Control"]
+[node name="AquaEnergyCounter" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 128.0
 offset_bottom = 128.0
 pivot_offset = Vector2(64, 64)
-script = ExtResource("1_d5qw8")
+script = ExtResource("1_p0y73")
 metadata/_edit_lock_ = true
 
-[node name="EnergyVfxBack" parent="." instance=ExtResource("2_xscxb")]
+[node name="EnergyVfxBack" parent="." instance=ExtResource("2_dgs5d")]
 unique_name_in_owner = true
 position = Vector2(64, 64)
 
@@ -50,7 +50,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("3_7d3f0")
+texture = ExtResource("3_p0y73")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_lock_ = true
@@ -74,7 +74,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(64, 64)
 mouse_filter = 2
-texture = ExtResource("4_pme8s")
+texture = ExtResource("4_dgs5d")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_lock_ = true
@@ -87,12 +87,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("5_eoken")
+texture = ExtResource("5_kdmla")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_lock_ = true
 
-[node name="EnergyVfxFront" parent="." instance=ExtResource("6_5byy2")]
+[node name="EnergyVfxFront" parent="." instance=ExtResource("6_rjiak")]
 unique_name_in_owner = true
 position = Vector2(64, 64)
 
@@ -109,7 +109,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.964706, 0.886275, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.188235)
-theme_override_colors/font_outline_color = Color(0.439216, 0.176471, 0.435294, 1)
+theme_override_colors/font_outline_color = Color(0.22458562, 0.23712713, 0.62500066, 1)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 16
@@ -119,18 +119,19 @@ theme_override_font_sizes/font_size = 36
 text = "3/3"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("8_wlho4")
+script = ExtResource("8_b0fn1")
 MinFontSize = 32
 MaxFontSize = 36
+theme_override_colors/font_outline_color = Color(0.22458562, 0.23712713, 0.62500066, 1)
 metadata/_edit_lock_ = true
 
 [node name="Sparkle" type="CPUParticles2D" parent="."]
 modulate = Color(1, 1, 1, 0.101960786)
-material = ExtResource("9_eoken")
+material = ExtResource("9_68bt2")
 position = Vector2(64, 64)
 scale = Vector2(5, 5)
 amount = 4
-texture = ExtResource("12_wlho4")
+texture = ExtResource("10_l3btd")
 lifetime = 0.6
 preprocess = 0.6
 local_coords = true

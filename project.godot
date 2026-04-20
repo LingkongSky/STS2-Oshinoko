@@ -15,6 +15,10 @@ run/main_scene="uid://rg6linnyhfp0"
 config/features=PackedStringArray("4.5", "C#", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+FmodManager="*res://addons/fmod/FmodManager.gd"
+
 [dotnet]
 
 project/assembly_name="Oshinogo"
@@ -25,8 +29,4 @@ export/convert_text_resources_to_binary=false
 
 [editor_plugins]
 
-enabled=PackedStringArray()
-
-[rendering]
-
-renderer/rendering_method="mobile"
+enabled=PackedStringArray("res://addons/atlas_generator/plugin.cfg", "res://addons/dev_tools/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/megacontentcreator/plugin.cfg")
