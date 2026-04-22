@@ -7,7 +7,7 @@ using Oshinogo.Scripts.Cards.Ruby;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Pools.PotionPools;
 using Oshinogo.Scripts.Pools.RelicPools;
-using Oshinogo.Scripts.Relics.Ruby;
+using Oshinogo.Scripts.Relics.Aqua;
 
 public class Aqua : PlaceholderCharacterModel
 {
@@ -102,7 +102,7 @@ public class Aqua : PlaceholderCharacterModel
 
     // 初始遗物
     public override IReadOnlyList<RelicModel> StartingRelics => [
-        ModelDb.Relic<Photo>(),
+        ModelDb.Relic<BrotherWatch>(),
     ];
 
     // 攻击建筑师的攻击特效列表

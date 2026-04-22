@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Oshinogo.Scripts.Powers;
 
-public class ActCuteNextTurnPower : CustomRubyPower
+public class ActCuteNextTurnPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -27,7 +27,7 @@ public class ActCuteNextTurnPower : CustomRubyPower
     }
 }
 
-public class ActCuteLockoutPower : CustomRubyPower
+public class ActCuteLockoutPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;

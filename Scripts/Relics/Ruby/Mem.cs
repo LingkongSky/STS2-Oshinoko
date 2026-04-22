@@ -7,7 +7,7 @@ using Oshinogo.Scripts.Pools.RelicPools;
 namespace Oshinogo.Scripts.Relics.Ruby;
 // 金钱获取时额外增加20%
 [Pool(typeof(RubyRelicPool))]
-public class Mem : RubyRelicModel
+public class Mem : OshinogoRelicModel
 {
     private const decimal BonusMultiplier = 0.2m;
 

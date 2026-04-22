@@ -6,7 +6,7 @@ using Oshinogo.Scripts.Powers;
 namespace Oshinogo.Scripts.Relics.Ruby;
 // 每场战斗开始时获得一点闪耀值
 [Pool(typeof(RubyRelicPool))]
-public class KanaArima : RubyRelicModel
+public class KanaArima : OshinogoRelicModel
 {
     public override RelicRarity Rarity => RelicRarity.Event;
 

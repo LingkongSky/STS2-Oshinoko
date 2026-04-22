@@ -3,7 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 
 namespace Oshinogo.Scripts.Powers
 {
-    public abstract class CustomRubyPower : CustomPowerModel
+    public abstract class OshinogoCustomPower : CustomPowerModel
     {
         public override PowerType Type => PowerType.Buff;
         // 叠加类型，Counter表示可叠加，Single表示不可叠加

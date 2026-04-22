@@ -13,7 +13,7 @@ using Oshinogo.Scripts.RestSite;
 namespace Oshinogo.Scripts.Relics.Ruby
 {
     [Pool(typeof(RubyRelicPool))]
-    public class Photo : RubyRelicModel
+    public class Photo : OshinogoRelicModel
     {
         // 稀有度
         public override RelicRarity Rarity => RelicRarity.Starter;

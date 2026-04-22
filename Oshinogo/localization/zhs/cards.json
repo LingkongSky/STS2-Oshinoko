@@ -176,7 +176,7 @@
   "OSHINOGO-UNDER_CURTAIN.title": "幕布之下",
   "OSHINOGO-UNDER_CURTAIN.description": "获得{Threshold:diff()}点[gold]临时复仇[/gold]。",
   "OSHINOGO-AQUA_STRIKE.title": "打击",
-  "OSHINOGO-AQUA_STRIKE.description": "造成{Damage:diff()}点伤害。",
+  "OSHINOGO-AQUA_STRIKE.description": "造成{CalculatedDamage:diff()}点伤害。",
   "OSHINOGO-AQUA_DEFEND.title": "防御",
-  "OSHINOGO-AQUA_DEFEND.description": "获得{Block:diff()}点[gold]格挡[/gold]。"
+  "OSHINOGO-AQUA_DEFEND.description": "获得{CalculatedBlock:diff()}点[gold]格挡[/gold]。"
 }

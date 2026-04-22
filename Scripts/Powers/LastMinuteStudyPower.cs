@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 namespace Oshinogo.Scripts.Powers;
 
 
-public class LastMinuteStudyPower : CustomRubyPower
+public class LastMinuteStudyPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;

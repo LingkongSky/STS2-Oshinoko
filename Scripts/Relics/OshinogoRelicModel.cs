@@ -1,13 +1,10 @@
 using BaseLib.Abstracts;
-using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Relics;
-using Oshinogo.Scripts.Pools.RelicPools;
 
-namespace Oshinogo.Scripts.Relics.Ruby
+namespace Oshinogo.Scripts.Relics
 {
-    [Pool(typeof(RubyRelicPool))]
 
-    public abstract class RubyRelicModel : CustomRelicModel
+    public abstract class OshinogoRelicModel : CustomRelicModel
     {
         public override RelicRarity Rarity => RelicRarity.Common;
 

@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Oshinogo.Scripts.Powers;
 
-public class DualMirrorPower : CustomRubyPower
+public class DualMirrorPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;

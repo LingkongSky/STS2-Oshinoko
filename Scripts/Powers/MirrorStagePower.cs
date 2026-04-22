@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Oshinogo.Scripts.Powers;
 
-public class MirrorStagePower : CustomRubyPower
+public class MirrorStagePower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;

@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Oshinogo.Scripts.Powers;
 
-public class LightFromPassionPower : CustomRubyPower
+public class LightFromPassionPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;

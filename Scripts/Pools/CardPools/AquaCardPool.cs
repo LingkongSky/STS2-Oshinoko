@@ -23,9 +23,9 @@ namespace Oshinogo.Scripts.Pools.CardPools
         {
             return card.Type switch
             {
-                CardType.Attack => PreloadManager.Cache.GetAsset<Texture2D>("res://Oshinogo/images/ui/card_frame/ruby_attack.png"),
-                CardType.Power => PreloadManager.Cache.GetAsset<Texture2D>("res://Oshinogo/images/ui/card_frame/ruby_power.png"),
-                _ => PreloadManager.Cache.GetAsset<Texture2D>("res://Oshinogo/images/ui/card_frame/ruby_skill.png"),
+                CardType.Attack => PreloadManager.Cache.GetAsset<Texture2D>("res://Oshinogo/images/ui/card_frame/aqua_attack.png"),
+                CardType.Power => PreloadManager.Cache.GetAsset<Texture2D>("res://Oshinogo/images/ui/card_frame/aqua_power.png"),
+                _ => PreloadManager.Cache.GetAsset<Texture2D>("res://Oshinogo/images/ui/card_frame/aqua_skill.png"),
             };
         }
 

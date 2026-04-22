@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Oshinogo.Scripts.Powers;
 
-public class RumorNetworkPower : CustomRubyPower
+public class RumorNetworkPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;

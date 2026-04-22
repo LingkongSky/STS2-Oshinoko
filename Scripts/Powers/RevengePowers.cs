@@ -12,7 +12,7 @@ using Oshinogo.Scripts.Cards.Other;
 namespace Oshinogo.Scripts.Powers;
 
 // Permanent revenge: persists and triggers HP loss when a Shine card is played.
-public class RevengePower : CustomRubyPower
+public class RevengePower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
 
@@ -39,7 +39,7 @@ public class RevengePower : CustomRubyPower
 }
 
 // Turn revenge: expires at end of turn.
-public class TurnRevengePower : CustomRubyPower
+public class TurnRevengePower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
 
@@ -74,7 +74,7 @@ public class TurnRevengePower : CustomRubyPower
 }
 
 // Temp revenge: removed after the next Shine card is played.
-public class TempRevengePower : CustomRubyPower
+public class TempRevengePower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
 
@@ -249,7 +249,7 @@ public static class RevengePowerHelper
 
 
 
-public class GainTempRevengeNextTurnPower : CustomRubyPower
+public class GainTempRevengeNextTurnPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -266,7 +266,7 @@ public class GainTempRevengeNextTurnPower : CustomRubyPower
     }
 }
 
-public class GainTurnRevengeNextTurnPower : CustomRubyPower
+public class GainTurnRevengeNextTurnPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;

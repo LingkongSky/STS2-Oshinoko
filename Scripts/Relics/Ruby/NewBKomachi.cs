@@ -9,7 +9,7 @@ using Oshinogo.Scripts.Pools.RelicPools;
 namespace Oshinogo.Scripts.Relics.Ruby;
 // 将一张暗号B加入牌库
 [Pool(typeof(RubyRelicPool))]
-public class NewBKomachi : RubyRelicModel
+public class NewBKomachi : OshinogoRelicModel
 {
     public override RelicRarity Rarity => RelicRarity.Event;
 

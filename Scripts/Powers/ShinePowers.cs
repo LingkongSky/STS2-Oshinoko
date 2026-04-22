@@ -11,7 +11,7 @@ using Oshinogo.Scripts.Cards.Other;
 namespace Oshinogo.Scripts.Powers;
 
 // Permanent shine.
-public class ShinePower : CustomRubyPower
+public class ShinePower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
 
@@ -33,7 +33,7 @@ public class ShinePower : CustomRubyPower
 }
 
 // Turn shine: removed at end of turn.
-public class TurnShinePower : CustomRubyPower
+public class TurnShinePower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
 
@@ -63,7 +63,7 @@ public class TurnShinePower : CustomRubyPower
 }
 
 // Temp shine: removed after the next Shine card is played.
-public class TempShinePower : CustomRubyPower
+public class TempShinePower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
 
@@ -113,7 +113,7 @@ public class TempShinePower : CustomRubyPower
     }
 }
 
-public class GainTempShineNextTurnPower : CustomRubyPower
+public class GainTempShineNextTurnPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -130,7 +130,7 @@ public class GainTempShineNextTurnPower : CustomRubyPower
     }
 }
 
-public class GainTurnShineNextTurnPower : CustomRubyPower
+public class GainTurnShineNextTurnPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -148,7 +148,7 @@ public class GainTurnShineNextTurnPower : CustomRubyPower
 }
 
 
-public class NextShineDiscountPower : CustomRubyPower
+public class NextShineDiscountPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;

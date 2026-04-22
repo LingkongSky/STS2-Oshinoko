@@ -12,7 +12,7 @@ using Oshinogo.Scripts.RestSite;
 namespace Oshinogo.Scripts.Relics.Ruby
 {
     [Pool(typeof(RubyRelicPool))]
-    public class FamilyPhoto : RubyRelicModel
+    public class FamilyPhoto : OshinogoRelicModel
     {
         public override RelicRarity Rarity => RelicRarity.Ancient;
 

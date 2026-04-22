@@ -7,7 +7,7 @@ using Oshinogo.Scripts.Cards.Other;
 namespace Oshinogo.Scripts.Powers;
 
 
-public class FleeingLightPower : CustomRubyPower
+public class FleeingLightPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;

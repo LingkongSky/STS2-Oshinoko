@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Oshinogo.Scripts.Powers;
 
-public class NotAsFragileAsImaginedPower : CustomRubyPower
+public class NotAsFragileAsImaginedPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
