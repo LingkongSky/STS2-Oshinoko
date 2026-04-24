@@ -15,6 +15,10 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 [Pool(typeof(RubyCardPool))]
 public class StageCrash : RubyCardModel
 {
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(16m, ValueProp.Move),
