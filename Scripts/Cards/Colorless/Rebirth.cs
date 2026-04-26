@@ -11,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Colorless;
 [Pool(typeof(ColorlessCardPool))]
 public class Rebirth : CustomCardModel
 {
-    public override string PortraitPath => $"res://Oshinogo/images/cards/{GetType().Name}.png";
+    public override string PortraitPath => $"res://Oshinogo/images/cards/ruby/{GetType().Name}.png";
 
     public Rebirth() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {

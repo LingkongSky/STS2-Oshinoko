@@ -1,0 +1,35 @@
+﻿using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using Oshinogo.Scripts.Cards.Other;
+using Oshinogo.Scripts.Pools.CardPools;
+
+namespace Oshinogo.Scripts.Cards.Aqua;
+
+[Pool(typeof(AquaCardPool))]
+// 描述: 恢复3(5)点血量，获得20(25)金钱。
+public class Embrace : AquaCardModel
+{
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine, CardKeyword.Exhaust];
+
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new HealVar(3), new GoldVar(20)];
+
+    public Embrace() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
+    {
+    }
+
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        await CreatureCmd.Heal(Owner.Creature, DynamicVars.Heal.BaseValue);
+        await PlayerCmd.GainGold(DynamicVars.Gold.BaseValue, Owner);
+    }
+
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Heal.UpgradeValueBy(2);
+        DynamicVars.Gold.UpgradeValueBy(5);
+    }
+}
+

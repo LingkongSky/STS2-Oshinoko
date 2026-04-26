@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -9,9 +9,9 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-// 描述: 获得6(9)点格挡。
 
 [Pool(typeof(AquaCardPool))]
+// 描述: 获得5(8)点格挡。
 public class AquaDefend : AquaCardModel
 {
     private const string CalculatedBlockKey = "CalculatedBlock";

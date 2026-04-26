@@ -3,7 +3,6 @@ using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
 using Oshinogo.Scripts.Cards.Aqua;
-using Oshinogo.Scripts.Cards.Ruby;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Pools.PotionPools;
 using Oshinogo.Scripts.Pools.RelicPools;
@@ -95,8 +94,8 @@ public class Aqua : PlaceholderCharacterModel
         ModelDb.Card<AquaDefend>(),
         ModelDb.Card<AquaDefend>(),
         ModelDb.Card<AquaDefend>(),
-        ModelDb.Card<IdolAdmiration>(),
-        ModelDb.Card<IdolPassion>()
+        ModelDb.Card<DualWield>(),
+        ModelDb.Card<BloodInStage>()
 
     ];
 

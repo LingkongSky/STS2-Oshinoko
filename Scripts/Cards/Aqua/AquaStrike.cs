@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -9,9 +9,9 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-// 描述: 造成6(9)点伤害。
 
 [Pool(typeof(AquaCardPool))]
+// 描述: 造成6(9)点伤害。
 public class AquaStrike : AquaCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
@@ -19,7 +19,8 @@ public class AquaStrike : AquaCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DamageVar(6, ValueProp.Move),
         new CalculationExtraVar(1m),
-        ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),        ];
+        ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
+    ];
 
     protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Strike };
 
