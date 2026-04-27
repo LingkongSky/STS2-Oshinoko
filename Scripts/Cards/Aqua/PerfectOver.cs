@@ -14,6 +14,8 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 获得13(17)点格挡，获得2张浸血花瓣。
 public class PerfectOver : AquaCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<BloodFlower>()];
+
     private const string CalculatedBlockKey = "CalculatedBlock";
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine, CardKeyword.Exhaust];

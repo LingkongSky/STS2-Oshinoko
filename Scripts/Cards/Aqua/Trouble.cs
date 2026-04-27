@@ -13,6 +13,8 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 下回合开始时获得2(3)张浸血花瓣。
 public class Trouble : AquaCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<BloodFlower>()];
+
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(2)];
 
     public Trouble() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self, true)

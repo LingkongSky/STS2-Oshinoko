@@ -11,6 +11,8 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 鎻忚堪: 姣忔湁涓€鍚嶆晫浜猴紝鐢熸垚涓€寮犳蹈琛€鑺辩摚銆?
 public class Persuade : AquaCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<BloodFlower>()];
+
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     public Persuade() : base(1, CardType.Skill, CardRarity.Common, TargetType.AllEnemies, true)

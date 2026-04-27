@@ -330,6 +330,6 @@
   "OSHINOGO-BITE_TIGHT.title": "死死咬住",
   "OSHINOGO-BITE_TIGHT.description": "对敌人造成{Damage:diff()}点伤害，给予{Trap:diff()}层[gold]陷阱[/gold]。\n[gold]谋划2[/gold]。",
   "OSHINOGO-UNDER_THE_SEA.title": "坠入海底",
-  "OSHINOGO-UNDER_THE_SEA.description": "造成100点伤害，下回合死亡。",
+  "OSHINOGO-UNDER_THE_SEA.description": "造成{Damage:diff()}点伤害，下回合死亡。",
   "OSHINOGO-POISED_TO.selectionScreenPrompt": "选择1张手牌，给予虚无。"
 }

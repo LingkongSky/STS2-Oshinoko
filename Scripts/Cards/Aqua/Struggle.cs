@@ -12,6 +12,8 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 获得3(4)张浸血花瓣。
 public class Struggle : AquaCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<BloodFlower>()];
+
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(3)];

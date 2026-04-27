@@ -14,6 +14,8 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 造成8(12)点伤害，获得一张浸血花瓣。
 public class DrawSword : AquaCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<BloodFlower>()];
+
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>

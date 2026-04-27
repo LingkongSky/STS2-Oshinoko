@@ -14,6 +14,8 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 造成4(6)点伤害2次，每造成未被格挡的伤害时获得一张浸血花瓣。
 public class WeaponRack : AquaCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<BloodFlower>()];
+
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4, ValueProp.Move)];
 
     public WeaponRack() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, true)

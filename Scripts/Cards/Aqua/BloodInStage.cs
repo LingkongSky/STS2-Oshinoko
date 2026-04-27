@@ -13,6 +13,8 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 获得1(2)张浸血花瓣。
 public class BloodInStage : AquaCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<BloodFlower>()];
+
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1)];
 
     public BloodInStage() : base(0, CardType.Skill, CardRarity.Basic, TargetType.Self, true)
