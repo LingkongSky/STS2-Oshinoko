@@ -1,7 +1,8 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using Oshinogo.Scripts.Cards.Other;
@@ -14,6 +15,7 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 获得5(10)点复仇，5(10)点力量。
 public class Destination : AquaCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("REVENGE");
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new RevengeDynamicVar(5m),

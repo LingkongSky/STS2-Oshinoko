@@ -1,9 +1,9 @@
-﻿using System.Linq;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using Oshinogo.Scripts.Pools.CardPools;
@@ -14,6 +14,7 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 给予所有敌人2(3)层虚弱，2(3)层易伤，2(3)层摧残。
 public class ShouldBeProtected : AquaCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("VULNERABLE", "WEAK", "DEBILITATE");
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DynamicVar("Weak", 2),

@@ -1,18 +1,20 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 抽取等同于闪耀数量的卡牌。抽X张卡。
+// 鎶藉彇绛夊悓浜庨棯鑰€鏁伴噺鐨勫崱鐗屻€傛娊X寮犲崱銆?
 
 [Pool(typeof(RubyCardPool))]
 public class LoveHardToConvey : RubyCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
     private const string CalculatedCardsKey = "CalculatedCards";
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];

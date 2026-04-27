@@ -6,17 +6,18 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Pools.CardPools;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 描述: 造成9(14)点伤害，使对方失去1(2)点力量。
+// 鎻忚堪: 閫犳垚9(14)鐐逛激瀹筹紝浣垮鏂瑰け鍘?(3)鐐瑰姏閲忋€?
 public class DisperseLight : AquaCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(9, ValueProp.Move),
-        new DynamicVar("StrengthLoss", 1),
+        new DynamicVar("StrengthLoss", 2),
     ];
 
     public DisperseLight() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy, true)

@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -7,15 +7,16 @@ using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 对所有敌人造成16(22)点伤害，失去2点生命，获得2点复仇值。
+// 鎻忚堪: 瀵规墍鏈夋晫浜洪€犳垚16(22)鐐逛激瀹筹紝澶卞幓2鐐圭敓鍛斤紝鑾峰緱2鐐瑰浠囧€笺€?
 
 [Pool(typeof(RubyCardPool))]
 public class StageCrash : RubyCardModel
 {
-
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("REVENGE");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
 

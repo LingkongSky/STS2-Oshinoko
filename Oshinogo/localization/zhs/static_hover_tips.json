@@ -1,8 +1,14 @@
 ﻿{
+  "TRAP.title": "陷阱",
+  "TRAP.description": "受到的攻击伤害提高100%。",
   "SHINE.title": "闪耀",
   "SHINE.description": "对带有闪耀的卡牌生效。增加等同于闪耀的数值。",
   "REVENGE.title": "复仇",
   "REVENGE.description": "对带有闪耀的卡牌生效。根据复仇对卡牌数值进行乘算；打出闪耀牌时会失去等同于复仇的生命。",
   "PLAN_COST.title": "谋划",
-  "PLAN_COST.description": "打出此卡需消耗{Amount}层谋划。"
+  "PLAN_COST.description": "打出此卡需消耗{Amount}层谋划。",
+  "RUMOR.title": "流言",
+  "RUMOR.description": "每层使受到的攻击伤害提高10%。",
+  "ESCAPE.title": "脱身",
+  "ESCAPE.description": "受到的攻击伤害降低50%。"
 }

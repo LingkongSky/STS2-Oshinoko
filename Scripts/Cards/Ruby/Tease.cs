@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -6,14 +6,16 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Pools.CardPools;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成7(10)点伤害，给予1(2)层易伤。
+// 鎻忚堪: 閫犳垚7(10)鐐逛激瀹筹紝缁欎簣1(2)灞傛槗浼ゃ€?
 
 [Pool(typeof(RubyCardPool))]
 public class Tease : RubyCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("VULNERABLE");
     private const string VulnerableKey = "Vulnerable";
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>

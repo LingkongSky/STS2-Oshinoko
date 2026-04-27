@@ -1,17 +1,19 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 去除一名敌人的所有防御。若其防御大于15，则获得1点闪耀值并抽1张牌。
+// 鎻忚堪: 鍘婚櫎涓€鍚嶆晫浜虹殑鎵€鏈夐槻寰°€傝嫢鍏堕槻寰″ぇ浜?5锛屽垯鑾峰緱1鐐归棯鑰€鍊煎苟鎶?寮犵墝銆?
 
 [Pool(typeof(RubyCardPool))]
 public class TrueWords : RubyCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     public TrueWords() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy, true)

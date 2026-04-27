@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
@@ -12,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 本回合内打出的消耗牌会进入弃牌堆。 谋划2
 public class Expect : AquaCardModel
 {
-    protected override IEnumerable<MegaCrit.Sts2.Core.HoverTips.IHoverTip> ExtraHoverTips => PlanCostHelper.CreatePlanCostHoverTips(2);
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => PlanCostHelper.CreatePlanCostHoverTips(2);
 
     public Expect() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {

@@ -1,19 +1,19 @@
-﻿using System.Linq;
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using Oshinogo.Scripts.Pools.CardPools;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 描述: 每有一名敌人，生成一张浸血花瓣。
+// 鎻忚堪: 姣忔湁涓€鍚嶆晫浜猴紝鐢熸垚涓€寮犳蹈琛€鑺辩摚銆?
 public class Persuade : AquaCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
-    public Persuade() : base(0, CardType.Skill, CardRarity.Common, TargetType.AllEnemies, true)
+    public Persuade() : base(1, CardType.Skill, CardRarity.Common, TargetType.AllEnemies, true)
     {
     }
 
@@ -34,5 +34,10 @@ public class Persuade : AquaCardModel
             }
         }
     }
-}
 
+    protected override void OnUpgrade()
+    {
+        EnergyCost.UpgradeBy(-1);
+    }
+
+}

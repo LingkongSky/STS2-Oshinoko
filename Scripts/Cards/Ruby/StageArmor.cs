@@ -1,14 +1,15 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 每失去1点生命，获得2(3)点格挡。
+// 鎻忚堪: 姣忓け鍘?鐐圭敓鍛斤紝鑾峰緱2(3)鐐规牸鎸°€?
 
 [Pool(typeof(RubyCardPool))]
 public class StageArmor : RubyCardModel

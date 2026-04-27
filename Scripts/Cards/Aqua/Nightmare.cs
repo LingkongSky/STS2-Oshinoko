@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
@@ -11,6 +12,7 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 消耗卡牌时，获得2点临时复仇。
 public class Nightmare : AquaCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("REVENGE");
     public Nightmare() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
     {
     }

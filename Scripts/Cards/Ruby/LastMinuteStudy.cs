@@ -1,17 +1,19 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 每回合第一次打出技能牌时，获得1点临时闪耀值。若这是本回合第3张技能牌，改为获得1点回合闪耀值。
+// 鎻忚堪: 姣忓洖鍚堢涓€娆℃墦鍑烘妧鑳界墝鏃讹紝鑾峰緱1鐐逛复鏃堕棯鑰€鍊笺€傝嫢杩欐槸鏈洖鍚堢3寮犳妧鑳界墝锛屾敼涓鸿幏寰?鐐瑰洖鍚堥棯鑰€鍊笺€?
 
 [Pool(typeof(RubyCardPool))]
 public class LastMinuteStudy : RubyCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
     public LastMinuteStudy() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
     {
     }

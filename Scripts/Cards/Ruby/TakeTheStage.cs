@@ -1,17 +1,19 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 每回合第一次获得闪耀值时，抽1张牌并获得2点格挡。
+// 鎻忚堪: 姣忓洖鍚堢涓€娆¤幏寰楅棯鑰€鍊兼椂锛屾娊1寮犵墝骞惰幏寰?鐐规牸鎸°€?
 
 [Pool(typeof(RubyCardPool))]
 public class TakeTheStage : RubyCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
     public TakeTheStage() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
     {
     }

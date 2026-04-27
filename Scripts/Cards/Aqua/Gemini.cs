@@ -1,6 +1,7 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
 
@@ -10,6 +11,7 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 获得2点回合闪耀和2点回合复仇。
 public class Gemini : AquaCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE", "REVENGE");
     public Gemini() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {
     }

@@ -1,14 +1,15 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby
 {
 
     [Pool(typeof(RubyCardPool))]
-    // 获得2点闪耀
+    // 鑾峰緱2鐐归棯鑰€
     public class Hope : RubyCardModel
     {
         public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Innate];

@@ -6,11 +6,12 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 描述: 造成100点伤害，下回合死亡。
+// 鎻忚堪: 閫犳垚100鐐逛激瀹筹紝涓嬪洖鍚堟浜°€?
 public class UnderTheSea : AquaCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(100, ValueProp.Move)];
@@ -29,6 +30,11 @@ public class UnderTheSea : AquaCardModel
             .Execute(choiceContext);
 
         await PowerCmd.Apply<UnderTheSeaPower>(Owner.Creature, 1, Owner.Creature, this);
+    }
+
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Damage.UpgradeValueBy(50);
     }
 }
 

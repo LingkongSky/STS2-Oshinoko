@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
@@ -14,6 +15,7 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 获得2点闪耀，获得7层覆甲。
 public class StageCenter : AquaCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
     protected override IEnumerable<DynamicVar> CanonicalVars => [new ShineDymicVar(2m), new DynamicVar("PlatedArmor", 7)];
 
     public StageCenter() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true)

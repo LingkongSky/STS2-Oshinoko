@@ -1,14 +1,15 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Pools.CardPools;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 随机消耗手牌中的1张卡，并获得14(18)点格挡。
+// 鎻忚堪: 闅忔満娑堣€楁墜鐗屼腑鐨?寮犲崱锛屽苟鑾峰緱14(18)鐐规牸鎸°€?
 
 [Pool(typeof(RubyCardPool))]
 public class NoWayBack : RubyCardModel

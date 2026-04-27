@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -8,14 +8,16 @@ using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 仅当闪耀值大于3时才能打出。造成24(34)点伤害，给予2层易伤。
+// 鎻忚堪: 浠呭綋闂€€鍊煎ぇ浜?鏃舵墠鑳芥墦鍑恒€傞€犳垚24(34)鐐逛激瀹筹紝缁欎簣2灞傛槗浼ゃ€?
 
 [Pool(typeof(RubyCardPool))]
 public class FinalPose : RubyCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("VULNERABLE", "SHINE");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain, OshinogoKeywords.Shine];
 
     private const int RequiredShine = 3;

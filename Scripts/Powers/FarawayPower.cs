@@ -1,4 +1,4 @@
-using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -7,30 +7,30 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Oshinogo.Scripts.Powers;
 
 /// <summary>
-/// 下一个敌方回合开始时（即玩家下回合开始时），目标受到伤害并移除。
+/// 在拥有者下回合开始时，对所有敌人造成伤害并移除。
 /// </summary>
 public class FarawayPower : OshinogoCustomPower
 {
-    public override PowerType Type => PowerType.Debuff;
+    public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
     public override async Task AfterEnergyReset(Player player)
     {
-        if (player.Creature == null || player.Creature.Side == Owner.Side)
+        if (player != Owner.Player)
         {
             return;
         }
 
-        await CreatureCmd.Damage(
-            new BlockingPlayerChoiceContext(),
-            Owner,
-            Amount,
-            ValueProp.Move,
-            player.Creature,
-            null
-        );
+        var combatState = Owner.CombatState;
+        if (combatState == null)
+        {
+            await PowerCmd.Remove(this);
+            return;
+        }
+
+        var opponents = combatState.GetOpponentsOf(Owner).ToList();
+        await CreatureCmd.Damage(new BlockingPlayerChoiceContext(), opponents, Amount, ValueProp.Move, Owner, null);
 
         await PowerCmd.Remove(this);
     }
 }
-

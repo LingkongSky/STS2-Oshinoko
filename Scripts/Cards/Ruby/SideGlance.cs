@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -6,14 +6,16 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Pools.CardPools;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成6(9)点伤害,给予1(2)层虚弱
+// 鎻忚堪: 閫犳垚6(9)鐐逛激瀹?缁欎簣1(2)灞傝櫄寮?
 
 [Pool(typeof(RubyCardPool))]
 public class SideGlance : RubyCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("WEAK");
     private const string WeakKey = "Weak";
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>

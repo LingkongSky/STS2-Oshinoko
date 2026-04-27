@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -6,15 +6,16 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 将你的复仇值全部转换为闪耀值。抽等量卡牌，并获得20点格挡。
+// 鎻忚堪: 灏嗕綘鐨勫浠囧€煎叏閮ㄨ浆鎹负闂€€鍊笺€傛娊绛夐噺鍗＄墝锛屽苟鑾峰緱20鐐规牸鎸°€?
 
 [Pool(typeof(RubyCardPool))]
 public class SiblingsReunited : RubyCardModel
 {
-
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE", "REVENGE");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
 

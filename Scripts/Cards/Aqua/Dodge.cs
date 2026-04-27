@@ -7,23 +7,23 @@ using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 描述: 获得8(12)点格挡，获得一层脱身。谋划1
+// 鎻忚堪: 鑾峰緱10(14)鐐规牸鎸★紝鑾峰緱涓€灞傝劚韬€傝皨鍒?
 public class Dodge : AquaCardModel
 {
     private const string CalculatedBlockKey = "CalculatedBlock";
-    protected override IEnumerable<MegaCrit.Sts2.Core.HoverTips.IHoverTip> ExtraHoverTips => PlanCostHelper.CreatePlanCostHoverTips(1);
-
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => PlanAndKeywordTips(1, "ESCAPE");
     public override bool GainsBlock => true;
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(8, ValueProp.Move),
+        new BlockVar(10, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),
     ];

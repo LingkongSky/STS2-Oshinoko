@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
@@ -8,10 +8,11 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 对所有敌人造成8(10)点伤害。若本回合抽过牌，则改为造成2次。
+// 鎻忚堪: 瀵规墍鏈夋晫浜洪€犳垚8(10)鐐逛激瀹炽€傝嫢鏈洖鍚堟娊杩囩墝锛屽垯鏀逛负閫犳垚2娆°€?
 
 [Pool(typeof(RubyCardPool))]
 public class ScarletEncore : RubyCardModel

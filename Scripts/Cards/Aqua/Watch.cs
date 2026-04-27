@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
@@ -14,8 +15,7 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 public class Watch : AquaCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Escape", 2)];
-    protected override IEnumerable<MegaCrit.Sts2.Core.HoverTips.IHoverTip> ExtraHoverTips => PlanCostHelper.CreatePlanCostHoverTips(1);
-
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => PlanAndKeywordTips(1, "ESCAPE");
     public Watch() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
     {
     }

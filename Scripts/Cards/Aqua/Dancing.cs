@@ -6,14 +6,17 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 描述: 获得5(8)点格挡，给予2(3)层流言。
+// 鎻忚堪: 鑾峰緱7(10)鐐规牸鎸★紝缁欎簣2(3)灞傛祦瑷€銆?
 public class Dancing : AquaCardModel
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(5, ValueProp.Move), new DynamicVar("Rumor", 2)];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("RUMOR");
+
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(7, ValueProp.Move), new DynamicVar("Rumor", 2)];
 
     public override bool GainsBlock => true;
 

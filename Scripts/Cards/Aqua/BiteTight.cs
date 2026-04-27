@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
@@ -14,8 +15,7 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 对敌人造成15(20)点伤害，给予1(2)层陷阱。谋划2
 public class BiteTight : AquaCardModel
 {
-    protected override IEnumerable<MegaCrit.Sts2.Core.HoverTips.IHoverTip> ExtraHoverTips => PlanCostHelper.CreatePlanCostHoverTips(2);
-
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => PlanAndKeywordTips(2, "TRAP");
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(15, ValueProp.Move),

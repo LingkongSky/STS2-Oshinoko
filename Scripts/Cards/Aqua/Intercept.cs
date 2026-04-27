@@ -6,11 +6,12 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 描述: 对所有敌人造成4(6)点伤害，获得4(6)点格挡。
+// 鎻忚堪: 瀵规墍鏈夋晫浜洪€犳垚4(7)鐐逛激瀹筹紝鑾峰緱4(7)鐐规牸鎸°€?
 public class Intercept : AquaCardModel
 {
     private const string CalculatedBlockKey = "CalculatedBlock";
@@ -50,8 +51,8 @@ public class Intercept : AquaCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2);
-        DynamicVars.Block.UpgradeValueBy(2);
+        DynamicVars.Damage.UpgradeValueBy(3);
+        DynamicVars.Block.UpgradeValueBy(3);
     }
 }
 

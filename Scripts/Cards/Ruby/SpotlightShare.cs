@@ -1,13 +1,14 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 所有队友获得1点能量并抽1张牌。
+// 鎻忚堪: 鎵€鏈夐槦鍙嬭幏寰?鐐硅兘閲忓苟鎶?寮犵墝銆?
 
 [Pool(typeof(RubyCardPool))]
 public class SpotlightShare : RubyCardModel

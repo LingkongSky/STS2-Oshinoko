@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
@@ -14,6 +15,7 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 获得7(10)点格挡，获得2点临时闪耀。
 public class DazzlingDefend : AquaCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
     private const string CalculatedBlockKey = "CalculatedBlock";
 
     public override bool GainsBlock => true;

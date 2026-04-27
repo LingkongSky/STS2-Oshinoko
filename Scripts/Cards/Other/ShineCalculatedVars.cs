@@ -1,14 +1,15 @@
-using MegaCrit.Sts2.Core.Entities.Cards;
+﻿using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Other;
 
-// 标记“闪耀/复仇加成”作用到哪一种基础动态值。
+// 鏍囪鈥滈棯鑰€/澶嶄粐鍔犳垚鈥濅綔鐢ㄥ埌鍝竴绉嶅熀纭€鍔ㄦ€佸€笺€?
 public enum ShineValueType
 {
     Damage,
@@ -17,8 +18,8 @@ public enum ShineValueType
     Energy,
 }
 
-// 通用计算变量：基础值 +（闪耀与复仇规则）后的额外值。
-// 适用于抽牌、能量、格挡等非伤害显示字段。
+// 閫氱敤璁＄畻鍙橀噺锛氬熀纭€鍊?+锛堥棯鑰€涓庡浠囪鍒欙級鍚庣殑棰濆鍊笺€?
+// 閫傜敤浜庢娊鐗屻€佽兘閲忋€佹牸鎸＄瓑闈炰激瀹虫樉绀哄瓧娈点€?
 public class ShineCalculatedDamageVar : CalculatedVar
 {
     private readonly ShineValueType _valueType;
@@ -42,8 +43,8 @@ public class ShineCalculatedDamageVar : CalculatedVar
     }
 }
 
-// 专用于伤害显示的变量，继承 CalculatedDamageVar 以走引擎伤害预览链路。
-// 闂€€/澶嶄粐鏍cm尅鍙橀噺锛氭樉绀哄€间笂瀵瑰簲鍒拌兘閲忓鐩婁箣绫绘晥鏋溿€?
+// 涓撶敤浜庝激瀹虫樉绀虹殑鍙橀噺锛岀户鎵?CalculatedDamageVar 浠ヨ蛋寮曟搸浼ゅ棰勮閾捐矾銆?
+// 闂傤亣鈧偓/婢跺秳绮愰弽cm灏呴崣姗€鍣洪敍姘▔缁€鍝勨偓闂寸瑐鐎电懓绨查崚鎷屽厴闁插繐顤冮惄濠佺缁粯鏅ラ弸婧库偓?
 public class ShineCalculatedBlockVar : ShineCalculatedDamageVar
 {
     public ShineCalculatedBlockVar(string name) : base(name, ShineValueType.Block)
@@ -81,10 +82,10 @@ public class ShineCalculatedDamageDisplayVar : CalculatedDamageVar
     }
 }
 
-// 闪耀/复仇缩放复用入口：统一创建计算变量与读取计算结果。
+// 闂€€/澶嶄粐缂╂斁澶嶇敤鍏ュ彛锛氱粺涓€鍒涘缓璁＄畻鍙橀噺涓庤鍙栬绠楃粨鏋溿€?
 public static class ShineScaling
 {
-    // 创建伤害变量，确保卡面显示值和战斗结算值一致。
+    // 鍒涘缓浼ゅ鍙橀噺锛岀‘淇濆崱闈㈡樉绀哄€煎拰鎴樻枟缁撶畻鍊间竴鑷淬€?
     public static CalculatedDamageVar CreateCalculatedDamageVar(ValueProp props)
     {
         var calculatedDamageVar = new ShineCalculatedDamageDisplayVar(props);
@@ -92,7 +93,7 @@ public static class ShineScaling
         return calculatedDamageVar;
     }
 
-    // 创建通用计算变量，用于抽牌/格挡/能量等字段。
+    // 鍒涘缓閫氱敤璁＄畻鍙橀噺锛岀敤浜庢娊鐗?鏍兼尅/鑳介噺绛夊瓧娈点€?
     public static CalculatedVar CreateCalculatedVar(string name, ShineValueType valueType)
     {
         var calculatedVar = valueType == ShineValueType.Block
@@ -103,7 +104,7 @@ public static class ShineScaling
     }
 
 
-    // 统一读取计算结果，避免卡牌里重复写类型转换。
+    // 缁熶竴璇诲彇璁＄畻缁撴灉锛岄伩鍏嶅崱鐗岄噷閲嶅鍐欑被鍨嬭浆鎹€?
     public static int GetShineUsedByCard(CardModel card)
     {
         if (card.Owner?.Creature == null)
@@ -163,7 +164,7 @@ public static class ShineScaling
         return ((CalculatedVar)dynamicVars[key]).Calculate(target);
     }
 
-    // 规则：先叠加闪耀，再按复仇乘算（无复仇按 1 倍）。
+    // 瑙勫垯锛氬厛鍙犲姞闂€€锛屽啀鎸夊浠囦箻绠楋紙鏃犲浠囨寜 1 鍊嶏級銆?
     private static decimal GetCombinedMultiplier(CardModel card, ShineValueType valueType)
     {
         var baseVar = GetBaseVarByType(card, valueType);

@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
@@ -11,6 +12,7 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 不再受到虚弱，脆弱，易伤的影响。
 public class Metamorphosis : AquaCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("VULNERABLE", "WEAK", "FRAIL");
     public Metamorphosis() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true)
     {
     }

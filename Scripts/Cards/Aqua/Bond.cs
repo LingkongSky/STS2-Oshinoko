@@ -1,7 +1,8 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
@@ -14,8 +15,7 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 给予所有敌人5层流言，并造成12(16)点伤害。 谋划1
 public class Bond : AquaCardModel
 {
-    protected override IEnumerable<MegaCrit.Sts2.Core.HoverTips.IHoverTip> ExtraHoverTips => PlanCostHelper.CreatePlanCostHoverTips(1);
-
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => PlanAndKeywordTips(1, "RUMOR");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>

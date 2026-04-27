@@ -1,14 +1,15 @@
-using BaseLib.Patches.Content;
+﻿using BaseLib.Patches.Content;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.HoverTips;
 
 
 namespace Oshinogo.Scripts.Cards.Other
 {
     public class OshinogoKeywords
     {
-        // 自定义枚举的名字。最终会变成{前缀}-{枚举值大写}的形式，例如TEST-UNIQUE
+        // 鑷畾涔夋灇涓剧殑鍚嶅瓧銆傛渶缁堜細鍙樻垚{鍓嶇紑}-{鏋氫妇鍊煎ぇ鍐檥鐨勫舰寮忥紝渚嬪TEST-UNIQUE
         [CustomEnum("SHINE")]
-        // 放在原版卡牌描述的位置，这里是卡牌描述的前面
+        // 鏀惧湪鍘熺増鍗＄墝鎻忚堪鐨勪綅缃紝杩欓噷鏄崱鐗屾弿杩扮殑鍓嶉潰
         [KeywordProperties(AutoKeywordPosition.After)]
         public static CardKeyword Shine;
     }

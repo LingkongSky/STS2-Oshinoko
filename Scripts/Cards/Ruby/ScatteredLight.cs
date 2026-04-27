@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -6,14 +6,16 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成14(17)点伤害，抽3张牌，并免费打出其中1张闪耀牌。
+// 鎻忚堪: 閫犳垚14(17)鐐逛激瀹筹紝鎶?寮犵墝锛屽苟鍏嶈垂鎵撳嚭鍏朵腑1寮犻棯鑰€鐗屻€?
 
 [Pool(typeof(RubyCardPool))]
 public class ScatteredLight : RubyCardModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>

@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
+
 // 描述: 对一个敌人造成14(18)点伤害。若造成了伤害，获得等同于造成的伤害值的格挡。
 [Pool(typeof(RubyCardPool))]
 public class ReachYouPace : RubyCardModel

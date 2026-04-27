@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
@@ -9,15 +9,16 @@ using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成7(10)点伤害。本回合若你使用过闪耀值，额外造成7点伤害。
+// 鎻忚堪: 閫犳垚7(10)鐐逛激瀹炽€傛湰鍥炲悎鑻ヤ綘浣跨敤杩囬棯鑰€鍊硷紝棰濆閫犳垚7鐐逛激瀹炽€?
 
 [Pool(typeof(RubyCardPool))]
 public class FlashBeat : RubyCardModel
 {
-
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>

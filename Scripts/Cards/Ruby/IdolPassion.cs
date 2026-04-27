@@ -1,4 +1,4 @@
-using BaseLib.Abstracts;
+﻿using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -7,10 +7,11 @@ using MegaCrit.Sts2.Core.Models;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得2(3)点回合闪耀值。
+// 鎻忚堪: 鑾峰緱2(3)鐐瑰洖鍚堥棯鑰€鍊笺€?
 
 [Pool(typeof(RubyCardPool))]
 public class IdolPassion : RubyCardModel, ITranscendenceCard

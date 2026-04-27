@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -6,10 +6,11 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Rooms;
 using Oshinogo.Scripts.Pools.CardPools;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: ，获得1(2)层人工制品，战斗结束后随机升级一张卡牌。
+// 鎻忚堪: 锛岃幏寰?(2)灞備汉宸ュ埗鍝侊紝鎴樻枟缁撴潫鍚庨殢鏈哄崌绾т竴寮犲崱鐗屻€?
 
 [Pool(typeof(RubyCardPool))]
 public class ChannelSubscribe : RubyCardModel

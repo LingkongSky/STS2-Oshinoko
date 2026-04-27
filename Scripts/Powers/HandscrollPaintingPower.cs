@@ -15,15 +15,9 @@ public class HandscrollPaintingPower : OshinogoCustomPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
 
-    public override async Task AfterCombatVictory(CombatRoom room)
+    public override async Task AfterCombatEnd(CombatRoom room)
     {
         if (Owner.Player == null)
-        {
-            return;
-        }
-
-        var deck = PileType.Deck.GetPile(Owner.Player);
-        if (deck.Cards.Count == 0)
         {
             return;
         }

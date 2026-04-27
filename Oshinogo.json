@@ -1,11 +1,11 @@
-{
-  "id": "Oshinogo",         
+﻿{
+  "id": "Oshinogo",
   "name": "我推的孩子",
   "author": "凌空",
   "description": "我爱你，这句话绝不是谎言。",
-  "version": "0.3.1",
-  "has_pck": true,         
-  "has_dll": true,       
-  "dependencies": ["BaseLib"],    
+  "version": "0.3.2",
+  "has_pck": true,
+  "has_dll": true,
+  "dependencies": ["BaseLib"],
   "affects_gameplay": true
 }
