@@ -12,7 +12,7 @@ using Oshinogo.Scripts.Powers;
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 描述: 给予所有敌人5层流言，并造成12(16)点伤害。 谋划1
+// 描述: 给予所有敌人5层流言，并造成10(14)点伤害。 谋划1
 public class Bond : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => PlanAndKeywordTips(1, "RUMOR");
@@ -20,7 +20,7 @@ public class Bond : AquaCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(12, ValueProp.Move),
+        new DamageVar(10, ValueProp.Move),
         new DynamicVar("Rumor", 5),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),

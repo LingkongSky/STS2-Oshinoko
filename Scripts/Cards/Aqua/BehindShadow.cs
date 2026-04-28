@@ -11,13 +11,13 @@ using Oshinogo.Scripts.Powers;
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 描述: 失去2点生命，获得2点回合复仇，翻倍一名敌人的负面效果层数。
+// 描述: 失去2点生命，获得2点回合复仇，翻倍所有敌人的负面效果层数。
 public class BehindShadow : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("REVENGE");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
-    public BehindShadow() : base(1, CardType.Skill, CardRarity.Rare, TargetType.AnyEnemy, true)
+    public BehindShadow() : base(1, CardType.Skill, CardRarity.Rare, TargetType.AllEnemies, true)
     {
     }
 

@@ -9,12 +9,18 @@ public static class RestSiteOptionIconPatch
 {
     public static bool Prefix(RestSiteOption __instance, ref Godot.Texture2D __result)
     {
-        if (__instance.OptionId != BKomachiGathering.OptionIdValue)
+        if (__instance.OptionId == BKomachiGathering.OptionIdValue)
         {
-            return true;
+            __result = PreloadManager.Cache.GetTexture2D(BKomachiGathering.IconPath);
+            return false;
         }
 
-        __result = PreloadManager.Cache.GetTexture2D(BKomachiGathering.IconPath);
-        return false;
+        if (__instance.OptionId == Journey.OptionIdValue)
+        {
+            __result = PreloadManager.Cache.GetTexture2D(Journey.IconPath);
+            return false;
+        }
+
+        return true;
     }
 }

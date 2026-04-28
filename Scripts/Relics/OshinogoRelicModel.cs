@@ -13,10 +13,10 @@ namespace Oshinogo.Scripts.Relics
         //public override string PackedIconPath => $"res://Oshinogo/images/relics/Photo.png";
 
         // 轮廓图标
-        protected override string PackedIconOutlinePath => $"res://Oshinogo/images/relics/Photo.png";
+        protected override string PackedIconOutlinePath => $"res://Oshinogo/images/relics/{GetType().Name}.png";
 
         // 大图标
-        protected override string BigIconPath => $"res://Oshinogo/images/relics/Photo.png";
+        protected override string BigIconPath => $"res://Oshinogo/images/relics/{GetType().Name}.png";
 
 
     }
