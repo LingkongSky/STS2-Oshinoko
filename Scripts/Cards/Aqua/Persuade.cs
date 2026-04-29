@@ -21,18 +21,13 @@ public class Persuade : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (CardScope == null)
-        {
-            return;
-        }
-
         var count = Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature).Count() ?? 0;
         for (var i = 0; i < count; i++)
         {
-            var bloodFlower = CardScope.CreateCard<BloodFlower>(Owner);
+            var bloodFlower = Owner.Creature.CombatState?.CreateCard<BloodFlower>(Owner);
             if (bloodFlower != null)
             {
-                await CardPileCmd.Add(bloodFlower, PileType.Hand);
+                await CardPileCmd.AddGeneratedCardToCombat(bloodFlower, PileType.Hand, addedByPlayer: true);
             }
         }
     }
@@ -43,3 +38,4 @@ public class Persuade : AquaCardModel
     }
 
 }
+

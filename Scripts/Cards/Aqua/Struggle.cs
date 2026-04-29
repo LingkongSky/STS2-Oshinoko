@@ -1,10 +1,10 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
@@ -24,17 +24,12 @@ public class Struggle : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (CardScope == null)
-        {
-            return;
-        }
-
         for (var i = 0; i < DynamicVars.Cards.IntValue; i++)
         {
-            var bloodFlower = CardScope.CreateCard<BloodFlower>(Owner);
+            var bloodFlower = Owner.Creature.CombatState?.CreateCard<BloodFlower>(Owner);
             if (bloodFlower != null)
             {
-                await CardPileCmd.Add(bloodFlower, PileType.Hand);
+                await CardPileCmd.AddGeneratedCardToCombat(bloodFlower, PileType.Hand, addedByPlayer: true);
             }
         }
     }
@@ -44,4 +39,5 @@ public class Struggle : AquaCardModel
         DynamicVars.Cards.UpgradeValueBy(1);
     }
 }
+
 

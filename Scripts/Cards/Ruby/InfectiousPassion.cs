@@ -11,7 +11,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成6(8)点伤害，如果这张卡牌造成了9点伤害以上，则获得2点临时闪耀值。
+// 描述: 造成6(8)点伤害，如果这张卡牌造成了9点伤害以上，则获得1点回合闪耀值。
 
 [Pool(typeof(RubyCardPool))]
 public class InfectiousPassion : RubyCardModel
@@ -46,7 +46,7 @@ public class InfectiousPassion : RubyCardModel
 
         if (dealtDamage >= 9)
         {
-            await ShinePowerHelper.ApplyShine(Owner.Creature, 2, ValueDuration.Temp, Owner.Creature, this);
+            await ShinePowerHelper.ApplyShine(Owner.Creature, 1, ValueDuration.Turn, Owner.Creature, this);
         }
     }
 

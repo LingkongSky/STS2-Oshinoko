@@ -29,7 +29,7 @@ public class NerverReturn : AquaCardModel
         }
 
         var voidCards = PileType.Hand.GetPile(Owner).Cards
-            .Where(card => card.Keywords.Contains(CardKeyword.Unplayable))
+            .Where(card => card.Keywords.Contains(CardKeyword.Ethereal))
             .ToList();
 
         foreach (var card in voidCards)

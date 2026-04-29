@@ -23,17 +23,12 @@ public class BloodInStage : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (CardScope == null)
-        {
-            return;
-        }
-
         for (var i = 0; i < DynamicVars.Cards.IntValue; i++)
         {
-            var bloodFlower = CardScope.CreateCard<BloodFlower>(Owner);
+            var bloodFlower = Owner.Creature.CombatState?.CreateCard<BloodFlower>(Owner);
             if (bloodFlower != null)
             {
-                await CardPileCmd.Add(bloodFlower, PileType.Hand);
+                await CardPileCmd.AddGeneratedCardToCombat(bloodFlower, PileType.Hand, addedByPlayer: true);
             }
         }
     }
@@ -45,3 +40,4 @@ public class BloodInStage : AquaCardModel
         DynamicVars.Cards.UpgradeValueBy(1);
     }
 }
+

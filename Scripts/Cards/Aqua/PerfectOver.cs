@@ -38,17 +38,12 @@ public class PerfectOver : AquaCardModel
         var block = ShineScaling.Calculate(DynamicVars, CalculatedBlockKey, cardPlay.Target);
         await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move, cardPlay);
 
-        if (CardScope == null)
-        {
-            return;
-        }
-
         for (var i = 0; i < 2; i++)
         {
-            var bloodFlower = CardScope.CreateCard<BloodFlower>(Owner);
+            var bloodFlower = Owner.Creature.CombatState?.CreateCard<BloodFlower>(Owner);
             if (bloodFlower != null)
             {
-                await CardPileCmd.Add(bloodFlower, PileType.Hand);
+                await CardPileCmd.AddGeneratedCardToCombat(bloodFlower, PileType.Hand, addedByPlayer: true);
             }
         }
     }
@@ -58,4 +53,5 @@ public class PerfectOver : AquaCardModel
         DynamicVars.Block.UpgradeValueBy(4);
     }
 }
+
 

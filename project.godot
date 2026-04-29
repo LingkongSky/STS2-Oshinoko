@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 FmodManager="*res://addons/fmod/FmodManager.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [dotnet]
 
 project/assembly_name="Oshinogo"
@@ -29,4 +34,4 @@ export/convert_text_resources_to_binary=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/atlas_generator/plugin.cfg", "res://addons/dev_tools/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/megacontentcreator/plugin.cfg")
+enabled=PackedStringArray()

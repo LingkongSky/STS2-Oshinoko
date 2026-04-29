@@ -1,92 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://scjguqbwph12"]
+[gd_scene load_steps=2 format=3 uid="uid://scjguqbwph12"]
 
-[ext_resource type="Script" uid="uid://eq2fxjunyses" path="res://Scripts/UI/OshinogoBackground.cs" id="1_oca5s"]
-[ext_resource type="Shader" uid="uid://cx25c706bjuy2" path="res://Oshinogo/shaders/ui/ruby_backdrop.gdshader" id="2_x3l8g"]
-[ext_resource type="Texture2D" uid="uid://iond1ufq7fkc" path="res://Oshinogo/images/ui/white_pixel.png" id="3_oiv1g"]
-[ext_resource type="Shader" uid="uid://6sg0i0rvk1rk" path="res://Oshinogo/shaders/ui/ruby_spotlight_beam.gdshader" id="4_8cbt7"]
-[ext_resource type="Shader" uid="uid://brrwgnl4itwai" path="res://Oshinogo/shaders/ui/ruby_glow.gdshader" id="5_pbpp5"]
-[ext_resource type="Texture2D" uid="uid://ct2d7ene2romm" path="res://Oshinogo/images/ui/aqua_icon.png" id="6_oca5s"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_backdrop"]
-shader = ExtResource("2_x3l8g")
-shader_parameter/top_color = Color(0.18, 0.04, 0.28, 1)
-shader_parameter/bottom_color = Color(0.02, 0, 0.05, 1)
-shader_parameter/bokeh_color = Color(1, 0.4, 0.8, 1)
-shader_parameter/bokeh_intensity = 0.9
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_beam"]
-shader = ExtResource("4_8cbt7")
-shader_parameter/beam_color = Color(0.45, 0.72, 1, 1)
-shader_parameter/intensity = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_glow"]
-shader = ExtResource("5_pbpp5")
-shader_parameter/glow_color = Color(0.4, 0.75, 1, 1)
-shader_parameter/intensity = 1.2
+[ext_resource type="Texture2D" uid="uid://dm8hqggck3rlp" path="res://Oshinogo/images/ui/aqua_background.jpg" id="1_pimi5"]
 
 [node name="RubyBg" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 17.0
+offset_right = 640.0
+offset_bottom = 137.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_oca5s")
+pivot_offset = Vector2(1280, 600)
 
-[node name="StageRoot" type="CanvasGroup" parent="."]
-z_as_relative = false
-
-[node name="Backdrop" type="Sprite2D" parent="StageRoot"]
-z_index = -20
-material = SubResource("ShaderMaterial_backdrop")
-scale = Vector2(1920, 1080)
-texture = ExtResource("3_oiv1g")
-
-[node name="Curtains" type="Node2D" parent="StageRoot"]
-z_index = -10
-
-[node name="Lights" type="Node2D" parent="StageRoot"]
-position = Vector2(104.53, 0)
-
-[node name="BeamLeft" type="Sprite2D" parent="StageRoot/Lights"]
-material = SubResource("ShaderMaterial_beam")
-position = Vector2(-360, -260)
-rotation = -0.38
-scale = Vector2(980, 1200)
-texture = ExtResource("3_oiv1g")
-
-[node name="BeamRight" type="Sprite2D" parent="StageRoot/Lights"]
-material = SubResource("ShaderMaterial_beam")
-position = Vector2(325, -281)
-rotation = 0.38
-scale = Vector2(980, 1200)
-texture = ExtResource("3_oiv1g")
-
-[node name="GlowLeft" type="Sprite2D" parent="StageRoot/Lights"]
-z_index = 2
-material = SubResource("ShaderMaterial_glow")
-position = Vector2(-520, -510)
-scale = Vector2(220, 220)
-texture = ExtResource("3_oiv1g")
-
-[node name="GlowRight" type="Sprite2D" parent="StageRoot/Lights"]
-z_index = 2
-material = SubResource("ShaderMaterial_glow")
-position = Vector2(520, -510)
-scale = Vector2(220, 220)
-texture = ExtResource("3_oiv1g")
-
-[node name="LightBlueMask" type="Sprite2D" parent="StageRoot/Lights"]
-modulate = Color(0.2627451, 0.61960787, 1, 0.32156864)
-position = Vector2(-23.529997, -14)
-scale = Vector2(1800, 1400)
-texture = ExtResource("3_oiv1g")
-
-[node name="AquaIcon" type="Sprite2D" parent="StageRoot/Lights"]
-z_as_relative = false
-position = Vector2(283.47, 151.00002)
-scale = Vector2(1.295, 1.295)
-texture = ExtResource("6_oca5s")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="StageRoot"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
 autoplay = "idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(194, 24)
+scale = Vector2(1.055, 1.055)
+texture = ExtResource("1_pimi5")
+centered = false

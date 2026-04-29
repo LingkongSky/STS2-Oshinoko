@@ -12,7 +12,7 @@
   "OSHINOGO-SIDE_GLANCE.title": "侧目",
   "OSHINOGO-SIDE_GLANCE.description": "造成{Damage:diff()}点伤害,给予{Weak:diff()}层[gold]虚弱[/gold]",
   "OSHINOGO-INFECTIOUS_PASSION.title": "热情感染",
-  "OSHINOGO-INFECTIOUS_PASSION.description": "造成{CalculatedDamage:diff()}点伤害，如果这张卡牌造成了9点伤害以上，则获得2点[gold]临时闪耀[/gold]。",
+  "OSHINOGO-INFECTIOUS_PASSION.description": "造成{CalculatedDamage:diff()}点伤害，如果这张卡牌造成了9点伤害以上，则获得1点[gold]回合闪耀[/gold]。",
   "OSHINOGO-HEART_FLUTTER_ATTACK.title": "心动攻击",
   "OSHINOGO-HEART_FLUTTER_ATTACK.description": "对单个敌人造成{CalculatedDamage:diff()}点伤害。若造成的伤害大于{Threshold:diff()}，则返还{RefundEnergy:diff()}点费用。",
   "OSHINOGO-FLASH_BEAT.title": "闪光节拍",

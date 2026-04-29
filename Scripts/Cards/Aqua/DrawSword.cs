@@ -33,21 +33,18 @@ public class DrawSword : AquaCardModel
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
+        var bloodFlower = Owner.Creature.CombatState?.CreateCard<BloodFlower>(Owner);
+        if (bloodFlower != null)
+        {
+            await CardPileCmd.AddGeneratedCardToCombat(bloodFlower, PileType.Hand, addedByPlayer: true);
+        }
+
         var finalDamage = DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);
 
         await DamageCmd.Attack(finalDamage)
             .FromCard(this)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
-
-        if (CardScope != null)
-        {
-            var bloodFlower = CardScope.CreateCard<BloodFlower>(Owner);
-            if (bloodFlower != null)
-            {
-                await CardPileCmd.Add(bloodFlower, PileType.Hand);
-            }
-        }
     }
 
     protected override void OnUpgrade()
@@ -55,4 +52,5 @@ public class DrawSword : AquaCardModel
         DynamicVars.Damage.UpgradeValueBy(4);
     }
 }
+
 

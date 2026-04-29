@@ -1,80 +1,51 @@
-[gd_scene load_steps=10 format=3 uid="uid://rg6linnyhfp0"]
+[gd_scene load_steps=5 format=3 uid="uid://rg6linnyhfp0"]
 
-[ext_resource type="Script" uid="uid://eq2fxjunyses" path="res://Scripts/UI/OshinogoBackground.cs" id="1"]
-[ext_resource type="Texture2D" uid="uid://iond1ufq7fkc" path="res://Oshinogo/images/ui/white_pixel.png" id="2"]
-[ext_resource type="Shader" uid="uid://cx25c706bjuy2" path="res://Oshinogo/shaders/ui/ruby_backdrop.gdshader" id="3"]
+[ext_resource type="Texture2D" uid="uid://dn6asu3e8s0n4" path="res://Oshinogo/images/ui/white_pixel.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://bpwv4b6n4mcai" path="res://Oshinogo/images/ui/ruby_background.jpg" id="2_3ualc"]
 [ext_resource type="Shader" uid="uid://6sg0i0rvk1rk" path="res://Oshinogo/shaders/ui/ruby_spotlight_beam.gdshader" id="6"]
-[ext_resource type="Texture2D" uid="uid://yas7wt2jldna" path="res://Oshinogo/images/ui/ruby_icon.png" id="6_hbcuj"]
-[ext_resource type="Shader" uid="uid://brrwgnl4itwai" path="res://Oshinogo/shaders/ui/ruby_glow.gdshader" id="7"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_backdrop"]
-shader = ExtResource("3")
-shader_parameter/top_color = Color(0.18, 0.04, 0.28, 1)
-shader_parameter/bottom_color = Color(0.02, 0, 0.05, 1)
-shader_parameter/bokeh_color = Color(1, 0.4, 0.8, 1)
-shader_parameter/bokeh_intensity = 0.9
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_beam"]
 shader = ExtResource("6")
 shader_parameter/beam_color = Color(1, 0.55, 0.9, 1)
 shader_parameter/intensity = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_glow"]
-shader = ExtResource("7")
-shader_parameter/glow_color = Color(1, 0.4, 0.85, 1)
-shader_parameter/intensity = 1.2
-
 [node name="RubyBg" type="Control"]
 layout_mode = 3
-anchors_preset = 15
+anchor_left = 1.0
+anchor_top = 0.952
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.952
+offset_left = -1920.0
+offset_top = -1011.16003
+offset_right = 640.0
+offset_bottom = 188.83997
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1")
+pivot_offset = Vector2(1280, 600)
 
-[node name="StageRoot" type="Node2D" parent="."]
+[node name="Backdrop" type="Sprite2D" parent="."]
+position = Vector2(-200, -26)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_3ualc")
+centered = false
 
-[node name="Backdrop" type="Sprite2D" parent="StageRoot"]
-material = SubResource("ShaderMaterial_backdrop")
-scale = Vector2(1920, 1080)
-texture = ExtResource("2")
+[node name="Lights" type="Node2D" parent="."]
+position = Vector2(960, 540)
 
-[node name="Curtains" type="Node2D" parent="StageRoot"]
-
-[node name="Lights" type="Node2D" parent="StageRoot"]
-position = Vector2(104.53, 0)
-
-[node name="BeamLeft" type="Sprite2D" parent="StageRoot/Lights"]
+[node name="BeamLeft" type="Sprite2D" parent="Lights"]
 material = SubResource("ShaderMaterial_beam")
-position = Vector2(-360, -260)
-rotation = -0.38
-scale = Vector2(980, 1200)
+position = Vector2(-806, -592.00006)
+rotation = -0.74700093
+scale = Vector2(1159.2366, 1030.1455)
 texture = ExtResource("2")
 
-[node name="BeamRight" type="Sprite2D" parent="StageRoot/Lights"]
+[node name="BeamRight" type="Sprite2D" parent="Lights"]
 material = SubResource("ShaderMaterial_beam")
-position = Vector2(325, -281)
-rotation = 0.38
-scale = Vector2(980, 1200)
+position = Vector2(587.8578, -534.44666)
+rotation = 0.7696902
+scale = Vector2(1212.2266, 902.5044)
 texture = ExtResource("2")
 
-[node name="GlowLeft" type="Sprite2D" parent="StageRoot/Lights"]
-material = SubResource("ShaderMaterial_glow")
-position = Vector2(-520, -510)
-scale = Vector2(220, 220)
-texture = ExtResource("2")
-
-[node name="GlowRight" type="Sprite2D" parent="StageRoot/Lights"]
-material = SubResource("ShaderMaterial_glow")
-position = Vector2(520, -510)
-scale = Vector2(220, 220)
-texture = ExtResource("2")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="StageRoot"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
 autoplay = "idle"
-
-[node name="RubyIcon" type="Sprite2D" parent="StageRoot"]
-position = Vector2(396, 158.00002)
-scale = Vector2(1.295, 1.295)
-texture = ExtResource("6_hbcuj")

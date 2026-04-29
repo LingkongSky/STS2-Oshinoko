@@ -65,6 +65,8 @@ public class TurnShinePower : OshinogoCustomPower
 // Temp shine: removed after the next Shine card is played.
 public class TempShinePower : OshinogoCustomPower
 {
+    private readonly Dictionary<CardModel, int> _amountSnapshotBeforePlay = new();
+
     public override PowerType Type => PowerType.Buff;
 
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -83,6 +85,26 @@ public class TempShinePower : OshinogoCustomPower
         return Task.CompletedTask;
     }
 
+    public override Task BeforeCardPlayed(CardPlay cardPlay)
+    {
+        if (cardPlay.Card.Owner?.Creature != Owner)
+        {
+            return Task.CompletedTask;
+        }
+
+        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine))
+        {
+            return Task.CompletedTask;
+        }
+
+        if (!_amountSnapshotBeforePlay.ContainsKey(cardPlay.Card))
+        {
+            _amountSnapshotBeforePlay[cardPlay.Card] = Amount;
+        }
+
+        return Task.CompletedTask;
+    }
+
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
         if (cardPlay.Card.Owner?.Creature != Owner)
@@ -92,6 +114,17 @@ public class TempShinePower : OshinogoCustomPower
 
         if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine))
         {
+            return;
+        }
+
+        if (_amountSnapshotBeforePlay.TryGetValue(cardPlay.Card, out var snapshot))
+        {
+            _amountSnapshotBeforePlay.Remove(cardPlay.Card);
+            var consume = Math.Min(snapshot, Amount);
+            if (consume > 0)
+            {
+                await PowerCmd.ModifyAmount(this, -consume, Owner, cardPlay.Card);
+            }
             return;
         }
 
@@ -107,6 +140,7 @@ public class TempShinePower : OshinogoCustomPower
     {
         if (side == Owner.Side)
         {
+            _amountSnapshotBeforePlay.Clear();
             TempPowerSourceTracker.Clear(Owner);
             await PowerCmd.Remove(this);
         }

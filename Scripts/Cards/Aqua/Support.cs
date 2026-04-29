@@ -18,7 +18,7 @@ public class Support : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var voidCards = PileType.Hand.GetPile(Owner).Cards.Where(card => card.Keywords.Contains(CardKeyword.Unplayable)).ToList();
+        var voidCards = PileType.Hand.GetPile(Owner).Cards.Where(card => card.Keywords.Contains(CardKeyword.Ethereal)).ToList();
         foreach (var card in voidCards)
         {
             await CardCmd.Exhaust(choiceContext, card);

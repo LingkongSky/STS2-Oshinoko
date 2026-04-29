@@ -33,17 +33,17 @@ public class WeaponRack : AquaCardModel
             .Execute(choiceContext);
 
         var procCount = CountUnblockedHits(command.Results, cardPlay.Target);
-        if (CardScope == null || procCount <= 0)
+        if (procCount <= 0)
         {
             return;
         }
 
         for (var i = 0; i < procCount; i++)
         {
-            var bloodFlower = CardScope.CreateCard<BloodFlower>(Owner);
+            var bloodFlower = Owner.Creature.CombatState?.CreateCard<BloodFlower>(Owner);
             if (bloodFlower != null)
             {
-                await CardPileCmd.Add(bloodFlower, PileType.Hand);
+                await CardPileCmd.AddGeneratedCardToCombat(bloodFlower, PileType.Hand, addedByPlayer: true);
             }
         }
     }
@@ -58,4 +58,5 @@ public class WeaponRack : AquaCardModel
         return results.Count(result => result.Receiver == target && result.UnblockedDamage > 0);
     }
 }
+
 
