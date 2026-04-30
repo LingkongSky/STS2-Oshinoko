@@ -1,4 +1,5 @@
 using BaseLib.Abstracts;
+using Godot;
 using MegaCrit.Sts2.Core.Entities.Powers;
 
 namespace Oshinogo.Scripts.Powers
@@ -6,10 +7,20 @@ namespace Oshinogo.Scripts.Powers
     public abstract class OshinogoCustomPower : CustomPowerModel
     {
         public override PowerType Type => PowerType.Buff;
-        // 叠加类型，Counter表示可叠加，Single表示不可叠加
         public override PowerStackType StackType => PowerStackType.Counter;
 
-        public override string? CustomPackedIconPath => "res://Oshinogo/images/relics/Photo.png";
-        public override string? CustomBigIconPath => "res://Oshinogo/images/relics/Photo.png";
+        public override string? CustomPackedIconPath => ResolveIconPath();
+        public override string? CustomBigIconPath => ResolveIconPath();
+
+        private string ResolveIconPath()
+        {
+            var candidate = $"res://Oshinogo/images/powers/{GetType().Name}.png";
+            if (ResourceLoader.Exists(candidate))
+            {
+                return candidate;
+            }
+
+            return "res://Oshinogo/images/relics/Photo.png";
+        }
     }
 }
