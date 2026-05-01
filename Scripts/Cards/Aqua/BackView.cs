@@ -1,18 +1,17 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 描述: 下一张消耗牌在打出时回到手中。
+// 描述: 下一张牌在打出时回到手中。
 public class BackView : AquaCardModel
 {
-    public BackView() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
+    public BackView() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {
     }
 

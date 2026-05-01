@@ -1,4 +1,4 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -6,12 +6,11 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 鎻忚堪: 瀵规墍鏈夋晫浜洪€犳垚4(7)鐐逛激瀹筹紝鑾峰緱4(7)鐐规牸鎸°€?
+// 对所有敌人造成4(7)点伤害，获得4(7)点格挡。
 public class Intercept : AquaCardModel
 {
     private const string CalculatedBlockKey = "CalculatedBlock";

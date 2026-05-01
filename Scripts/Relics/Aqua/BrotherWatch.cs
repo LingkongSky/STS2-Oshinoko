@@ -13,7 +13,7 @@ using Oshinogo.Scripts.RestSite;
 namespace Oshinogo.Scripts.Relics.Aqua;
 
 [Pool(typeof(AquaRelicPool))]
-// 每次受伤后，回复1点生命。
+// 每次受伤后，回复2点生命。
 public class BrotherWatch : OshinogoRelicModel
 {
     public override RelicRarity Rarity => RelicRarity.Starter;
@@ -33,7 +33,7 @@ public class BrotherWatch : OshinogoRelicModel
         }
 
         Flash();
-        await CreatureCmd.Heal(Owner.Creature, 1);
+        await CreatureCmd.Heal(Owner.Creature, 2);
     }
 
     public override bool TryModifyRestSiteOptions(Player player, ICollection<RestSiteOption> options)

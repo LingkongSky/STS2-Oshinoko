@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.Models;
 namespace Oshinogo.Scripts.Powers;
 
 /// <summary>
-/// 下一张被打出的消耗牌改为回到手中。
+/// 下一张被打出的牌改为回到手中。
 /// </summary>
 public class BackViewPower : OshinogoCustomPower
 {
@@ -23,7 +23,7 @@ public class BackViewPower : OshinogoCustomPower
         CardPilePosition position
     )
     {
-        if (card.Owner.Creature != Owner || pileType != PileType.Exhaust)
+        if (card.Owner.Creature != Owner)
         {
             return (pileType, position);
         }

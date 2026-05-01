@@ -1,10 +1,9 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
 using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
@@ -12,7 +11,7 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 下一张被打出的牌将被打出两次。
 public class SameDestination : AquaCardModel
 {
-    public SameDestination() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
+    public SameDestination() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {
     }
 

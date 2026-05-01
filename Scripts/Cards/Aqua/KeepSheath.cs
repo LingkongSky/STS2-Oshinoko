@@ -3,16 +3,16 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
+using Oshinogo.Scripts.Powers;
 using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 描述: 造成7(10)点伤害，获得2(3)点活力。
+// 描述: 造成7(10)点伤害，获得等同于谋划层数的费用。
 public class KeepSheath : AquaCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
@@ -22,7 +22,6 @@ public class KeepSheath : AquaCardModel
         new DamageVar(7, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
-        new DynamicVar("Vigor", 2),
     ];
 
     public KeepSheath() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, true)
@@ -39,13 +38,21 @@ public class KeepSheath : AquaCardModel
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        await PowerCmd.Apply<VigorPower>(Owner.Creature, DynamicVars["Vigor"].BaseValue, Owner.Creature, this);
+        if (Owner == null)
+        {
+            return;
+        }
+
+        var planAmount = Owner.Creature?.GetPowerAmount<PlanPower>() ?? 0;
+        if (planAmount > 0)
+        {
+            await PlayerCmd.GainEnergy(planAmount, Owner);
+        }
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(3);
-        DynamicVars["Vigor"].UpgradeValueBy(1);
     }
 }
 

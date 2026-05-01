@@ -13,7 +13,7 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 public class TwoChilds : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE", "REVENGE");
-    public TwoChilds() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
+    public TwoChilds() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
     {
     }
 
