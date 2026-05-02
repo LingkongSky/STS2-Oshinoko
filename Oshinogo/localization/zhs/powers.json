@@ -101,7 +101,7 @@
   "OSHINOGO-BEAUTIFUL_DREAM_POWER.description": "战斗中每次生成卡牌时，获得临时闪耀。",
   "OSHINOGO-BEAUTIFUL_DREAM_POWER.smarterDescription": "战斗中每次生成卡牌时，获得{Amount}点临时闪耀。",
   "OSHINOGO-TWO_CHILDS_POWER.title": "两个孩子？",
-  "OSHINOGO-TWO_CHILDS_POWER.description": "每回合获得{Amount}点临时闪耀和{Amount}点临时复仇。",
+  "OSHINOGO-TWO_CHILDS_POWER.description": "每回合获得2点临时闪耀和2点临时复仇。",
   "OSHINOGO-HANDSCROLL_PAINTING_POWER.title": "绘卷",
   "OSHINOGO-HANDSCROLL_PAINTING_POWER.description": "战斗胜利后，可从卡组中永久移除1张牌。",
   "OSHINOGO-FIRE_EXECUTION_POWER.title": "火刑",

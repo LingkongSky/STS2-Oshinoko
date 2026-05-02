@@ -13,12 +13,12 @@ namespace Oshinogo.Scripts.Powers;
 /// </summary>
 public class EscapePower : OshinogoCustomPower
 {
-    public override PowerType Type => PowerType.Debuff;
+    public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (target != Owner || !props.IsPoweredAttack())
+        if (target != Owner)
         {
             return 1m;
         }
@@ -28,7 +28,7 @@ public class EscapePower : OshinogoCustomPower
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (side != Owner.Side)
+        if (side == Owner.Side)
         {
             return;
         }

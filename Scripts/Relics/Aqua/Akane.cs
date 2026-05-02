@@ -64,7 +64,11 @@ public class Akane : OshinogoRelicModel
             return;
         }
 
-        var buffs = Owner.Creature.Powers.Where(power => power.Type == PowerType.Buff && power.Amount > 0).ToList();
+        var buffs = Owner.Creature.Powers
+            .Where(power => power.Type == PowerType.Buff
+                && power.StackType == PowerStackType.Counter
+                && power.Amount > 0)
+            .ToList();
         if (buffs.Count == 0)
         {
             InvokeDisplayAmountChanged();

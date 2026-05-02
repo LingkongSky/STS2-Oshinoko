@@ -15,11 +15,13 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 获得5(10)点复仇，5(10)点力量。
 public class Destination : AquaCardModel
 {
+    private const string StrengthKey = "DestinationStrength";
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("REVENGE");
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new RevengeDynamicVar(5m),
-        new DynamicVar("Strength", 5),
+        new DynamicVar(StrengthKey, 5),
     ];
 
     public Destination() : base(3, CardType.Power, CardRarity.Ancient, TargetType.Self, true)
@@ -29,12 +31,12 @@ public class Destination : AquaCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await RevengePowerHelper.ApplyRevenge(Owner.Creature, DynamicVars[RevengeDynamicVar.Key].BaseValue, ValueDuration.Permanent, Owner.Creature, this);
-        await PowerCmd.Apply<StrengthPower>(Owner.Creature, DynamicVars["Strength"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<StrengthPower>(Owner.Creature, DynamicVars[StrengthKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars[RevengeDynamicVar.Key].UpgradeValueBy(5);
-        DynamicVars["Strength"].UpgradeValueBy(5);
+        DynamicVars[StrengthKey].UpgradeValueBy(5);
     }
 }

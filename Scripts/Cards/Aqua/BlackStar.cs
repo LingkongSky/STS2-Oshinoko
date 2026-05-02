@@ -11,6 +11,11 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 每次获得谋划时额外获得一层谋划。
 public class BlackStar : AquaCardModel
 {
+    private bool _isInnateWhenUpgraded;
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+        _isInnateWhenUpgraded ? [CardKeyword.Innate] : [];
+
     public BlackStar() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self, true)
     {
     }
@@ -22,6 +27,7 @@ public class BlackStar : AquaCardModel
 
     protected override void OnUpgrade()
     {
+        _isInnateWhenUpgraded = true;
         EnergyCost.UpgradeBy(-1);
     }
 }

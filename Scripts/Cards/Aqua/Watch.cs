@@ -14,7 +14,9 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 获得2(3)层脱身。 谋划1
 public class Watch : AquaCardModel
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Escape", 2)];
+    private const string EscapeKey = "WatchEscape";
+
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar(EscapeKey, 2)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => PlanAndKeywordTips(1, "ESCAPE");
     public Watch() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
     {
@@ -29,11 +31,11 @@ public class Watch : AquaCardModel
             return;
         }
 
-        await PowerCmd.Apply<EscapePower>(Owner.Creature, DynamicVars["Escape"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<EscapePower>(Owner.Creature, DynamicVars[EscapeKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Escape"].UpgradeValueBy(1);
+        DynamicVars[EscapeKey].UpgradeValueBy(1);
     }
 }

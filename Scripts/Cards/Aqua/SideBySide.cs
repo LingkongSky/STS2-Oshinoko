@@ -21,7 +21,11 @@ public class SideBySide : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var buffs = Owner.Creature.Powers.Where(power => power.Type == PowerType.Buff && power.Amount > 0).ToList();
+        var buffs = Owner.Creature.Powers
+            .Where(power => power.Type == PowerType.Buff
+                && power.StackType == PowerStackType.Counter
+                && power.Amount > 0)
+            .ToList();
         foreach (var buff in buffs)
         {
             await PowerCmd.ModifyAmount(buff, buff.Amount, Owner.Creature, this);
