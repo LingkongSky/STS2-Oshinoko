@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 闅忔満瀵规晫浜洪€犳垚3(4)鐐逛激瀹?娆°€傛湰鍥炲悎鑻ヤ綘鎵撳嚭杩?寮犻棯鑰€鐗岋紝鏀逛负4娆°€?
+// 描述: 随机对敌人造成3(4)点伤害3次。本回合若你打出过2张闪耀牌，改为4次。
 
 [Pool(typeof(RubyCardPool))]
 public class SpinningStep : RubyCardModel

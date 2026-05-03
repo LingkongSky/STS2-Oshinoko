@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -9,7 +9,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 将你的闪耀值全部转换为复仇值。获得等量能量，并失去2点生命。
+// 描述: 将你的闪耀全部转换为复仇。获得等量能量，并失去2点生命。
 
 [Pool(typeof(RubyCardPool))]
 public class DoctorBones : RubyCardModel

@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 姣忓洖鍚堢涓€娆℃墦鍑烘妧鑳界墝鏃讹紝鑾峰緱1鐐逛复鏃堕棯鑰€鍊笺€傝嫢杩欐槸鏈洖鍚堢3寮犳妧鑳界墝锛屾敼涓鸿幏寰?鐐瑰洖鍚堥棯鑰€鍊笺€?
+// 描述: 打出技能牌时，获得1点临时闪耀。
 
 [Pool(typeof(RubyCardPool))]
 public class LastMinuteStudy : RubyCardModel

@@ -49,6 +49,9 @@ public sealed class Journey : RestSiteOption
         IsEnabled = _useCount < MaxUses;
     }
 
+    // Prevent the base class from preloading res://images/ui/rest_site/option_journey.png.
+    public override IEnumerable<string> AssetPaths => new[] { IconPath };
+
     public override async Task<bool> OnSelect()
     {
         if (_useCount >= MaxUses)

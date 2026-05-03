@@ -1,18 +1,18 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 鎻忚堪: 鑾峰緱10(14)鐐规牸鎸★紝鑾峰緱涓€灞傝劚韬€傝皨鍒?
+// 获得10(14)点格挡，获得一层脱身。谋划1
 public class Dodge : AquaCardModel
 {
     private const string CalculatedBlockKey = "CalculatedBlock";

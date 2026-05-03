@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 鑾峰緱6(9)鐐规牸鎸°€傚湪寮冪墝鍫嗕腑閫夋嫨涓€寮犵疆鍏ユ娊鐗屽爢椤堕儴銆?
+// 描述: 获得6(9)点格挡。在弃牌堆中选择一张置入抽牌堆顶部。
 
 [Pool(typeof(RubyCardPool))]
 public class SmallTrick : RubyCardModel

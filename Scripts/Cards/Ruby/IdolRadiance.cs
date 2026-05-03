@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -8,7 +8,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得2点闪耀值。每回合第一次打出闪耀牌时，获得1点临时闪耀值。
+// 描述: 获得2点闪耀。每回合第一次打出闪耀牌时，获得1点临时闪耀。
 
 [Pool(typeof(RubyCardPool))]
 public class IdolRadiance : RubyCardModel

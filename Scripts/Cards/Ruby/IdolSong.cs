@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 瀵规墍鏈夋晫浜洪€犳垚14鐐逛激瀹筹紝鑾峰緱2鐐瑰洖鍚堥棯鑰€
+// 描述: 对所有敌人造成14点伤害，获得2点回合闪耀
 
 [Pool(typeof(RubyCardPool))]
 public class IdolSong : RubyCardModel

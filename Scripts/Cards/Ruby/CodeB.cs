@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 瀵规墍鏈夋晫浜洪€犳垚6(8)鐐逛激瀹?娆★紝鑷繁鑾峰緱6(8)鐐归槻寰?娆°€?
+// 描述: 对所有敌人造成5(7)点伤害3次，自己获得5(7)点防御3次。
 
 [Pool(typeof(RubyCardPool))]
 public class CodeB : RubyCardModel

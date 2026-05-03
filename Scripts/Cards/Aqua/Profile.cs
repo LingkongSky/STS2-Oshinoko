@@ -8,7 +8,7 @@ using Oshinogo.Scripts.Powers;
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 描述: 每次打出谋划牌时，抽1张牌。
+// 描述: 获得3点闪耀，获得一层陷阱。
 public class Profile : AquaCardModel
 {
     public Profile() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self, true)

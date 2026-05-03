@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 锛岃幏寰?(2)灞備汉宸ュ埗鍝侊紝鎴樻枟缁撴潫鍚庨殢鏈哄崌绾т竴寮犲崱鐗屻€?
+// 描述: 获得1(2)层人工制品，战斗结束后随机升级一张卡牌
 
 [Pool(typeof(RubyCardPool))]
 public class ChannelSubscribe : RubyCardModel

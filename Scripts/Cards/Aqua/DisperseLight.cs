@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 鎻忚堪: 閫犳垚9(14)鐐逛激瀹筹紝浣垮鏂瑰け鍘?(3)鐐瑰姏閲忋€?
+// 描述: 造成9(14)点伤害，使对方失去2(3)点力量。
 public class DisperseLight : AquaCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

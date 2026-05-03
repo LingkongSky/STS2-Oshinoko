@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 鏌ョ湅鎶界墝鍫嗕笂鐨?寮犵墝锛岄€夋嫨1寮犵疆浜庢娊鐗屽爢椤讹紝涓嬩竴鍥炲悎棰濆鑾峰緱1鐐硅兘閲忓拰鍥炲悎闂€€銆?
+// 描述: 查看抽牌堆上的5张牌，选择1张置于抽牌堆顶，下一回合额外获得2点能量和回合闪耀。
 
 [Pool(typeof(RubyCardPool))]
 public class CarefulPlan : RubyCardModel

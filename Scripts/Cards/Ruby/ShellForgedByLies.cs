@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 鍥炲悎缁撴潫鏃跺鎵€鏈夋晫浜洪€犳垚澶嶄粐鍊?4鐨勪激瀹炽€傝嫢鏈洖鍚堜綘澶卞幓杩囩敓鍛斤紝浼ゅ+8銆?
+// 描述: 回合结束时对所有敌人造成复仇*6的伤害。若本回合你失去过生命，伤害+8。
 
 [Pool(typeof(RubyCardPool))]
 public class ShellForgedByLies : RubyCardModel

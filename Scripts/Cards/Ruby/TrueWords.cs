@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 鍘婚櫎涓€鍚嶆晫浜虹殑鎵€鏈夐槻寰°€傝嫢鍏堕槻寰″ぇ浜?5锛屽垯鑾峰緱1鐐归棯鑰€鍊煎苟鎶?寮犵墝銆?
+// 描述: 去除一名敌人的所有防御。若其防御大于15，则获得1点闪耀并抽1张牌。
 
 [Pool(typeof(RubyCardPool))]
 public class TrueWords : RubyCardModel

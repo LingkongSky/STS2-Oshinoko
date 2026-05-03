@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 灏嗕綘鐨勫浠囧€煎叏閮ㄨ浆鎹负闂€€鍊笺€傛娊绛夐噺鍗＄墝锛屽苟鑾峰緱20鐐规牸鎸°€?
+// 描述: 将你的复仇全部转换为闪耀。抽等量卡牌，并获得20点格挡。
 
 [Pool(typeof(RubyCardPool))]
 public class SiblingsReunited : RubyCardModel

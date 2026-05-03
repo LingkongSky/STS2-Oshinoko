@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -11,7 +11,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 失去1点生命，获得12(15)点格挡，获得1点临时复仇值。
+// 描述: 失去1点生命，获得12(15)点格挡，获得1点临时复仇。
 
 [Pool(typeof(RubyCardPool))]
 public class ColdSmile : RubyCardModel

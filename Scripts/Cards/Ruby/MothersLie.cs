@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -8,7 +8,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得3点回合复仇值。若本回合你每次失去生命，令所有敌人失去5点生命。
+// 描述: 获得3点回合复仇。若本回合你每次失去生命，令所有敌人失去5点生命。
 
 [Pool(typeof(RubyCardPool))]
 public class MothersLie : RubyCardModel

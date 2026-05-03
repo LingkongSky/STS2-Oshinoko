@@ -180,7 +180,7 @@
   "OSHINOGO-AQUA_DEFEND.title": "防御",
   "OSHINOGO-AQUA_DEFEND.description": "获得{CalculatedBlock:diff()}点[gold]格挡[/gold]。",
   "OSHINOGO-HANDSCROLL_PAINTING.title": "绘卷",
-  "OSHINOGO-HANDSCROLL_PAINTING.description": "战斗胜利后，可从卡组中永久移除1张牌。获得1层[gold]谋划[/gold]。\n[gold]谋划1[/gold]。",
+  "OSHINOGO-HANDSCROLL_PAINTING.description": "战斗胜利后，可从卡组中永久移除1张牌。\n[gold]谋划1[/gold]。",
   "OSHINOGO-UNREACHABLE.title": "无法触及",
   "OSHINOGO-UNREACHABLE.description": "每抽7张牌，额外抽1张牌。",
   "OSHINOGO-ENCORE.title": "再演",
@@ -246,7 +246,7 @@
   "OSHINOGO-HIDE.title": "隐藏",
   "OSHINOGO-HIDE.description": "获得{Block:diff()}点[gold]格挡[/gold]，消除自身的[gold]脆弱[/gold]。",
   "OSHINOGO-ARIMA_KANA.title": "有马加奈！",
-  "OSHINOGO-ARIMA_KANA.description": "获得{Block:diff()}点[gold]格挡[/gold]{Hits:diff()}次。",
+  "OSHINOGO-ARIMA_KANA.description": "获得{CalculatedBlock:diff()}点[gold]格挡[/gold]{Hits:diff()}次。",
   "OSHINOGO-SIDE_PROFILE.title": "侧颜",
   "OSHINOGO-SIDE_PROFILE.description": "造成{CalculatedDamage:diff()}点伤害，获得2点[gold]临时闪耀[/gold]。",
   "OSHINOGO-DAZZLING_DEFEND.title": "眩目格挡",
@@ -333,5 +333,7 @@
   "OSHINOGO-BITE_TIGHT.description": "对敌人造成{Damage:diff()}点伤害，给予{Trap:diff()}层[gold]陷阱[/gold]。\n[gold]谋划2[/gold]。",
   "OSHINOGO-UNDER_THE_SEA.title": "坠入海底",
   "OSHINOGO-UNDER_THE_SEA.description": "造成{Damage:diff()}点伤害，下回合死亡。",
+  "OSHINOGO-DEUS_EX_MACHINA.title": "机械降神",
+  "OSHINOGO-DEUS_EX_MACHINA.description": "所有队友获得1层[gold]无实体[/gold]。",
   "OSHINOGO-POISED_TO.selectionScreenPrompt": "选择1张手牌，给予虚无。"
 }

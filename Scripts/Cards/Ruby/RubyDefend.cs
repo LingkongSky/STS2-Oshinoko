@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 鑾峰緱6(9)鐐规牸鎸°€?
+// 描述: 获得5(8)点格挡。
 
 [Pool(typeof(RubyCardPool))]
 public class RubyDefend : RubyCardModel

@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 鍦轰笂姣忔湁涓€鍚嶆晫浜猴紝棰濆鑾峰緱4(6)鐐规牸鎸°€?
+// 描述: 场上每有一名敌人，额外获得4(6)点格挡。
 
 [Pool(typeof(RubyCardPool))]
 public class IdolDisguise : RubyCardModel

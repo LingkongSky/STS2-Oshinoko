@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 瀵规墍鏈夋晫浜洪€犳垚8(10)鐐逛激瀹炽€傝嫢鏈洖鍚堟娊杩囩墝锛屽垯鏀逛负閫犳垚2娆°€?
+// 描述: 对所有敌人造成8(10)点伤害。若本回合抽过牌，则改为造成2次。
 
 [Pool(typeof(RubyCardPool))]
 public class ScarletEncore : RubyCardModel

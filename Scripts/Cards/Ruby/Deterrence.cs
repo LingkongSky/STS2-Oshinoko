@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -10,7 +10,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 对所有敌人造成5(7)点伤害，给予1(2)层易伤。
+// 描述: 对所有敌人造成5(7)点伤害，给予1(2)层易伤
 
 [Pool(typeof(RubyCardPool))]
 public class Deterrence : RubyCardModel

@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -12,7 +12,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 每有1点闪耀值，该卡的费用减少1，对敌人造成32(48)点伤害。若费用变为0，获得1点能量。
+// 描述: 每有1点闪耀，该卡的费用减少1。对敌人造成32(48)点伤害。若费用变为0，获得1点能量。
 
 [Pool(typeof(RubyCardPool))]
 public class PlaceOfLight : RubyCardModel

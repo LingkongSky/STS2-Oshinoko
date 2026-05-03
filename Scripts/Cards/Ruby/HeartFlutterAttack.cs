@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 閫犳垚8(10)鐐逛激瀹炽€傝嫢閫犳垚鐨勪激瀹冲ぇ浜?2(15)锛岃繑杩?(2)鐐硅垂鐢ㄣ€?
+// 描述: 造成8(10)点伤害。若造成的伤害大于12(15)，返还1(2)点费用。
 
 [Pool(typeof(RubyCardPool))]
 public class HeartFlutterAttack : RubyCardModel

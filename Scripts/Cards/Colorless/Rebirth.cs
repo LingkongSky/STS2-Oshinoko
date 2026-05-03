@@ -1,14 +1,13 @@
-﻿using BaseLib.Abstracts;
+using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Colorless;
 
-// 鎻忚堪: 娲楀幓鑷韩鐨勬墍鏈塀uff锛屽洖澶?0鐐圭敓鍛姐€?
+// 洗去自身的所有Buff，回复10点生命。
 [Pool(typeof(ColorlessCardPool))]
 public class Rebirth : CustomCardModel
 {

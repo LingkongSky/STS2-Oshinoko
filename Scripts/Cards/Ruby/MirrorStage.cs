@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 鑾峰緱14(18)鐐规牸鎸★紝鏈洖鍚堝弽寮规墍鏈夎鏍兼尅鐨勪激瀹炽€?
+// 描述: 获得14(18)点格挡，本回合反弹所有被格挡的伤害。
 
 [Pool(typeof(RubyCardPool))]
 public class MirrorStage : RubyCardModel

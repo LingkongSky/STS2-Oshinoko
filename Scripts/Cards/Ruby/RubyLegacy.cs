@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -8,7 +8,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得闪耀值时，获得3点格挡。获得复仇值时，失去1点生命并获得8点格挡.
+// 描述: 获得闪耀时，获得3点格挡。获得复仇时，失去1点生命并获得8点格挡。
 
 [Pool(typeof(RubyCardPool))]
 public class RubyLegacy : RubyCardModel

@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -11,7 +11,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 对所有敌人造成3(4)点伤害2次。获得1点临时闪耀值。
+// 描述: 对所有敌人造成3(4)点伤害2次。获得1点临时闪耀。
 
 [Pool(typeof(RubyCardPool))]
 public class RadiantBurst : RubyCardModel

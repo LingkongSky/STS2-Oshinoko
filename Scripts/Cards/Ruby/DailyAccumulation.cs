@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -9,7 +9,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得本场获得过的闪耀值与复仇值总和的格挡。
+// 描述: 获得本场获得过的闪耀与复仇总和的格挡。
 
 [Pool(typeof(RubyCardPool))]
 public class DailyAccumulation : RubyCardModel

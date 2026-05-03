@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 鑾峰緱2鐐瑰浠囧€笺€傝嫢褰撳墠澶嶄粐鍊煎ぇ浜?锛屾娊2寮犵墝銆?
+// 描述: 获得2点复仇。若当前复仇大于3，抽2张牌。
 
 
 [Pool(typeof(RubyCardPool))]

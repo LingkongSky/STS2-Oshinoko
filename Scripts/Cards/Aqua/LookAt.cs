@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -11,7 +11,7 @@ using Oshinogo.Scripts.Pools.CardPools;
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 描述: 造成8(11)点伤害，给予1(2)层易伤和1(2)层虚弱。
+// 描述: 造成7(10)点伤害，给予1(2)层易伤和1(2)层虚弱。
 public class LookAt : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("VULNERABLE", "WEAK");

@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 鑾峰緱2(3)鐐瑰洖鍚堥棯鑰€鍊笺€?
+// 描述: 获得2(3)点回合闪耀。
 
 [Pool(typeof(RubyCardPool))]
 public class IdolPassion : RubyCardModel, ITranscendenceCard

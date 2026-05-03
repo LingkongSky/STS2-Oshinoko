@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -11,7 +11,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成14(18)点伤害，本回合获得3点回合闪耀值。
+// 描述: 造成14(18)点伤害，本回合获得3点回合闪耀。
 
 [Pool(typeof(RubyCardPool))]
 public class IdolConfidence : RubyCardModel

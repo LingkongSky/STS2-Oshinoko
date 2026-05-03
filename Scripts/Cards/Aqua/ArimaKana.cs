@@ -14,11 +14,19 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 获得3点格挡3(4)次。
 public class ArimaKana : AquaCardModel
 {
+    private const string CalculatedBlockKey = "CalculatedBlock";
+
     public override bool GainsBlock => true;
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(3, ValueProp.Move), new DynamicVar("Hits", 3)];
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new BlockVar(3, ValueProp.Move),
+        new CalculationExtraVar(1m),
+        ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),
+        new DynamicVar("Hits", 3),
+    ];
 
     public ArimaKana() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
     {
@@ -26,9 +34,10 @@ public class ArimaKana : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        var blockPerHit = ShineScaling.Calculate(DynamicVars, CalculatedBlockKey, Owner.Creature);
         for (var i = 0; i < DynamicVars["Hits"].BaseValue; i++)
         {
-            await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block.BaseValue, ValueProp.Move, cardPlay);
+            await CreatureCmd.GainBlock(Owner.Creature, blockPerHit, ValueProp.Move, cardPlay);
         }
     }
 

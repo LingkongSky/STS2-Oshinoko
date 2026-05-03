@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 瀵规晫浜洪€犳垚9(12)鐐逛激瀹筹紝濡傛灉閫犳垚鐨勪激瀹冲ぇ浜?1(15)鍒欒幏寰?鐐逛复鏃跺浠囧€笺€?
+// 描述: 对敌人造成9(12)点伤害，如果造成的伤害大于11(15)则获得2点临时复仇。
 
 [Pool(typeof(RubyCardPool))]
 public class Doubt : RubyCardModel

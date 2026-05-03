@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
@@ -15,7 +15,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成3点伤害1次，本场战斗中每使用一次闪耀值，攻击次数+1。
+// 描述: 造成3点伤害1次，本场战斗中每使用一次闪耀，攻击次数+1。
 
 [Pool(typeof(RubyCardPool))]
 public class RubyShine : RubyCardModel

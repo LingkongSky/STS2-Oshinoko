@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -8,7 +8,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 回合结束时获取等同于闪耀值*4的格挡。
+// 描述: 回合结束时获取等同于闪耀*6的格挡。
 
 [Pool(typeof(RubyCardPool))]
 public class LightFromPassion : RubyCardModel

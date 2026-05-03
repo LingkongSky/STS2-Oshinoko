@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 姣忓け鍘?鐐圭敓鍛斤紝鑾峰緱2(3)鐐规牸鎸°€?
+// 描述: 每失去1点生命，获得2(3)点格挡。
 
 [Pool(typeof(RubyCardPool))]
 public class StageArmor : RubyCardModel

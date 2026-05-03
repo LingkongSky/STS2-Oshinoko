@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 閫犳垚7(10)鐐逛激瀹筹紝缁欎簣1(2)灞傛槗浼ゃ€?
+// 描述: 造成7(10)点伤害，给予1(2)层易伤。
 
 [Pool(typeof(RubyCardPool))]
 public class Tease : RubyCardModel

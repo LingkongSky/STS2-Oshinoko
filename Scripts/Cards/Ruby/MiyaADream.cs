@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -9,7 +9,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得2(3)点临时闪耀值。
+// 描述: 获得2(3)点临时闪耀。
 
 [Pool(typeof(RubyCardPool))]
 public class MiyaADream : RubyCardModel

@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 闅忔満娑堣€楁墜鐗屼腑鐨?寮犲崱锛屽苟鑾峰緱14(18)鐐规牸鎸°€?
+// 描述: 随机消耗手牌中的1张卡，获得14(18)点防御。
 
 [Pool(typeof(RubyCardPool))]
 public class NoWayBack : RubyCardModel

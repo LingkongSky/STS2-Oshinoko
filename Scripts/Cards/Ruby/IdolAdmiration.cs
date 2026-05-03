@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 閫犳垚9(13)鐐逛激瀹筹紝鎶?寮犵墝銆?
+// 描述: 造成9(13)点伤害，抽1张牌。
 [Pool(typeof(RubyCardPool))]
 public class IdolAdmiration : RubyCardModel
 {

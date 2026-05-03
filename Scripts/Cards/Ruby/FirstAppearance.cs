@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 鑾峰緱12(16)鐐规牸鎸★紝鍦ㄥ崱缁勯噷澧炲姞1寮犵湬鏅曘€?
+// 描述: 获得12(16)点格挡，在卡组里增加1张眩晕。
 
 [Pool(typeof(RubyCardPool))]
 public class FirstAppearance : RubyCardModel

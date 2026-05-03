@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 澶卞幓2鐐圭敓鍛斤紝鑾峰緱20鐐规牸鎸°€傝嫢鏈洖鍚堜綘澶卞幓杩囩敓鍛斤紝鎶?寮犵墝銆?
+// 描述: 失去2点生命，获得20点格挡。若本回合你失去过生命，抽3张牌。
 
 [Pool(typeof(RubyCardPool))]
 public class SwitchToVengeance : RubyCardModel

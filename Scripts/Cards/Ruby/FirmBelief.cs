@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -8,7 +8,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 将临时闪耀转换为回合闪耀，将回合闪耀转换为永久闪耀。
+// 描述: 将临时闪耀转换为回合闪耀，将回合闪耀转换为永久闪耀
 
 [Pool(typeof(RubyCardPool))]
 public class FirmBelief : RubyCardModel

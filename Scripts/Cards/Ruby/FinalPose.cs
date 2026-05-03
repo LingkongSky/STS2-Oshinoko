@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 浠呭綋闂€€鍊煎ぇ浜?鏃舵墠鑳芥墦鍑恒€傞€犳垚24(34)鐐逛激瀹筹紝缁欎簣2灞傛槗浼ゃ€?
+// 描述: 仅当闪耀大于3时才能打出。造成24(34)点伤害，给予2层易伤。
 
 [Pool(typeof(RubyCardPool))]
 public class FinalPose : RubyCardModel

@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 鎻忚堪: 鑾峰緱7(10)鐐规牸鎸★紝缁欎簣2(3)灞傛祦瑷€銆?
+// 描述: 获得7(10)点格挡，给予2(3)层流言。
 public class Dancing : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("RUMOR");

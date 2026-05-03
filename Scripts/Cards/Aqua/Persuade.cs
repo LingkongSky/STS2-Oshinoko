@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 鎻忚堪: 姣忔湁涓€鍚嶆晫浜猴紝鐢熸垚涓€寮犳蹈琛€鑺辩摚銆?
+// 描述: 每有一名敌人，生成一张浸血花瓣。
 public class Persuade : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<BloodFlower>()];

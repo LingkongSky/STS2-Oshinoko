@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -9,7 +9,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 每使用5(4)点复仇值，抽1张牌。
+// 描述: 每使用5(4)点复仇，抽1张牌。
 
 [Pool(typeof(RubyCardPool))]
 public class FleeingLight : RubyCardModel

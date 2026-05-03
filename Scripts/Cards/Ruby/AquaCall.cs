@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -10,7 +10,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得1(2)点临时闪耀值。抽1(2)张牌。
+// 描述: 获得1(2)点临时闪耀。抽1(2)张牌。
 
 [Pool(typeof(RubyCardPool))]
 public class AquaCall : RubyCardModel

@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -11,7 +11,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 失去2点血量，获得3点复仇值。每回合第一次失去生命时，获得8点格挡。
+// 描述: 失去2点血量，获得3点复仇。每回合第一次失去生命时，获得8点格挡。
 
 [Pool(typeof(RubyCardPool))]
 public class DieAlone : RubyCardModel

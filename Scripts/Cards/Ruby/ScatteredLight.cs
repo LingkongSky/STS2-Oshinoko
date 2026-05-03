@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 閫犳垚14(17)鐐逛激瀹筹紝鎶?寮犵墝锛屽苟鍏嶈垂鎵撳嚭鍏朵腑1寮犻棯鑰€鐗屻€?
+// 描述: 造成14(17)点伤害，抽3张牌，并免费打出其中1张闪耀牌。
 
 [Pool(typeof(RubyCardPool))]
 public class ScatteredLight : RubyCardModel

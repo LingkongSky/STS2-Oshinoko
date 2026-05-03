@@ -1,4 +1,4 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -6,16 +6,16 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 鍘婚櫎鎵€鏈夐槦鍙嬬殑璐熼潰鏁堟灉銆備笅鍥炲悎浣犱笌鎵€鏈夐槦鍙嬭幏寰?(2)鐐硅兘閲忋€?
+// 描述: 去除所有队友的负面效果。下回合你与所有队友获得1(2)点能量。
 
 [Pool(typeof(RubyCardPool))]
 public class BurnedLetter : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+    public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(1)];
 

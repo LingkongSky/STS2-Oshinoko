@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 澶卞幓2鐐圭敓鍛斤紝鍘婚櫎鎵€鏈夋晫浜虹殑浜哄伐鍒跺搧锛屽苟娣诲姞3灞傛槗浼ゅ拰铏氬急銆?
+// 描述: 失去2点生命，去除所有敌人的人工制品，并添加3层易伤和虚弱。
 
 [Pool(typeof(RubyCardPool))]
 public class SpikesOfLies : RubyCardModel

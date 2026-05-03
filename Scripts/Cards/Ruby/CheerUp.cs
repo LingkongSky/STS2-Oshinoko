@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 鑾峰緱1鐐硅垂鐢ㄣ€?
+// 描述: 获得1点费用。
 
 [Pool(typeof(RubyCardPool))]
 public class CheerUp : RubyCardModel

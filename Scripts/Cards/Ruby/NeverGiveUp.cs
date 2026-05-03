@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 鑾峰緱2鐐归棯鑰€鍊硷紝骞惰幏寰?5鐐规牸鎸°€傝嫢鏈洖鍚堜綘浣跨敤杩囬棯鑰€鍊硷紝鑾峰緱1鐐硅兘閲忋€?
+// 描述: 获得2点闪耀，并获得15点格挡。若本回合你使用过闪耀，获得1点能量。
 
 [Pool(typeof(RubyCardPool))]
 public class NeverGiveUp : RubyCardModel

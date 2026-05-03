@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -11,7 +11,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得8(11)点格挡。若本回合你已失去过生命，获得1点临时复仇值。
+// 描述: 获得8(11)点格挡。若本回合你已失去过生命，获得1点临时复仇。
 
 [Pool(typeof(RubyCardPool))]
 public class Deceive : RubyCardModel

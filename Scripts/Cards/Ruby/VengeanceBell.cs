@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 澶卞幓1鐐圭敓鍛斤紝浠ゆ墍鏈夋晫浜哄け鍘?0鐐圭敓鍛斤紝涓嬪洖鍚堝紑濮嬫椂鍐嶅け鍘?0鐐圭敓鍛姐€傝幏寰?(3)鐐逛复鏃跺浠囧€笺€?
+// 描述: 失去1点生命，令所有敌人失去10点生命，下回合开始时再失去10点生命。获得2(3)点临时复仇。
 
 [Pool(typeof(RubyCardPool))]
 public class VengeanceBell : RubyCardModel

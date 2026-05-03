@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 瀵规晫浜洪€犳垚9(14)鐐逛激瀹筹紝涓嬪洖鍚堣幏寰?鐐逛复鏃堕棯鑰€鍊笺€?
+// 描述: 对敌人造成9(14)点伤害，下回合获得3点临时闪耀。
 
 
 [Pool(typeof(RubyCardPool))]

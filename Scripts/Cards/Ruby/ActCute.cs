@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 涓嬪洖鍚堣幏寰楁棤瀹炰綋锛屼笖涓嶈兘鍑虹墝銆備笅鍥炲悎缁撴潫鍚庡洖澶?(7)鐐圭敓鍛姐€?
+// 描述: 下回合获得无实体，且不能出牌。下回合结束后回复5(7)点生命。
 
 [Pool(typeof(RubyCardPool))]
 public class ActCute : RubyCardModel

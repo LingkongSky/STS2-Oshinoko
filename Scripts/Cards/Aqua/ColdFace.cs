@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 鎻忚堪: 缁欎簣鎵€鏈夋晫浜?(2)灞傛槗浼ゃ€?
+// 描述: 给予所有敌人1(2)层易伤。
 public class ColdFace : AquaCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Vulnerable", 1)];

@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -8,7 +8,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 每回合第一次获得复仇值时，获得1点能量，并获得2点格挡。
+// 描述: 每回合第一次获得复仇时，获得2点能量，并获得10点格挡。
 
 [Pool(typeof(RubyCardPool))]
 public class RetreatBackstage : RubyCardModel

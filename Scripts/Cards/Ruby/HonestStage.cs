@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -10,7 +10,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得2点闪耀值。若当前闪耀值大于4，获得2点能量。
+// 描述: 获得2点闪耀。若当前闪耀大于4，获得2点能量。
 
 [Pool(typeof(RubyCardPool))]
 public class HonestStage : RubyCardModel

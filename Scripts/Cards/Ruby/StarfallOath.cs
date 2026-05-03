@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 浠呭綋闂€€鍊煎ぇ浜?鏃舵墠鑳芥墦鍑恒€傞€犳垚35(45)鐐逛激瀹炽€備笅鍥炲悎鑾峰緱2鐐硅兘閲忋€?
+// 描述: 仅当闪耀大于6时才能打出。造成35(45)点伤害。下回合获得2点能量。
 
 [Pool(typeof(RubyCardPool))]
 public class StarfallOath : RubyCardModel

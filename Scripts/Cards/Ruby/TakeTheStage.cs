@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 姣忓洖鍚堢涓€娆¤幏寰楅棯鑰€鍊兼椂锛屾娊1寮犵墝骞惰幏寰?鐐规牸鎸°€?
+// 描述: 每回合第一次获得闪耀时，抽2张牌并获得6点格挡。
 
 [Pool(typeof(RubyCardPool))]
 public class TakeTheStage : RubyCardModel

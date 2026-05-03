@@ -1,17 +1,17 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 鎻忚堪: 瀵规墍鏈夋晫浜洪€犳垚25(35)鐐逛激瀹炽€?璋嬪垝2
+// 对所有敌人造成25(35)点伤害。 谋划2
 public class ToukenRanbu : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => PlanCostHelper.CreatePlanCostHoverTips(2);

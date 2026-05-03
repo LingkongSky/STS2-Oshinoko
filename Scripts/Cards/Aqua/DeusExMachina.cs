@@ -2,20 +2,19 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using Oshinogo.Scripts.Cards.Other;
+using MegaCrit.Sts2.Core.Models.Powers;
 using Oshinogo.Scripts.Pools.CardPools;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinogo.Scripts.Cards.Aqua;
 
-// 描述: 所有队友获得1点能量并抽1张牌。
-
-[Pool(typeof(RubyCardPool))]
-public class SpotlightShare : RubyCardModel
+[Pool(typeof(AquaCardPool))]
+// 描述: 所有队友获得1层无实体。
+public class DeusExMachina : AquaCardModel
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
 
-    public SpotlightShare() : base(2, CardType.Skill, CardRarity.Event, TargetType.Self, true)
+    public DeusExMachina() : base(2, CardType.Skill, CardRarity.Event, TargetType.Self, true)
     {
     }
 
@@ -30,11 +29,7 @@ public class SpotlightShare : RubyCardModel
         var teammates = combatState.GetTeammatesOf(Owner.Creature);
         foreach (var teammate in teammates)
         {
-            teammate.Player?.PlayerCombatState?.GainEnergy(1);
-            if (teammate.Player != null)
-            {
-                await CardPileCmd.Draw(choiceContext, 1, teammate.Player);
-            }
+            await PowerCmd.Apply<IntangiblePower>(teammate, 1, Owner.Creature, this);
         }
     }
 

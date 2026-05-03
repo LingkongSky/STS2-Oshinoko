@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 鎵€鏈夋晫浜哄け鍘?(13)鐐圭敓鍛藉€笺€?
+// 描述: 所有敌人失去9(13)点生命值。
 
 [Pool(typeof(RubyCardPool))]
 public class Pain : RubyCardModel

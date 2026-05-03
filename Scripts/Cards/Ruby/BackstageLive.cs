@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -11,7 +11,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 失去2点生命，获得2点复仇值与12点格挡。
+// 描述: 失去2点生命，获得2点复仇与12点格挡。
 
 [Pool(typeof(RubyCardPool))]
 public class BackstageLive : RubyCardModel

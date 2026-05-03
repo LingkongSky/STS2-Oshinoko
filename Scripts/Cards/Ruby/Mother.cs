@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -9,7 +9,7 @@ using Oshinogo.Scripts.Powers;
 namespace Oshinogo.Scripts.Cards.Ruby;
 
 [Pool(typeof(RubyCardPool))]
-// 描述: 获得2点闪耀。获得2点能量，抽2张牌。
+// 描述: 获得2点回合闪耀，2点费用，抽2张牌
 public class Mother : RubyCardModel
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
