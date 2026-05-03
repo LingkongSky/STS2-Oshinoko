@@ -15,6 +15,8 @@ public class RumorPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
+    public override string? CustomPackedIconPath => "res://Oshinogo/images/powers/RumorNetworkPower.png";
+    public override string? CustomBigIconPath => "res://Oshinogo/images/powers/RumorNetworkPower.png";
 
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {

@@ -17,7 +17,10 @@ public class Profile : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<ProfilePower>(Owner.Creature, 1, Owner.Creature, this);
+        await ShinePowerHelper.ApplyShine(Owner.Creature, 3, ValueDuration.Permanent, Owner.Creature, this);
+
+        await PowerCmd.Apply<TrapPower>(Owner.Creature, 1, Owner.Creature, this);
+
     }
 
     protected override void OnUpgrade()

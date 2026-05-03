@@ -31,6 +31,8 @@ public class ActCuteLockoutPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
+    public override string? CustomPackedIconPath => "res://Oshinogo/images/powers/ActCuteNextTurnPower.png";
+    public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ActCuteNextTurnPower.png";
 
     public override bool ShouldPlay(CardModel card, AutoPlayType autoPlayType)
     {

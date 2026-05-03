@@ -1,13 +1,13 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
@@ -16,7 +16,7 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 public class StageCenter : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new ShineDymicVar(2m), new DynamicVar("PlatedArmor", 7)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new ShineDymicVar(2m), new DynamicVar("Plating", 7)];
 
     public StageCenter() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true)
     {
@@ -25,7 +25,7 @@ public class StageCenter : AquaCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await ShinePowerHelper.ApplyShine(Owner.Creature, DynamicVars[ShineDymicVar.Key].BaseValue, ValueDuration.Permanent, Owner.Creature, this);
-        await PowerCmd.Apply<HardenedShellPower>(Owner.Creature, DynamicVars["PlatedArmor"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<PlatingPower>(Owner.Creature, DynamicVars["Plating"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

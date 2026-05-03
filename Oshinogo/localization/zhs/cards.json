@@ -206,7 +206,7 @@
   "OSHINOGO-BLACK_STAR.title": "漆黑的星星",
   "OSHINOGO-BLACK_STAR.description": "每次获得[gold]谋划[/gold]时，额外获得1层。",
   "OSHINOGO-STAGE_CENTER.title": "舞台中心",
-  "OSHINOGO-STAGE_CENTER.description": "获得{Shine:diff()}点[gold]闪耀[/gold]，获得{PlatedArmor:diff()}层[gold]覆甲[/gold]。",
+  "OSHINOGO-STAGE_CENTER.description": "获得{Shine:diff()}点[gold]闪耀[/gold]，获得{Plating:diff()}层[gold]覆甲[/gold]。",
   "OSHINOGO-BLOOD_FLOWER.title": "浸血花瓣",
   "OSHINOGO-BLOOD_FLOWER.description": "被消耗时获得1层[gold]谋划[/gold]。",
   "OSHINOGO-BLOOD_IN_STAGE.title": "血染舞台",

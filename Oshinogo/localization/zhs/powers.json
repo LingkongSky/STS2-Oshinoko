@@ -96,7 +96,7 @@
   "OSHINOGO-ENCORE_POWER.title": "再演",
   "OSHINOGO-ENCORE_POWER.description": "每次获得浸血花瓣时，获得2点[gold]格挡[/gold]。",
   "OSHINOGO-NIGHTMARE_POWER.title": "噩梦",
-  "OSHINOGO-NIGHTMARE_POWER.description": "每当消耗卡牌时，获得{Amount}点临时复仇。",
+  "OSHINOGO-NIGHTMARE_POWER.description": "每当消耗卡牌时，获得2点临时复仇。",
   "OSHINOGO-BEAUTIFUL_DREAM_POWER.title": "美梦",
   "OSHINOGO-BEAUTIFUL_DREAM_POWER.description": "战斗中每次生成卡牌时，获得临时闪耀。",
   "OSHINOGO-BEAUTIFUL_DREAM_POWER.smarterDescription": "战斗中每次生成卡牌时，获得{Amount}点临时闪耀。",
