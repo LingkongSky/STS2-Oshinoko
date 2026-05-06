@@ -26,7 +26,7 @@ public class HoldOnto : AquaCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block.BaseValue, ValueProp.Move, cardPlay);
-        await PowerCmd.Apply<WeakPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<WeakPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

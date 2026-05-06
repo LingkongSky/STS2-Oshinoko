@@ -84,7 +84,7 @@ public static class EnergyGainTracker
         }
     }
 
-    private static void SyncTurnState(Player player, State state, CombatState combatState)
+    private static void SyncTurnState(Player player, State state, ICombatState combatState)
     {
         if (state.LastRound == combatState.RoundNumber && state.LastSide == combatState.CurrentSide)
         {

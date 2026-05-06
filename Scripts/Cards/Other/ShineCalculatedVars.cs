@@ -9,7 +9,6 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Other;
 
-// 鏍囪鈥滈棯鑰€/澶嶄粐鍔犳垚鈥濅綔鐢ㄥ埌鍝竴绉嶅熀纭€鍔ㄦ€佸€笺€?
 public enum ShineValueType
 {
     Damage,
@@ -18,8 +17,6 @@ public enum ShineValueType
     Energy,
 }
 
-// 閫氱敤璁＄畻鍙橀噺锛氬熀纭€鍊?+锛堥棯鑰€涓庡浠囪鍒欙級鍚庣殑棰濆鍊笺€?
-// 閫傜敤浜庢娊鐗屻€佽兘閲忋€佹牸鎸＄瓑闈炰激瀹虫樉绀哄瓧娈点€?
 public class ShineCalculatedDamageVar : CalculatedVar
 {
     private readonly ShineValueType _valueType;
@@ -43,8 +40,6 @@ public class ShineCalculatedDamageVar : CalculatedVar
     }
 }
 
-// 涓撶敤浜庝激瀹虫樉绀虹殑鍙橀噺锛岀户鎵?CalculatedDamageVar 浠ヨ蛋寮曟搸浼ゅ棰勮閾捐矾銆?
-// 闂傤亣鈧偓/婢跺秳绮愰弽cm灏呴崣姗€鍣洪敍姘▔缁€鍝勨偓闂寸瑐鐎电懓绨查崚鎷屽厴闁插繐顤冮惄濠佺缁粯鏅ラ弸婧库偓?
 public class ShineCalculatedBlockVar : ShineCalculatedDamageVar
 {
     public ShineCalculatedBlockVar(string name) : base(name, ShineValueType.Block)
@@ -82,7 +77,6 @@ public class ShineCalculatedDamageDisplayVar : CalculatedDamageVar
     }
 }
 
-// 闂€€/澶嶄粐缂╂斁澶嶇敤鍏ュ彛锛氱粺涓€鍒涘缓璁＄畻鍙橀噺涓庤鍙栬绠楃粨鏋溿€?
 public static class ShineScaling
 {
     // 鍒涘缓浼ゅ鍙橀噺锛岀‘淇濆崱闈㈡樉绀哄€煎拰鎴樻枟缁撶畻鍊间竴鑷淬€?
@@ -93,7 +87,6 @@ public static class ShineScaling
         return calculatedDamageVar;
     }
 
-    // 鍒涘缓閫氱敤璁＄畻鍙橀噺锛岀敤浜庢娊鐗?鏍兼尅/鑳介噺绛夊瓧娈点€?
     public static CalculatedVar CreateCalculatedVar(string name, ShineValueType valueType)
     {
         var calculatedVar = valueType == ShineValueType.Block
@@ -104,7 +97,6 @@ public static class ShineScaling
     }
 
 
-    // 缁熶竴璇诲彇璁＄畻缁撴灉锛岄伩鍏嶅崱鐗岄噷閲嶅鍐欑被鍨嬭浆鎹€?
     public static int GetShineUsedByCard(CardModel card)
     {
         if (card.Owner?.Creature == null)
@@ -164,7 +156,6 @@ public static class ShineScaling
         return ((CalculatedVar)dynamicVars[key]).Calculate(target);
     }
 
-    // 瑙勫垯锛氬厛鍙犲姞闂€€锛屽啀鎸夊浠囦箻绠楋紙鏃犲浠囨寜 1 鍊嶏級銆?
     private static decimal GetCombinedMultiplier(CardModel card, ShineValueType valueType)
     {
         var baseVar = GetBaseVarByType(card, valueType);

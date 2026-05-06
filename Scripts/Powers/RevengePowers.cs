@@ -8,7 +8,6 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
-
 namespace Oshinogo.Scripts.Powers;
 
 // Permanent revenge: persists and triggers HP loss when a Shine card is played.
@@ -22,7 +21,7 @@ public class RevengePower : OshinogoCustomPower
 
     public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big_black.png";
 
-    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (Owner.Player != null)
         {
@@ -49,7 +48,7 @@ public class TurnRevengePower : OshinogoCustomPower
 
     public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big_black.png";
 
-    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (Owner.Player != null)
         {
@@ -84,7 +83,7 @@ public class TempRevengePower : OshinogoCustomPower
 
     public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big_black.png";
 
-    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (Owner.Player != null)
         {
@@ -112,7 +111,7 @@ public class TempRevengePower : OshinogoCustomPower
         await PowerCmd.Remove(this);
         if (preserve > 0)
         {
-            await PowerCmd.Apply<TempRevengePower>(Owner, preserve, Owner, cardPlay.Card);
+            await PowerCmd.Apply<TempRevengePower>(context, Owner, preserve, Owner, cardPlay.Card);
         }
     }
 
@@ -149,14 +148,14 @@ public static class RevengePowerHelper
         switch (duration)
         {
             case ValueDuration.Permanent:
-                await PowerCmd.Apply<RevengePower>(target, value, applier, cardSource);
+                await PowerCmd.Apply<RevengePower>(new BlockingPlayerChoiceContext(), target, value, applier, cardSource, true);
                 break;
             case ValueDuration.Turn:
-                await PowerCmd.Apply<TurnRevengePower>(target, value, applier, cardSource);
+                await PowerCmd.Apply<TurnRevengePower>(new BlockingPlayerChoiceContext(), target, value, applier, cardSource, true);
                 break;
             case ValueDuration.Temp:
                 TempPowerSourceTracker.RegisterTempRevengeSource(target, cardSource, value);
-                await PowerCmd.Apply<TempRevengePower>(target, value, applier, cardSource);
+                await PowerCmd.Apply<TempRevengePower>(new BlockingPlayerChoiceContext(), target, value, applier, cardSource, true);
                 break;
         }
     }
@@ -193,7 +192,7 @@ public static class RevengePowerHelper
             return amount;
         }
 
-        await PowerCmd.ModifyAmount(power, -remove, applier, cardSource);
+        await PowerCmd.ModifyAmount(new BlockingPlayerChoiceContext(), power, -remove, applier, cardSource, true);
         return amount - remove;
     }
 

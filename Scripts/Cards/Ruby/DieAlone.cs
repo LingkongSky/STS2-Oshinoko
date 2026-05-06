@@ -33,7 +33,7 @@ public class DieAlone : RubyCardModel
             Owner.Creature
         );
         await RevengePowerHelper.ApplyRevenge(Owner.Creature, DynamicVars[RevengeDynamicVar.Key].BaseValue, ValueDuration.Permanent, Owner.Creature, this);
-        await PowerCmd.Apply<DieAlonePower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<DieAlonePower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

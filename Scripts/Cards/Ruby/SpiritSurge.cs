@@ -42,7 +42,7 @@ public class SpiritSurge : RubyCardModel
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        await PowerCmd.Apply<GainTempShineNextTurnPower>(Owner.Creature, 3, Owner.Creature, this);
+        await PowerCmd.Apply<GainTempShineNextTurnPower>(choiceContext, Owner.Creature, 3, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

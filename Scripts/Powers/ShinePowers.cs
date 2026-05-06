@@ -7,7 +7,6 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using Oshinogo.Scripts.Cards.Other;
-
 namespace Oshinogo.Scripts.Powers;
 
 // Permanent shine.
@@ -21,7 +20,7 @@ public class ShinePower : OshinogoCustomPower
 
     public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big.png";
 
-    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (Owner.Player != null)
         {
@@ -43,7 +42,7 @@ public class TurnShinePower : OshinogoCustomPower
 
     public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big.png";
 
-    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (Owner.Player != null)
         {
@@ -75,7 +74,7 @@ public class TempShinePower : OshinogoCustomPower
 
     public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big.png";
 
-    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (Owner.Player != null)
         {
@@ -123,7 +122,7 @@ public class TempShinePower : OshinogoCustomPower
             var consume = Math.Min(snapshot, Amount);
             if (consume > 0)
             {
-                await PowerCmd.ModifyAmount(this, -consume, Owner, cardPlay.Card);
+                await PowerCmd.ModifyAmount(context, this, -consume, Owner, cardPlay.Card);
             }
             return;
         }
@@ -132,7 +131,7 @@ public class TempShinePower : OshinogoCustomPower
         await PowerCmd.Remove(this);
         if (preserve > 0)
         {
-            await PowerCmd.Apply<TempShinePower>(Owner, preserve, Owner, cardPlay.Card);
+            await PowerCmd.Apply<TempShinePower>(context, Owner, preserve, Owner, cardPlay.Card);
         }
     }
 
@@ -187,15 +186,8 @@ public class NextShineDiscountPower : OshinogoCustomPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    private CardModel? _sourceCard;
-    private int _pendingSkips;
-
-    public override Task AfterApplied(Creature? applier, CardModel? cardSource)
-    {
-        _sourceCard = cardSource;
-        _pendingSkips += 1;
-        return Task.CompletedTask;
-    }
+    // Cards that actually received this discount and are allowed to consume one stack on play.
+    private readonly HashSet<CardModel> _discountedCardsPendingConsume = new();
 
     public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
     {
@@ -212,6 +204,10 @@ public class NextShineDiscountPower : OshinogoCustomPower
         }
 
         modifiedCost = Math.Max(0, originalCost - Amount);
+        if (modifiedCost < originalCost)
+        {
+            _discountedCardsPendingConsume.Add(card);
+        }
         return true;
     }
 
@@ -227,15 +223,15 @@ public class NextShineDiscountPower : OshinogoCustomPower
             return;
         }
 
-        if (_pendingSkips > 0 && _sourceCard != null && ReferenceEquals(cardPlay.Card, _sourceCard))
+        // Only consume when this played card actually got discounted by this power.
+        if (!_discountedCardsPendingConsume.Remove(cardPlay.Card))
         {
-            _pendingSkips--;
             return;
         }
 
         if (Amount > 1)
         {
-            await PowerCmd.ModifyAmount(this, -1, Owner, cardPlay.Card);
+            await PowerCmd.ModifyAmount(context, this, -1, Owner, cardPlay.Card);
         }
         else
         {

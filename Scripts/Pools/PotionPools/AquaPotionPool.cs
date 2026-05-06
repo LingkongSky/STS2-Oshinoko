@@ -1,4 +1,4 @@
-using BaseLib.Abstracts;
+﻿using BaseLib.Abstracts;
 
 namespace Oshinogo.Scripts.Pools.PotionPools
 {

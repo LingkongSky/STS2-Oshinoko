@@ -21,7 +21,7 @@ public class IdolRadiance : RubyCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await ShinePowerHelper.ApplyShine(Owner.Creature, 2, ValueDuration.Permanent, Owner.Creature, this);
-        await PowerCmd.Apply<IdolRadiancePower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<IdolRadiancePower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

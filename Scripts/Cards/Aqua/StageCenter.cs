@@ -25,7 +25,7 @@ public class StageCenter : AquaCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await ShinePowerHelper.ApplyShine(Owner.Creature, DynamicVars[ShineDymicVar.Key].BaseValue, ValueDuration.Permanent, Owner.Creature, this);
-        await PowerCmd.Apply<PlatingPower>(Owner.Creature, DynamicVars["Plating"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<PlatingPower>(choiceContext, Owner.Creature, DynamicVars["Plating"].BaseValue, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

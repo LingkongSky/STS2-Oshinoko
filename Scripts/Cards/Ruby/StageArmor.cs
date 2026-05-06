@@ -22,7 +22,7 @@ public class StageArmor : RubyCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<StageArmorPower>(Owner.Creature, DynamicVars["BlockPerHp"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<StageArmorPower>(choiceContext, Owner.Creature, DynamicVars["BlockPerHp"].BaseValue, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

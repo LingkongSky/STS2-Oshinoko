@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -28,7 +28,7 @@ public class UnderTheSea : AquaCardModel
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        await PowerCmd.Apply<UnderTheSeaPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<UnderTheSeaPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

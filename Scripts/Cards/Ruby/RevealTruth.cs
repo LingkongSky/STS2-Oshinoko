@@ -25,7 +25,7 @@ public class RevealTruth : RubyCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await RevengePowerHelper.ApplyRevenge(Owner.Creature, DynamicVars[RevengeDynamicVar.Key].BaseValue, ValueDuration.Permanent, Owner.Creature, this);
-        await PowerCmd.Apply<RevealTruthPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<RevealTruthPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

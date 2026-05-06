@@ -28,6 +28,6 @@ public class BloodFlower : AquaCardModel
             return;
         }
 
-        await PowerCmd.Apply<PlanPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<PlanPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 }

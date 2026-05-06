@@ -1,13 +1,12 @@
-using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 
 namespace Oshinogo.Scripts.Powers;
 
-/// <summary>
+
 /// 每抽到指定数量的牌后，额外抽1张牌。
-/// </summary>
 public class UnreachablePower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;

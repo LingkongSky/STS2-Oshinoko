@@ -7,9 +7,8 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Oshinogo.Scripts.Powers;
 
-/// <summary>
+
 /// 本回合内，打出的消耗牌改为进入弃牌堆。
-/// </summary>
 public class ExpectPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;

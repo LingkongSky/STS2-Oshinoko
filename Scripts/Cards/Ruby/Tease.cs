@@ -37,7 +37,7 @@ public class Tease : RubyCardModel
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

@@ -36,7 +36,7 @@ public class MirrorStage : RubyCardModel
         // Use calculated block so shine bonuses apply.
         var blockValue = ShineScaling.Calculate(DynamicVars, "CalculatedBlock", Owner.Creature);
         await CreatureCmd.GainBlock(Owner.Creature, blockValue, ValueProp.Move, cardPlay);
-        await PowerCmd.Apply<MirrorStagePower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<MirrorStagePower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

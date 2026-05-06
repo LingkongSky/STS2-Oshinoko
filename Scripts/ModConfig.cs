@@ -9,7 +9,7 @@ public enum FjordMosaicMode
     Gamma
 }
 
-[HoverTipsByDefault]
+[ConfigHoverTipsByDefault]
 public sealed class ModConfig : SimpleModConfig
 {
 

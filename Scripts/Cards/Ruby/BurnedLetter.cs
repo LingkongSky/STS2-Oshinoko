@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -40,7 +40,7 @@ public class BurnedLetter : RubyCardModel
                 await PowerCmd.Remove(debuff);
             }
 
-            await PowerCmd.Apply<EnergyNextTurnPower>(teammate, DynamicVars.Energy.BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<EnergyNextTurnPower>(choiceContext, teammate, DynamicVars.Energy.BaseValue, Owner.Creature, this, true);
         }
     }
 

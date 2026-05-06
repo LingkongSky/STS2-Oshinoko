@@ -38,7 +38,7 @@ public class BreathControl : RubyCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block.BaseValue, ValueProp.Move, cardPlay);
-        await PowerCmd.Apply<NextShineDiscountPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<NextShineDiscountPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

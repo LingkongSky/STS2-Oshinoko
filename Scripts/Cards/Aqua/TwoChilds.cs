@@ -19,7 +19,7 @@ public class TwoChilds : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<TwoChildsPower>(Owner.Creature, 2, Owner.Creature, this);
+        await PowerCmd.Apply<TwoChildsPower>(choiceContext, Owner.Creature, 2, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

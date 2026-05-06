@@ -20,7 +20,7 @@ public class NotAsFragileAsImagined : RubyCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<NotAsFragileAsImaginedPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<NotAsFragileAsImaginedPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

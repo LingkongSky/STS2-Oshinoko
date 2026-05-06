@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -12,7 +12,6 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 public class DeusExMachina : AquaCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
-    public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
 
     public DeusExMachina() : base(2, CardType.Skill, CardRarity.Event, TargetType.Self, true)
     {
@@ -29,7 +28,7 @@ public class DeusExMachina : AquaCardModel
         var teammates = combatState.GetTeammatesOf(Owner.Creature);
         foreach (var teammate in teammates)
         {
-            await PowerCmd.Apply<IntangiblePower>(teammate, 1, Owner.Creature, this);
+            await PowerCmd.Apply<IntangiblePower>(choiceContext, teammate, 1, Owner.Creature, this, true);
         }
     }
 

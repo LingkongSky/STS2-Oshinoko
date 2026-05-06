@@ -31,7 +31,7 @@ public class Watch : AquaCardModel
             return;
         }
 
-        await PowerCmd.Apply<EscapePower>(Owner.Creature, DynamicVars[EscapeKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<EscapePower>(choiceContext, Owner.Creature, DynamicVars[EscapeKey].BaseValue, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

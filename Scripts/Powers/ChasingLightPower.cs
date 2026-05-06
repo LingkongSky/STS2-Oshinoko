@@ -57,6 +57,11 @@ public class ChasingLightPower : OshinogoCustomPower
             return;
         }
         */
+        if (Owner.Player == null)
+        {
+            return;
+        }
+
         await PlayerCmd.GainEnergy(triggers, Owner.Player);
         InvokeDisplayAmountChanged();
 

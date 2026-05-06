@@ -22,7 +22,7 @@ public class Faraway : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<FarawayPower>(Owner.Creature, DynamicVars.Damage.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<FarawayPower>(choiceContext, Owner.Creature, DynamicVars.Damage.BaseValue, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

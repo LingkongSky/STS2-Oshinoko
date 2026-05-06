@@ -1,7 +1,7 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
-
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 namespace Oshinogo.Scripts.Powers;
 
 /// <summary>
@@ -19,6 +19,6 @@ public class SinkingPower : OshinogoCustomPower
             return;
         }
 
-        await PowerCmd.Apply<PlanPower>(Owner, Amount, Owner, null);
+        await PowerCmd.Apply<PlanPower>(new BlockingPlayerChoiceContext(), Owner, Amount, Owner, null, true);
     }
 }

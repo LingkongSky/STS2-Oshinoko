@@ -1,4 +1,4 @@
-using MegaCrit.Sts2.Core.Combat;
+﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -8,9 +8,8 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Oshinogo.Scripts.Powers;
 
-/// <summary>
+
 /// 陷阱：目标受到的攻击伤害提高100%，并在目标回合结束时减少1层。
-/// </summary>
 public class TrapPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Debuff;

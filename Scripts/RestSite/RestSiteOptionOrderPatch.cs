@@ -24,7 +24,7 @@ public static class RestSiteOptionOrderPatch
 
         foreach (string id in BaseOrder)
         {
-            if (byId.TryGetValue(id, out RestSiteOption option))
+            if (byId.TryGetValue(id, out RestSiteOption? option) && option != null)
             {
                 ordered.Add(option);
             }

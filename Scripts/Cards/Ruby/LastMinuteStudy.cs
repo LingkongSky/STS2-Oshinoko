@@ -20,7 +20,7 @@ public class LastMinuteStudy : RubyCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<LastMinuteStudyPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<LastMinuteStudyPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

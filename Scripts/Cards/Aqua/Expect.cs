@@ -28,7 +28,7 @@ public class Expect : AquaCardModel
             return;
         }
 
-        await PowerCmd.Apply<ExpectPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<ExpectPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

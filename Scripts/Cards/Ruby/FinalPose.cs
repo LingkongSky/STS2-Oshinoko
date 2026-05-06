@@ -43,7 +43,7 @@ public class FinalPose : RubyCardModel
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, 2, Owner.Creature, this);
+        await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, 2, Owner.Creature, this, true);
 
     }
 

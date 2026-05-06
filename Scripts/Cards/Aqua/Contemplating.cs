@@ -29,7 +29,7 @@ public class Contemplating : AquaCardModel
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block.BaseValue, ValueProp.Move, cardPlay);
         if (cardPlay.Target != null)
         {
-            await PowerCmd.Apply<RumorPower>(cardPlay.Target, DynamicVars["Rumor"].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<RumorPower>(choiceContext, cardPlay.Target, DynamicVars["Rumor"].BaseValue, Owner.Creature, this, true);
         }
     }
 

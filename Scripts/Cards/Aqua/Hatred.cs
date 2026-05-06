@@ -42,7 +42,7 @@ public class Hatred : AquaCardModel
         var debuffs = cardPlay.Target.Powers.Where(power => power.Type == PowerType.Debuff && power.Amount > 0).ToList();
         foreach (var debuff in debuffs)
         {
-            await PowerCmd.ModifyAmount(debuff, debuff.Amount, Owner.Creature, this);
+            await PowerCmd.ModifyAmount(choiceContext, debuff, debuff.Amount, Owner.Creature, this, true);
         }
     }
 

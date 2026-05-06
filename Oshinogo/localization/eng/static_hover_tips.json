@@ -1,0 +1,14 @@
+{
+    "TRAP.title": "Trap",
+    "TRAP.description": "Attack damage taken is increased by 100%.",
+    "SHINE.title": "Shine",
+    "SHINE.description": "Effective on cards with Shine. Increase by a value equal to Shine.",
+    "REVENGE.title": "Revenge",
+    "REVENGE.description": "Effective on cards with Shine. Multiply the card value according to Revenge; when playing a shining card, you will lose life equal to Revenge.",
+    "PLAN_COST.title": "Plan",
+    "PLAN_COST.description": "Playing this card requires {Amount} layers of planning.",
+    "RUMOR.title": "Gossip",
+    "RUMOR.description": "Each layer increases attack damage received by 10%.",
+    "ESCAPE.title": "Get Away",
+    "ESCAPE.description": "Attack damage taken is reduced by 50%."
+}

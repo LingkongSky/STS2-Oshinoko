@@ -28,7 +28,7 @@ public class SideBySide : AquaCardModel
             .ToList();
         foreach (var buff in buffs)
         {
-            await PowerCmd.ModifyAmount(buff, buff.Amount, Owner.Creature, this);
+            await PowerCmd.ModifyAmount(choiceContext, buff, buff.Amount, Owner.Creature, this, true);
         }
     }
 

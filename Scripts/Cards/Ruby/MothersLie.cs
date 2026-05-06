@@ -24,7 +24,7 @@ public class MothersLie : RubyCardModel
     {
 
         await RevengePowerHelper.ApplyRevenge(Owner.Creature, 3, ValueDuration.Turn, Owner.Creature, this);
-        await PowerCmd.Apply<MothersLiePower>(Owner.Creature, 5, Owner.Creature, this);
+        await PowerCmd.Apply<MothersLiePower>(choiceContext, Owner.Creature, 5, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

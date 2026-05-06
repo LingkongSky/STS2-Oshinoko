@@ -17,7 +17,7 @@ public class RumorNetworkPower : OshinogoCustomPower
     private CombatSide _lastSide;
     private bool _triggeredThisTurn;
 
-    public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         var combatState = Owner.CombatState;
         if (combatState == null)

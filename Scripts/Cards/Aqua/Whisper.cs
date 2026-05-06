@@ -35,7 +35,7 @@ public class Whisper : AquaCardModel
             await PowerCmd.Remove(artifact);
         }
 
-        await PowerCmd.Apply<WeakPower>(cardPlay.Target, DynamicVars["Weak"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars["Weak"].BaseValue, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

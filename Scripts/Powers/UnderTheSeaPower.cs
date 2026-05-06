@@ -1,13 +1,12 @@
-using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Oshinogo.Scripts.Powers;
 
-/// <summary>
-/// 下回合开始时死亡。
-/// </summary>
+
+// 下回合开始时死亡。
 public class UnderTheSeaPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Debuff;

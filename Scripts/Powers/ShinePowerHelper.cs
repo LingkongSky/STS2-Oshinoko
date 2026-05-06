@@ -1,7 +1,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
-
 namespace Oshinogo.Scripts.Powers;
 
 // Value duration types: permanent, turn, temp.
@@ -135,14 +135,14 @@ public static class ShinePowerHelper
         switch (duration)
         {
             case ValueDuration.Permanent:
-                await PowerCmd.Apply<ShinePower>(target, value, applier, cardSource);
+                await PowerCmd.Apply<ShinePower>(new BlockingPlayerChoiceContext(), target, value, applier, cardSource, true);
                 break;
             case ValueDuration.Turn:
-                await PowerCmd.Apply<TurnShinePower>(target, value, applier, cardSource);
+                await PowerCmd.Apply<TurnShinePower>(new BlockingPlayerChoiceContext(), target, value, applier, cardSource, true);
                 break;
             case ValueDuration.Temp:
                 TempPowerSourceTracker.RegisterTempShineSource(target, cardSource, value);
-                await PowerCmd.Apply<TempShinePower>(target, value, applier, cardSource);
+                await PowerCmd.Apply<TempShinePower>(new BlockingPlayerChoiceContext(), target, value, applier, cardSource, true);
                 break;
         }
     }
@@ -179,7 +179,7 @@ public static class ShinePowerHelper
             return amount;
         }
 
-        await PowerCmd.ModifyAmount(power, -remove, applier, cardSource);
+        await PowerCmd.ModifyAmount(new BlockingPlayerChoiceContext(), power, -remove, applier, cardSource, true);
         return amount - remove;
     }
 }

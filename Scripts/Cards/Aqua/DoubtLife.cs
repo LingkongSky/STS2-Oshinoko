@@ -26,7 +26,7 @@ public class DoubtLife : AquaCardModel
     {
         if (cardPlay.Target != null)
         {
-            await PowerCmd.Apply<TrapPower>(cardPlay.Target, DynamicVars["Trap"].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<TrapPower>(choiceContext, cardPlay.Target, DynamicVars["Trap"].BaseValue, Owner.Creature, this, true);
         }
     }
 

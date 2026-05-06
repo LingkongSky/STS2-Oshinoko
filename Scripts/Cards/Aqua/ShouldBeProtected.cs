@@ -37,9 +37,9 @@ public class ShouldBeProtected : AquaCardModel
         var enemies = Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature) ?? Enumerable.Empty<Creature>();
         foreach (var enemy in enemies)
         {
-            await PowerCmd.Apply<WeakPower>(enemy, DynamicVars[WeakKey].BaseValue, Owner.Creature, this);
-            await PowerCmd.Apply<VulnerablePower>(enemy, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this);
-            await PowerCmd.Apply<DebilitatePower>(enemy, DynamicVars[DebilitateKey].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<WeakPower>(choiceContext, enemy, DynamicVars[WeakKey].BaseValue, Owner.Creature, this, true);
+            await PowerCmd.Apply<VulnerablePower>(choiceContext, enemy, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this, true);
+            await PowerCmd.Apply<DebilitatePower>(choiceContext, enemy, DynamicVars[DebilitateKey].BaseValue, Owner.Creature, this, true);
         }
     }
 

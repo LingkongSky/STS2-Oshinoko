@@ -36,7 +36,7 @@ public class SmallTrick : RubyCardModel
 
         CardSelectorPrefs prefs = new CardSelectorPrefs(base.SelectionScreenPrompt, 1);
         CardPile pile = PileType.Discard.GetPile(base.Owner);
-        CardModel cardModel = (await CardSelectCmd.FromSimpleGrid(choiceContext, pile.Cards, base.Owner, prefs)).FirstOrDefault();
+        CardModel? cardModel = (await CardSelectCmd.FromSimpleGrid(choiceContext, pile.Cards, base.Owner, prefs)).FirstOrDefault();
         if (cardModel != null)
         {
             await CardPileCmd.Add(cardModel, PileType.Draw, CardPilePosition.Top);

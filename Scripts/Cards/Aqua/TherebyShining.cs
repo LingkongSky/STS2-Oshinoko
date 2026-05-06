@@ -18,7 +18,7 @@ public class TherebyShining : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<TherebyShiningPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<TherebyShiningPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

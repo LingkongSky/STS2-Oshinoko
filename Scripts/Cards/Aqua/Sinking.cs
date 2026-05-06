@@ -18,7 +18,7 @@ public class Sinking : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<SinkingPower>(Owner.Creature, 2, Owner.Creature, this);
+        await PowerCmd.Apply<SinkingPower>(choiceContext, Owner.Creature, 2, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

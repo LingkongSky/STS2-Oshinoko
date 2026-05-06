@@ -1,4 +1,4 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -42,7 +42,7 @@ public class BiteTight : AquaCardModel
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        await PowerCmd.Apply<TrapPower>(cardPlay.Target, DynamicVars["Trap"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<TrapPower>(choiceContext, cardPlay.Target, DynamicVars["Trap"].BaseValue, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

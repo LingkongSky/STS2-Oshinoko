@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -17,7 +17,7 @@ public class Unreachable : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<UnreachablePower>(Owner.Creature, 7, Owner.Creature, this);
+        await PowerCmd.Apply<UnreachablePower>(choiceContext, Owner.Creature, 7, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

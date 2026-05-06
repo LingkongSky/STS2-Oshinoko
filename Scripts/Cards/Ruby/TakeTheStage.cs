@@ -20,7 +20,7 @@ public class TakeTheStage : RubyCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<TakeTheStagePower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<TakeTheStagePower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

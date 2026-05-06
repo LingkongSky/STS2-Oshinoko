@@ -1,11 +1,10 @@
-using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
-
 namespace Oshinogo.Scripts.Powers;
 
 /// <summary>
@@ -28,6 +27,6 @@ public class FireExecutionPower : OshinogoCustomPower
             return;
         }
 
-        await PowerCmd.Apply<RumorPower>(target, Amount, Owner, cardSource);
+        await PowerCmd.Apply<RumorPower>(choiceContext, target, Amount, Owner, cardSource, true);
     }
 }

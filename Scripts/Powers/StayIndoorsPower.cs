@@ -29,7 +29,7 @@ public class StayIndoorsPower : OshinogoCustomPower
         _triggerNextTurn = true;
     }
 
-    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
     {
         if (side != Owner.Side)
         {

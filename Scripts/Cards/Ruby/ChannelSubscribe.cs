@@ -35,7 +35,7 @@ public class ChannelSubscribe : RubyCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         _playedThisCombat = true;
-        await PowerCmd.Apply<ArtifactPower>(Owner.Creature, DynamicVars[ArtifactKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<ArtifactPower>(choiceContext, Owner.Creature, DynamicVars[ArtifactKey].BaseValue, Owner.Creature, this, true);
     }
 
     public override Task AfterCombatEnd(CombatRoom _)

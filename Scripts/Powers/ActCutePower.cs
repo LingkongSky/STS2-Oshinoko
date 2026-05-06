@@ -6,7 +6,6 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
-
 namespace Oshinogo.Scripts.Powers;
 
 public class ActCuteNextTurnPower : OshinogoCustomPower
@@ -21,8 +20,8 @@ public class ActCuteNextTurnPower : OshinogoCustomPower
             return;
         }
 
-        await PowerCmd.Apply<IntangiblePower>(Owner, 1, Owner, null);
-        await PowerCmd.Apply<ActCuteLockoutPower>(Owner, Amount, Owner, null);
+        await PowerCmd.Apply<IntangiblePower>(new BlockingPlayerChoiceContext(), Owner, 1, Owner, null, true);
+        await PowerCmd.Apply<ActCuteLockoutPower>(new BlockingPlayerChoiceContext(), Owner, Amount, Owner, null, true);
         await PowerCmd.Remove(this);
     }
 }

@@ -39,6 +39,11 @@ public class FleeingLightPower : OshinogoCustomPower
         _spent = _spent % triggers;
 
 
+        if (Owner.Player == null)
+        {
+            return;
+        }
+
         await CardPileCmd.Draw(new BlockingPlayerChoiceContext(), triggers, Owner.Player);
         InvokeDisplayAmountChanged();
 

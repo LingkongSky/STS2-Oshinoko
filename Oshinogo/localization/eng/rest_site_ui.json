@@ -1,0 +1,12 @@
+{
+    "OPTION_BKOMACHI.name": "Summon B Komachi",
+    "OPTION_BKOMACHI.description1": "Invite Arima Kanai and obtain the relic[gold]Arima Kanai's guidance[/gold]",
+    "OPTION_BKOMACHI.description2": "Invite MEM and obtain relics[gold]MEM's operation[/gold]",
+    "OPTION_BKOMACHI.description3": "Invite the new student B Komachi and obtain the relic [gold] The new student B Komachi[/gold]",
+    "OPTION_BKOMACHI.descriptionDisabled": "B Komachi cannot be summoned at the moment",
+    "OPTION_JOURNEY.name": "Embark on a journey",
+    "OPTION_JOURNEY.description1": "Meet Sarina and get the relic[gold] Sarina’s enthusiasm[/gold]",
+    "OPTION_JOURNEY.description2": "First meeting Arima Kanai and obtaining a relic[gold]Arima Kanai's guidance[/gold]",
+    "OPTION_JOURNEY.description3": "Dating with Kurokawa and getting relics [gold] lover’s support [/gold]",
+    "OPTION_JOURNEY.descriptionDisabled": "The journey has reached its end"
+}

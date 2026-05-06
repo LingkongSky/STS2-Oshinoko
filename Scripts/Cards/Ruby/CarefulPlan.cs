@@ -34,8 +34,8 @@ public class CarefulPlan : RubyCardModel
             }
         }
 
-        await PowerCmd.Apply<EnergyNextTurnPower>(Owner.Creature, 2, Owner.Creature, this);
-        await PowerCmd.Apply<GainTurnShineNextTurnPower>(Owner.Creature, 2, Owner.Creature, this);
+        await PowerCmd.Apply<EnergyNextTurnPower>(choiceContext, Owner.Creature, 2, Owner.Creature, this, true);
+        await PowerCmd.Apply<GainTurnShineNextTurnPower>(choiceContext, Owner.Creature, 2, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

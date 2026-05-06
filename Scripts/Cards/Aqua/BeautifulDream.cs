@@ -19,7 +19,7 @@ public class BeautifulDream : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<BeautifulDreamPower>(Owner.Creature, 2, Owner.Creature, this);
+        await PowerCmd.Apply<BeautifulDreamPower>(choiceContext, Owner.Creature, 2, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

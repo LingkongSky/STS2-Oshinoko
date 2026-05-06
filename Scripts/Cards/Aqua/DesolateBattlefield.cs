@@ -1,4 +1,4 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -39,7 +39,7 @@ public class DesolateBattlefield : AquaCardModel
 
         foreach (var enemy in combatState.GetOpponentsOf(Owner.Creature))
         {
-            await PowerCmd.Apply<DesolateBattlefieldStrengthDownPower>(enemy, DynamicVars["StrengthLoss"].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<Powers.DesolateBattlefieldPower>(choiceContext, enemy, DynamicVars["StrengthLoss"].BaseValue, Owner.Creature, this, true);
         }
     }
 

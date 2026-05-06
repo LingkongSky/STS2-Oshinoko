@@ -37,7 +37,7 @@ public class SideGlance : RubyCardModel
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        await PowerCmd.Apply<WeakPower>(cardPlay.Target, DynamicVars[WeakKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars[WeakKey].BaseValue, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

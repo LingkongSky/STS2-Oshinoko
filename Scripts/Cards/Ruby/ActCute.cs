@@ -27,7 +27,7 @@ public class ActCute : RubyCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<ActCuteNextTurnPower>(Owner.Creature, DynamicVars.Heal.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<ActCuteNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Heal.BaseValue, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

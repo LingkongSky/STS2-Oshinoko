@@ -20,7 +20,7 @@ public class RubyLegacy : RubyCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<RubyLegacyPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<RubyLegacyPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

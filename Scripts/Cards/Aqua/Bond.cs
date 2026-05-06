@@ -47,7 +47,7 @@ public class Bond : AquaCardModel
 
         foreach (var enemy in combatState.GetOpponentsOf(Owner.Creature))
         {
-            await PowerCmd.Apply<RumorPower>(enemy, DynamicVars["Rumor"].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<RumorPower>(choiceContext, enemy, DynamicVars["Rumor"].BaseValue, Owner.Creature, this, true);
         }
 
         await DamageCmd.Attack(DynamicVars.CalculatedDamage)

@@ -8,3 +8,4 @@ Oshinogo/images/*
 addons/
 .tools/
 sfx/
+*.user

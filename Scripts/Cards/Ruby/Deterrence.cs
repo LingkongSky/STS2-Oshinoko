@@ -45,7 +45,7 @@ public class Deterrence : RubyCardModel
         var opponents = combatState.GetOpponentsOf(Owner.Creature);
         foreach (var enemy in opponents)
         {
-            await PowerCmd.Apply<VulnerablePower>(enemy, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<VulnerablePower>(choiceContext, enemy, DynamicVars[VulnerableKey].BaseValue, Owner.Creature, this, true);
         }
     }
 

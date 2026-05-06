@@ -1,4 +1,4 @@
-using BaseLib.Config;
+﻿using BaseLib.Config;
 using Godot.Bridge;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Logging;

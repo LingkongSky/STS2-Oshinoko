@@ -29,7 +29,7 @@ public class RumorNetwork : RubyCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<RumorNetworkPower>(Owner.Creature, DynamicVars[ThresholdKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<RumorNetworkPower>(choiceContext, Owner.Creature, DynamicVars[ThresholdKey].BaseValue, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

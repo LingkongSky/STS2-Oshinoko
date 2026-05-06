@@ -1,13 +1,12 @@
-using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Oshinogo.Scripts.Powers;
 
-/// <summary>
+
 /// 每次打出虚无牌时，获得1点能量。
-/// </summary>
 public class TherebyShiningPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;

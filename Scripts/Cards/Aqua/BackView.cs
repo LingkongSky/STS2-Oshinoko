@@ -17,7 +17,7 @@ public class BackView : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<BackViewPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<BackViewPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

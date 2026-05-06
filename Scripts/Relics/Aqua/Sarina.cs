@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -26,7 +26,7 @@ public class Sarina : OshinogoRelicModel
         for (var i = 0; i < 3; i++)
         {
             var bloodFlower = Owner.Creature.CombatState.CreateCard<BloodFlower>(Owner);
-            generated.Add(await CardPileCmd.AddGeneratedCardToCombat(bloodFlower, PileType.Hand, addedByPlayer: true));
+            generated.Add(await CardPileCmd.AddGeneratedCardToCombat(bloodFlower, PileType.Hand, Owner, CardPilePosition.Top));
         }
 
         CardCmd.PreviewCardPileAdd(generated);

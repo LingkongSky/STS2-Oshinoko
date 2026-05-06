@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using Oshinogo.Scripts.Pools.RelicPools;
 using Oshinogo.Scripts.Powers;

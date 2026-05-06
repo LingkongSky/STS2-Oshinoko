@@ -31,7 +31,7 @@ public class FirmBelief : RubyCardModel
         if (turnPower != null && turnPower.Amount > 0)
         {
             var turnShine = turnPower.Amount;
-            await PowerCmd.ModifyAmount(turnPower, -turnShine, Owner.Creature, this);
+            await PowerCmd.ModifyAmount(choiceContext, turnPower, -turnShine, Owner.Creature, this, true);
             await ShinePowerHelper.ApplyShine(Owner.Creature, turnShine, ValueDuration.Permanent, Owner.Creature, this);
         }
 
@@ -39,7 +39,7 @@ public class FirmBelief : RubyCardModel
         if (tempPower != null && tempPower.Amount > 0)
         {
             var tempShine = tempPower.Amount;
-            await PowerCmd.ModifyAmount(tempPower, -tempShine, Owner.Creature, this);
+            await PowerCmd.ModifyAmount(choiceContext, tempPower, -tempShine, Owner.Creature, this, true);
             await ShinePowerHelper.ApplyShine(Owner.Creature, tempShine, ValueDuration.Turn, Owner.Creature, this);
         }
     }

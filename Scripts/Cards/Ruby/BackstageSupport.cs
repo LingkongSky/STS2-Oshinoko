@@ -31,7 +31,7 @@ public class BackstageSupport : RubyCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block.BaseValue, ValueProp.Move, cardPlay);
-        await PowerCmd.Apply<GainTurnShineNextTurnPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<GainTurnShineNextTurnPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
         if (CombatHistoryHelper.HasGainedShineThisTurn(Owner))
         {
             await CreatureCmd.GainBlock(Owner.Creature, 2, ValueProp.Move, cardPlay);

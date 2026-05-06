@@ -1,6 +1,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -49,7 +50,7 @@ public static class PlanCostHelper
             return false;
         }
 
-        await PowerCmd.ModifyAmount(plan, -amount, creature, source);
+        await PowerCmd.ModifyAmount(new BlockingPlayerChoiceContext(), plan, -amount, creature, source, true);
         return true;
     }
 }

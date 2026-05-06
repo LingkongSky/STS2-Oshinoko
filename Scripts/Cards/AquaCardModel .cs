@@ -1,7 +1,7 @@
 using BaseLib.Abstracts;
 using Godot;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.HoverTips;
 using Oshinogo.Scripts.Cards.Other;
 
 public abstract class AquaCardModel : CustomCardModel

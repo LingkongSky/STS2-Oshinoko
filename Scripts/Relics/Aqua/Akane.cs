@@ -1,9 +1,9 @@
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Rooms;
 using Oshinogo.Scripts.Pools.RelicPools;
 
@@ -38,7 +38,7 @@ public class Akane : OshinogoRelicModel
         }
     }
 
-    public override Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+    public override Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
     {
         if (Owner?.Creature != null && side == Owner.Creature.Side)
         {
@@ -49,7 +49,7 @@ public class Akane : OshinogoRelicModel
         return Task.CompletedTask;
     }
 
-    public override async Task AfterEnergyReset(Player player)
+    public override async Task AfterEnergyReset(MegaCrit.Sts2.Core.Entities.Players.Player player)
     {
         if (Owner?.Creature?.CombatState == null || player != Owner)
         {
@@ -78,7 +78,7 @@ public class Akane : OshinogoRelicModel
         Flash();
         foreach (var buff in buffs)
         {
-            await PowerCmd.ModifyAmount(buff, buff.Amount, Owner.Creature, null);
+            await PowerCmd.ModifyAmount(new BlockingPlayerChoiceContext(), buff, buff.Amount, Owner.Creature, null, true);
         }
 
         InvokeDisplayAmountChanged();

@@ -26,7 +26,7 @@ public class HandscrollPainting : AquaCardModel
             return;
         }
 
-        await PowerCmd.Apply<HandscrollPaintingPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<HandscrollPaintingPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

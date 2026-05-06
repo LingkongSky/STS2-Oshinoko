@@ -8,7 +8,7 @@ public static class ResourceUsageTracker
 {
     private sealed class State
     {
-        public CombatState? CombatState;
+        public ICombatState? CombatState;
         public int TotalShineGained;
         public int TotalShineSpent;
         public int TotalRevengeGained;
@@ -101,7 +101,7 @@ public static class ResourceUsageTracker
         return state;
     }
 
-    private static void ResetState(State state, CombatState? combatState)
+    private static void ResetState(State state, ICombatState? combatState)
     {
         state.CombatState = combatState;
         state.TotalShineGained = 0;

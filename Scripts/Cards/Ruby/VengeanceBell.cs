@@ -52,7 +52,7 @@ public class VengeanceBell : RubyCardModel
             this
         );
 
-        await PowerCmd.Apply<Powers.VengeanceBellPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<Powers.VengeanceBellPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

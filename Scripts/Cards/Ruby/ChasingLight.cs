@@ -25,7 +25,7 @@ public class ChasingLight : RubyCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<ChasingLightPower>(Owner.Creature, DynamicVars[ThresholdKey].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<ChasingLightPower>(choiceContext, Owner.Creature, DynamicVars[ThresholdKey].BaseValue, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

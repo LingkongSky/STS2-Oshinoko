@@ -20,7 +20,7 @@ public class RetreatBackstage : RubyCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<RetreatBackstagePower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<RetreatBackstagePower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()
