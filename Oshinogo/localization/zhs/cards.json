@@ -1,4 +1,4 @@
-﻿{
+{
   "OSHINOGO-RUBY_STRIKE.title": "打击",
   "OSHINOGO-RUBY_STRIKE.description": "造成{CalculatedDamage:diff()}点伤害。",
   "OSHINOGO-IDOL_ADMIRATION.title": "偶像憧憬",
@@ -34,7 +34,7 @@
   "OSHINOGO-PAIN.title": "病痛",
   "OSHINOGO-PAIN.description": "所有敌人失去{Damage:diff()}点生命值。",
   "OSHINOGO-RECKLESS_CHARGE.title": "莽撞向前",
-  "OSHINOGO-RECKLESS_CHARGE.description": "造成{CalculatedDamage:diff()}点伤害2次，消耗1张牌，并获取等同于该卡费用的[gold]临时复仇[/gold]。",
+  "OSHINOGO-RECKLESS_CHARGE.description": "造成{Damage:diff()}点伤害2次，消耗1张牌，并获取等同于该卡费用的[gold]临时复仇[/gold]。",
   "OSHINOGO-STAGE_CRASH.title": "舞台坠落",
   "OSHINOGO-STAGE_CRASH.description": "对所有敌人造成{Damage:diff()}点伤害，失去2点生命，获得2点[gold]复仇[/gold]。",
   "OSHINOGO-SCATTERED_LIGHT.title": "四散的光芒",

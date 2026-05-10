@@ -1,4 +1,4 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -8,7 +8,7 @@ using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得2点闪耀。每回合第一次打出闪耀牌时，获得1点临时闪耀。
+// 描述: 获得2点闪耀。每回合第一次打出闪耀牌时，获得2点临时闪耀。
 
 [Pool(typeof(RubyCardPool))]
 public class IdolRadiance : RubyCardModel
@@ -21,7 +21,7 @@ public class IdolRadiance : RubyCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await ShinePowerHelper.ApplyShine(Owner.Creature, 2, ValueDuration.Permanent, Owner.Creature, this);
-        await PowerCmd.Apply<IdolRadiancePower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
+        await PowerCmd.Apply<IdolRadiancePower>(choiceContext, Owner.Creature, 2, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

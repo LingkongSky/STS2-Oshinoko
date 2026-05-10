@@ -1,4 +1,4 @@
-﻿using BaseLib.Abstracts;
+using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -13,7 +13,7 @@ public class Rebirth : CustomCardModel
 {
     public override string PortraitPath => $"res://Oshinogo/images/cards/ruby/{GetType().Name}.png";
 
-    public Rebirth() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
+    public Rebirth() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {
     }
 

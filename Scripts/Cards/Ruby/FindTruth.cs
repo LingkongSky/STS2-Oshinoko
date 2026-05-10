@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 namespace Oshinogo.Scripts.Cards.Ruby;
 
 [Pool(typeof(RubyCardPool))]
-// 浠庢秷鑰楃墝鍫嗕腑閫夋嫨1(2)寮犵墝鍔犲叆鎵嬬墝锛岃嚦灏戦渶瑕?鐐归棯鑰€鎵嶈兘鎵撳嚭
+
 public class FindTruth : RubyCardModel
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");

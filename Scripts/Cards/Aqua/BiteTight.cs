@@ -12,14 +12,14 @@ using Oshinogo.Scripts.Powers;
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 描述: 对敌人造成20(30)点伤害，给予1(2)层陷阱。谋划2
+// 描述: 对敌人造成20(30)点伤害，给予2(3)层陷阱。谋划2
 public class BiteTight : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => PlanAndKeywordTips(2, "TRAP");
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(20, ValueProp.Move),
-        new DynamicVar("Trap", 1),
+        new DynamicVar("Trap", 2),
     ];
 
     public BiteTight() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy, true)

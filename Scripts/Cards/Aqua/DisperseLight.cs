@@ -1,4 +1,4 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -6,12 +6,11 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 描述: 造成9(14)点伤害，使对方失去2(3)点力量。
+// 描述: 造成9(14)点伤害，使对方失去3(4)点力量。
 public class DisperseLight : AquaCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

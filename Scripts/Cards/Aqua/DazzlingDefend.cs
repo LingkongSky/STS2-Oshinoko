@@ -1,18 +1,18 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
 using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [Pool(typeof(AquaCardPool))]
-// 描述: 获得7(10)点格挡，获得2点临时闪耀。
+// 描述: 获得7(10)点格挡，获得5点临时闪耀。
 public class DazzlingDefend : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
@@ -37,7 +37,7 @@ public class DazzlingDefend : AquaCardModel
     {
         var block = ShineScaling.Calculate(DynamicVars, CalculatedBlockKey, cardPlay.Target);
         await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move, cardPlay);
-        await ShinePowerHelper.ApplyShine(Owner.Creature, 2, ValueDuration.Temp, Owner.Creature, this);
+        await ShinePowerHelper.ApplyShine(Owner.Creature, 5, ValueDuration.Temp, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

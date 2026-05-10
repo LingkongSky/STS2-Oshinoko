@@ -59,10 +59,11 @@ public class Doubt : RubyCardModel
         DynamicVars[ThresholdKey].UpgradeValueBy(4);
     }
 
-    private static int SumDealtDamage(IEnumerable<DamageResult> results, Creature target)
+    private static int SumDealtDamage(IEnumerable<IReadOnlyList<DamageResult>> results, Creature target)
     {
         return results
-            .Where(r => r.Receiver == target)
-            .Sum(r => r.UnblockedDamage + r.OverkillDamage);
+            .SelectMany(batch => batch)
+            .Where(result => result.Receiver == target)
+            .Sum(result => result.UnblockedDamage + result.OverkillDamage);
     }
 }

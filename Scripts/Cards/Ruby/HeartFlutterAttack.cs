@@ -1,4 +1,4 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -7,7 +7,6 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinogo.Scripts.Cards.Other;
 using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
@@ -59,10 +58,11 @@ public class HeartFlutterAttack : RubyCardModel
         DynamicVars[RefundEnergyKey].UpgradeValueBy(1);
     }
 
-    private static int SumDealtDamage(IEnumerable<DamageResult> results, Creature target)
+    private static int SumDealtDamage(IEnumerable<IReadOnlyList<DamageResult>> results, Creature target)
     {
         return results
-            .Where(r => r.Receiver == target)
-            .Sum(r => r.UnblockedDamage + r.OverkillDamage);
+            .SelectMany(batch => batch)
+            .Where(result => result.Receiver == target)
+            .Sum(result => result.UnblockedDamage + result.OverkillDamage);
     }
 }

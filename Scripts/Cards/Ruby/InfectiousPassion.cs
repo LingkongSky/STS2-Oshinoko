@@ -1,4 +1,4 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -41,8 +41,10 @@ public class InfectiousPassion : RubyCardModel
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        var dealtDamage = command.Results.Where(r => r.Receiver == cardPlay.Target)
-            .Sum(r => r.UnblockedDamage + r.OverkillDamage);
+        var dealtDamage = command.Results
+            .SelectMany(batch => batch)
+            .Where(result => result.Receiver == cardPlay.Target)
+            .Sum(result => result.UnblockedDamage + result.OverkillDamage);
 
         if (dealtDamage >= 9)
         {

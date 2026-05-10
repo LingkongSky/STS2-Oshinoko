@@ -46,6 +46,6 @@ public class IdolRadiancePower : OshinogoCustomPower
         }
 
         _triggeredThisTurn = true;
-        await ShinePowerHelper.ApplyShine(Owner, 1, ValueDuration.Temp, Owner, null);
+        await ShinePowerHelper.ApplyShine(Owner, 2, ValueDuration.Temp, Owner, null);
     }
 }
