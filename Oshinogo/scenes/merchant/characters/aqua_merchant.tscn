@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ma5pcwx65epc"]
 
 [ext_resource type="Script" uid="uid://cfugq1iefl420" path="res://Scripts/UI/OshinogoNMerchantCharacter.cs" id="1_eli2v"]
-[ext_resource type="Texture2D" uid="uid://dtmbqp8h214hr" path="res://Oshinogo/images/ui/Aqua_Hoshino_Anime.png" id="2_eli2v"]
+[ext_resource type="PackedScene" uid="uid://clup4xr03sva3" path="res://Oshinogo/scenes/character/aqua_idle.tscn" id="2_eli2v"]
 
 [sub_resource type="SpineAtlasResource" id="SpineAtlasResource_g8m6m"]
 
@@ -17,8 +17,6 @@ script = ExtResource("1_eli2v")
 [node name="SpineSprite" type="SpineSprite" parent="."]
 skeleton_data_res = SubResource("SpineSkeletonDataResource_g8m6m")
 
-[node name="AquaHoshinoAnime" type="Sprite2D" parent="SpineSprite"]
-position = Vector2(-5, -2.0000074)
-scale = Vector2(0.363, 0.363)
-texture = ExtResource("2_eli2v")
-offset = Vector2(41.025, -757.61)
+[node name="DeathPivot" parent="SpineSprite" instance=ExtResource("2_eli2v")]
+position = Vector2(-25.22, 22.945)
+scale = Vector2(1.64, 1.64)

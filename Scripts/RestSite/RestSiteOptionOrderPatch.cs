@@ -48,7 +48,7 @@ public static class RestSiteOptionOrderPatch
         ordered = ordered
             .Take(BaseOrder.Length)
             .Concat(ordered.Skip(BaseOrder.Length)
-                .OrderBy(o => o.OptionId, StringComparer.Ordinal))
+            .OrderBy(o => o.OptionId, StringComparer.Ordinal))
             .ToList();
 
         __result = ordered;

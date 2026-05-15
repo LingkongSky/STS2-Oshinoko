@@ -1,6 +1,6 @@
+using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Players;
-using MegaCrit.Sts2.Core.Entities.RestSite;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Map;
 using MegaCrit.Sts2.Core.Runs.History;
@@ -9,7 +9,7 @@ using Oshinogo.Scripts.Relics.Ruby;
 
 namespace Oshinogo.Scripts.RestSite;
 
-public sealed class Journey : RestSiteOption
+public sealed class Journey : CustomRestSiteOption
 {
     public const string OptionIdValue = "JOURNEY";
     private const int MaxUses = 3;
@@ -20,6 +20,7 @@ public sealed class Journey : RestSiteOption
 
 
     public override string OptionId => OptionIdValue;
+    public override string? CustomIconPath => IconPath;
 
     public override LocString Description
     {
@@ -48,9 +49,6 @@ public sealed class Journey : RestSiteOption
         _useCount = GetUsageCount(owner);
         IsEnabled = _useCount < MaxUses;
     }
-
-    // Prevent the base class from preloading res://images/ui/rest_site/option_journey.png.
-    public override IEnumerable<string> AssetPaths => new[] { IconPath };
 
     public override async Task<bool> OnSelect()
     {

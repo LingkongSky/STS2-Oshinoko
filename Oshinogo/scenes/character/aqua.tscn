@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://jeki6aoanxnb" path="res://Scripts/UI/OshinogoNCreatureVisuals.cs" id="1_ft52h"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://b8e4wst5vt8xh" path="res://Oshinogo/animations/characters/ruby/ironclad_skel_data.tres" id="2_q0v0f"]
-[ext_resource type="Texture2D" uid="uid://dtmbqp8h214hr" path="res://Oshinogo/images/ui/Aqua_Hoshino_Anime.png" id="3_ft52h"]
+[ext_resource type="PackedScene" uid="uid://clup4xr03sva3" path="res://Oshinogo/scenes/character/aqua_idle.tscn" id="3_ft52h"]
 
 [node name="Aqua" type="Node2D"]
 script = ExtResource("1_ft52h")
@@ -36,12 +36,6 @@ position = Vector2(0, -165)
 unique_name_in_owner = true
 position = Vector2(20, -351)
 
-[node name="DeathPivot" type="Node2D" parent="."]
+[node name="DeathPivot" parent="." instance=ExtResource("3_ft52h")]
 unique_name_in_owner = true
 position = Vector2(-5, -2.0000076)
-
-[node name="AquaHoshinoAnime" type="Sprite2D" parent="DeathPivot"]
-position = Vector2(0, 0)
-scale = Vector2(0.22316, 0.22316)
-texture = ExtResource("3_ft52h")
-offset = Vector2(41.025, -757.61)

@@ -1,17 +1,14 @@
-﻿using BaseLib.Config;
+using BaseLib.Config;
 using Godot.Bridge;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Modding;
 
-
 namespace Oshinogo.Scripts;
-
 
 [ModInitializer("Init")]
 public class Entry
 {
-    // 初始化函数
     public static void Init()
     {
         var harmony = new Harmony("sts2.lingkong.Oshinogo");

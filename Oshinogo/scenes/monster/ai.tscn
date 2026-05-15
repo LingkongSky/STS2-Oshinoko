@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://w0yrdy4dgut4"]
+
+[ext_resource type="Script" uid="uid://jeki6aoanxnb" path="res://Scripts/UI/OshinogoNCreatureVisuals.cs" id="1_kh7mu"]
+[ext_resource type="Texture2D" uid="uid://u7lcmf42mjeq" path="res://Oshinogo/images/animations/AiIdle.png" id="2_wyhyf"]
+
+[sub_resource type="Animation" id="Animation_wyhyf"]
+resource_name = "AiIdle"
+length = 1.6250062
+loop_mode = 1
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ai:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6250062),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 25]
+}
+
+[sub_resource type="Animation" id="Animation_mr2a7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ai:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mr2a7"]
+_data = {
+&"AiIdle": SubResource("Animation_wyhyf"),
+&"RESET": SubResource("Animation_mr2a7")
+}
+
+[node name="Ai" type="Node2D"]
+script = ExtResource("1_kh7mu")
+metadata/_edit_lock_ = true
+
+[node name="Bounds" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -202.0
+offset_top = -440.0
+offset_right = 202.0
+offset_bottom = 1.0
+mouse_filter = 2
+
+[node name="CenterPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(22, -252)
+
+[node name="IntentPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1, -487)
+
+[node name="Visuals" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-31.025, -200.735)
+scale = Vector2(0.55, 0.55)
+
+[node name="Ai" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("2_wyhyf")
+hframes = 6
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals"]
+reset_on_save = false
+libraries = {
+&"": SubResource("AnimationLibrary_mr2a7")
+}
+autoplay = "AiIdle"
+speed_scale = 1.1

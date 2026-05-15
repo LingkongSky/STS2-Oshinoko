@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://taunxv6w32lk" path="res://Scripts/UI/OshinogoNRestSiteCharacter.cs" id="1_ndrsl"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://b8nbwey4uwrqk" path="res://Oshinogo/animations/rest_site/ruby/rest_site_ruby_skel_data.tres" id="2_fc56c"]
 [ext_resource type="PackedScene" uid="uid://bgy88bk44xxvk" path="res://Oshinogo/scenes/ui/selection_reticle.tscn" id="3_65you"]
-[ext_resource type="Texture2D" uid="uid://dtmbqp8h214hr" path="res://Oshinogo/images/ui/Aqua_Hoshino_Anime.png" id="4_ndrsl"]
+[ext_resource type="PackedScene" uid="uid://clup4xr03sva3" path="res://Oshinogo/scenes/character/aqua_idle.tscn" id="4_ndrsl"]
 
 [node name="AquaRestSite" type="Node2D"]
 position = Vector2(-2, 42)
@@ -54,9 +54,6 @@ offset_top = -324.997
 offset_right = -73.6836
 offset_bottom = -324.997
 
-[node name="AquaHoshinoAnime" type="Sprite2D" parent="."]
-show_behind_parent = true
-position = Vector2(30.731, 346.917)
-scale = Vector2(0.467, 0.467)
-texture = ExtResource("4_ndrsl")
-offset = Vector2(41.025, -757.61)
+[node name="DeathPivot" parent="." instance=ExtResource("4_ndrsl")]
+position = Vector2(0, 349.5)
+scale = Vector2(2, 2)
