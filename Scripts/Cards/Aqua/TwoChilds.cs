@@ -1,18 +1,12 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: æ¯å›åˆè·å¾—2ç‚¹ä¸´æ—¶é—ªè€€å’Œ2ç‚¹ä¸´æ—¶å¤ä»‡
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: Ã¿»ØºÏ»ñµÃ2µãÁÙÊ±ÉÁÒ«ºÍ2µãÁÙÊ±¸´³ğ
 public class TwoChilds : AquaCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE", "REVENGE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE", "REVENGE");
     public TwoChilds() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
     {
     }
@@ -27,3 +21,5 @@ public class TwoChilds : AquaCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+

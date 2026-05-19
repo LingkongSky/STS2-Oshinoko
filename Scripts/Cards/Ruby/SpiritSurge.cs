@@ -1,24 +1,15 @@
-﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
 // 描述: 对敌人造成9(14)点伤害，下回合获得3点临时闪耀。
 
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class SpiritSurge : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -50,3 +41,6 @@ public class SpiritSurge : RubyCardModel
         DynamicVars.Damage.UpgradeValueBy(5);
     }
 }
+
+
+

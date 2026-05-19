@@ -1,22 +1,12 @@
-﻿using System.Linq;
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.CardSelection;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
+[RegisterCard(typeof(AquaCardPool))]
 // 描述: 造成10(14)点伤害，选择一张手牌给予虚无。
 public class PoisedTo : AquaCardModel
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -42,14 +32,7 @@ public class PoisedTo : AquaCardModel
         if (PileType.Hand.GetPile(Owner).Cards.Count == 0)
         {
             return;
-        }
-
-        var selected = (await CardSelectCmd.FromHand(
-            choiceContext,
-            Owner,
-            new CardSelectorPrefs(SelectionScreenPrompt, 1),
-            card => !card.Keywords.Contains(CardKeyword.Ethereal),
-            this)).FirstOrDefault();
+        } var selected = PileType.Hand.GetPile(Owner).Cards.FirstOrDefault(card => !card.Keywords.Contains(CardKeyword.Ethereal));
 
         if (selected != null)
         {
@@ -62,4 +45,8 @@ public class PoisedTo : AquaCardModel
         DynamicVars.Damage.UpgradeValueBy(4);
     }
 }
+
+
+
+
 

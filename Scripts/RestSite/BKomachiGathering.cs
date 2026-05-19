@@ -1,6 +1,3 @@
-using BaseLib.Abstracts;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Map;
 using MegaCrit.Sts2.Core.Runs.History;
@@ -8,7 +5,7 @@ using Oshinogo.Scripts.Relics.Ruby;
 
 namespace Oshinogo.Scripts.RestSite;
 
-public sealed class BKomachiGathering : CustomRestSiteOption
+public sealed class BKomachiGathering : ModRestSiteOptionTemplate
 {
     public const string OptionIdValue = "BKOMACHI";
     public const string IconPath = "res://Oshinogo/images/ui/rest_site/option_bkomachi.png";
@@ -97,3 +94,4 @@ public sealed class BKomachiGathering : CustomRestSiteOption
         return count;
     }
 }
+

@@ -1,17 +1,10 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: ä¸‹å›åˆè·å¾—æ— å®ä½“ï¼Œä¸”ä¸èƒ½å‡ºç‰Œã€‚ä¸‹å›åˆç»“æŸåå›å¤5(7)ç‚¹ç”Ÿå‘½ã€‚
+// ÃèÊö: ÏÂ»ØºÏ»ñµÃÎŞÊµÌå£¬ÇÒ²»ÄÜ³öÅÆ¡£ÏÂ»ØºÏ½áÊøºó»Ø¸´5(7)µãÉúÃü¡£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class ActCute : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
@@ -36,3 +29,6 @@ public class ActCute : RubyCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+
+

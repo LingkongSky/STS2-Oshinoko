@@ -1,13 +1,8 @@
-﻿using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Powers;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models;
-
 namespace Oshinogo.Scripts.Powers;
 
 
 /// 每当消耗卡牌时，获得临时复仇。
-public class NightmarePower : OshinogoCustomPower
+public class NightmaresPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;

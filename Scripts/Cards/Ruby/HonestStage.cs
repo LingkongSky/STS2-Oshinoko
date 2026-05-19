@@ -1,21 +1,13 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: è·å¾—2ç‚¹é—ªè€€ã€‚è‹¥å½“å‰é—ªè€€å¤§äº4ï¼Œè·å¾—2ç‚¹èƒ½é‡ã€‚
+// ÃèÊö: »ñµÃ2µãÉÁÒ«¡£Èôµ±Ç°ÉÁÒ«´óÓÚ4£¬»ñµÃ2µãÄÜÁ¿¡£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class HonestStage : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
@@ -40,3 +32,6 @@ public class HonestStage : RubyCardModel
     }
 
 }
+
+
+

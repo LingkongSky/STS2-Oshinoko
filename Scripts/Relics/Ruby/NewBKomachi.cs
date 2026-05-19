@@ -1,14 +1,8 @@
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Relics;
-using MegaCrit.Sts2.Core.Models;
-using Oshinogo.Scripts.Cards.Ruby;
-using Oshinogo.Scripts.Pools.RelicPools;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Relics.Ruby;
 // 将一张暗号B加入牌库
-[Pool(typeof(RubyRelicPool))]
+[RegisterRelic(typeof(RubyRelicPool))]
 public class NewBKomachi : OshinogoRelicModel
 {
     public override RelicRarity Rarity => RelicRarity.Event;
@@ -32,3 +26,6 @@ public class NewBKomachi : OshinogoRelicModel
         CardCmd.PreviewCardPileAdd(results);
     }
 }
+
+
+

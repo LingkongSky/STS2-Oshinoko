@@ -1,22 +1,13 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: è·å¾—6(9)ç‚¹æ ¼æŒ¡ï¼Œä¸‹å›åˆè·å¾—1ç‚¹å›åˆé—ªè€€ã€‚
+// ÃèÊö: »ñµÃ6(9)µã¸ñµ²£¬ÏÂ»ØºÏ»ñµÃ1µã»ØºÏÉÁÒ«¡£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class BackstageSupport : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -44,3 +35,5 @@ public class BackstageSupport : RubyCardModel
         DynamicVars.Block.UpgradeValueBy(3);
     }
 }
+
+

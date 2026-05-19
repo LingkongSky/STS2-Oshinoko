@@ -1,4 +1,4 @@
 {
-    "OSHINOGO-SHINE.description": "闪耀状态下，为卡牌增加等量于闪耀的数值。\n复仇状态下，卡牌数值根据复仇乘算，同时失去等同于复仇的生命",
-    "OSHINOGO-SHINE.title": "闪耀"
+    "OSHINOGO_KEYWORD_SHINE.description": "闪耀状态下，为卡牌增加等量于闪耀的数值。\n复仇状态下，卡牌数值根据复仇乘算，同时失去等同于复仇的生命",
+    "OSHINOGO_KEYWORD_SHINE.title": "闪耀"
 }

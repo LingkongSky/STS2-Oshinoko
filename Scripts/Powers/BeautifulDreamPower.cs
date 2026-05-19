@@ -1,11 +1,11 @@
-ï»¿using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Models;
 
 namespace Oshinogo.Scripts.Powers;
 
-/// æˆ˜æ–—ä¸­æ¯æ¬¡ç”Ÿæˆå¡ç‰Œæ—¶ï¼Œè·å¾—ä¸´æ—¶é—ªè€€ã€‚
+/// Õ½¶·ÖĞÃ¿´ÎÉú³É¿¨ÅÆÊ±£¬»ñµÃÁÙÊ±ÉÁÒ«¡£
 
 public class BeautifulDreamPower : OshinogoCustomPower
 {

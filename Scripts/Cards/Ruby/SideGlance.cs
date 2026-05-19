@@ -1,21 +1,13 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: é€ æˆ6(9)ç‚¹ä¼¤å®³,ç»™äºˆ1(2)å±‚è™šå¼±ã€‚
+// ÃèÊö: Ôì³É6(9)µãÉËº¦,¸øÓè1(2)²ãĞéÈõ¡£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class SideGlance : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("WEAK");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("WEAK");
     private const string WeakKey = "Weak";
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -46,3 +38,5 @@ public class SideGlance : RubyCardModel
         DynamicVars[WeakKey].UpgradeValueBy(1);
     }
 }
+
+

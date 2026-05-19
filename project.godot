@@ -13,11 +13,6 @@ config_version=5
 config/name="Oshinogo"
 run/main_scene="uid://rg6linnyhfp0"
 config/features=PackedStringArray("4.5", "C#", "Mobile")
-config/icon="res://icon.svg"
-
-[autoload]
-
-FmodManager="*res://addons/fmod/FmodManager.gd"
 
 [display]
 
@@ -31,7 +26,3 @@ project/assembly_name="Oshinogo"
 [editor]
 
 export/convert_text_resources_to_binary=false
-
-[editor_plugins]
-
-enabled=PackedStringArray()

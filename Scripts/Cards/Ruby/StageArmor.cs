@@ -1,17 +1,10 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: æ¯å¤±å»1ç‚¹ç”Ÿå‘½ï¼Œè·å¾—2(3)ç‚¹æ ¼æŒ¡ã€‚
+// ÃèÊö: Ã¿Ê§È¥1µãÉúÃü£¬»ñµÃ2(3)µã¸ñµ²¡£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class StageArmor : RubyCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("BlockPerHp", 2)];
@@ -30,3 +23,5 @@ public class StageArmor : RubyCardModel
         DynamicVars["BlockPerHp"].UpgradeValueBy(1);
     }
 }
+
+

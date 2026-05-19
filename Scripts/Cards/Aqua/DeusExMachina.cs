@@ -1,14 +1,9 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models.Powers;
-using Oshinogo.Scripts.Pools.CardPools;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: æ‰€æœ‰é˜Ÿå‹è·å¾—1å±‚æ— å®ä½“ã€‚
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: ËùÓĞ¶ÓÓÑ»ñµÃ1²ãÎŞÊµÌå¡£
 public class DeusExMachina : AquaCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
@@ -37,3 +32,6 @@ public class DeusExMachina : AquaCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+
+

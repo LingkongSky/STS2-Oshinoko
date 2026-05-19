@@ -1,20 +1,13 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: è·å¾—2(3)ç‚¹ä¸´æ—¶é—ªè€€ã€‚
+// ÃèÊö: »ñµÃ2(3)µãÁÙÊ±ÉÁÒ«¡£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class MiyaADream : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new ShineDymicVar(2m)];
@@ -33,3 +26,6 @@ public class MiyaADream : RubyCardModel
         DynamicVars[ShineDymicVar.Key].UpgradeValueBy(1);
     }
 }
+
+
+

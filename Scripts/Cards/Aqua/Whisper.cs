@@ -1,20 +1,13 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Powers;
-using Oshinogo.Scripts.Pools.CardPools;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: æ¶ˆé™¤ä¸€åæ•Œäººçš„äººå·¥ï¼Œå¹¶ç»™äºˆ2(3)å±‚è™šå¼±
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: Ïû³ıÒ»ÃûµĞÈËµÄÈË¹¤£¬²¢¸øÓè2(3)²ãĞéÈõ
 public class Whisper : AquaCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Weak", 2)];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => PlanAndKeywordTips(1, "WEAK");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => PlanAndKeywordTips(1, "WEAK");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     public Whisper() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy, true)
@@ -43,3 +36,6 @@ public class Whisper : AquaCardModel
         DynamicVars["Weak"].UpgradeValueBy(1);
     }
 }
+
+
+

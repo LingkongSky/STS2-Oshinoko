@@ -1,16 +1,10 @@
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Pools.CardPools;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 随机消耗手牌中的1张卡，获得12(16)点防御。
+// 描述: 随机消耗手牌中�?张卡，获�?2(16)点防御�?
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class NoWayBack : RubyCardModel
 {
     public NoWayBack() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
@@ -50,3 +44,5 @@ public class NoWayBack : RubyCardModel
         DynamicVars.Block.UpgradeValueBy(4);
     }
 }
+
+

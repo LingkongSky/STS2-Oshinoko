@@ -1,15 +1,9 @@
-ï»¿using System.Collections.Generic;
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Relics;
-using Oshinogo.Scripts.Cards.Aqua;
-using Oshinogo.Scripts.Pools.RelicPools;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Relics.Aqua;
 
-[Pool(typeof(AquaRelicPool))]
-// æè¿°: æˆ˜æ–—å¼€å§‹æ—¶èŽ·å¾—3å¼ æµ¸è¡€èŠ±ç“£ã€‚
+[RegisterRelic(typeof(AquaRelicPool))]
+// ÃèÊö: Õ½¶·¿ªÊ¼Ê±»ñµÃ3ÕÅ½þÑª»¨°ê¡£
 public class Sarina : OshinogoRelicModel
 {
     public override RelicRarity Rarity => RelicRarity.Event;
@@ -32,3 +26,6 @@ public class Sarina : OshinogoRelicModel
         CardCmd.PreviewCardPileAdd(generated);
     }
 }
+
+
+

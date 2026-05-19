@@ -1,18 +1,8 @@
-﻿using System.Linq;
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.CardSelection;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
+[RegisterCard(typeof(AquaCardPool))]
 // 描述: 获得6(9)点格挡，选择一张手牌保留。
 public class Stand : AquaCardModel
 {
@@ -20,7 +10,7 @@ public class Stand : AquaCardModel
 
     public override bool GainsBlock => true;
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -41,9 +31,7 @@ public class Stand : AquaCardModel
         if (PileType.Hand.GetPile(Owner).Cards.Count == 0)
         {
             return;
-        }
-
-        var selected = (await CardSelectCmd.FromHand(choiceContext, Owner, new CardSelectorPrefs(SelectionScreenPrompt, 1), _ => true, this)).FirstOrDefault();
+        } var selected = PileType.Hand.GetPile(Owner).Cards.FirstOrDefault();
         selected?.GiveSingleTurnRetain();
     }
 
@@ -52,4 +40,8 @@ public class Stand : AquaCardModel
         DynamicVars.Block.UpgradeValueBy(3);
     }
 }
+
+
+
+
 

@@ -1,20 +1,12 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Pools.CardPools;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: é€ æˆ7(10)ç‚¹ä¼¤å®³ï¼Œç»™äºˆ1(2)å±‚æ˜“ä¼¤å’Œ1(2)å±‚è™šå¼±ã€‚
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: Ôì³É7(10)µãÉËº¦£¬¸øÓè1(2)²ãÒ×ÉËºÍ1(2)²ãĞéÈõ¡£
 public class LookAt : AquaCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("VULNERABLE", "WEAK");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("VULNERABLE", "WEAK");
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(8, ValueProp.Move),
@@ -46,4 +38,6 @@ public class LookAt : AquaCardModel
         DynamicVars["Weak"].UpgradeValueBy(1);
     }
 }
+
+
 

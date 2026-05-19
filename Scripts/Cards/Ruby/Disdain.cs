@@ -1,23 +1,15 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Powers;
-using Oshinogo.Scripts.Pools.CardPools;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: ç»™äºˆæ‰€æœ‰æ•Œäºº1(2)å±‚è™šå¼±å’Œ1(2)å±‚æ˜“ä¼¤ã€‚
+// ÃèÊö: ¸øÓèËùÓÐµÐÈË1(2)²ãÐéÈõºÍ1(2)²ãÒ×ÉË¡£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class Disdain : RubyCardModel
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("VULNERABLE", "WEAK");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("VULNERABLE", "WEAK");
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DynamicVar("Weak", 1),
@@ -44,3 +36,5 @@ public class Disdain : RubyCardModel
         DynamicVars["Vulnerable"].UpgradeValueBy(1);
     }
 }
+
+

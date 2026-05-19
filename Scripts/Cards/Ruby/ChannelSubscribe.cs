@@ -1,18 +1,10 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.Rooms;
-using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: è·å¾—1(2)å±‚äººå·¥åˆ¶å“ï¼Œæˆ˜æ–—ç»“æŸåéšæœºå‡çº§ä¸€å¼ å¡ç‰Œ
+// ÃèÊö: »ñµÃ1(2)²ãÈË¹¤ÖÆÆ·£¬Õ½¶·½áÊøºóËæ»úÉı¼¶Ò»ÕÅ¿¨ÅÆ
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class ChannelSubscribe : RubyCardModel
 {
     private const string ArtifactKey = "ArtifactPower";
@@ -74,3 +66,6 @@ public class ChannelSubscribe : RubyCardModel
         RemoveKeyword(CardKeyword.Ethereal);
     }
 }
+
+
+

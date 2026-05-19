@@ -1,21 +1,13 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: è·å¾—1(2)ç‚¹ä¸´æ—¶é—ªè€€ã€‚æŠ½1(2)å¼ ç‰Œã€‚
+// ÃèÊö: »ñµÃ1(2)µãÁÙÊ±ÉÁÒ«¡£³é1(2)ÕÅÅÆ¡£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class AquaCall : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
     private const string ThresholdKey = "Threshold";
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new ShineDymicVar(1m),
@@ -38,3 +30,5 @@ public class AquaCall : RubyCardModel
         DynamicVars[ThresholdKey].UpgradeValueBy(1);
     }
 }
+
+

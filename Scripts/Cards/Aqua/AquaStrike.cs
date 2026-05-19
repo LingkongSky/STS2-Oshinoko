@@ -1,21 +1,13 @@
-﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
-
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 
-[Pool(typeof(AquaCardPool))]
+[RegisterCard(typeof(AquaCardPool))]
+[RegisterCharacterStarterCard(typeof(Character.Aqua), 4)]
+
 // 描述: 造成6(9)点伤害。
 public class AquaStrike : AquaCardModel
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DamageVar(6, ValueProp.Move),
@@ -47,3 +39,6 @@ public class AquaStrike : AquaCardModel
         DynamicVars.Damage.UpgradeValueBy(3);
     }
 }
+
+
+

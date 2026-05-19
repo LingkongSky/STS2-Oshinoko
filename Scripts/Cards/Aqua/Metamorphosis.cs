@@ -1,18 +1,12 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: ä¸å†å—åˆ°è™šå¼±ï¼Œè„†å¼±ï¼Œæ˜“ä¼¤çš„å½±å“ã€‚
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: ²»ÔÙÊÜµ½ĞéÈõ£¬´àÈõ£¬Ò×ÉËµÄÓ°Ïì¡£
 public class Metamorphosis : AquaCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("VULNERABLE", "WEAK", "FRAIL");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("VULNERABLE", "WEAK", "FRAIL");
     public Metamorphosis() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true)
     {
     }
@@ -27,3 +21,5 @@ public class Metamorphosis : AquaCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+

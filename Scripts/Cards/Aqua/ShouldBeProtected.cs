@@ -1,24 +1,16 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Powers;
-using Oshinogo.Scripts.Pools.CardPools;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: ç»™äºˆæ‰€æœ‰æ•Œäºº2(3)å±‚è™šå¼±ï¼Œ2(3)å±‚æ˜“ä¼¤ï¼Œ2(3)å±‚æ‘§æ®‹ã€‚
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: ¸øÓèËùÓĞµĞÈË2(3)²ãĞéÈõ£¬2(3)²ãÒ×ÉË£¬2(3)²ã´İ²Ğ¡£
 public class ShouldBeProtected : AquaCardModel
 {
     private const string WeakKey = "ShouldBeProtectedWeak";
     private const string VulnerableKey = "ShouldBeProtectedVulnerable";
     private const string DebilitateKey = "ShouldBeProtectedDebilitate";
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("VULNERABLE", "WEAK", "DEBILITATE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("VULNERABLE", "WEAK", "DEBILITATE");
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DynamicVar(WeakKey, 2),
@@ -50,4 +42,7 @@ public class ShouldBeProtected : AquaCardModel
         DynamicVars[DebilitateKey].UpgradeValueBy(1);
     }
 }
+
+
+
 

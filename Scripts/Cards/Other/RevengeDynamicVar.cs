@@ -1,4 +1,4 @@
-﻿using BaseLib.Extensions;
+
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.HoverTips;
 
@@ -11,8 +11,9 @@ public class RevengeDynamicVar : DynamicVar
     public static readonly string LocKey = Key.ToUpperInvariant();
 
     public RevengeDynamicVar(decimal baseValue) : base(Key, baseValue)
-    {
-        this.WithTooltip(LocKey);
-    }
+    {}
 }
+
+
+
 

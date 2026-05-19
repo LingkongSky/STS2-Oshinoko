@@ -1,23 +1,13 @@
-﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Combat.History.Entries;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
 // 描述: 对所有敌人造成8(10)点伤害。若本回合抽过牌，则改为造成2次。
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class ScarletEncore : RubyCardModel
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -37,14 +27,7 @@ public class ScarletEncore : RubyCardModel
         {
             // No combat state to target opponents.
             return;
-        }
-
-        var drewThisTurn = CombatManager.Instance.History.Entries
-            .OfType<CardDrawnEntry>()
-            .Any(entry => entry.Actor == Owner.Creature
-                && entry.RoundNumber == combatState.RoundNumber
-                && entry.CurrentSide == combatState.CurrentSide
-                && !entry.FromHandDraw);
+        } var drewThisTurn = PileType.Hand.GetPile(Owner).Cards.Count > 0;
 
         var hitCount = drewThisTurn ? 2 : 1;
 
@@ -60,3 +43,8 @@ public class ScarletEncore : RubyCardModel
         DynamicVars.Damage.UpgradeValueBy(2);
     }
 }
+
+
+
+
+

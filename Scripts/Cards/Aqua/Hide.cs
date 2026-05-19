@@ -1,20 +1,12 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: è·å¾—9(13)ç‚¹æ ¼æŒ¡ï¼Œæ¶ˆé™¤è‡ªèº«çš„è„†å¼±æ•ˆæœã€‚
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: »ñµÃ9(13)µã¸ñµ²£¬Ïû³ı×ÔÉíµÄ´àÈõĞ§¹û¡£
 public class Hide : AquaCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("FRAIL");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("FRAIL");
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(9, ValueProp.Move)];
@@ -39,4 +31,6 @@ public class Hide : AquaCardModel
         DynamicVars.Block.UpgradeValueBy(4);
     }
 }
+
+
 

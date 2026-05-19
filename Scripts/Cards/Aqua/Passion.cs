@@ -1,19 +1,12 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: è·å¾—1ç‚¹é—ªè€€ã€‚
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: »ñµÃ1µãÉÁÒ«¡£
 public class Passion : AquaCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new ShineDymicVar(1)];
@@ -32,4 +25,7 @@ public class Passion : AquaCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+
+
 

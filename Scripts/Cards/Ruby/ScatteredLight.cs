@@ -1,22 +1,14 @@
-﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
 // 描述: 造成14(17)点伤害，抽3张牌，并免费打出其中1张闪耀牌。
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class ScatteredLight : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -41,7 +33,7 @@ public class ScatteredLight : RubyCardModel
             .Execute(choiceContext);
 
         var drawn = (await CardPileCmd.Draw(choiceContext, 3, Owner)).ToList();
-        var shineCard = drawn.FirstOrDefault(c => c.Keywords.Contains(OshinogoKeywords.Shine));
+        var shineCard = drawn.FirstOrDefault(c => c.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()));
         if (shineCard != null)
         {
             await CardCmd.AutoPlay(choiceContext, shineCard, null);
@@ -53,3 +45,6 @@ public class ScatteredLight : RubyCardModel
         DynamicVars.Damage.UpgradeValueBy(3);
     }
 }
+
+
+

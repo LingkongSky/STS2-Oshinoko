@@ -1,13 +1,7 @@
-﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
+[RegisterCard(typeof(AquaCardPool))]
 // 每抽7张牌，额外抽一张牌。
 public class Unreachable : AquaCardModel
 {
@@ -25,3 +19,5 @@ public class Unreachable : AquaCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+

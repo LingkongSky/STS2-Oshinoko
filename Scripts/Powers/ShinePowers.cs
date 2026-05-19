@@ -16,7 +16,7 @@ public class ShinePower : OshinogoCustomPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override string? CustomPackedIconPath => "res://Oshinogo/images/powers/ruby_energy.png";
+    public override string? CustomIconPath => "res://Oshinogo/images/powers/ruby_energy.png";
 
     public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big.png";
 
@@ -38,7 +38,7 @@ public class TurnShinePower : OshinogoCustomPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override string? CustomPackedIconPath => "res://Oshinogo/images/powers/ruby_energy.png";
+    public override string? CustomIconPath => "res://Oshinogo/images/powers/ruby_energy.png";
 
     public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big.png";
 
@@ -70,7 +70,7 @@ public class TempShinePower : OshinogoCustomPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override string? CustomPackedIconPath => "res://Oshinogo/images/powers/ruby_energy.png";
+    public override string? CustomIconPath => "res://Oshinogo/images/powers/ruby_energy.png";
 
     public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big.png";
 
@@ -91,7 +91,7 @@ public class TempShinePower : OshinogoCustomPower
             return Task.CompletedTask;
         }
 
-        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine))
+        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()))
         {
             return Task.CompletedTask;
         }
@@ -111,7 +111,7 @@ public class TempShinePower : OshinogoCustomPower
             return;
         }
 
-        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine))
+        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()))
         {
             return;
         }
@@ -191,7 +191,7 @@ public class NextShineDiscountPower : OshinogoCustomPower
 
     public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
     {
-        if (card.Owner.Creature != Owner || !card.Keywords.Contains(OshinogoKeywords.Shine))
+        if (card.Owner.Creature != Owner || !card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()))
         {
             modifiedCost = originalCost;
             return false;
@@ -218,7 +218,7 @@ public class NextShineDiscountPower : OshinogoCustomPower
             return;
         }
 
-        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine))
+        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()))
         {
             return;
         }
@@ -239,3 +239,4 @@ public class NextShineDiscountPower : OshinogoCustomPower
         }
     }
 }
+

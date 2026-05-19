@@ -1,24 +1,14 @@
-﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Combat.History.Entries;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
 // 描述: 随机对敌人造成3(4)点伤害3次。本回合若你打出过2张闪耀牌，改为4次。
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class SpinningStep : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -38,13 +28,7 @@ public class SpinningStep : RubyCardModel
         {
             // No combat state to target opponents.
             return;
-        }
-
-        var shinePlaysThisTurn = CombatManager.Instance.History.Entries
-            .OfType<CardPlayFinishedEntry>()
-            .Count(entry => entry.Actor == Owner.Creature
-                && entry.HappenedThisTurn(combatState)
-                && entry.CardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine));
+        } var shinePlaysThisTurn = ShinePowerHelper.GetTotalShine(Owner.Creature);
 
         var hitCount = shinePlaysThisTurn >= 2 ? 4 : 3;
 
@@ -60,3 +44,7 @@ public class SpinningStep : RubyCardModel
         DynamicVars.Damage.UpgradeValueBy(1);
     }
 }
+
+
+
+

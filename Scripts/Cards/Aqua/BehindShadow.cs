@@ -1,20 +1,12 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Powers;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: å¤±å»2ç‚¹ç”Ÿå‘½ï¼Œè·å¾—2ç‚¹å›åˆå¤ä»‡ï¼Œç¿»å€æ‰€æœ‰æ•Œäººçš„è´Ÿé¢æ•ˆæœå±‚æ•°ã€‚
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: Ê§È¥2µãÉúÃü£¬»ñµÃ2µã»ØºÏ¸´³ğ£¬·­±¶ËùÓĞµĞÈËµÄ¸ºÃæĞ§¹û²ãÊı¡£
 public class BehindShadow : AquaCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("REVENGE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("REVENGE");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     public BehindShadow() : base(1, CardType.Skill, CardRarity.Rare, TargetType.AllEnemies, true)
@@ -50,4 +42,7 @@ public class BehindShadow : AquaCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+
+
 

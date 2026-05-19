@@ -1,21 +1,12 @@
-Ôªøusing BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// ÊèèËø∞: ÈÄ†Êàê8(11)ÁÇπ‰º§ÂÆ≥ÔºåËé∑Âæó2ÁÇπ‰∏¥Êó∂Â§ç‰ªá„ÄÇ
+[RegisterCard(typeof(AquaCardPool))]
+// √Ë ˆ: ‘Ï≥…8(11)µ„…À∫¶£¨ªÒµ√2µ„¡Ÿ ±∏¥≥°£
 public class BloodSword : AquaCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("REVENGE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("REVENGE");
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(8, ValueProp.Move),
@@ -43,3 +34,5 @@ public class BloodSword : AquaCardModel
         DynamicVars.Damage.UpgradeValueBy(2);
     }
 }
+
+

@@ -1,16 +1,9 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// å¯¹æ•Œäººé€ æˆ100(150)ç‚¹ä¼¤å®³ï¼Œä¸‹å›åˆæ­»äº¡ã€‚
+[RegisterCard(typeof(AquaCardPool))]
+// ¶ÔµĞÈËÔì³É100(150)µãÉËº¦£¬ÏÂ»ØºÏËÀÍö¡£
 public class UnderTheSea : AquaCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(100, ValueProp.Move)];
@@ -36,4 +29,6 @@ public class UnderTheSea : AquaCardModel
         DynamicVars.Damage.UpgradeValueBy(50);
     }
 }
+
+
 

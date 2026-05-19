@@ -1,4 +1,4 @@
-ï»¿using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 namespace Oshinogo.Scripts.Powers;
 
 
-// ä¸‹å›žåˆå¼€å§‹æ—¶æ­»äº¡ã€‚
+// ÏÂ»ØºÏ¿ªÊ¼Ê±ËÀÍö¡£
 public class UnderTheSeaPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Debuff;

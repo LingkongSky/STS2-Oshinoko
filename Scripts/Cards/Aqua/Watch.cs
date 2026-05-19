@@ -1,23 +1,15 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: è·å¾—2(3)å±‚è„±èº«ã€‚ è°‹åˆ’1
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: »ñµÃ2(3)²ãÍÑÉí¡£ Ä±»®1
 public class Watch : AquaCardModel
 {
     private const string EscapeKey = "WatchEscape";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar(EscapeKey, 2)];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => PlanAndKeywordTips(1, "ESCAPE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => PlanAndKeywordTips(1, "ESCAPE");
     public Watch() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
     {
     }
@@ -39,3 +31,5 @@ public class Watch : AquaCardModel
         DynamicVars[EscapeKey].UpgradeValueBy(1);
     }
 }
+
+

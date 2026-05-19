@@ -1,18 +1,12 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: æˆ˜æ–—ä¸­ç”Ÿæˆå¡ç‰Œæ—¶ï¼Œè·å¾—2ç‚¹ä¸´æ—¶é—ªè€€ã€‚
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: Õ½¶·ÖĞÉú³É¿¨ÅÆÊ±£¬»ñµÃ2µãÁÙÊ±ÉÁÒ«¡£
 public class BeautifulDream : AquaCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
     public BeautifulDream() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
     {
     }
@@ -27,3 +21,5 @@ public class BeautifulDream : AquaCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+

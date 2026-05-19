@@ -1,10 +1,4 @@
-﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Combat.History.Entries;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Players;
-using MegaCrit.Sts2.Core.Models;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Other;
 
@@ -114,7 +108,7 @@ public static class CombatHistoryHelper
             }
 
             if (entry is CardPlayFinishedEntry playEntry
-                && playEntry.CardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine)
+                && playEntry.CardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword())
                 && runningShine > 0)
             {
                 return true;

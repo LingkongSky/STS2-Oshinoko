@@ -1,20 +1,13 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: è·å¾—æœ¬åœºè·å¾—è¿‡çš„é—ªè€€ä¸å¤ä»‡æ€»å’Œçš„æ ¼æŒ¡ã€‚
+// ÃèÊö: »ñµÃ±¾³¡»ñµÃ¹ıµÄÉÁÒ«Óë¸´³ğ×ÜºÍµÄ¸ñµ²¡£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class DailyAccumulation : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE", "REVENGE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE", "REVENGE");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     public override bool GainsBlock => true;
@@ -38,3 +31,6 @@ public class DailyAccumulation : RubyCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+
+

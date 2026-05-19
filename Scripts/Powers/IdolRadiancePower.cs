@@ -40,7 +40,7 @@ public class IdolRadiancePower : OshinogoCustomPower
             return;
         }
 
-        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine))
+        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()))
         {
             return;
         }

@@ -1,17 +1,9 @@
-ï»¿using System;
-using System.Linq;
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.CardSelection;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: é€‰æ‹©ä¸¤å¼ æ‰‹ç‰Œï¼Œæœ¬å›žåˆå†…é™ä½Ž1ç‚¹è´¹ç”¨ã€‚
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: Ñ¡ÔñÁ½ÕÅÊÖÅÆ£¬±¾»ØºÏÄÚ½µµÍ1µã·ÑÓÃ¡£
 public class GiveHope : AquaCardModel
 {
     public GiveHope() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
@@ -26,10 +18,8 @@ public class GiveHope : AquaCardModel
             return;
         }
 
-        var count = Math.Min(2, handCount);
-        var prefs = new CardSelectorPrefs(SelectionScreenPrompt, count);
-        var selected = await CardSelectCmd.FromHand(choiceContext, Owner, prefs, _ => true, this);
-        foreach (var card in selected.Take(count))
+        var count = Math.Min(2, handCount); var selected = PileType.Hand.GetPile(Owner).Cards.Take(count);
+        foreach (var card in selected)
         {
             card.EnergyCost.AddThisTurn(-1, reduceOnly: true);
         }
@@ -40,3 +30,7 @@ public class GiveHope : AquaCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+
+
+

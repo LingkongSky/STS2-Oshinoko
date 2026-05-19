@@ -1,10 +1,8 @@
-﻿using BaseLib.Abstracts;
-using MegaCrit.Sts2.Core.Entities.Relics;
 
 namespace Oshinogo.Scripts.Relics
 {
 
-    public abstract class OshinogoRelicModel : CustomRelicModel
+    public abstract class OshinogoRelicModel : ModRelicTemplate
     {
         public override RelicRarity Rarity => RelicRarity.Common;
 
@@ -21,3 +19,4 @@ namespace Oshinogo.Scripts.Relics
 
     }
 }
+

@@ -1,20 +1,10 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
-
 namespace Oshinogo.Scripts.Cards.Ruby;
 
 // 描述: 获得2(3)点回合闪耀。
 
-[Pool(typeof(RubyCardPool))]
-public class IdolPassion : RubyCardModel, ITranscendenceCard
+[RegisterCard(typeof(RubyCardPool))]
+[RegisterCharacterStarterCard(typeof(Character.Ruby), 1)]
+public class IdolPassion : RubyCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new ShineDymicVar(1m)];
 
@@ -27,10 +17,11 @@ public class IdolPassion : RubyCardModel, ITranscendenceCard
         await ShinePowerHelper.ApplyShine(Owner.Creature, DynamicVars[ShineDymicVar.Key].BaseValue, ValueDuration.Turn, Owner.Creature, this);
     }
 
-    public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<Hope>();
-
     protected override void OnUpgrade()
     {
         DynamicVars[ShineDymicVar.Key].UpgradeValueBy(1);
     }
 }
+
+
+

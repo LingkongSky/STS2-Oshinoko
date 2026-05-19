@@ -1,19 +1,12 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: æœ¬å›åˆå†…æ‰“å‡ºçš„æ¶ˆè€—ç‰Œä¼šè¿›å…¥å¼ƒç‰Œå †ã€‚ è°‹åˆ’2
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: ±¾»ØºÏÄÚ´ò³öµÄÏûºÄÅÆ»á½øÈëÆúÅÆ¶Ñ¡£ Ä±»®2
 public class Expect : AquaCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => PlanCostHelper.CreatePlanCostHoverTips(2);
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => PlanCostHelper.CreatePlanCostHoverTips(2);
 
     public Expect() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {
@@ -36,3 +29,5 @@ public class Expect : AquaCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+

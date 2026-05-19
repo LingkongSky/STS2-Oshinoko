@@ -1,16 +1,8 @@
-﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
+[RegisterCard(typeof(AquaCardPool))]
 // 描述: 抽3(4)张牌。 谋划1
 public class PlotPlan : AquaCardModel
 {
@@ -22,9 +14,9 @@ public class PlotPlan : AquaCardModel
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedVar(CalculatedCardsKey, ShineValueType.Cards),
     ];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => PlanCostHelper.CreatePlanCostHoverTips(1);
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => PlanCostHelper.CreatePlanCostHoverTips(1);
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
 
     public PlotPlan() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self, true)
     {
@@ -48,3 +40,6 @@ public class PlotPlan : AquaCardModel
         DynamicVars.Cards.UpgradeValueBy(1);
     }
 }
+
+
+

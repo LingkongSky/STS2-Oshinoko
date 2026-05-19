@@ -1,17 +1,11 @@
-﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Keywords;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
 // 描述: 造成9(13)点伤害，抽1张牌。
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
+[RegisterCharacterStarterCard(typeof(Character.Ruby), 1)]
+
 public class IdolAdmiration : RubyCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -22,7 +16,7 @@ public class IdolAdmiration : RubyCardModel
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
 
     public IdolAdmiration() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy, true)
     {
@@ -47,3 +41,6 @@ public class IdolAdmiration : RubyCardModel
         DynamicVars.Damage.UpgradeValueBy(4);
     }
 }
+
+
+

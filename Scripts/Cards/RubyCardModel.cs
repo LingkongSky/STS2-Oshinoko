@@ -1,10 +1,4 @@
-using BaseLib.Abstracts;
-using Godot;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.HoverTips;
-using Oshinogo.Scripts.Cards.Other;
-
-public abstract class RubyCardModel : CustomCardModel
+public abstract class RubyCardModel : ModCardTemplate
 {
     public override string PortraitPath => $"res://Oshinogo/images/cards/ruby/{GetType().Name}.png";
 
@@ -18,30 +12,44 @@ public abstract class RubyCardModel : CustomCardModel
         return CardKeywordHoverTipHelper.Create(keys);
     }
 
-    protected static IEnumerable<IHoverTip> MergeKeywordTips(IEnumerable<IHoverTip> primary, params string[] keys)
+    public override CardAssetProfile AssetProfile => new(
+    FramePath: Type switch
     {
-        return CardKeywordHoverTipHelper.Merge(primary, CardKeywordHoverTipHelper.Create(keys));
+        CardType.Attack =>
+            "res://Oshinogo/images/ui/card_frame/ruby_attack.png",
+
+        CardType.Power =>
+            "res://Oshinogo/images/ui/card_frame/ruby_power.png",
+
+        _ =>
+            "res://Oshinogo/images/ui/card_frame/ruby_skill.png"
+    }
+);
+
+
+    protected static IEnumerable<IHoverTip> MergeKeywordTips(
+        IEnumerable<IHoverTip> primary,
+        params string[] keys
+    )
+    {
+        return CardKeywordHoverTipHelper.Merge(
+            primary,
+            CardKeywordHoverTipHelper.Create(keys)
+        );
     }
 
-
-    public override Material? CreateCustomFrameMaterial
+    protected static IEnumerable<IHoverTip> PlanAndKeywordTips(
+        int amount,
+        params string[] keys
+    )
     {
-        get
-        {
-            Shader shader = new Shader();
-            shader.Code = @"
-            shader_type canvas_item;
-
-            void fragment() {
-                COLOR = texture(TEXTURE, UV);
-            }
-        ";
-
-            ShaderMaterial mat = new ShaderMaterial();
-            mat.Shader = shader;
-
-            return mat;
-        }
+        return CardKeywordHoverTipHelper.Merge(
+            PlanCostHelper.CreatePlanCostHoverTips(amount),
+            CardKeywordHoverTipHelper.Create(keys)
+        );
     }
+
 
 }
+
+

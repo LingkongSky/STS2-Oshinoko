@@ -1,16 +1,9 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Powers;
-using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: æ¢å¤5ç‚¹è¡€é‡ï¼Œè·å¾—1å±‚æ— å®ä½“ã€‚
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: »Ö¸´5µãÑªÁ¿£¬»ñµÃ1²ãÎŞÊµÌå¡£
 public class Gabriel : AquaCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
@@ -32,4 +25,7 @@ public class Gabriel : AquaCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+
+
 

@@ -1,11 +1,8 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Entities.Relics;
-using Oshinogo.Scripts.Pools.RelicPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Relics.Ruby;
-// æ¯åœºæˆ˜æ–—å¼€å§‹æ—¶èŽ·å¾—ä¸€ç‚¹é—ªè€€å€¼
-[Pool(typeof(RubyRelicPool))]
+// Ã¿³¡Õ½¶·¿ªÊ¼Ê±»ñµÃÒ»µãÉÁÒ«Öµ
+[RegisterRelic(typeof(RubyRelicPool))]
 public class KanaArima : OshinogoRelicModel
 {
     public override RelicRarity Rarity => RelicRarity.Event;
@@ -21,3 +18,6 @@ public class KanaArima : OshinogoRelicModel
         await ShinePowerHelper.ApplyShine(Owner.Creature, 1, ValueDuration.Permanent, Owner.Creature, null);
     }
 }
+
+
+

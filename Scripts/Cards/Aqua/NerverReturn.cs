@@ -1,17 +1,9 @@
-ï»¿using System.Linq;
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: æ¶ˆè€—æ‰‹ä¸­çš„è™šæ— ç‰Œï¼Œæ¯æ¶ˆè€—ä¸€å¼ å¯¹æ‰€æœ‰æ•Œäººé€ æˆ4(6)ç‚¹ä¼¤å®³ã€‚
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: ÏûºÄÊÖÖĞµÄĞéÎŞÅÆ£¬Ã¿ÏûºÄÒ»ÕÅ¶ÔËùÓĞµĞÈËÔì³É4(6)µãÉËº¦¡£
 public class NerverReturn : AquaCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4, ValueProp.Move)];
@@ -47,3 +39,5 @@ public class NerverReturn : AquaCardModel
         DynamicVars.Damage.UpgradeValueBy(2);
     }
 }
+
+

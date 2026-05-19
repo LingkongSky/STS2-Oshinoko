@@ -1,22 +1,13 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: å¯¹æ‰€æœ‰æ•Œäººé€ æˆ16(22)ç‚¹ä¼¤å®³ï¼Œå¤±å»2ç‚¹ç”Ÿå‘½ï¼Œè·å¾—2ç‚¹å¤ä»‡ã€‚
+// ÃèÊö: ¶ÔËùÓĞµĞÈËÔì³É16(22)µãÉËº¦£¬Ê§È¥2µãÉúÃü£¬»ñµÃ2µã¸´³ğ¡£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class StageCrash : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("REVENGE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("REVENGE");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
 
@@ -60,3 +51,6 @@ public class StageCrash : RubyCardModel
         DynamicVars.Damage.UpgradeValueBy(6);
     }
 }
+
+
+

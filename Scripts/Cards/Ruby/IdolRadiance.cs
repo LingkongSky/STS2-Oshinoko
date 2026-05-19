@@ -1,19 +1,13 @@
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 获得2点闪耀。每回合第一次打出闪耀牌时，获得2点临时闪耀。
+// 描述: 获得2点闪耀。每回合第一次打出闪耀牌时，获�?点临时闪耀�?
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class IdolRadiance : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
     public IdolRadiance() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true)
     {
     }
@@ -29,3 +23,5 @@ public class IdolRadiance : RubyCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+

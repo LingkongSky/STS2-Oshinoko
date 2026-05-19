@@ -1,20 +1,13 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: æ¯å›åˆç¬¬ä¸€æ¬¡èµ‹äºˆè™šå¼±æˆ–æ˜“ä¼¤æ—¶ï¼ŒæŠ½1(2)å¼ ç‰Œã€‚
+// ÃèÊö: Ã¿»ØºÏµÚÒ»´Î¸³ÓèĞéÈõ»òÒ×ÉËÊ±£¬³é1(2)ÕÅÅÆ¡£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class RumorNetwork : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("VULNERABLE", "WEAK");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("VULNERABLE", "WEAK");
     private const string ThresholdKey = "Threshold";
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -37,3 +30,5 @@ public class RumorNetwork : RubyCardModel
         DynamicVars[ThresholdKey].UpgradeValueBy(1);
     }
 }
+
+

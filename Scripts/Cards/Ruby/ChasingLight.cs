@@ -1,21 +1,15 @@
-﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
 // 描述: 每使用6(5)点闪耀，获得1点能量。
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class ChasingLight : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
     private const string ThresholdKey = "Threshold";
+    private const int DefaultThreshold = 6;
+    private const int UpgradedThreshold = 5;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar(ThresholdKey, 6)];
 
@@ -25,7 +19,8 @@ public class ChasingLight : RubyCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<ChasingLightPower>(choiceContext, Owner.Creature, DynamicVars[ThresholdKey].BaseValue, Owner.Creature, this, true);
+        var threshold = IsUpgraded ? UpgradedThreshold : DefaultThreshold;
+        await PowerCmd.Apply<ChasingLightPower>(choiceContext, Owner.Creature, threshold, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()
@@ -33,3 +28,5 @@ public class ChasingLight : RubyCardModel
         DynamicVars[ThresholdKey].UpgradeValueBy(-1);
     }
 }
+
+

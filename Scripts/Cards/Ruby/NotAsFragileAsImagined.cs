@@ -1,19 +1,13 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: ä¸å†å—åˆ°è„†å¼±å½±å“ã€‚
+// ÃèÊö: ²»ÔÙÊÜµ½´àÈõÓ°Ïì¡£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class NotAsFragileAsImagined : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("FRAIL");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("FRAIL");
     public NotAsFragileAsImagined() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
     {
     }
@@ -28,3 +22,5 @@ public class NotAsFragileAsImagined : RubyCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+

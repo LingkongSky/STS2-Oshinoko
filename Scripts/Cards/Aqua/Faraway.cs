@@ -1,17 +1,9 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: ä¸‹å›åˆå¼€å§‹æ—¶å¯¹æ‰€æœ‰æ•Œäººé€ æˆ10(14)ç‚¹ä¼¤å®³
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: ÏÂ»ØºÏ¿ªÊ¼Ê±¶ÔËùÓĞµĞÈËÔì³É10(14)µãÉËº¦
 public class Faraway : AquaCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10, ValueProp.Move)];
@@ -30,4 +22,6 @@ public class Faraway : AquaCardModel
         DynamicVars.Damage.UpgradeValueBy(4);
     }
 }
+
+
 

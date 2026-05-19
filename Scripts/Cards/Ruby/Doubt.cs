@@ -1,23 +1,13 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: å¯¹æ•Œäººé€ æˆ9(12)ç‚¹ä¼¤å®³ï¼Œå¦‚æœé€ æˆçš„ä¼¤å®³å¤§äº11(15)åˆ™è·å¾—2ç‚¹ä¸´æ—¶å¤ä»‡ã€‚
+// ÃèÊö: ¶ÔµĞÈËÔì³É9(12)µãÉËº¦£¬Èç¹ûÔì³ÉµÄÉËº¦´óÓÚ11(15)Ôò»ñµÃ2µãÁÙÊ±¸´³ğ¡£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class Doubt : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("REVENGE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("REVENGE");
     private const string ThresholdKey = "Threshold";
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -67,3 +57,5 @@ public class Doubt : RubyCardModel
             .Sum(result => result.UnblockedDamage + result.OverkillDamage);
     }
 }
+
+

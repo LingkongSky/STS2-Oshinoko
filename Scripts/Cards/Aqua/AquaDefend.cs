@@ -1,22 +1,14 @@
-﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
-
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 
-[Pool(typeof(AquaCardPool))]
+[RegisterCard(typeof(AquaCardPool))]
+[RegisterCharacterStarterCard(typeof(Character.Aqua), 4)]
+
 // 描述: 获得5(8)点格挡。
 public class AquaDefend : AquaCardModel
 {
     private const string CalculatedBlockKey = "CalculatedBlock";
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Defend };
 
@@ -42,4 +34,7 @@ public class AquaDefend : AquaCardModel
         DynamicVars.Block.UpgradeValueBy(3);
     }
 }
+
+
+
 

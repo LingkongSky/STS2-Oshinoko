@@ -1,27 +1,15 @@
-﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Combat;
+using STS2RitsuLib.Interop.AutoRegistration;
 using MegaCrit.Sts2.Core.Combat.History.Entries;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Players;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
 // 描述: 造成3点伤害1次，本场战斗中每使用一次闪耀，攻击次数+1。
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class RubyShine : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -62,17 +50,19 @@ public class RubyShine : RubyCardModel
 
     private static int CountShinePlaysForOwner(Player? owner, CardModel? excludeCard)
     {
-        if (owner == null)
+        if (owner?.Creature == null)
         {
             return 0;
         }
 
-        var ownerNetId = owner.NetId;
         return CombatManager.Instance.History.Entries
             .OfType<CardPlayFinishedEntry>()
-            .Count(entry =>
-                entry.Actor?.Player?.NetId == ownerNetId
-                && entry.CardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine)
-                && (excludeCard == null || entry.CardPlay.Card != excludeCard));
+            .Count(entry => entry.Actor == owner.Creature
+                && entry.CardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword())
+                && entry.CardPlay.Card != excludeCard);
     }
 }
+
+
+
+

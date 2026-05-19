@@ -1,18 +1,10 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: æ‰€æœ‰æ•Œäººå¤±å»9(13)ç‚¹ç”Ÿå‘½å€¼ã€‚
+// ÃèÊö: ËùÓĞµĞÈËÊ§È¥9(13)µãÉúÃüÖµ¡£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class Pain : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Ethereal];
@@ -34,3 +26,6 @@ public class Pain : RubyCardModel
         DynamicVars.Damage.UpgradeValueBy(4);
     }
 }
+
+
+

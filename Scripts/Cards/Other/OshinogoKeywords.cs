@@ -1,15 +1,11 @@
-﻿using BaseLib.Patches.Content;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Content;
 
 
-namespace Oshinogo.Scripts.Cards.Other
+namespace Oshinogo.Scripts.Cards.Other;
+
+
+[RegisterOwnedCardKeyword(nameof(Shine), CardDescriptionPlacement = ModKeywordCardDescriptionPlacement.AfterCardDescription)]
+public class OshinogoKeywords
 {
-    public class OshinogoKeywords
-    {
-        [CustomEnum("SHINE")]
-        [KeywordProperties(AutoKeywordPosition.After)]
-        public static CardKeyword Shine;
-    }
-
+    public static readonly string Shine = ModContentRegistry.GetQualifiedKeywordId(Entry.ModId, nameof(Shine));
 }

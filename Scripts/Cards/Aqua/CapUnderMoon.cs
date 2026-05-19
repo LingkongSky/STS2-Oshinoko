@@ -1,19 +1,12 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: è·å¾—2ç‚¹é—ªè€€ï¼Œè·å¾—3ç‚¹å›åˆé—ªè€€ã€‚
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: »ñµÃ2µãÉÁÒ«£¬»ñµÃ3µã»ØºÏÉÁÒ«¡£
 public class CapUnderMoon : AquaCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
     private const string TurnShineKey = "TurnShine";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new ShineDymicVar(2m), new DynamicVar(TurnShineKey, 3m)];
@@ -33,3 +26,5 @@ public class CapUnderMoon : AquaCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+

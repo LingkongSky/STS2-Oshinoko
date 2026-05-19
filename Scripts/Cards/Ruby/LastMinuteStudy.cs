@@ -1,19 +1,13 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: æ‰“å‡ºæŠ€èƒ½ç‰Œæ—¶ï¼Œè·å¾—1ç‚¹ä¸´æ—¶é—ªè€€ã€‚
+// ÃèÊö: ´ò³ö¼¼ÄÜÅÆÊ±£¬»ñµÃ1µãÁÙÊ±ÉÁÒ«¡£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class LastMinuteStudy : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
     public LastMinuteStudy() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
     {
     }
@@ -28,3 +22,5 @@ public class LastMinuteStudy : RubyCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+

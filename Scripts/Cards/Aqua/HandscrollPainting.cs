@@ -1,16 +1,9 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æˆ˜æ–—èƒœåˆ©åï¼Œå¯ä»å¡ç»„ä¸­æ°¸ä¹…ç§»é™¤1å¼ ç‰Œ
+[RegisterCard(typeof(AquaCardPool))]
+// Õ½¶·Ê¤Àûºó£¬¿É´Ó¿¨×éÖĞÓÀ¾ÃÒÆ³ı1ÕÅÅÆ
 public class HandscrollPainting : AquaCardModel
 {
     public HandscrollPainting() : base(3, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
@@ -34,3 +27,5 @@ public class HandscrollPainting : AquaCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+

@@ -17,7 +17,7 @@ public class RevengePower : OshinogoCustomPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override string? CustomPackedIconPath => "res://Oshinogo/images/powers/ruby_energy_black.png";
+    public override string? CustomIconPath => "res://Oshinogo/images/powers/ruby_energy_black.png";
 
     public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big_black.png";
 
@@ -44,7 +44,7 @@ public class TurnRevengePower : OshinogoCustomPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override string? CustomPackedIconPath => "res://Oshinogo/images/powers/ruby_energy_black.png";
+    public override string? CustomIconPath => "res://Oshinogo/images/powers/ruby_energy_black.png";
 
     public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big_black.png";
 
@@ -79,7 +79,7 @@ public class TempRevengePower : OshinogoCustomPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override string? CustomPackedIconPath => "res://Oshinogo/images/powers/ruby_energy_black.png";
+    public override string? CustomIconPath => "res://Oshinogo/images/powers/ruby_energy_black.png";
 
     public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big_black.png";
 
@@ -100,7 +100,7 @@ public class TempRevengePower : OshinogoCustomPower
             return;
         }
 
-        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine))
+        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()))
         {
             return;
         }
@@ -220,7 +220,7 @@ public static class RevengePowerHelper
             return;
         }
 
-        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine))
+        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()))
         {
             return;
         }
@@ -281,3 +281,4 @@ public class GainTurnRevengeNextTurnPower : OshinogoCustomPower
         await PowerCmd.Remove(this);
     }
 }
+

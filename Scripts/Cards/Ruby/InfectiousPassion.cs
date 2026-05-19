@@ -1,23 +1,14 @@
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 造成6(8)点伤害，如果这张卡牌造成了9点伤害以上，则获得1点回合闪耀。
+// 鎻忚堪: 閫犳垚6(8)鐐逛激瀹筹紝濡傛灉杩欏紶鍗＄墝閫犳垚浜?鐐逛激瀹充互涓婏紝鍒欒幏寰?鐐瑰洖鍚堥棯鑰€銆?
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class InfectiousPassion : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -57,3 +48,6 @@ public class InfectiousPassion : RubyCardModel
         DynamicVars.Damage.UpgradeValueBy(2);
     }
 }
+
+
+

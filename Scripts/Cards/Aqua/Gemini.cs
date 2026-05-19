@@ -1,17 +1,12 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: è·å¾—2ç‚¹å›åˆé—ªè€€å’Œ2ç‚¹å›åˆå¤ä»‡ã€‚
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: »ñµÃ2µã»ØºÏÉÁÒ«ºÍ2µã»ØºÏ¸´³ğ¡£
 public class Gemini : AquaCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE", "REVENGE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE", "REVENGE");
     public Gemini() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {
     }
@@ -27,4 +22,6 @@ public class Gemini : AquaCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+
 

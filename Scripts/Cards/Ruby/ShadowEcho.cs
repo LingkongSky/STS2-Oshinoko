@@ -1,22 +1,14 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: è·å¾—2ç‚¹å¤ä»‡ã€‚è‹¥å½“å‰å¤ä»‡å¤§äº3ï¼ŒæŠ½2å¼ ç‰Œã€‚
+// ÃèÊö: »ñµÃ2µã¸´³ğ¡£Èôµ±Ç°¸´³ğ´óÓÚ3£¬³é2ÕÅÅÆ¡£
 
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class ShadowEcho : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("REVENGE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("REVENGE");
     protected override IEnumerable<DynamicVar> CanonicalVars => [new RevengeDynamicVar(2m)];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
@@ -39,3 +31,6 @@ public class ShadowEcho : RubyCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+
+

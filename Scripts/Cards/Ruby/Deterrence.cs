@@ -1,21 +1,13 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Pools.CardPools;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: å¯¹æ‰€æœ‰æ•Œäººé€ æˆ5(7)ç‚¹ä¼¤å®³ï¼Œç»™äºˆ1(2)å±‚æ˜“ä¼¤
+// ÃèÊö: ¶ÔËùÓĞµĞÈËÔì³É5(7)µãÉËº¦£¬¸øÓè1(2)²ãÒ×ÉË
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class Deterrence : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("VULNERABLE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("VULNERABLE");
     private const string VulnerableKey = "Vulnerable";
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -55,3 +47,5 @@ public class Deterrence : RubyCardModel
         DynamicVars[VulnerableKey].UpgradeValueBy(1);
     }
 }
+
+

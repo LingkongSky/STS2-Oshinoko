@@ -1,12 +1,8 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Players;
-using MegaCrit.Sts2.Core.Entities.Relics;
-using Oshinogo.Scripts.Pools.RelicPools;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Relics.Ruby;
-// é‡‘é’±è·å–æ—¶é¢å¤–å¢åŠ 20%
-[Pool(typeof(RubyRelicPool))]
+// ½ğÇ®»ñÈ¡Ê±¶îÍâÔö¼Ó20%
+[RegisterRelic(typeof(RubyRelicPool))]
 public class Mem : OshinogoRelicModel
 {
     private const decimal BonusMultiplier = 0.2m;
@@ -48,3 +44,6 @@ public class Mem : OshinogoRelicModel
         _isApplyingBonus = false;
     }
 }
+
+
+

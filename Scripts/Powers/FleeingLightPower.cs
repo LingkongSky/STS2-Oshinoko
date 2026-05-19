@@ -6,13 +6,22 @@ using Oshinogo.Scripts.Cards.Other;
 
 namespace Oshinogo.Scripts.Powers;
 
-
 public class FleeingLightPower : OshinogoCustomPower
 {
+    private class Data
+    {
+        public int RevengeSpent;
+        public int TriggerCount;
+    }
+
+    private const int DefaultThreshold = 5;
+
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
+    public override int DisplayAmount => ResolveThreshold() - GetInternalData<Data>().RevengeSpent % ResolveThreshold();
 
-    private int _spent;
+    protected override object InitInternalData() => new Data();
 
     public override async Task BeforeCardPlayed(CardPlay cardPlay)
     {
@@ -27,26 +36,24 @@ public class FleeingLightPower : OshinogoCustomPower
             return;
         }
 
-        _spent += usedRevenge;
-        InvokeDisplayAmountChanged();
-
-        if (_spent < Amount)
+        var threshold = ResolveThreshold();
+        var data = GetInternalData<Data>();
+        data.RevengeSpent += usedRevenge;
+        var triggers = data.RevengeSpent / threshold - data.TriggerCount;
+        if (triggers <= 0 || Owner.Player == null)
         {
+            InvokeDisplayAmountChanged();
             return;
         }
 
-        var triggers = (int)Math.Floor((decimal)_spent / Amount);
-        _spent = _spent % triggers;
-
-
-        if (Owner.Player == null)
-        {
-            return;
-        }
-
+        Flash();
         await CardPileCmd.Draw(new BlockingPlayerChoiceContext(), triggers, Owner.Player);
+        data.TriggerCount += triggers;
         InvokeDisplayAmountChanged();
-
     }
 
+    private int ResolveThreshold()
+    {
+        return Math.Max(1, Amount > 0 ? Amount : DefaultThreshold);
+    }
 }

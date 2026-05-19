@@ -1,19 +1,8 @@
-﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.Entities.Players;
-using MegaCrit.Sts2.Core.Entities.Relics;
-using MegaCrit.Sts2.Core.Entities.RestSite;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Pools.RelicPools;
-using Oshinogo.Scripts.RestSite;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Relics.Aqua;
 
-[Pool(typeof(AquaRelicPool))]
-// 每次受伤后，回复4点生命。
+[RegisterRelic(typeof(AquaRelicPool))]
 public class BrotherWatchEX : OshinogoRelicModel
 {
     public override RelicRarity Rarity => RelicRarity.Ancient;
@@ -33,24 +22,5 @@ public class BrotherWatchEX : OshinogoRelicModel
 
         Flash();
         await CreatureCmd.Heal(Owner.Creature, 4);
-    }
-
-    public override bool TryModifyRestSiteOptions(Player player, ICollection<RestSiteOption> options)
-    {
-        if (player != Owner)
-        {
-            return false;
-        }
-
-        foreach (RestSiteOption option in options)
-        {
-            if (option.OptionId == Journey.OptionIdValue)
-            {
-                return false;
-            }
-        }
-
-        options.Add(new Journey(player));
-        return true;
     }
 }

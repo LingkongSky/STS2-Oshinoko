@@ -1,21 +1,16 @@
-Ôªøusing BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// ÊèèËø∞: ÊØè‰ΩøÁî®5(4)ÁÇπÂ§ç‰ªáÔºåÊäΩ1Âº†Áâå„ÄÇ
+// √Ë ˆ: √ø π”√5(4)µ„∏¥≥£¨≥È1’≈≈∆°£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class FleeingLight : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("REVENGE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("REVENGE");
     private const string ThresholdKey = "Threshold";
+    private const int DefaultThreshold = 5;
+    private const int UpgradedThreshold = 4;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DynamicVar(ThresholdKey, 5),
@@ -27,7 +22,7 @@ public class FleeingLight : RubyCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<FleeingLightPower>(choiceContext, Owner.Creature, DynamicVars[ThresholdKey].BaseValue, Owner.Creature, this, true);
+        await PowerCmd.Apply<FleeingLightPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()
@@ -35,3 +30,5 @@ public class FleeingLight : RubyCardModel
         DynamicVars[ThresholdKey].UpgradeValueBy(-1);
     }
 }
+
+

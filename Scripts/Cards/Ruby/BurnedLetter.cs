@@ -1,17 +1,10 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Powers;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Powers;
-using Oshinogo.Scripts.Pools.CardPools;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: å»é™¤æ‰€æœ‰é˜Ÿå‹çš„è´Ÿé¢æ•ˆæœã€‚ä¸‹å›åˆä½ ä¸æ‰€æœ‰é˜Ÿå‹è·å¾—1(2)ç‚¹èƒ½é‡ã€‚
+// ÃèÊö: È¥³ıËùÓĞ¶ÓÓÑµÄ¸ºÃæĞ§¹û¡£ÏÂ»ØºÏÄãÓëËùÓĞ¶ÓÓÑ»ñµÃ1(2)µãÄÜÁ¿¡£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class BurnedLetter : RubyCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
@@ -49,3 +42,6 @@ public class BurnedLetter : RubyCardModel
         DynamicVars.Energy.UpgradeValueBy(1);
     }
 }
+
+
+

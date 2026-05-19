@@ -1,20 +1,12 @@
-﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.CardSelection;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 
 public class FindTruth : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -35,10 +27,7 @@ public class FindTruth : RubyCardModel
         if (exhaustPile.Cards.Count == 0)
         {
             return;
-        }
-
-        var prefs = new CardSelectorPrefs(SelectionScreenPrompt, DynamicVars.Cards.IntValue);
-        var selected = await CardSelectCmd.FromSimpleGrid(choiceContext, exhaustPile.Cards.ToList(), Owner, prefs);
+        } var selected = exhaustPile.Cards.Take(DynamicVars.Cards.IntValue).ToList();
         foreach (var card in selected)
         {
             await CardPileCmd.Add(card, PileType.Hand);
@@ -51,3 +40,7 @@ public class FindTruth : RubyCardModel
         DynamicVars.Cards.UpgradeValueBy(1);
     }
 }
+
+
+
+

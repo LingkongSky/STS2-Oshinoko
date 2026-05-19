@@ -1,0 +1,30 @@
+global using Godot;
+global using MegaCrit.Sts2.Core.Combat;
+global using MegaCrit.Sts2.Core.Commands;
+global using MegaCrit.Sts2.Core.Entities.Cards;
+global using MegaCrit.Sts2.Core.Entities.Characters;
+global using MegaCrit.Sts2.Core.Entities.Creatures;
+global using MegaCrit.Sts2.Core.Entities.Players;
+global using MegaCrit.Sts2.Core.Entities.Powers;
+global using MegaCrit.Sts2.Core.Entities.Relics;
+global using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+global using MegaCrit.Sts2.Core.Helpers;
+global using MegaCrit.Sts2.Core.HoverTips;
+global using MegaCrit.Sts2.Core.Localization.DynamicVars;
+global using MegaCrit.Sts2.Core.Models;
+global using MegaCrit.Sts2.Core.Models.Powers;
+global using MegaCrit.Sts2.Core.Rooms;
+global using MegaCrit.Sts2.Core.ValueProps;
+global using Oshinogo.Scripts.Cards.Aqua;
+global using Oshinogo.Scripts.Cards.Other;
+global using Oshinogo.Scripts.Cards.Ruby;
+global using Oshinogo.Scripts.Pools.CardPools;
+global using Oshinogo.Scripts.Pools.PotionPools;
+global using Oshinogo.Scripts.Pools.RelicPools;
+global using Oshinogo.Scripts.Powers;
+global using STS2RitsuLib.Interop.AutoRegistration;
+global using STS2RitsuLib.Keywords;
+global using STS2RitsuLib.Scaffolding.Characters;
+global using STS2RitsuLib.Scaffolding.Content;
+
+

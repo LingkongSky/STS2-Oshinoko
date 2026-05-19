@@ -1,20 +1,12 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: é€ æˆ9(13)ç‚¹ä¼¤å®³ï¼ŒæŠ½2(3)å¼ ç‰Œã€‚è°‹åˆ’1
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: Ôì³É9(13)µãÉËº¦£¬³é2(3)ÕÅÅÆ¡£Ä±»®1
 public class Evade : AquaCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => PlanCostHelper.CreatePlanCostHoverTips(1);
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => PlanCostHelper.CreatePlanCostHoverTips(1);
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -51,3 +43,5 @@ public class Evade : AquaCardModel
         DynamicVars.Cards.UpgradeValueBy(1);
     }
 }
+
+

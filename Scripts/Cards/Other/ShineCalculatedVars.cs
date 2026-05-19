@@ -1,11 +1,4 @@
-﻿using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Hooks;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Other;
 
@@ -104,7 +97,7 @@ public static class ShineScaling
             return 0;
         }
 
-        if (!card.Keywords.Contains(OshinogoKeywords.Shine))
+        if (!card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()))
         {
             return 0;
         }
@@ -131,7 +124,7 @@ public static class ShineScaling
             return 0;
         }
 
-        if (!card.Keywords.Contains(OshinogoKeywords.Shine))
+        if (!card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()))
         {
             return 0;
         }

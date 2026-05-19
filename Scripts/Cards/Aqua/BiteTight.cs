@@ -1,21 +1,10 @@
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
-
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// 描述: 对敌人造成20(30)点伤害，给予2(3)层陷阱。谋划2
+[RegisterCard(typeof(AquaCardPool))]
+////
 public class BiteTight : AquaCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => PlanAndKeywordTips(2, "TRAP");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => PlanAndKeywordTips(2, "TRAP");
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(20, ValueProp.Move),
@@ -51,3 +40,5 @@ public class BiteTight : AquaCardModel
         DynamicVars["Trap"].UpgradeValueBy(1);
     }
 }
+
+

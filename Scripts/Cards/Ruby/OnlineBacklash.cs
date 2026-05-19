@@ -1,22 +1,13 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: å¤±å»1ç‚¹ç”Ÿå‘½ï¼Œè·å¾—2(3)ç‚¹ä¸´æ—¶å¤ä»‡ã€‚æŠ½1å¼ ç‰Œã€‚
+// ÃèÊö: Ê§È¥1µãÉúÃü£¬»ñµÃ2(3)µãÁÙÊ±¸´³ğ¡£³é1ÕÅÅÆ¡£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class OnlineBacklash : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("REVENGE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("REVENGE");
     protected override IEnumerable<DynamicVar> CanonicalVars => [new RevengeDynamicVar(2m)];
 
     public OnlineBacklash() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
@@ -41,3 +32,5 @@ public class OnlineBacklash : RubyCardModel
         DynamicVars[RevengeDynamicVar.Key].UpgradeValueBy(1);
     }
 }
+
+

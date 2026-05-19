@@ -1,15 +1,8 @@
-﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace Oshinogo.Scripts.Cards.Ruby
 {
-    [Pool(typeof(RubyCardPool))]
-    // 鑾峰緱4(5)鐐逛复鏃跺浠?
+    [RegisterCard(typeof(RubyCardPool))]
+    /// 描述: 获得4(5)点回合复仇。保留。
     public class UnderCurtain : RubyCardModel
     {
         public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
@@ -37,3 +30,6 @@ namespace Oshinogo.Scripts.Cards.Ruby
         }
     }
 }
+
+
+

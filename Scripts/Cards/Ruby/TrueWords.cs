@@ -1,19 +1,13 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// æè¿°: å»é™¤ä¸€åæ•Œäººçš„æ‰€æœ‰é˜²å¾¡ã€‚è‹¥å…¶é˜²å¾¡å¤§äº15ï¼Œåˆ™è·å¾—1ç‚¹é—ªè€€å¹¶æŠ½1å¼ ç‰Œã€‚
+// ÃèÊö: È¥³ıÒ»ÃûµĞÈËµÄËùÓĞ·ÀÓù¡£ÈôÆä·ÀÓù´óÓÚ15£¬Ôò»ñµÃ1µãÉÁÒ«²¢³é1ÕÅÅÆ¡£
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class TrueWords : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     public TrueWords() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy, true)
@@ -42,3 +36,6 @@ public class TrueWords : RubyCardModel
         RemoveKeyword(CardKeyword.Exhaust);
     }
 }
+
+
+

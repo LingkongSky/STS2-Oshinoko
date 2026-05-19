@@ -1,15 +1,10 @@
-using BaseLib.Abstracts;
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models.CardPools;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Colorless;
 
-// 洗去自身的所有Buff，回复10点生命。
-[Pool(typeof(ColorlessCardPool))]
-public class Rebirth : CustomCardModel
+// 洗去自身的所有Buff，回�?0点生命�?
+[RegisterCard(typeof(RubyCardPool))]
+public class Rebirth : ModCardTemplate
 {
     public override string PortraitPath => $"res://Oshinogo/images/cards/ruby/{GetType().Name}.png";
 
@@ -36,3 +31,10 @@ public class Rebirth : CustomCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+
+
+
+
+
+

@@ -1,18 +1,12 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-[Pool(typeof(RubyCardPool))]
-// æè¿°: è·å¾—2ç‚¹å›åˆé—ªè€€ï¼Œ2ç‚¹è´¹ç”¨ï¼ŒæŠ½2å¼ ç‰Œ
+[RegisterCard(typeof(RubyCardPool))]
+// ÃèÊö: »ñµÃ2µã»ØºÏÉÁÒ«£¬2µã·ÑÓÃ£¬³é2ÕÅÅÆ
 public class Mother : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust, CardKeyword.Ethereal];
 
     public Mother() : base(0, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
@@ -30,3 +24,6 @@ public class Mother : RubyCardModel
         RemoveKeyword(CardKeyword.Ethereal);
     }
 }
+
+
+

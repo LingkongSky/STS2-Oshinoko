@@ -1,19 +1,12 @@
-ï»¿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: ç»™äºˆæ•Œäºº2å±‚é™·é˜±ã€‚
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: ¸øÓèµĞÈË2²ãÏİÚå¡£
 public class DoubtLife : AquaCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("TRAP");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("TRAP");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Trap", 2)];
@@ -36,4 +29,7 @@ public class DoubtLife : AquaCardModel
         DynamicVars["Trap"].UpgradeValueBy(1);
     }
 }
+
+
+
 

@@ -1,16 +1,9 @@
-ï»¿using System.Linq;
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Powers;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using Oshinogo.Scripts.Pools.CardPools;
-using MegaCrit.Sts2.Core.HoverTips;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Aqua;
 
-[Pool(typeof(AquaCardPool))]
-// æè¿°: ç¿»å€è‡ªèº«æ‰€æ‹¥æœ‰çš„æ­£é¢æ•ˆæœçš„å±‚æ•°ã€‚
+[RegisterCard(typeof(AquaCardPool))]
+// ÃèÊö: ·­±¶×ÔÉíËùÓµÓĞµÄÕıÃæĞ§¹ûµÄ²ãÊı¡£
 public class SideBySide : AquaCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
@@ -37,4 +30,7 @@ public class SideBySide : AquaCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+
+
 

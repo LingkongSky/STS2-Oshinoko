@@ -1,19 +1,13 @@
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using Oshinogo.Scripts.Pools.CardPools;
-using Oshinogo.Scripts.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 回合结束时获取等同于闪耀*6的格挡。
+// 描述: 回合结束时获取等同于闪耀*6的格挡�?
 
-[Pool(typeof(RubyCardPool))]
+[RegisterCard(typeof(RubyCardPool))]
 public class LightFromPassion : RubyCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => KeywordTips("SHINE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
     public LightFromPassion() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true)
     {
     }
@@ -28,3 +22,5 @@ public class LightFromPassion : RubyCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
+
+
