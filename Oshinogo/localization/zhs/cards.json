@@ -34,7 +34,7 @@
   "OSHINOGO_CARD_PAIN.title": "病痛",
   "OSHINOGO_CARD_PAIN.description": "所有敌人失去{Damage:diff()}点生命值。",
   "OSHINOGO_CARD_RECKLESS_CHARGE.title": "莽撞向前",
-  "OSHINOGO_CARD_RECKLESS_CHARGE.description": "造成{Damage:diff()}点伤害2次，消耗1张牌，并获取等同于该卡费用的[gold]临时复仇[/gold]。",
+  "OSHINOGO_CARD_RECKLESS_CHARGE.description": "造成{Damage:diff()}点伤害2次，选择1张[gold]手牌[/gold]消耗，并获取等同于该卡费用的[gold]临时复仇[/gold]。",
   "OSHINOGO_CARD_STAGE_CRASH.title": "舞台坠落",
   "OSHINOGO_CARD_STAGE_CRASH.description": "对所有敌人造成{Damage:diff()}点伤害，失去2点生命，获得2点[gold]复仇[/gold]。",
   "OSHINOGO_CARD_SCATTERED_LIGHT.title": "四散的光芒",

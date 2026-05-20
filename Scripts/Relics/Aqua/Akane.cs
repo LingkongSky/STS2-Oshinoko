@@ -1,12 +1,11 @@
-using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinogo.Scripts.Relics.Aqua;
 
 [RegisterRelic(typeof(AquaRelicPool))]
-// 描述: 每三个回合翻倍一次自身拥有的正面效果层数�?
+
 public class Akane : OshinogoRelicModel
 {
-    private const int CycleLength = 3;
+    private const int CycleLength = 4;
 
     public override RelicRarity Rarity => RelicRarity.Event;
 

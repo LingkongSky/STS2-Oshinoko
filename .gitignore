@@ -9,3 +9,4 @@ addons/
 sfx/
 *.user
 migration_checkpoints/
+*.ogv

@@ -34,7 +34,7 @@
     "OSHINOGO_CARD_PAIN.title": "Illness",
     "OSHINOGO_CARD_PAIN.description": "All enemies lose {Damage:diff()} health points.",
     "OSHINOGO_CARD_RECKLESS_CHARGE.title": "Move Forward Recklessly",
-    "OSHINOGO_CARD_RECKLESS_CHARGE.description": "Cause {Damage:diff()} points of damage 2 times, consume 1 card, and obtain [gold]temporary Revenge[/gold] equal to the cost of the card.",
+    "OSHINOGO_CARD_RECKLESS_CHARGE.description": "Cause {Damage:diff()} points of damage 2 times, choose 1 card in your hand to consume, and obtain [gold]temporary Revenge[/gold] equal to the cost of the card.",
     "OSHINOGO_CARD_STAGE_CRASH.title": "Stage Fall",
     "OSHINOGO_CARD_STAGE_CRASH.description": "Causes {Damage:diff()} points of damage to all enemies, loses 2 points of life, and gains 2 points of [gold]Revenge[/gold].",
     "OSHINOGO_CARD_SCATTERED_LIGHT.title": "Scattered Light",

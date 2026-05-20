@@ -24,6 +24,12 @@
   "OSHINOGO_RELIC_SARINA.description": "战斗开始时获得3张浸血花瓣。",
   "OSHINOGO_RELIC_SARINA.flavor": "即使在病房里，也始终相信舞台会发光。",
   "OSHINOGO_RELIC_AKANE.title": "恋人的支持",
-  "OSHINOGO_RELIC_AKANE.description": "每三个回合翻倍一次自身所拥有的正面效果的层数。",
-  "OSHINOGO_RELIC_AKANE.flavor": "被珍视过的感情，会在战斗里持续回响。"
+  "OSHINOGO_RELIC_AKANE.description": "每四个回合翻倍一次自身所拥有的正面效果的层数。",
+  "OSHINOGO_RELIC_AKANE.flavor": "被珍视过的感情，会在战斗里持续回响。",
+  "OSHINOGO_RELIC_BE_HATRED.title": "爱的恨意",
+  "OSHINOGO_RELIC_BE_HATRED.description": "战斗开始时，给予所有人1层陷阱。",
+  "OSHINOGO_RELIC_BE_HATRED.flavor": "自谎言中诞生的黑暗，无论多么眩目的闪耀都终将被拖入深渊。",
+  "OSHINOGO_RELIC_BE_HOPED.title": "爱的期许",
+  "OSHINOGO_RELIC_BE_HOPED.description": "战斗开始时，自己获得1层无实体。",
+  "OSHINOGO_RELIC_BE_HOPED.flavor": "包含着爱最真挚美好的祝愿，期盼着露比和阿库亚可以顺利的长大成人，度过他们想要的一生。"
 }

@@ -24,6 +24,12 @@
     "OSHINOGO_RELIC_SARINA.description": "Get 3 blood-soaked petals at the beginning of the battle.",
     "OSHINOGO_RELIC_SARINA.flavor": "Even in the ward, I always believed that the stage would Shine.",
     "OSHINOGO_RELIC_AKANE.title": "Lover's Support",
-    "OSHINOGO_RELIC_AKANE.description": "The number of positive effects you have is doubled every three turns.",
-    "OSHINOGO_RELIC_AKANE.flavor": "The cherished feelings will continue to echo in the battle."
+    "OSHINOGO_RELIC_AKANE.description": "The number of positive effects you have is doubled every four turns.",
+    "OSHINOGO_RELIC_AKANE.flavor": "The cherished feelings will continue to echo in the battle.",
+    "OSHINOGO_RELIC_BE_HATRED.title": "Love's Hatred",
+    "OSHINOGO_RELIC_BE_HATRED.description": "At the start of combat, apply 1 Trap to everyone.",
+    "OSHINOGO_RELIC_BE_HATRED.flavor": "Darkness born from lies; no matter how dazzling the shine, it will eventually be dragged into the abyss.",
+    "OSHINOGO_RELIC_BE_HOPED.title": "Love's Hope",
+    "OSHINOGO_RELIC_BE_HOPED.description": "At the start of combat, gain 1 Intangible.",
+    "OSHINOGO_RELIC_BE_HOPED.flavor": "It carries love's most sincere and beautiful wishes, hoping Ruby and Aqua can grow up safely and live the life they truly want."
 }

@@ -13,7 +13,14 @@ public enum FjordMosaicMode
 
 public sealed class OshinogoSettings
 {
-    public bool EnableHoshinoAiBoss { get; set; } = true;
+    public HoshinoAiBossMode HoshinoAiBossMode { get; set; } = HoshinoAiBossMode.Random;
+}
+
+public enum HoshinoAiBossMode
+{
+    Disabled = 0,
+    Random = 1,
+    Forced = 2,
 }
 
 public static class ModConfig
@@ -21,16 +28,16 @@ public static class ModConfig
     private const string SettingsKey = "settings";
     private static bool _initialized;
 
-    public static bool EnableHoshinoAiBoss
+    public static HoshinoAiBossMode HoshinoAiBossMode
     {
         get
         {
             if (!_initialized)
             {
-                return true;
+                return HoshinoAiBossMode.Random;
             }
 
-            return RitsuLibFramework.GetDataStore(Entry.ModId).Get<OshinogoSettings>(SettingsKey).EnableHoshinoAiBoss;
+            return RitsuLibFramework.GetDataStore(Entry.ModId).Get<OshinogoSettings>(SettingsKey).HoshinoAiBossMode;
         }
         set
         {
@@ -40,7 +47,7 @@ public static class ModConfig
             }
 
             var store = RitsuLibFramework.GetDataStore(Entry.ModId);
-            store.Modify<OshinogoSettings>(SettingsKey, settings => settings.EnableHoshinoAiBoss = value);
+            store.Modify<OshinogoSettings>(SettingsKey, settings => settings.HoshinoAiBossMode = value);
             store.Save(SettingsKey);
         }
     }
@@ -63,22 +70,29 @@ public static class ModConfig
                 autoCreateIfMissing: true);
         }
 
-        var enableBossBinding = new ModSettingsValueBinding<OshinogoSettings, bool>(
+        var bossModeBinding = new ModSettingsValueBinding<OshinogoSettings, HoshinoAiBossMode>(
             Entry.ModId,
             SettingsKey,
             SaveScope.Global,
-            settings => settings.EnableHoshinoAiBoss,
-            (settings, value) => settings.EnableHoshinoAiBoss = value);
+            settings => settings.HoshinoAiBossMode,
+            (settings, value) => settings.HoshinoAiBossMode = value);
 
         RitsuLibFramework.RegisterModSettings(Entry.ModId, page => page
             .WithTitle(ModSettingsText.Literal("Oshinogo"))
             .WithModDisplayName(ModSettingsText.Literal("Oshinogo"))
             .AddSection("general", section => section
                 .WithTitle(ModSettingsText.Literal("General"))
-                .AddToggle(
-                    "enable_hoshino_ai_boss",
-                    ModSettingsText.Literal("Enable Hoshino Ai Boss"),
-                    enableBossBinding)));
+                .AddEnumChoice(
+                    "hoshino_ai_boss_mode",
+                    ModSettingsText.Literal("Act 2 Hoshino Ai Boss Mode"),
+                    bossModeBinding,
+                    mode => mode switch
+                    {
+                        HoshinoAiBossMode.Disabled => ModSettingsText.Literal("Disabled"),
+                        HoshinoAiBossMode.Random => ModSettingsText.Literal("Random"),
+                        HoshinoAiBossMode.Forced => ModSettingsText.Literal("Forced"),
+                        _ => ModSettingsText.Literal("Disabled"),
+                    })));
 
         _initialized = true;
     }

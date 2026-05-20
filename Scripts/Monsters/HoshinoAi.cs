@@ -2,7 +2,9 @@ using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.MonsterMoves.Intents;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
 using Oshinogo.Scripts.Cards.Colorless;
-using Oshinogo.Scripts.Encounters;
+using Oshinogo.Scripts.Patchs;
+using Oshinogo.Scripts.Relics.Aqua;
+using Oshinogo.Scripts.Relics.Ruby;
 
 namespace Oshinogo.Scripts.Monsters;
 
@@ -22,6 +24,7 @@ public class HoshinoAi : ModMonsterTemplate
     private bool _phase2UseOrbit = true;
     private bool _phase3UseRebirthCard = true;
     private bool _killedByPlayerHookTriggered;
+    private bool _completedAllTasksRewardIssued;
     private readonly HashSet<Creature> _phase3RebirthPlayedPlayers = new();
 
     public static event Action<HoshinoAi, int>? PhaseChanged;
@@ -30,20 +33,15 @@ public class HoshinoAi : ModMonsterTemplate
     public override int MaxInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 255, 255);
 
     public override MonsterAssetProfile AssetProfile => new(
-    VisualsScenePath: "res://Oshinogo/scenes/monster/ai.tscn"
+        VisualsScenePath: "res://Oshinogo/scenes/monster/ai.tscn"
     );
 
     public override async Task AfterAddedToRoom()
     {
         HoshinoAiBackgroundPatch.EnsureInitialized();
 
-        var players = GetPlayerCreatures();
-        var playerCount = players.Count;
-
-        foreach (var playerCreature in players)
-        {
-            await PowerCmd.Apply<PassionPower>(new BlockingPlayerChoiceContext(), playerCreature, 1, Creature, null, true);
-        }
+        var playerCount = GetPlayerCreatures().Count;
+        await ApplyPowerToAllPlayers<PassionPower>(1);
 
         await PowerCmd.Apply<HoshinoAiMechanicsPower>(new BlockingPlayerChoiceContext(), Creature, 1, Creature, null, true);
         await EnterPhase1(playerCount);
@@ -80,17 +78,13 @@ public class HoshinoAi : ModMonsterTemplate
 
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
-        if (_phase != BossPhase.Phase1)
+        var ownerCreature = card.Owner?.Creature;
+        if (_phase != BossPhase.Phase1 || ownerCreature?.Player == null)
         {
             return;
         }
 
-        if (card.Owner?.Creature?.Player == null)
-        {
-            return;
-        }
-
-        await DecreaseGoalPower<HoshinoAiPhase1DrawGoalPower>(1, card.Owner.Creature);
+        await DecreaseGoalPower<HoshinoAiPhase1DrawGoalPower>(1, ownerCreature);
         TryAdvancePhase();
     }
 
@@ -102,32 +96,27 @@ public class HoshinoAi : ModMonsterTemplate
             return;
         }
 
-        if (_phase == BossPhase.Phase1)
+        switch (_phase)
         {
-            await DecreaseGoalPower<HoshinoAiPhase1PlayGoalPower>(1, ownerCreature);
-            TryAdvancePhase();
-            return;
-        }
-
-        if (_phase == BossPhase.Phase2)
-        {
-            var spent = (int)Math.Max(0, cardPlay.Card.EnergyCost.GetWithModifiers(CostModifiers.All));
-            if (spent > 0)
-            {
-                await DecreaseGoalPower<HoshinoAiPhase2EnergyGoalPower>(spent, ownerCreature);
+            case BossPhase.Phase1:
+                await DecreaseGoalPower<HoshinoAiPhase1PlayGoalPower>(1, ownerCreature);
                 TryAdvancePhase();
-            }
+                return;
+            case BossPhase.Phase2:
+                var spent = (int)Math.Max(0, cardPlay.Card.EnergyCost.GetWithModifiers(CostModifiers.All));
+                if (spent > 0)
+                {
+                    await DecreaseGoalPower<HoshinoAiPhase2EnergyGoalPower>(spent, ownerCreature);
+                    TryAdvancePhase();
+                }
 
-            return;
-        }
-
-        if (_phase == BossPhase.Phase3 && cardPlay.Card is Rebirth)
-        {
-            if (_phase3RebirthPlayedPlayers.Add(ownerCreature))
-            {
+                return;
+            case BossPhase.Phase3 when cardPlay.Card is Rebirth && _phase3RebirthPlayedPlayers.Add(ownerCreature):
                 await DecreaseGoalPower<HoshinoAiPhase3RebirthGoalPower>(1, ownerCreature);
                 TryAdvancePhase();
-            }
+                return;
+            default:
+                return;
         }
     }
 
@@ -142,26 +131,15 @@ public class HoshinoAi : ModMonsterTemplate
         TryAdvancePhase();
     }
 
-    public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public override Task AfterCurrentHpChanged(Creature creature, decimal delta)
     {
-        if (target != Creature || _killedByPlayerHookTriggered)
-        {
-            return;
-        }
-
-        if (result.WasTargetKilled)
-        {
-
-            //
-        }
-
-        if (result.WasTargetKilled && dealer?.Player != null && _phase != BossPhase.Complete)
+        if (creature == Creature && !_killedByPlayerHookTriggered && delta < 0 && creature.CurrentHp <= 0)
         {
             _killedByPlayerHookTriggered = true;
             OnHoshinoAiKilledByPlayer();
         }
 
-        await Task.CompletedTask;
+        return Task.CompletedTask;
     }
 
     private void TryAdvancePhase()
@@ -195,6 +173,7 @@ public class HoshinoAi : ModMonsterTemplate
             }
 
             _phase = BossPhase.Complete;
+            _killedByPlayerHookTriggered = true;
             TaskHelper.RunSafely(CreatureCmd.Kill(Creature, force: true));
         }
     }
@@ -202,28 +181,19 @@ public class HoshinoAi : ModMonsterTemplate
     private async Task Phase1GiveEnergyMove()
     {
         _phase1UseEnergy = false;
-        foreach (var playerCreature in GetPlayerCreatures())
-        {
-            await PowerCmd.Apply<EnergyNextTurnPower>(new BlockingPlayerChoiceContext(), playerCreature, 1, Creature, null, true);
-        }
+        await ApplyPowerToAllPlayers<EnergyNextTurnPower>(1);
     }
 
     private async Task Phase1GiveDrawMove()
     {
         _phase1UseEnergy = true;
-        foreach (var playerCreature in GetPlayerCreatures())
-        {
-            await PowerCmd.Apply<DrawCardsNextTurnPower>(new BlockingPlayerChoiceContext(), playerCreature, 1, Creature, null, true);
-        }
+        await ApplyPowerToAllPlayers<DrawCardsNextTurnPower>(1);
     }
 
     private async Task Phase2GiveOrbitMove()
     {
         _phase2UseOrbit = false;
-        foreach (var playerCreature in GetPlayerCreatures())
-        {
-            await PowerCmd.Apply<OrbitPower>(new BlockingPlayerChoiceContext(), playerCreature, 1, Creature, null, true);
-        }
+        await ApplyPowerToAllPlayers<OrbitPower>(1);
     }
 
     private async Task Phase2GiveStatsMove()
@@ -355,180 +325,58 @@ public class HoshinoAi : ModMonsterTemplate
     private List<Creature> GetPlayerCreatures()
     {
         var combatState = Creature.CombatState;
-        if (combatState == null)
-        {
-            return [];
-        }
+        return combatState == null
+            ? []
+            : combatState.Players
+            .Select(p => p.Creature)
+            .Where(c => c != null)
+            .Select(c => c!)
+            .ToList();
+    }
 
-        return combatState.Players.Select(p => p.Creature).Where(c => c != null).ToList()!;
+    private async Task ApplyPowerToAllPlayers<TPower>(int amount) where TPower : PowerModel
+    {
+        foreach (var playerCreature in GetPlayerCreatures())
+        {
+            await PowerCmd.Apply<TPower>(new BlockingPlayerChoiceContext(), playerCreature, amount, Creature, null, true);
+        }
     }
 
     private void OnHoshinoAiKilledByPlayer()
     {
+        TaskHelper.RunSafely(GrantRelicAndPlayVideoForAllPlayers<BeHatred>("res://Oshinogo/videos/BeHatred.ogv"));
     }
 
     private void OnPlayersCompletedAllTasksWithinFiveTurns()
     {
-    }
-
-
-
-}
-
-public static class HoshinoAiBackgroundPatch
-{
-    private const string OverlayName = "Oshinogo_AiPhaseBackgroundOverlay";
-    private const string Phase1Path = "res://Oshinogo/images/backgrounds/ai_phase1.jpg";
-    private const string Phase2Path = "res://Oshinogo/images/backgrounds/ai_phase2.jpg";
-    private const string Phase3Path = "res://Oshinogo/images/backgrounds/ai_phase3.jpg";
-
-    private static WeakReference<object>? _currentAiCombatRoom;
-    private static bool _initialized;
-
-    static HoshinoAiBackgroundPatch()
-    {
-        EnsureInitialized();
-    }
-
-    public static void EnsureInitialized()
-    {
-        if (_initialized)
+        if (_completedAllTasksRewardIssued)
         {
             return;
         }
 
-        HoshinoAi.PhaseChanged += OnPhaseChanged;
-        _initialized = true;
+        _completedAllTasksRewardIssued = true;
+        TaskHelper.RunSafely(GrantRelicAndPlayVideoForAllPlayers<BeHoped>("res://Oshinogo/videos/BeHoped.ogv"));
     }
 
-    private static void OnPhaseChanged(HoshinoAi _, int phase)
+    private async Task GrantRelicAndPlayVideoForAllPlayers<TRelic>(string videoPath) where TRelic : RelicModel
     {
-        var state = CombatManager.Instance.DebugOnlyGetState();
-        if (state?.Encounter is not AiEncounter)
+        HoshinoAiBackgroundPatch.TryPlayFullscreenVideo(videoPath);
+
+        var combatState = Creature.CombatState;
+        if (combatState == null)
         {
             return;
         }
 
-        if (_currentAiCombatRoom == null || !_currentAiCombatRoom.TryGetTarget(out var room))
+        foreach (var player in combatState.Players)
         {
-            room = TryResolveCombatRoomFromSceneTree();
-            if (room == null)
+            if (player.Relics.Any(r => r is TRelic))
             {
-                return;
+                continue;
             }
 
-            _currentAiCombatRoom = new WeakReference<object>(room);
+            await RelicCmd.Obtain<TRelic>(player);
         }
-
-        ApplyBackgroundForPhase(room, phase);
     }
 
-    private static void ApplyBackgroundForPhase(object combatRoom, int phase)
-    {
-        string? imagePath = phase switch
-        {
-            1 => Phase1Path,
-            2 => Phase2Path,
-            3 => Phase3Path,
-            _ => null,
-        };
-
-        if (imagePath == null)
-        {
-            return;
-        }
-
-        var backgroundNode = combatRoom.GetType().GetProperty("Background")?.GetValue(combatRoom) as CanvasItem;
-        if (backgroundNode == null)
-        {
-            return;
-        }
-
-        var hostNode = backgroundNode;
-        var overlay = hostNode.GetNodeOrNull<TextureRect>(OverlayName);
-        if (overlay == null)
-        {
-            overlay = new TextureRect
-            {
-                Name = OverlayName,
-                MouseFilter = Control.MouseFilterEnum.Ignore,
-                StretchMode = TextureRect.StretchModeEnum.KeepAspectCovered,
-                ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
-            };
-            hostNode.AddChild(overlay);
-        }
-
-        hostNode.MoveChild(overlay, hostNode.GetChildCount() - 1);
-
-        var tex = ResourceLoader.Load<Texture2D>(imagePath);
-        if (tex == null)
-        {
-            GD.PushWarning($"Failed to load AI phase background: {imagePath}");
-            return;
-        }
-
-        overlay.Texture = tex;
-        LayoutOverlayToViewport(hostNode, overlay);
-    }
-
-    private static void LayoutOverlayToViewport(CanvasItem backgroundNode, TextureRect overlay)
-    {
-        var viewport = backgroundNode.GetViewport();
-        if (viewport == null)
-        {
-            return;
-        }
-
-        Vector2 viewportSize = viewport.GetVisibleRect().Size;
-        Transform2D toLocal = backgroundNode.GetGlobalTransformWithCanvas().AffineInverse();
-        const float overscanScale = 1.10f;
-        Vector2 overscanPadding = viewportSize * ((overscanScale - 1f) * 0.5f);
-
-        Vector2 expandedTopLeftScreen = -overscanPadding;
-        Vector2 expandedBottomRightScreen = viewportSize + overscanPadding;
-
-        Vector2 topLeft = toLocal * expandedTopLeftScreen;
-        Vector2 bottomRight = toLocal * expandedBottomRightScreen;
-
-        overlay.Position = topLeft;
-        overlay.Size = bottomRight - topLeft;
-    }
-
-    private static object? TryResolveCombatRoomFromSceneTree()
-    {
-        if (Engine.GetMainLoop() is not SceneTree tree)
-        {
-            return null;
-        }
-
-        return FindCombatRoomNode(tree.Root);
-    }
-
-    private static object? FindCombatRoomNode(Node? node)
-    {
-        if (node == null)
-        {
-            return null;
-        }
-
-        var type = node.GetType();
-        if (type.FullName == "MegaCrit.Sts2.Core.Nodes.Rooms.NCombatRoom" &&
-            type.GetProperty("Background")?.GetValue(node) is CanvasItem)
-        {
-            return node;
-        }
-
-        foreach (Node child in node.GetChildren())
-        {
-            var found = FindCombatRoomNode(child);
-            if (found != null)
-            {
-                return found;
-            }
-        }
-
-        return null;
-    }
 }
-
-

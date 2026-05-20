@@ -1,5 +1,3 @@
-using STS2RitsuLib.Interop.AutoRegistration;
-
 namespace Oshinogo.Scripts.Relics.Ruby
 {
     [RegisterRelic(typeof(RubyRelicPool))]
