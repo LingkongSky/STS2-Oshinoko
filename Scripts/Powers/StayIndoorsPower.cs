@@ -14,7 +14,7 @@ public class StayIndoorsPower : OshinogoCustomPower
 
     private bool _triggerNextTurn;
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
         if (side != Owner.Side)
         {
@@ -29,7 +29,7 @@ public class StayIndoorsPower : OshinogoCustomPower
         _triggerNextTurn = true;
     }
 
-    public override async Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
         if (side != Owner.Side)
         {
@@ -46,3 +46,4 @@ public class StayIndoorsPower : OshinogoCustomPower
         await CreatureCmd.GainBlock(Owner, 5, ValueProp.Move, null);
     }
 }
+

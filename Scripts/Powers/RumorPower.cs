@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Oshinogo.Scripts.Powers;
 
-// Á÷ÑÔ£ºÃ¿²ãÊ¹Ä¿±êÊÜµ½µÄ¹¥»÷ÉËº¦Ìá¸ß10%£¬²¢ÔÚÄ¿±ê»ØºÏ½áÊøÊ±¼õÉÙ1²ã¡£
+// ï¿½ï¿½ï¿½Ô£ï¿½Ã¿ï¿½ï¿½Ê¹Ä¿ï¿½ï¿½ï¿½Üµï¿½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½10%ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ØºÏ½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½1ï¿½ã¡£
 public class RumorPower : OshinogoCustomPower
 {
     public override PowerType Type => PowerType.Debuff;
@@ -26,7 +26,7 @@ public class RumorPower : OshinogoCustomPower
         return 1m + Amount * 0.1m;
     }
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
         if (side != Owner.Side)
         {
@@ -36,4 +36,5 @@ public class RumorPower : OshinogoCustomPower
         await PowerCmd.TickDownDuration(this);
     }
 }
+
 

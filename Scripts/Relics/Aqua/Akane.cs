@@ -30,7 +30,7 @@ public class Akane : OshinogoRelicModel
         }
     }
 
-    public override Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
+    public override Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
         if (Owner?.Creature != null && side == Owner.Creature.Side)
         {
@@ -94,6 +94,7 @@ public class Akane : OshinogoRelicModel
         return Task.CompletedTask;
     }
 }
+
 
 
 

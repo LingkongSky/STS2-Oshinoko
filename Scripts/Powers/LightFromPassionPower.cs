@@ -11,7 +11,7 @@ public class LightFromPassionPower : OshinogoCustomPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
 
-    public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
         if (side != Owner.Side)
         {
@@ -28,3 +28,4 @@ public class LightFromPassionPower : OshinogoCustomPower
         await CreatureCmd.GainBlock(Owner, block, ValueProp.Move, null);
     }
 }
+
