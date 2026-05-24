@@ -43,7 +43,7 @@
     "NEXT_SHINE_DISCOUNT_POWER.title":  "节奏调整",
     "NEXT_SHINE_DISCOUNT_POWER.description":  "你的下一张闪耀牌费用-1。",
     "PASSION_POWER.title":  "热情",
-    "PASSION_POWER.description":  "回合结束时增加1层。达到10层时成为星野爱的俘虏。",
+    "PASSION_POWER.description":  "回合结束时增加1层。达到12层时成为星野爱的俘虏。",
     "CHASING_LIGHT_POWER.title":  "追寻着光芒",
     "CHASING_LIGHT_POWER.description":  "每使用一定的[gold]闪耀[/gold]，获得1点能量。",
     "CHASING_LIGHT_POWER.smarterDescription":  "每使用{Amount}点[gold]闪耀[/gold]，获得1点能量。",

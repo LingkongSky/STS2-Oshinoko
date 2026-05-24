@@ -35,6 +35,7 @@ public class Aqua : ModCharacterTemplate<AquaCardPool, AquaRelicPool, AquaPotion
             ),
             Ui: new(
                 IconTexturePath: "res://Oshinogo/images/ui/aqua.png",
+                IconOutlineTexturePath: "res://Oshinogo/images/ui/aqua_outline.png",
                 IconPath: "res://Oshinogo/scenes/ui/aqua_icon.tscn",
                 CharacterSelectBgPath: "res://Oshinogo/scenes/ui/aqua_background.tscn",
                 CharacterSelectIconPath: "res://Oshinogo/images/ui/aqua_icon.png",

@@ -35,6 +35,7 @@ public class Ruby : ModCharacterTemplate<RubyCardPool, RubyRelicPool, RubyPotion
             ),
             Ui: new(
                 IconTexturePath: "res://Oshinogo/images/ui/ruby.png",
+                IconOutlineTexturePath: "res://Oshinogo/images/ui/ruby_outline.png",
                 IconPath: "res://Oshinogo/scenes/ui/ruby_icon.tscn",
                 CharacterSelectBgPath: "res://Oshinogo/scenes/ui/ruby_background.tscn",
                 CharacterSelectIconPath: "res://Oshinogo/images/ui/ruby_icon.png",

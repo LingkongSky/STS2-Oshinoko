@@ -85,7 +85,7 @@ public class HoshinoAi : ModMonsterTemplate
         }
 
         await DecreaseGoalPower<HoshinoAiPhase1DrawGoalPower>(1, ownerCreature);
-        TryAdvancePhase();
+        await TryAdvancePhase();
     }
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
@@ -100,20 +100,20 @@ public class HoshinoAi : ModMonsterTemplate
         {
             case BossPhase.Phase1:
                 await DecreaseGoalPower<HoshinoAiPhase1PlayGoalPower>(1, ownerCreature);
-                TryAdvancePhase();
+                await TryAdvancePhase();
                 return;
             case BossPhase.Phase2:
                 var spent = (int)Math.Max(0, cardPlay.Card.EnergyCost.GetWithModifiers(CostModifiers.All));
                 if (spent > 0)
                 {
                     await DecreaseGoalPower<HoshinoAiPhase2EnergyGoalPower>(spent, ownerCreature);
-                    TryAdvancePhase();
+                    await TryAdvancePhase();
                 }
 
                 return;
             case BossPhase.Phase3 when cardPlay.Card is Rebirth && _phase3RebirthPlayedPlayers.Add(ownerCreature):
                 await DecreaseGoalPower<HoshinoAiPhase3RebirthGoalPower>(1, ownerCreature);
-                TryAdvancePhase();
+                await TryAdvancePhase();
                 return;
             default:
                 return;
@@ -128,7 +128,7 @@ public class HoshinoAi : ModMonsterTemplate
         }
 
         await DecreaseGoalPower<HoshinoAiPhase2BlockGoalPower>((int)amount, creature);
-        TryAdvancePhase();
+        await TryAdvancePhase();
     }
 
     public override Task AfterCurrentHpChanged(Creature creature, decimal delta)
@@ -142,7 +142,7 @@ public class HoshinoAi : ModMonsterTemplate
         return Task.CompletedTask;
     }
 
-    private void TryAdvancePhase()
+    private async Task TryAdvancePhase()
     {
         if (_phase == BossPhase.Phase1
             && GetGoalAmount<HoshinoAiPhase1DrawGoalPower>() <= 0
@@ -150,7 +150,7 @@ public class HoshinoAi : ModMonsterTemplate
         {
             _phase = BossPhase.Phase2;
             _phase2UseOrbit = true;
-            TaskHelper.RunSafely(EnterPhase2(GetPlayerCreatures().Count));
+            await EnterPhase2(GetPlayerCreatures().Count);
             return;
         }
 
@@ -161,20 +161,20 @@ public class HoshinoAi : ModMonsterTemplate
             _phase = BossPhase.Phase3;
             _phase3UseRebirthCard = true;
             _phase3RebirthPlayedPlayers.Clear();
-            TaskHelper.RunSafely(EnterPhase3(GetPlayerCreatures().Count));
+            await EnterPhase3(GetPlayerCreatures().Count);
             return;
         }
 
         if (_phase == BossPhase.Phase3 && GetGoalAmount<HoshinoAiPhase3RebirthGoalPower>() <= 0)
         {
-            if (Creature.CombatState?.RoundNumber <= 5)
+            if (Creature.CombatState?.RoundNumber <= 7)
             {
-                OnPlayersCompletedAllTasksWithinFiveTurns();
+                OnPlayersCompletedAllTasksWithinSevenTurns();
             }
 
             _phase = BossPhase.Complete;
             _killedByPlayerHookTriggered = true;
-            TaskHelper.RunSafely(CreatureCmd.Kill(Creature, force: true));
+            await CreatureCmd.Kill(Creature, force: true);
         }
     }
 
@@ -251,7 +251,7 @@ public class HoshinoAi : ModMonsterTemplate
         );
 
         await PowerCmd.Apply<HoshinoAiPhase1DrawGoalPower>(new BlockingPlayerChoiceContext(), Creature, 15 * Math.Max(1, playerCount), Creature, null, true);
-        await PowerCmd.Apply<HoshinoAiPhase1PlayGoalPower>(new BlockingPlayerChoiceContext(), Creature, 15 * Math.Max(1, playerCount), Creature, null, true);
+        await PowerCmd.Apply<HoshinoAiPhase1PlayGoalPower>(new BlockingPlayerChoiceContext(), Creature, 16 * Math.Max(1, playerCount), Creature, null, true);
     }
 
     private async Task EnterPhase2(int playerCount)
@@ -263,8 +263,8 @@ public class HoshinoAi : ModMonsterTemplate
             Creature.GetPower<HoshinoAiPhase1PlayGoalPower>()
         );
 
-        await PowerCmd.Apply<HoshinoAiPhase2BlockGoalPower>(new BlockingPlayerChoiceContext(), Creature, 40 * Math.Max(1, playerCount), Creature, null, true);
-        await PowerCmd.Apply<HoshinoAiPhase2EnergyGoalPower>(new BlockingPlayerChoiceContext(), Creature, 10 * Math.Max(1, playerCount), Creature, null, true);
+        await PowerCmd.Apply<HoshinoAiPhase2BlockGoalPower>(new BlockingPlayerChoiceContext(), Creature, 50 * Math.Max(1, playerCount), Creature, null, true);
+        await PowerCmd.Apply<HoshinoAiPhase2EnergyGoalPower>(new BlockingPlayerChoiceContext(), Creature, 14 * Math.Max(1, playerCount), Creature, null, true);
     }
 
     private async Task EnterPhase3(int playerCount)
@@ -347,7 +347,7 @@ public class HoshinoAi : ModMonsterTemplate
         TaskHelper.RunSafely(GrantRelicAndPlayVideoForAllPlayers<BeHatred>("res://Oshinogo/videos/BeHatred.ogv"));
     }
 
-    private void OnPlayersCompletedAllTasksWithinFiveTurns()
+    private void OnPlayersCompletedAllTasksWithinSevenTurns()
     {
         if (_completedAllTasksRewardIssued)
         {
