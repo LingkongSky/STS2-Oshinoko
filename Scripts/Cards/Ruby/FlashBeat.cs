@@ -26,8 +26,8 @@ public class FlashBeat : RubyCardModel
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
         var finalDamage = DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);
-        var combatState = Owner.Creature.CombatState;
-        var hadShine = ShinePowerHelper.GetTotalShine(Owner.Creature) > 0; var playedShineEarlier = hadShine;
+        var hadShine = ShinePowerHelper.GetTotalShine(Owner.Creature) > 0;
+        var playedShineEarlier = CombatHistoryHelper.HasPlayedShineCardWithShineThisTurn(Owner);
 
         if (hadShine && playedShineEarlier)
         {

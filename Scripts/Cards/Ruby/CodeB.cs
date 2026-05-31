@@ -31,6 +31,7 @@ public class CodeB : RubyCardModel
         var finalDamage = DynamicVars.CalculatedDamage.Calculate(null);
         var block = ShineScaling.Calculate(DynamicVars, CalculatedBlockKey, Owner.Creature);
         var combatState = Owner.Creature.CombatState;
+
         if (combatState == null)
         {
             // No combat state to target opponents.

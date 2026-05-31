@@ -1,4 +1,4 @@
-﻿{
+{
     "SHINE_POWER.title":  "闪耀",
     "SHINE_POWER.description":  "对带有闪耀的卡牌生效。增加等同于闪耀的数值。",
     "TURN_SHINE_POWER.title":  "回合闪耀",
@@ -52,6 +52,8 @@
     "FLEEING_LIGHT_POWER.smarterDescription":  "每使用{Amount}点[gold]复仇[/gold]，抽1张牌。",
     "LAST_MINUTE_STUDY_POWER.title":  "临期复习",
     "LAST_MINUTE_STUDY_POWER.description":  "打出技能牌时获得1点[gold]临时闪耀[/gold]。",
+    "PROFILE_POWER.title":  "侧写",
+    "PROFILE_POWER.description":  "每次打出[gold]谋划[/gold]牌时，抽1张牌。",
     "STAY_INDOORS_POWER.title":  "闭门不出",
     "STAY_INDOORS_POWER.description":  "回合结束时，若本回合你失去过生命，下回合获得2点[gold]临时复仇[/gold]并获得5点[gold]格挡[/gold]。",
     "NOT_AS_FRAGILE_AS_IMAGINED_POWER.title":  "没有想象的那么脆弱",
@@ -107,7 +109,7 @@
     "HANDSCROLL_PAINTING_POWER.title":  "绘卷",
     "HANDSCROLL_PAINTING_POWER.description":  "战斗胜利后，可从卡组中永久移除1张牌。",
     "FIRE_EXECUTION_POWER.title":  "火刑",
-    "FIRE_EXECUTION_POWER.description":  "每次对敌人造成未被格挡的伤害时，给予1层流言。",
+    "FIRE_EXECUTION_POWER.description":  "每次对敌人造成未被格挡的伤害时，给予2层流言。",
     "METAMORPHOSIS_POWER.title":  "蜕变",
     "METAMORPHOSIS_POWER.description":  "不再受到虚弱、脆弱、易伤的影响。",
     "THEREBY_SHINING_POWER.title":  "因而闪耀",
@@ -144,6 +146,10 @@
     "HOSHINO_AI_PHASE3_REBIRTH_GOAL_POWER.description":  "在再会中，玩家需通过打出重生来完成目标。",
     "HOSHINO_AI_PHASE3_REBIRTH_GOAL_POWER.smarterDescription":  "在再会中，还需{Amount}名玩家打出[gold]重生[/gold]。",
     "HOSHINO_AI_SCRUTINY_POWER.title":  "抽牌限制",
-    "HOSHINO_AI_SCRUTINY_POWER.description":  "本回合中，无法进行额外抽牌。"
-
-}
+    "HOSHINO_AI_SCRUTINY_POWER.description":  "本回合中，无法进行额外抽牌。",
+    "KAMIKI_HIKARU_PHASE1_STUN_THRESHOLD_POWER.title": "破绽",
+    "KAMIKI_HIKARU_PHASE1_STUN_THRESHOLD_POWER.description": "玩家累计造成足量伤害会打断神木光并使其眩晕。",
+    "KAMIKI_HIKARU_PHASE1_STUN_THRESHOLD_POWER.smarterDescription": "玩家还需累计造成{Amount}点伤害即可打断并眩晕神木光。",
+    "KAMIKI_HIKARU_PHASE2_BUFF_PURGE_POWER.title": "终幕清算",
+    "KAMIKI_HIKARU_PHASE2_BUFF_PURGE_POWER.description": "进入二阶段时，清除所有玩家身上的正面效果。"
+  }

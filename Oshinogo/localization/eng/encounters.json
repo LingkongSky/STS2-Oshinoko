@@ -1,4 +1,6 @@
-{
-    "OSHINOGO_ENCOUNTER_AI_ENCOUNTER.title": "Hoshino Ai",
-    "OSHINOGO_ENCOUNTER_AI_ENCOUNTER.loss": "{character} failed to pass Hoshino Ai's test"
+﻿{
+  "OSHINOGO_ENCOUNTER_AI_ENCOUNTER.title": "Hoshino Ai",
+  "OSHINOGO_ENCOUNTER_AI_ENCOUNTER.loss": "{character} failed to pass Hoshino Ai's test",
+  "OSHINOGO_ENCOUNTER_KAMIKI_HIKARU_ENCOUNTER.title": "Kamiki Hikaru",
+  "OSHINOGO_ENCOUNTER_KAMIKI_HIKARU_ENCOUNTER.loss": "{character} was consumed by Kamiki Hikaru's darkness"
 }

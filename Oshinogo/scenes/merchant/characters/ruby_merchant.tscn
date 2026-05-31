@@ -18,5 +18,4 @@ script = ExtResource("1_8o68q")
 skeleton_data_res = SubResource("SpineSkeletonDataResource_g8m6m")
 
 [node name="DeathPivot" parent="SpineSprite" instance=ExtResource("2_g8m6m")]
-position = Vector2(0, -11.935)
-scale = Vector2(1.55, 1.55)
+scale = Vector2(1.25, 1.25)

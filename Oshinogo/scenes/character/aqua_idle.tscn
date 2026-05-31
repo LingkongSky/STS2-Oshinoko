@@ -46,7 +46,7 @@ _data = {
 [node name="AquaHoshinoAnime" type="Sprite2D" parent="."]
 scale = Vector2(0.48, 0.48)
 texture = ExtResource("1_bujnb")
-offset = Vector2(41.025, -379.025)
+offset = Vector2(0.17, -379.025)
 hframes = 7
 vframes = 6
 frame = 36

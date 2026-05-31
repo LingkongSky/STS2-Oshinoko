@@ -6,11 +6,19 @@ using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using Oshinogo.Scripts.Powers;
+using System.Runtime.CompilerServices;
 
 namespace Oshinogo.Scripts.Cards.Other;
 
 public static class PlanCostHelper
 {
+    private sealed class PlanPlayMarker
+    {
+        public bool ConsumedPlanThisPlay;
+    }
+
+    private static readonly ConditionalWeakTable<CardModel, PlanPlayMarker> PlanPlayMarkers = new();
+
     public static IEnumerable<IHoverTip> CreatePlanCostHoverTips(int amount)
     {
         var amountVar = new DynamicVar("Amount", amount);
@@ -51,6 +59,23 @@ public static class PlanCostHelper
         }
 
         await PowerCmd.ModifyAmount(new BlockingPlayerChoiceContext(), plan, -amount, creature, source, true);
+        MarkPlanConsumed(source);
+        return true;
+    }
+
+    public static void MarkPlanConsumed(CardModel card)
+    {
+        PlanPlayMarkers.GetOrCreateValue(card).ConsumedPlanThisPlay = true;
+    }
+
+    public static bool ConsumePlanConsumedMark(CardModel card)
+    {
+        if (!PlanPlayMarkers.TryGetValue(card, out var marker) || !marker.ConsumedPlanThisPlay)
+        {
+            return false;
+        }
+
+        marker.ConsumedPlanThisPlay = false;
         return true;
     }
 }

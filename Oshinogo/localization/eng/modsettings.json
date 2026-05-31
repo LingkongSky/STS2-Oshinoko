@@ -1,0 +1,9 @@
+﻿{
+  "oshinogo.title": "Oshinogo",
+  "oshinogo.display_name": "Oshinogo",
+  "general.title": "General",
+  "hoshino_ai_boss_mode.label": "Enable Hoshino",
+  "hoshino_ai_boss_mode.disabled": "Disabled",
+  "hoshino_ai_boss_mode.random": "Random",
+  "hoshino_ai_boss_mode.forced": "Forced"
+}

@@ -1,5 +1,7 @@
+﻿using System.Reflection;
 using STS2RitsuLib;
 using STS2RitsuLib.Settings;
+using STS2RitsuLib.Utils;
 using STS2RitsuLib.Utils.Persistence;
 
 namespace Oshinogo.Scripts;
@@ -14,9 +16,17 @@ public enum FjordMosaicMode
 public sealed class OshinogoSettings
 {
     public HoshinoAiBossMode HoshinoAiBossMode { get; set; } = HoshinoAiBossMode.Random;
+    public KamikiHikaruBossMode KamikiHikaruBossMode { get; set; } = KamikiHikaruBossMode.Random;
 }
 
 public enum HoshinoAiBossMode
+{
+    Disabled = 0,
+    Random = 1,
+    Forced = 2,
+}
+
+public enum KamikiHikaruBossMode
 {
     Disabled = 0,
     Random = 1,
@@ -27,6 +37,19 @@ public static class ModConfig
 {
     private const string SettingsKey = "settings";
     private static bool _initialized;
+
+    private static class ModSettingsLocalization
+    {
+        private static readonly Lazy<I18N> InstanceFactory = new(() => new I18N(
+            "Oshinogo-ModSettings",
+            resourceFolders: ["Oshinogo.Settings.Localization.ModSettingsUi"],
+            resourceAssembly: Assembly.GetExecutingAssembly()));
+
+        public static I18N Instance => InstanceFactory.Value;
+
+        public static ModSettingsText Text(string key, string fallback)
+            => ModSettingsText.I18N(Instance, key, fallback);
+    }
 
     public static HoshinoAiBossMode HoshinoAiBossMode
     {
@@ -52,6 +75,30 @@ public static class ModConfig
         }
     }
 
+    public static KamikiHikaruBossMode KamikiHikaruBossMode
+    {
+        get
+        {
+            if (!_initialized)
+            {
+                return KamikiHikaruBossMode.Random;
+            }
+
+            return RitsuLibFramework.GetDataStore(Entry.ModId).Get<OshinogoSettings>(SettingsKey).KamikiHikaruBossMode;
+        }
+        set
+        {
+            if (!_initialized)
+            {
+                return;
+            }
+
+            var store = RitsuLibFramework.GetDataStore(Entry.ModId);
+            store.Modify<OshinogoSettings>(SettingsKey, settings => settings.KamikiHikaruBossMode = value);
+            store.Save(SettingsKey);
+        }
+    }
+
     public static void Init()
     {
         if (_initialized)
@@ -70,28 +117,46 @@ public static class ModConfig
                 autoCreateIfMissing: true);
         }
 
-        var bossModeBinding = new ModSettingsValueBinding<OshinogoSettings, HoshinoAiBossMode>(
+        var hoshinoAiModeBinding = new ModSettingsValueBinding<OshinogoSettings, HoshinoAiBossMode>(
             Entry.ModId,
             SettingsKey,
             SaveScope.Global,
             settings => settings.HoshinoAiBossMode,
             (settings, value) => settings.HoshinoAiBossMode = value);
 
+        var kamikiHikaruModeBinding = new ModSettingsValueBinding<OshinogoSettings, KamikiHikaruBossMode>(
+            Entry.ModId,
+            SettingsKey,
+            SaveScope.Global,
+            settings => settings.KamikiHikaruBossMode,
+            (settings, value) => settings.KamikiHikaruBossMode = value);
+
         RitsuLibFramework.RegisterModSettings(Entry.ModId, page => page
-            .WithTitle(ModSettingsText.Literal("Oshinogo"))
-            .WithModDisplayName(ModSettingsText.Literal("Oshinogo"))
+            .WithTitle(ModSettingsLocalization.Text("oshinogo.title", "Oshinogo"))
+            .WithModDisplayName(ModSettingsLocalization.Text("oshinogo.display_name", "Oshinogo"))
             .AddSection("general", section => section
-                .WithTitle(ModSettingsText.Literal("General"))
+                .WithTitle(ModSettingsLocalization.Text("general.title", "General"))
                 .AddEnumChoice(
                     "hoshino_ai_boss_mode",
-                    ModSettingsText.Literal("Act 2 Hoshino Ai Boss Mode"),
-                    bossModeBinding,
+                    ModSettingsLocalization.Text("hoshino_ai_boss_mode.label", "Act 2 Hoshino Ai Boss Mode"),
+                    hoshinoAiModeBinding,
                     mode => mode switch
                     {
-                        HoshinoAiBossMode.Disabled => ModSettingsText.Literal("Disabled"),
-                        HoshinoAiBossMode.Random => ModSettingsText.Literal("Random"),
-                        HoshinoAiBossMode.Forced => ModSettingsText.Literal("Forced"),
-                        _ => ModSettingsText.Literal("Disabled"),
+                        HoshinoAiBossMode.Disabled => ModSettingsLocalization.Text("hoshino_ai_boss_mode.disabled", "Disabled"),
+                        HoshinoAiBossMode.Random => ModSettingsLocalization.Text("hoshino_ai_boss_mode.random", "Random"),
+                        HoshinoAiBossMode.Forced => ModSettingsLocalization.Text("hoshino_ai_boss_mode.forced", "Forced"),
+                        _ => ModSettingsLocalization.Text("hoshino_ai_boss_mode.disabled", "Disabled"),
+                    })
+                .AddEnumChoice(
+                    "kamiki_hikaru_boss_mode",
+                    ModSettingsLocalization.Text("kamiki_hikaru_boss_mode.label", "Act 3 Kamiki Hikaru Boss Mode"),
+                    kamikiHikaruModeBinding,
+                    mode => mode switch
+                    {
+                        KamikiHikaruBossMode.Disabled => ModSettingsLocalization.Text("kamiki_hikaru_boss_mode.disabled", "Disabled"),
+                        KamikiHikaruBossMode.Random => ModSettingsLocalization.Text("kamiki_hikaru_boss_mode.random", "Random"),
+                        KamikiHikaruBossMode.Forced => ModSettingsLocalization.Text("kamiki_hikaru_boss_mode.forced", "Forced"),
+                        _ => ModSettingsLocalization.Text("kamiki_hikaru_boss_mode.disabled", "Disabled"),
                     })));
 
         _initialized = true;

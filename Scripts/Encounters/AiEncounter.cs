@@ -1,8 +1,6 @@
 using MegaCrit.Sts2.Core.Models.Acts;
 using Oshinogo.Scripts.Monsters;
 
-
-
 namespace Oshinogo.Scripts.Encounters;
 
 [RegisterActEncounter(typeof(Hive))]

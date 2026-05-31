@@ -29,7 +29,7 @@ public class HoshinoAi : ModMonsterTemplate
 
     public static event Action<HoshinoAi, int>? PhaseChanged;
 
-    public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 255, 255);
+    public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 200, 200);
     public override int MaxInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 255, 255);
 
     public override MonsterAssetProfile AssetProfile => new(
@@ -55,7 +55,7 @@ public class HoshinoAi : ModMonsterTemplate
         var phase1Draw = new MoveState("PHASE1_DRAW", async _ => await Phase1GiveDrawMove(), new BuffIntent());
         var phase2Orbit = new MoveState("PHASE2_ORBIT", async _ => await Phase2GiveOrbitMove(), new BuffIntent());
         var phase2Stats = new MoveState("PHASE2_STATS", async _ => await Phase2GiveStatsMove(), new BuffIntent());
-        var phase3Rebirth = new MoveState("PHASE3_REBIRTH_CARD", async _ => await Phase3GiveRebirthMove(), new StatusIntent(1));
+        var phase3Rebirth = new MoveState("PHASE3_REBIRTH_CARD", async _ => await Phase3GiveRebirthMove(), new StatusIntent(GetPlayerCountForIntent()));
         var phase3NoDraw = new MoveState("PHASE3_NODRAW", async _ => await Phase3NoDrawMove(), new DebuffIntent());
 
         var branch = new ConditionalBranchState("PHASE_BRANCH");
@@ -332,6 +332,19 @@ public class HoshinoAi : ModMonsterTemplate
             .Where(c => c != null)
             .Select(c => c!)
             .ToList();
+    }
+
+    private int GetPlayerCountForIntent()
+    {
+        try
+        {
+            return Math.Max(1, Creature.CombatState?.Players.Count ?? 1);
+        }
+        catch (InvalidOperationException)
+        {
+            // Intents are queried during preload before Creature is bound.
+            return 1;
+        }
     }
 
     private async Task ApplyPowerToAllPlayers<TPower>(int amount) where TPower : PowerModel

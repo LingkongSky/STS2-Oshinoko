@@ -38,4 +38,4 @@ position = Vector2(20, -351)
 
 [node name="DeathPivot" parent="." instance=ExtResource("3_ft52h")]
 unique_name_in_owner = true
-position = Vector2(-5, -2.0000076)
+position = Vector2(0, -2)

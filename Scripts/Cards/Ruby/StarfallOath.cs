@@ -1,8 +1,6 @@
-using STS2RitsuLib.Interop.AutoRegistration;
-
 namespace Oshinogo.Scripts.Cards.Ruby;
 
-// 描述: 仅当闪耀大于6时才能打出。造成35(45)点伤害。下回合获得2点能量。
+// 描述: 仅当闪耀大于6时才能打出。造成40(50)点伤害。下回合获得2点能量。
 
 [RegisterCard(typeof(RubyCardPool))]
 public class StarfallOath : RubyCardModel
@@ -14,7 +12,7 @@ public class StarfallOath : RubyCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(35m, ValueProp.Move),
+        new DamageVar(40m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
     ];

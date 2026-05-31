@@ -55,5 +55,5 @@ offset_right = -73.6836
 offset_bottom = -324.997
 
 [node name="DeathPivot" parent="." instance=ExtResource("4_ndrsl")]
-position = Vector2(0, 349.5)
+position = Vector2(39.92, 349.5)
 scale = Vector2(2, 2)

@@ -6,14 +6,18 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 造成10(15)点伤害，如果敌人的意图是攻击，再造成15(20)点伤害。
 public class Clash : AquaCardModel
 {
+    private const string BonusDamageKey = "BonusDamage";
+    private const string CalculatedBonusDamageKey = "CalculatedBonusDamage";
+
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(10, ValueProp.Move),
-        new DynamicVar("BonusDamage", 15),
+        new DynamicVar(BonusDamageKey, 15),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
+        CreateCalculatedBonusDamageVar(),
     ];
 
     public Clash() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy, true)
@@ -32,17 +36,56 @@ public class Clash : AquaCardModel
 
         if (cardPlay.Target.Monster?.IntendsToAttack == true)
         {
-            await DamageCmd.Attack(DynamicVars["BonusDamage"].BaseValue)
+            var bonusDamage = CalculateBonusDamage();
+            await DamageCmd.Attack(bonusDamage)
                 .FromCard(this)
                 .Targeting(cardPlay.Target)
                 .Execute(choiceContext);
         }
     }
 
+    private decimal CalculateBonusDamage()
+    {
+        var baseDamage = DynamicVars[BonusDamageKey].BaseValue;
+        var extraPerShine = DynamicVars.CalculationExtra.BaseValue;
+        var shine = ShinePowerHelper.GetTotalShine(Owner.Creature);
+        var revenge = RevengePowerHelper.GetTotalRevenge(Owner.Creature);
+        var revengeMultiplier = revenge > 0 ? revenge : 1;
+        return (baseDamage + extraPerShine * shine) * revengeMultiplier;
+    }
+
+    private static CalculatedVar CreateCalculatedBonusDamageVar()
+    {
+        return new ClashCalculatedBonusDamageVar(CalculatedBonusDamageKey)
+            .WithMultiplier((card, _) =>
+            {
+                var baseValue = card.DynamicVars[BonusDamageKey].BaseValue;
+                var extra = card.DynamicVars.CalculationExtra.BaseValue;
+                var shine = ShinePowerHelper.GetTotalShine(card.Owner.Creature);
+                var revenge = RevengePowerHelper.GetTotalRevenge(card.Owner.Creature);
+                var revengeMultiplier = revenge > 0 ? revenge : 1;
+                if (extra == 0)
+                {
+                    return revengeMultiplier - 1;
+                }
+
+                var finalValue = (baseValue + extra * shine) * revengeMultiplier;
+                return (finalValue - baseValue) / extra;
+            });
+    }
+
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(5);
-        DynamicVars["BonusDamage"].UpgradeValueBy(5);
+        DynamicVars[BonusDamageKey].UpgradeValueBy(5);
+    }
+}
+
+public class ClashCalculatedBonusDamageVar(string name) : CalculatedVar(name)
+{
+    protected override DynamicVar GetBaseVar()
+    {
+        return ((CardModel)_owner!).DynamicVars["BonusDamage"];
     }
 }
 

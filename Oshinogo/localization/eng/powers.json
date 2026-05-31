@@ -1,4 +1,4 @@
-﻿{
+{
     "SHINE_POWER.title":  "Shine",
     "SHINE_POWER.description":  "Effective on cards with Shine. Increase by a value equal to Shine.",
     "TURN_SHINE_POWER.title":  "Round To Shine",
@@ -51,7 +51,9 @@
     "FLEEING_LIGHT_POWER.description":  "Every time a certain amount of [gold]Revenge[/gold] is used, 1 card is drawn.",
     "FLEEING_LIGHT_POWER.smarterDescription":  "For every {Amount} point[gold]Revenge[/gold] used, draw 1 card.",
     "LAST_MINUTE_STUDY_POWER.title":  "Final Review",
-    "LAST_MINUTE_STUDY_POWER.description":  "Gain 1 point [gold] temporary Shine[/gold] when playing a skill card.",
+    "LAST_MINUTE_STUDY_POWER.description":  "Gain 1 [gold]temporary Shine[/gold] when playing a skill card.",
+    "PROFILE_POWER.title":  "Profile",
+    "PROFILE_POWER.description":  "Each time a [gold]Plan[/gold] card is played, draw 1 card.",
     "STAY_INDOORS_POWER.title":  "Stay Behind Closed Doors",
     "STAY_INDOORS_POWER.description":  "At the end of the round, if you lost life this round, you will gain 2 [gold] Temporary Revenge [/gold] and 5 [gold] Block [/gold] points in the next round.",
     "NOT_AS_FRAGILE_AS_IMAGINED_POWER.title":  "Not As Fragile As Imagined",
@@ -107,7 +109,7 @@
     "HANDSCROLL_PAINTING_POWER.title":  "Picture Scroll",
     "HANDSCROLL_PAINTING_POWER.description":  "After winning the battle, 1 card can be permanently removed from the deck.",
     "FIRE_EXECUTION_POWER.title":  "Burning At The Stake",
-    "FIRE_EXECUTION_POWER.description":  "Each time you deal unblocked damage to an enemy, grant 1 stack of Rumor.",
+    "FIRE_EXECUTION_POWER.description":  "Each time you deal unblocked damage to an enemy, grant 2 stack of Rumor.",
     "METAMORPHOSIS_POWER.title":  "Metamorphosis",
     "METAMORPHOSIS_POWER.description":  "No longer affected by weakness, vulnerability, or vulnerability.",
     "THEREBY_SHINING_POWER.title":  "Thus Shine",
@@ -144,5 +146,10 @@
     "HOSHINO_AI_PHASE3_REBIRTH_GOAL_POWER.description":  "Players who still need to play Rebirth in Phase 3.",
     "HOSHINO_AI_PHASE3_REBIRTH_GOAL_POWER.smarterDescription":  "{Amount} players still need to play Rebirth in Phase 3.",
     "HOSHINO_AI_SCRUTINY_POWER.title":  "Draw Restriction",
-    "HOSHINO_AI_SCRUTINY_POWER.description":  "You cannot draw extra cards this turn."
-  }
+    "HOSHINO_AI_SCRUTINY_POWER.description":  "You cannot draw extra cards this turn.",
+    "KAMIKI_HIKARU_PHASE1_STUN_THRESHOLD_POWER.title": "Stagger",
+    "KAMIKI_HIKARU_PHASE1_STUN_THRESHOLD_POWER.description": "Dealing enough total damage interrupts Kamiki Hikaru and stuns him.",
+    "KAMIKI_HIKARU_PHASE1_STUN_THRESHOLD_POWER.smarterDescription": "Players need {Amount} more total damage to interrupt and stun Kamiki Hikaru.",
+    "KAMIKI_HIKARU_PHASE2_BUFF_PURGE_POWER.title": "Final Reckoning",
+    "KAMIKI_HIKARU_PHASE2_BUFF_PURGE_POWER.description": "When phase 2 begins, remove all buffs from players."
+    }

@@ -1,9 +1,7 @@
-using STS2RitsuLib.Interop.AutoRegistration;
-
 namespace Oshinogo.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// 鎻忚堪: 鑾峰緱8(11)鐐规牸鎸★紝鑾峰緱2鐐逛复鏃堕棯鑰€銆?
+// 获得8(11)点格挡，获得1点回合闪耀。
 public class CryIn10Sec : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
@@ -28,7 +26,7 @@ public class CryIn10Sec : AquaCardModel
     {
         var block = ShineScaling.Calculate(DynamicVars, CalculatedBlockKey, cardPlay.Target);
         await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move, cardPlay);
-        await ShinePowerHelper.ApplyShine(Owner.Creature, 2, ValueDuration.Temp, Owner.Creature, this);
+        await ShinePowerHelper.ApplyShine(Owner.Creature, 1, ValueDuration.Turn, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
