@@ -11,7 +11,7 @@ Have fun and enjoy the mod.
 - 100+ character cards
 - 10+ new relics
 - 2+ new events
-- 1+ new boss (Hoshino Ai)
+- 2+ new boss
 - Supporting art assets
 - Chinese and English language support
 
@@ -57,7 +57,7 @@ QQ Group: 1094540186
 - 100+ 张角色卡牌
 - 10+ 新遗物
 - 2+ 新事件
-- 1+ 新BOSS（星野爱）
+- 2+ 新BOSS
 - 配套的美术素材
 - 支持中文与英语
 

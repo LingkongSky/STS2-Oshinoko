@@ -2,6 +2,7 @@ using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.MonsterMoves.Intents;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
 using Oshinogo.Scripts.Cards.Colorless;
+using Oshinogo.Scripts.Cards.Ruby;
 using Oshinogo.Scripts.Patchs;
 using Oshinogo.Scripts.Relics.Aqua;
 using Oshinogo.Scripts.Relics.Ruby;
@@ -20,6 +21,7 @@ public class HoshinoAi : ModMonsterTemplate
     }
 
     private BossPhase _phase = BossPhase.Phase1;
+    private bool _phase1OpeningPending = true;
     private bool _phase1UseEnergy = true;
     private bool _phase2UseOrbit = true;
     private bool _phase3UseRebirthCard = true;
@@ -51,6 +53,7 @@ public class HoshinoAi : ModMonsterTemplate
 
     protected override MonsterMoveStateMachine GenerateMoveStateMachine()
     {
+        var phase1Opening = new MoveState("PHASE1_OPENING", async _ => await Phase1OpeningMove(), new MultiAttackIntent(0, 5));
         var phase1Energy = new MoveState("PHASE1_ENERGY", async _ => await Phase1GiveEnergyMove(), new BuffIntent());
         var phase1Draw = new MoveState("PHASE1_DRAW", async _ => await Phase1GiveDrawMove(), new BuffIntent());
         var phase2Orbit = new MoveState("PHASE2_ORBIT", async _ => await Phase2GiveOrbitMove(), new BuffIntent());
@@ -59,6 +62,7 @@ public class HoshinoAi : ModMonsterTemplate
         var phase3NoDraw = new MoveState("PHASE3_NODRAW", async _ => await Phase3NoDrawMove(), new DebuffIntent());
 
         var branch = new ConditionalBranchState("PHASE_BRANCH");
+        branch.AddState(phase1Opening, () => _phase == BossPhase.Phase1 && _phase1OpeningPending);
         branch.AddState(phase1Energy, () => _phase == BossPhase.Phase1 && _phase1UseEnergy);
         branch.AddState(phase1Draw, () => _phase == BossPhase.Phase1 && !_phase1UseEnergy);
         branch.AddState(phase2Orbit, () => _phase == BossPhase.Phase2 && _phase2UseOrbit);
@@ -66,6 +70,7 @@ public class HoshinoAi : ModMonsterTemplate
         branch.AddState(phase3Rebirth, () => _phase == BossPhase.Phase3 && _phase3UseRebirthCard);
         branch.AddState(phase3NoDraw, () => _phase == BossPhase.Phase3 && !_phase3UseRebirthCard);
 
+        phase1Opening.FollowUpState = branch;
         phase1Energy.FollowUpState = branch;
         phase1Draw.FollowUpState = branch;
         phase2Orbit.FollowUpState = branch;
@@ -73,7 +78,7 @@ public class HoshinoAi : ModMonsterTemplate
         phase3Rebirth.FollowUpState = branch;
         phase3NoDraw.FollowUpState = branch;
 
-        return new MonsterMoveStateMachine([branch, phase1Energy, phase1Draw, phase2Orbit, phase2Stats, phase3Rebirth, phase3NoDraw], branch);
+        return new MonsterMoveStateMachine([branch, phase1Opening, phase1Energy, phase1Draw, phase2Orbit, phase2Stats, phase3Rebirth, phase3NoDraw], branch);
     }
 
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
@@ -178,6 +183,12 @@ public class HoshinoAi : ModMonsterTemplate
         }
     }
 
+    private async Task Phase1OpeningMove()
+    {
+        _phase1OpeningPending = false;
+        await Phase1GiveEnergyMove();
+    }
+
     private async Task Phase1GiveEnergyMove()
     {
         _phase1UseEnergy = false;
@@ -241,6 +252,8 @@ public class HoshinoAi : ModMonsterTemplate
     private async Task EnterPhase1(int playerCount)
     {
         PhaseChanged?.Invoke(this, 1);
+        _phase1OpeningPending = true;
+        _phase1UseEnergy = true;
 
         await RemovePhaseGoals(
             Creature.GetPower<HoshinoAiPhase1DrawGoalPower>(),
@@ -262,6 +275,21 @@ public class HoshinoAi : ModMonsterTemplate
             Creature.GetPower<HoshinoAiPhase1DrawGoalPower>(),
             Creature.GetPower<HoshinoAiPhase1PlayGoalPower>()
         );
+
+        var combatState = Creature.CombatState;
+        if (combatState != null)
+        {
+            foreach (var playerCreature in GetPlayerCreatures())
+            {
+                if (playerCreature.Player == null)
+                {
+                    continue;
+                }
+
+                var mother = combatState.CreateCard<Mother>(playerCreature.Player);
+                await CardPileCmd.AddGeneratedCardToCombat(mother, PileType.Discard, playerCreature.Player, CardPilePosition.Top);
+            }
+        }
 
         await PowerCmd.Apply<HoshinoAiPhase2BlockGoalPower>(new BlockingPlayerChoiceContext(), Creature, 50 * Math.Max(1, playerCount), Creature, null, true);
         await PowerCmd.Apply<HoshinoAiPhase2EnergyGoalPower>(new BlockingPlayerChoiceContext(), Creature, 14 * Math.Max(1, playerCount), Creature, null, true);
