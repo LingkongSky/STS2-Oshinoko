@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgy88bk44xxvk"]
 
-[ext_resource type="Script" uid="uid://br45lmob2twsx" path="res://Scripts/UI/OshinokoNSelectionReticle.cs" id="1_lc2fu"]
-[ext_resource type="Texture2D" uid="uid://dh3e6axfobrrs" path="res://Oshinoko/images/ui/combat_reticle.png" id="2_75ikg"]
+[ext_resource type="Script" uid="uid://glh62asobbns" path="res://Scripts/UI/OshinokoNSelectionReticle.cs" id="1_lc2fu"]
+[ext_resource type="Texture2D" uid="uid://dvha17s34engw" path="res://Oshinoko/images/ui/combat_reticle.png" id="2_75ikg"]
 
 [node name="SelectionReticle" type="Control"]
 layout_mode = 3
@@ -119,3 +119,4 @@ offset_bottom = 29.0
 mouse_filter = 2
 texture = ExtResource("2_75ikg")
 expand_mode = 1
+

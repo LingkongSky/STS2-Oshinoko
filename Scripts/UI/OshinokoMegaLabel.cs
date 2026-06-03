@@ -6,9 +6,9 @@ namespace Oshinoko.Scripts.UI;
 [Tool]
 public partial class OshinokoMegaLabel : MegaLabel
 {
-    private bool _autoSizeEnabled = true;
+	private bool _autoSizeEnabled = true;
 
-    private int _minFontSize = 32;
+	private int _minFontSize = 32;
 
-    private int _maxFontSize = 36;
+	private int _maxFontSize = 36;
 }

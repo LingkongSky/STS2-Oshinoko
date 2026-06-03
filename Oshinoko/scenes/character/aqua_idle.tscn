@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://clup4xr03sva3"]
 
-[ext_resource type="Texture2D" uid="uid://2yp6pneevkgi" path="res://Oshinoko/images/animations/AquaIdle.png" id="1_bujnb"]
+[ext_resource type="Texture2D" uid="uid://cyvy5sn5nv2q" path="res://Oshinoko/images/animations/AquaIdle.png" id="1_bujnb"]
 
 [sub_resource type="Animation" id="Animation_ft52h"]
 resource_name = "AquaIdle"
@@ -58,3 +58,4 @@ libraries = {
 }
 autoplay = "AquaIdle"
 speed_scale = 1.1
+

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://scjguqbwph12"]
 
-[ext_resource type="Texture2D" uid="uid://dm8hqggck3rlp" path="res://Oshinoko/images/ui/aqua_background.jpg" id="1_pimi5"]
+[ext_resource type="Texture2D" uid="uid://cjxk2oeqa03v" path="res://Oshinoko/images/ui/aqua_background.jpg" id="1_pimi5"]
 
 [node name="RubyBg" type="Control"]
 layout_mode = 3

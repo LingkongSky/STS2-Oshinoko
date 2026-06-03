@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bbq46hnrwq670"]
 
-[ext_resource type="Script" uid="uid://jeki6aoanxnb" path="res://Scripts/UI/OshinokoNCreatureVisuals.cs" id="1_nk0o2"]
-[ext_resource type="Texture2D" uid="uid://d28w2kkjll8ao" path="res://Oshinoko/images/animations/Hikaru1Idle.png" id="2_egq0s"]
-[ext_resource type="Texture2D" uid="uid://de5vlv612fs88" path="res://Oshinoko/images/animations/Hikaru2Idle.png" id="3_gos7d"]
+[ext_resource type="Script" uid="uid://c5lmt3trpfcss" path="res://Scripts/UI/OshinokoNCreatureVisuals.cs" id="1_nk0o2"]
+[ext_resource type="Texture2D" uid="uid://criq3rx7vmvam" path="res://Oshinoko/images/animations/Hikaru1Idle.png" id="2_egq0s"]
+[ext_resource type="Texture2D" uid="uid://cwsm8u22yss2e" path="res://Oshinoko/images/animations/Hikaru2Idle.png" id="3_gos7d"]
 
 [sub_resource type="Animation" id="Animation_wyhyf"]
 resource_name = "HikaruIdle1"
@@ -122,3 +122,4 @@ texture = ExtResource("3_gos7d")
 offset = Vector2(57.17, -39.535)
 hframes = 6
 vframes = 7
+

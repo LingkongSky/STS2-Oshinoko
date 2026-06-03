@@ -1,15 +1,15 @@
 [gd_scene load_steps=13 format=3 uid="uid://dprly68r2uxus"]
 
-[ext_resource type="Script" uid="uid://cj3us3tgs1ghk" path="res://Scripts/UI/OshinokoNEnergyCounter.cs" id="1_d5qw8"]
+[ext_resource type="Script" uid="uid://c57xkfjq88rrd" path="res://Scripts/UI/OshinokoNEnergyCounter.cs" id="1_d5qw8"]
 [ext_resource type="PackedScene" uid="uid://dkp3jmhbo5axx" path="res://Oshinoko/scenes/vfx/energy/energy_vfx_back.tscn" id="2_xscxb"]
-[ext_resource type="Texture2D" uid="uid://mc2muy24ibj8" path="res://Oshinoko/images/ui/necrobinder_orb_layer_ruby_1.png" id="3_7d3f0"]
-[ext_resource type="Texture2D" uid="uid://bugilbn806jc3" path="res://Oshinoko/images/ui/necrobinder_orb_layer_ruby_2.png" id="4_pme8s"]
-[ext_resource type="Texture2D" uid="uid://r4p0thtwgl4y" path="res://Oshinoko/images/ui/necrobinder_orb_layer_ruby_3.png" id="5_eoken"]
+[ext_resource type="Texture2D" uid="uid://c6n3h2ogvr8yb" path="res://Oshinoko/images/ui/necrobinder_orb_layer_ruby_1.png" id="3_7d3f0"]
+[ext_resource type="Texture2D" uid="uid://c21r3hmdm2kgp" path="res://Oshinoko/images/ui/necrobinder_orb_layer_ruby_2.png" id="4_pme8s"]
+[ext_resource type="Texture2D" uid="uid://bck6hvcqa0u6e" path="res://Oshinoko/images/ui/necrobinder_orb_layer_ruby_3.png" id="5_eoken"]
 [ext_resource type="PackedScene" uid="uid://vc0rip4kaglo" path="res://Oshinoko/scenes/vfx/energy/energy_vfx_front.tscn" id="6_5byy2"]
 [ext_resource type="FontVariation" uid="uid://bylh0p8qhvsaa" path="res://Oshinoko/themes/kreon_bold_shared.tres" id="7_a6ex1"]
-[ext_resource type="Script" uid="uid://b0ch4kk11ev6y" path="res://Scripts/UI/OshinokoMegaLabel.cs" id="8_wlho4"]
+[ext_resource type="Script" uid="uid://bl26astacdhf1" path="res://Scripts/UI/OshinokoMegaLabel.cs" id="8_wlho4"]
 [ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://Oshinoko/themes/canvas_item_material_additive_shared.tres" id="9_eoken"]
-[ext_resource type="Texture2D" uid="uid://c7bobi572nyh8" path="res://Oshinoko/images/ui/vfx/sparkle.png" id="12_wlho4"]
+[ext_resource type="Texture2D" uid="uid://cdkthp16hjcdm" path="res://Oshinoko/images/ui/vfx/sparkle.png" id="12_wlho4"]
 
 [sub_resource type="FontVariation" id="FontVariation_x0k5t"]
 base_font = ExtResource("7_a6ex1")

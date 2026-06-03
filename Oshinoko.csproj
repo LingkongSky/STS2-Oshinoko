@@ -11,10 +11,11 @@
 
   <ItemGroup>
     <Compile Remove="migration_checkpoints\**\*.cs" />
-    <Compile Remove="settings\migration_checkpoints\**\*.cs" />
+    <Compile Remove="Settings\**" />
     <Compile Remove="_ritsu_decomp\**\*.cs" />
     <Compile Remove="tools\**\*.cs" />
     <Compile Remove=".tools\**\*.cs" />
+    <EmbeddedResource Remove="Settings\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,10 +33,6 @@
       <HintPath>$(Sts2Dir)\data_sts2_windows_x86_64\0Harmony.dll</HintPath>
       <Private>false</Private>
     </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Settings\Localization\ModSettingsUi\*.json" />
   </ItemGroup>
 
   <Target Name="Copy Mod" AfterTargets="PostBuildEvent">

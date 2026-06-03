@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://w0yrdy4dgut4"]
 
-[ext_resource type="Script" uid="uid://jeki6aoanxnb" path="res://Scripts/UI/OshinokoNCreatureVisuals.cs" id="1_kh7mu"]
-[ext_resource type="Texture2D" uid="uid://u7lcmf42mjeq" path="res://Oshinoko/images/animations/AiIdle.png" id="2_wyhyf"]
+[ext_resource type="Script" uid="uid://c5lmt3trpfcss" path="res://Scripts/UI/OshinokoNCreatureVisuals.cs" id="1_kh7mu"]
+[ext_resource type="Texture2D" uid="uid://d3ahi2nhdppr0" path="res://Oshinoko/images/animations/AiIdle.png" id="2_wyhyf"]
 
 [sub_resource type="Animation" id="Animation_wyhyf"]
 resource_name = "AiIdle"
@@ -81,3 +81,4 @@ libraries = {
 }
 autoplay = "AiIdle"
 speed_scale = 1.1
+

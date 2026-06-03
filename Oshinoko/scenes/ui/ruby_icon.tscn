@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bl15w8tqqnw5y"]
 
-[ext_resource type="Texture2D" uid="uid://yas7wt2jldna" path="res://Oshinoko/images/ui/ruby_icon.png" id="1_c48nt"]
+[ext_resource type="Texture2D" uid="uid://c304ykhv4h65d" path="res://Oshinoko/images/ui/ruby_icon.png" id="1_c48nt"]
 
 [node name="RubyIcon" type="TextureRect"]
 anchors_preset = 15
@@ -12,3 +12,4 @@ mouse_filter = 2
 texture = ExtResource("1_c48nt")
 expand_mode = 1
 stretch_mode = 5
+

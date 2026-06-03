@@ -12,3 +12,4 @@ migration_checkpoints/
 *.ogv
 *.import
 *.uid
+RepaireUID.gd

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://rg6linnyhfp0"]
 
-[ext_resource type="Texture2D" uid="uid://dn6asu3e8s0n4" path="res://Oshinoko/images/ui/white_pixel.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://bpwv4b6n4mcai" path="res://Oshinoko/images/ui/ruby_background.jpg" id="2_3ualc"]
-[ext_resource type="Shader" uid="uid://6sg0i0rvk1rk" path="res://Oshinoko/shaders/ui/ruby_spotlight_beam.gdshader" id="6"]
+[ext_resource type="Texture2D" uid="uid://dytksmr0n7ekl" path="res://Oshinoko/images/ui/white_pixel.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://detcm0y7u48js" path="res://Oshinoko/images/ui/ruby_background.jpg" id="2_3ualc"]
+[ext_resource type="Shader" uid="uid://cqshfcndi6juc" path="res://Oshinoko/shaders/ui/ruby_spotlight_beam.gdshader" id="6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_beam"]
 shader = ExtResource("6")

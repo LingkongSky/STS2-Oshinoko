@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dxqhi3ux04uf4"]
 
-[ext_resource type="Texture2D" uid="uid://ct2d7ene2romm" path="res://Oshinoko/images/ui/aqua_icon.png" id="1_f1g2v"]
+[ext_resource type="Texture2D" uid="uid://blg8cbapfw6ue" path="res://Oshinoko/images/ui/aqua_icon.png" id="1_f1g2v"]
 
 [node name="AquaIcon" type="TextureRect"]
 anchors_preset = 15
@@ -12,3 +12,4 @@ mouse_filter = 2
 texture = ExtResource("1_f1g2v")
 expand_mode = 1
 stretch_mode = 5
+

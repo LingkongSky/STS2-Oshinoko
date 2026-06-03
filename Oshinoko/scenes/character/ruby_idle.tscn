@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cslfmr78i1nsd"]
 
-[ext_resource type="Texture2D" uid="uid://10nsy1uu44p2" path="res://Oshinoko/images/animations/RubyIdle.png" id="1_nr3v6"]
+[ext_resource type="Texture2D" uid="uid://c5bdsg1orvgno" path="res://Oshinoko/images/animations/RubyIdle.png" id="1_nr3v6"]
 
 [sub_resource type="Animation" id="Animation_mxdaj"]
 length = 0.001
