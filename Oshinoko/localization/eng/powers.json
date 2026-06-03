@@ -117,7 +117,7 @@
     "EXPECT_POWER.title":  "Expect",
     "EXPECT_POWER.description":  "During this round, the expendable cards played will go into the discard pile.",
     "BACK_VIEW_POWER.title":  "Back View",
-    "BACK_VIEW_POWER.description":  "The next consumed card played is returned to the hand.",
+    "BACK_VIEW_POWER.description":  "The next card played is returned to the hand.",
     "FARAWAY_POWER.title":  "Keep Away",
     "FARAWAY_POWER.description":  "At the beginning of the next turn, damage is dealt to all enemies.",
     "FARAWAY_POWER.smarterDescription":  "At the beginning of the next turn, deal {Amount} points of damage to all enemies.",

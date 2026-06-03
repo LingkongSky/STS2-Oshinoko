@@ -117,7 +117,7 @@
     "EXPECT_POWER.title":  "预想",
     "EXPECT_POWER.description":  "本回合内，打出的消耗牌会进入弃牌堆。",
     "BACK_VIEW_POWER.title":  "背影",
-    "BACK_VIEW_POWER.description":  "下一张被打出的消耗牌会回到手中。",
+    "BACK_VIEW_POWER.description":  "下一张被打出的牌会回到手中。",
     "FARAWAY_POWER.title":  "远离",
     "FARAWAY_POWER.description":  "下回合开始时，对所有敌人造成伤害。",
     "FARAWAY_POWER.smarterDescription":  "下回合开始时，对所有敌人造成{Amount}点伤害。",

@@ -1,13 +1,10 @@
-using STS2RitsuLib.Interop.AutoRegistration;
-
 namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// ����: ���1����ҫ��
+// 热情：获得一点闪耀
 public class Passion : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new ShineDymicVar(1)];
 
