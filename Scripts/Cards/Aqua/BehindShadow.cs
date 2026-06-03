@@ -1,6 +1,6 @@
 ﻿using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
 // 描述: 失去2点生命，获得2点回合复仇，翻倍所有敌人的负面效果层数。

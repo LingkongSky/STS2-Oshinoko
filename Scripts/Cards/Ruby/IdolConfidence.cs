@@ -1,6 +1,6 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 造成14(18)点伤害，本回合获得3点回合闪耀。
 
@@ -8,7 +8,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 public class IdolConfidence : RubyCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

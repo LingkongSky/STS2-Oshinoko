@@ -1,4 +1,4 @@
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 
 [RegisterCard(typeof(AquaCardPool))]
@@ -7,7 +7,7 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 // 描述: 造成6(9)点伤害。
 public class AquaStrike : AquaCardModel
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DamageVar(6, ValueProp.Move),

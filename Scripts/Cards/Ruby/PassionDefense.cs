@@ -1,6 +1,6 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 获得7(10)点防御，获得2点临时闪耀。
 
@@ -10,7 +10,7 @@ public class PassionDefense : RubyCardModel
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
     private const string CalculatedBlockKey = "CalculatedBlock";
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
 
     public override bool GainsBlock => true;
 

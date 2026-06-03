@@ -1,9 +1,9 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// ÃèÊö: »ñµÃ2(3)²ãÍÑÉí¡£ Ä±»®1
+// ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½2(3)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä±ï¿½ï¿½1
 public class Watch : AquaCardModel
 {
     private const string EscapeKey = "WatchEscape";

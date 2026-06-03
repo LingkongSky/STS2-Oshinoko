@@ -1,4 +1,4 @@
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 仅当闪耀大于3时才能打出。造成24(34)点伤害，给予2层易伤。
 
@@ -6,7 +6,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 public class FinalPose : RubyCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("VULNERABLE", "SHINE");
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain, OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain, OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
 
     private const int RequiredShine = 3;
 

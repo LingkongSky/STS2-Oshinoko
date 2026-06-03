@@ -5,11 +5,11 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
 
 /// 本回合内，打出的消耗牌改为进入弃牌堆�?
-public class ExpectPower : OshinogoCustomPower
+public class ExpectPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;

@@ -1,9 +1,9 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 [RegisterCard(typeof(RubyCardPool))]
-// цХйЖ: ╩Я╣ц2╣Ц╩ь╨оиар╚ё╛2╣Ц╥ясцё╛ЁИ2уееф
+// О©╫О©╫О©╫О©╫: О©╫О©╫О©╫2О©╫О©╫ь╨О©╫О©╫О©╫р╚О©╫О©╫2О©╫О©╫О©╫О©╫цёО©╫О©╫О©╫2О©╫О©╫О©╫О©╫
 public class Mother : RubyCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");

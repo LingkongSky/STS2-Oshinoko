@@ -2,7 +2,7 @@ using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Nodes.Potions;
 
-namespace Oshinogo.Scripts.Patchs;
+namespace Oshinoko.Scripts.Patchs;
 
 [HarmonyPatch(typeof(NPotionHolder), nameof(NPotionHolder.ShineOnStartOfCombat))]
 public static class NPotionHolderShineSafetyPatch

@@ -6,9 +6,9 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
-public class RetreatBackstagePower : OshinogoCustomPower
+public class RetreatBackstagePower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;

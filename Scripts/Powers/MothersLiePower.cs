@@ -7,9 +7,9 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
 
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
-public class MothersLiePower : OshinogoCustomPower
+public class MothersLiePower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;

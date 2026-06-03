@@ -6,15 +6,15 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
 // ���ԣ�ÿ��ʹĿ���ܵ��Ĺ����˺����10%������Ŀ��غϽ���ʱ����1�㡣
-public class RumorPower : OshinogoCustomPower
+public class RumorPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    public override string? CustomIconPath => "res://Oshinogo/images/powers/RumorNetworkPower.png";
-    public override string? CustomBigIconPath => "res://Oshinogo/images/powers/RumorNetworkPower.png";
+    public override string? CustomIconPath => "res://Oshinoko/images/powers/RumorNetworkPower.png";
+    public override string? CustomBigIconPath => "res://Oshinoko/images/powers/RumorNetworkPower.png";
 
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {

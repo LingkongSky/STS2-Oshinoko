@@ -1,6 +1,6 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 造成14(17)点伤害，抽3张牌，并免费打出其中1张闪耀牌。
 
@@ -8,7 +8,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 public class ScatteredLight : RubyCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -33,7 +33,7 @@ public class ScatteredLight : RubyCardModel
             .Execute(choiceContext);
 
         var drawn = (await CardPileCmd.Draw(choiceContext, 3, Owner)).ToList();
-        var shineCard = drawn.FirstOrDefault(c => c.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()));
+        var shineCard = drawn.FirstOrDefault(c => c.Keywords.Contains(OshinokoKeywords.Shine.GetModKeywordCardKeyword()));
         if (shineCard != null)
         {
             await CardCmd.AutoPlay(choiceContext, shineCard, null);

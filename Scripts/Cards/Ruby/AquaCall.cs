@@ -1,8 +1,8 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
-// цХйЖ: ╩Я╣ц1(2)╣Цаый╠иар╚║ёЁИ1(2)уееф║ё
+// О©╫О©╫О©╫О©╫: О©╫О©╫О©╫1(2)О©╫О©╫О©╫О©╫й╠О©╫О©╫р╚О©╫О©╫О©╫О©╫1(2)О©╫О©╫О©╫ф║О©╫
 
 [RegisterCard(typeof(RubyCardPool))]
 public class AquaCall : RubyCardModel

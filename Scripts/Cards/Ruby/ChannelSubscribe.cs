@@ -1,6 +1,6 @@
 ﻿using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 获得1(2)层人工制品，战斗结束后随机升级一张卡牌
 

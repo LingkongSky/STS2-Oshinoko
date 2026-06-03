@@ -4,7 +4,7 @@ using STS2RitsuLib.Settings;
 using STS2RitsuLib.Utils;
 using STS2RitsuLib.Utils.Persistence;
 
-namespace Oshinogo.Scripts;
+namespace Oshinoko.Scripts;
 
 public enum FjordMosaicMode
 {
@@ -13,7 +13,7 @@ public enum FjordMosaicMode
     Gamma
 }
 
-public sealed class OshinogoSettings
+public sealed class OshinokoSettings
 {
     public HoshinoAiBossMode HoshinoAiBossMode { get; set; } = HoshinoAiBossMode.Random;
     public KamikiHikaruBossMode KamikiHikaruBossMode { get; set; } = KamikiHikaruBossMode.Random;
@@ -41,8 +41,8 @@ public static class ModConfig
     private static class ModSettingsLocalization
     {
         private static readonly Lazy<I18N> InstanceFactory = new(() => new I18N(
-            "Oshinogo-ModSettings",
-            resourceFolders: ["Oshinogo.Settings.Localization.ModSettingsUi"],
+            "Oshinoko-ModSettings",
+            resourceFolders: ["Oshinoko.Settings.Localization.ModSettingsUi"],
             resourceAssembly: Assembly.GetExecutingAssembly()));
 
         public static I18N Instance => InstanceFactory.Value;
@@ -60,7 +60,7 @@ public static class ModConfig
                 return HoshinoAiBossMode.Random;
             }
 
-            return RitsuLibFramework.GetDataStore(Entry.ModId).Get<OshinogoSettings>(SettingsKey).HoshinoAiBossMode;
+            return RitsuLibFramework.GetDataStore(Entry.ModId).Get<OshinokoSettings>(SettingsKey).HoshinoAiBossMode;
         }
         set
         {
@@ -70,7 +70,7 @@ public static class ModConfig
             }
 
             var store = RitsuLibFramework.GetDataStore(Entry.ModId);
-            store.Modify<OshinogoSettings>(SettingsKey, settings => settings.HoshinoAiBossMode = value);
+            store.Modify<OshinokoSettings>(SettingsKey, settings => settings.HoshinoAiBossMode = value);
             store.Save(SettingsKey);
         }
     }
@@ -84,7 +84,7 @@ public static class ModConfig
                 return KamikiHikaruBossMode.Random;
             }
 
-            return RitsuLibFramework.GetDataStore(Entry.ModId).Get<OshinogoSettings>(SettingsKey).KamikiHikaruBossMode;
+            return RitsuLibFramework.GetDataStore(Entry.ModId).Get<OshinokoSettings>(SettingsKey).KamikiHikaruBossMode;
         }
         set
         {
@@ -94,7 +94,7 @@ public static class ModConfig
             }
 
             var store = RitsuLibFramework.GetDataStore(Entry.ModId);
-            store.Modify<OshinogoSettings>(SettingsKey, settings => settings.KamikiHikaruBossMode = value);
+            store.Modify<OshinokoSettings>(SettingsKey, settings => settings.KamikiHikaruBossMode = value);
             store.Save(SettingsKey);
         }
     }
@@ -113,18 +113,18 @@ public static class ModConfig
                 key: SettingsKey,
                 fileName: "settings.json",
                 scope: SaveScope.Global,
-                defaultFactory: () => new OshinogoSettings(),
+                defaultFactory: () => new OshinokoSettings(),
                 autoCreateIfMissing: true);
         }
 
-        var hoshinoAiModeBinding = new ModSettingsValueBinding<OshinogoSettings, HoshinoAiBossMode>(
+        var hoshinoAiModeBinding = new ModSettingsValueBinding<OshinokoSettings, HoshinoAiBossMode>(
             Entry.ModId,
             SettingsKey,
             SaveScope.Global,
             settings => settings.HoshinoAiBossMode,
             (settings, value) => settings.HoshinoAiBossMode = value);
 
-        var kamikiHikaruModeBinding = new ModSettingsValueBinding<OshinogoSettings, KamikiHikaruBossMode>(
+        var kamikiHikaruModeBinding = new ModSettingsValueBinding<OshinokoSettings, KamikiHikaruBossMode>(
             Entry.ModId,
             SettingsKey,
             SaveScope.Global,
@@ -132,8 +132,8 @@ public static class ModConfig
             (settings, value) => settings.KamikiHikaruBossMode = value);
 
         RitsuLibFramework.RegisterModSettings(Entry.ModId, page => page
-            .WithTitle(ModSettingsLocalization.Text("oshinogo.title", "Oshinogo"))
-            .WithModDisplayName(ModSettingsLocalization.Text("oshinogo.display_name", "Oshinogo"))
+            .WithTitle(ModSettingsLocalization.Text("oshinoko.title", "Oshinoko"))
+            .WithModDisplayName(ModSettingsLocalization.Text("oshinoko.display_name", "Oshinoko"))
             .AddSection("general", section => section
                 .WithTitle(ModSettingsLocalization.Text("general.title", "General"))
                 .AddEnumChoice(

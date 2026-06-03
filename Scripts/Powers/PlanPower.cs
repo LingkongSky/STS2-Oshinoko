@@ -1,10 +1,10 @@
 using MegaCrit.Sts2.Core.Entities.Powers;
 
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
 
-/// Ä±»®²ãÊý¡£µ±Ç°ÏÈ×÷Îª¿Éµþ¼Ó¼ÆÊýÄÜÁ¦Ê¹ÓÃ£¬¹©°¢¿âæ«¿¨ÅÆÓëÄÜÁ¦Áª¶¯¡£
-public class PlanPower : OshinogoCustomPower
+/// Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Îªï¿½Éµï¿½ï¿½Ó¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ«¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+public class PlanPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;

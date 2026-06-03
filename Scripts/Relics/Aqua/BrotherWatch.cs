@@ -1,12 +1,12 @@
 using MegaCrit.Sts2.Core.Entities.RestSite;
-using Oshinogo.Scripts.RestSite;
+using Oshinoko.Scripts.RestSite;
 
-namespace Oshinogo.Scripts.Relics.Aqua;
+namespace Oshinoko.Scripts.Relics.Aqua;
 
 [RegisterRelic(typeof(AquaRelicPool))]
 [RegisterCharacterStarterRelic(typeof(Character.Aqua))]
 
-public class BrotherWatch : OshinogoRelicModel
+public class BrotherWatch : OshinokoRelicModel
 {
     public override RelicRarity Rarity => RelicRarity.Starter;
 

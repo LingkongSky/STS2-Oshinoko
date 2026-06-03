@@ -1,6 +1,6 @@
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
-public class UnreachablePower : OshinogoCustomPower
+public class UnreachablePower : OshinokoCustomPower
 {
     private class Data
     {

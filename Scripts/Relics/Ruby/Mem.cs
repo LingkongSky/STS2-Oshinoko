@@ -1,9 +1,9 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Relics.Ruby;
-// ½ðÇ®»ñÈ¡Ê±¶îÍâÔö¼Ó20%
+namespace Oshinoko.Scripts.Relics.Ruby;
+// ï¿½ï¿½Ç®ï¿½ï¿½È¡Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½20%
 [RegisterRelic(typeof(RubyRelicPool))]
-public class Mem : OshinogoRelicModel
+public class Mem : OshinokoRelicModel
 {
     private const decimal BonusMultiplier = 0.2m;
 

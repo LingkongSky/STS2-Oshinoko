@@ -1,8 +1,8 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
-// ÃèÊö: »ñµÃ2µã¸´³ð¡£Èôµ±Ç°¸´³ð´óÓÚ3£¬³é2ÕÅÅÆ¡£
+// ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½2ï¿½ã¸´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½Æ¡ï¿½
 
 
 [RegisterCard(typeof(RubyCardPool))]

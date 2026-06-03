@@ -1,4 +1,4 @@
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
 // 描述: 每次对敌人造成未格挡的伤害时，给予2层流言。

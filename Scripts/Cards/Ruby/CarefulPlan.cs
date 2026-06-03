@@ -1,8 +1,8 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
-// 描述: 查看抽牌堆上的5张牌，选择1张置于抽牌堆顶，下一回合额外获得2点能量和回合闪耀。
+// 锟斤拷锟斤拷: 锟介看锟斤拷锟狡讹拷锟较碉拷5锟斤拷锟狡ｏ拷选锟斤拷1锟斤拷锟斤拷锟节筹拷锟狡堆讹拷锟斤拷锟斤拷一锟截合讹拷锟斤拷锟斤拷2锟斤拷锟斤拷锟斤拷锟酵回猴拷锟斤拷耀锟斤拷
 
 [RegisterCard(typeof(RubyCardPool))]
 public class CarefulPlan : RubyCardModel

@@ -1,8 +1,8 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
-// 描述: 每回合第一次赋予虚弱或易伤时，抽1(2)张牌。
+// 锟斤拷锟斤拷: 每锟截合碉拷一锟轿革拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷时锟斤拷锟斤拷1(2)锟斤拷锟狡★拷
 
 [RegisterCard(typeof(RubyCardPool))]
 public class RumorNetwork : RubyCardModel

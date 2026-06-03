@@ -1,22 +1,22 @@
 using MegaCrit.Sts2.Core.Models.Acts;
-using Oshinogo.Scripts.Monsters;
+using Oshinoko.Scripts.Monsters;
 
-namespace Oshinogo.Scripts.Encounters;
+namespace Oshinoko.Scripts.Encounters;
 
 [RegisterActEncounter(typeof(Glory))]
 public class KamikiHikaruEncounter : ModEncounterTemplate
 {
     public override IEnumerable<MonsterModel> AllPossibleMonsters => [ModelDb.Monster<KamikiHikaru>()];
 
-    public override string BossNodePath => "res://Oshinogo/images/map/placeholder/hikaru";
+    public override string BossNodePath => "res://Oshinoko/images/map/placeholder/hikaru";
 
     public override EncounterAssetProfile AssetProfile => new(
-    RunHistoryIconPath: "res://Oshinogo/images/encounters/hikaru.png",
-    RunHistoryIconOutlinePath: "res://Oshinogo/images/encounters/hikaru_outline.png");
+    RunHistoryIconPath: "res://Oshinoko/images/encounters/hikaru.png",
+    RunHistoryIconOutlinePath: "res://Oshinoko/images/encounters/hikaru_outline.png");
 
     public override bool IsWeak => false;
 
-    public override string CustomBgm => "event:/Oshinogo/music/Mephisto";
+    public override string CustomBgm => "event:/Oshinoko/music/Mephisto";
 
     public override RoomType RoomType => RoomType.Boss;
 

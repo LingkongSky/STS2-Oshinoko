@@ -1,11 +1,11 @@
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 所有队友回复3(5)点生命，你额外回复2点生命。
 
 [RegisterCard(typeof(RubyCardPool))]
 public class ActSpoiled : RubyCardModel
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust, OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust, OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>

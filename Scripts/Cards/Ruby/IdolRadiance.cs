@@ -1,6 +1,6 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 获得2点闪耀。每回合第一次打出闪耀牌时，获得2点临时闪耀
 

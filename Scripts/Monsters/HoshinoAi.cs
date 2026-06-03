@@ -1,13 +1,13 @@
 using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.MonsterMoves.Intents;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
-using Oshinogo.Scripts.Cards.Colorless;
-using Oshinogo.Scripts.Cards.Ruby;
-using Oshinogo.Scripts.Patchs;
-using Oshinogo.Scripts.Relics.Aqua;
-using Oshinogo.Scripts.Relics.Ruby;
+using Oshinoko.Scripts.Cards.Colorless;
+using Oshinoko.Scripts.Cards.Ruby;
+using Oshinoko.Scripts.Patchs;
+using Oshinoko.Scripts.Relics.Aqua;
+using Oshinoko.Scripts.Relics.Ruby;
 
-namespace Oshinogo.Scripts.Monsters;
+namespace Oshinoko.Scripts.Monsters;
 
 [RegisterMonster]
 public class HoshinoAi : ModMonsterTemplate
@@ -35,7 +35,7 @@ public class HoshinoAi : ModMonsterTemplate
     public override int MaxInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 255, 255);
 
     public override MonsterAssetProfile AssetProfile => new(
-        VisualsScenePath: "res://Oshinogo/scenes/monster/ai.tscn"
+        VisualsScenePath: "res://Oshinoko/scenes/monster/ai.tscn"
     );
 
     public override async Task AfterAddedToRoom()
@@ -385,7 +385,7 @@ public class HoshinoAi : ModMonsterTemplate
 
     private void OnHoshinoAiKilledByPlayer()
     {
-        TaskHelper.RunSafely(GrantRelicAndPlayVideoForAllPlayers<BeHatred>("res://Oshinogo/videos/BeHatred.ogv"));
+        TaskHelper.RunSafely(GrantRelicAndPlayVideoForAllPlayers<BeHatred>("res://Oshinoko/videos/BeHatred.ogv"));
     }
 
     private void OnPlayersCompletedAllTasksWithinSevenTurns()
@@ -396,7 +396,7 @@ public class HoshinoAi : ModMonsterTemplate
         }
 
         _completedAllTasksRewardIssued = true;
-        TaskHelper.RunSafely(GrantRelicAndPlayVideoForAllPlayers<BeHoped>("res://Oshinogo/videos/BeHoped.ogv"));
+        TaskHelper.RunSafely(GrantRelicAndPlayVideoForAllPlayers<BeHoped>("res://Oshinoko/videos/BeHoped.ogv"));
     }
 
     private async Task GrantRelicAndPlayVideoForAllPlayers<TRelic>(string videoPath) where TRelic : RelicModel

@@ -1,6 +1,6 @@
 public abstract class RubyCardModel : ModCardTemplate
 {
-    public override string PortraitPath => $"res://Oshinogo/images/cards/ruby/{GetType().Name}.png";
+    public override string PortraitPath => $"res://Oshinoko/images/cards/ruby/{GetType().Name}.png";
 
 
     public RubyCardModel(int energyCost, CardType type, CardRarity rarity, TargetType targetType, bool shouldShowInCardLibrary) : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
@@ -16,13 +16,13 @@ public abstract class RubyCardModel : ModCardTemplate
     FramePath: Type switch
     {
         CardType.Attack =>
-            "res://Oshinogo/images/ui/card_frame/ruby_attack.png",
+            "res://Oshinoko/images/ui/card_frame/ruby_attack.png",
 
         CardType.Power =>
-            "res://Oshinogo/images/ui/card_frame/ruby_power.png",
+            "res://Oshinoko/images/ui/card_frame/ruby_power.png",
 
         _ =>
-            "res://Oshinogo/images/ui/card_frame/ruby_skill.png"
+            "res://Oshinoko/images/ui/card_frame/ruby_skill.png"
     }
 );
 

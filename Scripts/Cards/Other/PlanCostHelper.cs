@@ -5,10 +5,10 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using Oshinogo.Scripts.Powers;
+using Oshinoko.Scripts.Powers;
 using System.Runtime.CompilerServices;
 
-namespace Oshinogo.Scripts.Cards.Other;
+namespace Oshinoko.Scripts.Cards.Other;
 
 public static class PlanCostHelper
 {

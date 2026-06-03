@@ -1,9 +1,9 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// ÃèÊö: ËùÓĞ¶ÓÓÑ»ñµÃ1²ãÎŞÊµÌå¡£
+// ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½Ğ¶ï¿½ï¿½Ñ»ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½Êµï¿½å¡£
 public class DeusExMachina : AquaCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];

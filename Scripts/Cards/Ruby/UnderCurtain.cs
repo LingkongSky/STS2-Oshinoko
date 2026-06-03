@@ -1,5 +1,5 @@
 
-namespace Oshinogo.Scripts.Cards.Ruby
+namespace Oshinoko.Scripts.Cards.Ruby
 {
     [RegisterCard(typeof(RubyCardPool))]
     /// 描述: 获得4(5)点回合复仇。保留。

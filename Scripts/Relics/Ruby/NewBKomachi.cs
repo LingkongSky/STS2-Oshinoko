@@ -1,9 +1,9 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Relics.Ruby;
+namespace Oshinoko.Scripts.Relics.Ruby;
 // 将一张暗号B加入牌库
 [RegisterRelic(typeof(RubyRelicPool))]
-public class NewBKomachi : OshinogoRelicModel
+public class NewBKomachi : OshinokoRelicModel
 {
     public override RelicRarity Rarity => RelicRarity.Event;
 

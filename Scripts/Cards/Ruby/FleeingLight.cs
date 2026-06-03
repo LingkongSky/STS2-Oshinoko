@@ -1,8 +1,8 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
-// ÃèÊö: Ã¿Ê¹ÓÃ5(4)µã¸´³ð£¬³é1ÕÅÅÆ¡£
+// ï¿½ï¿½ï¿½ï¿½: Ã¿Ê¹ï¿½ï¿½5(4)ï¿½ã¸´ï¿½ð£¬³ï¿½1ï¿½ï¿½ï¿½Æ¡ï¿½
 
 [RegisterCard(typeof(RubyCardPool))]
 public class FleeingLight : RubyCardModel

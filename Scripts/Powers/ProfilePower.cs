@@ -1,6 +1,6 @@
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
-public class ProfilePower : OshinogoCustomPower
+public class ProfilePower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;

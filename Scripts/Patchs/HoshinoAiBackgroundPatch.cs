@@ -1,15 +1,15 @@
-using Oshinogo.Scripts.Encounters;
-using Oshinogo.Scripts.Monsters;
+using Oshinoko.Scripts.Encounters;
+using Oshinoko.Scripts.Monsters;
 
-namespace Oshinogo.Scripts.Patchs;
+namespace Oshinoko.Scripts.Patchs;
 
 public static class HoshinoAiBackgroundPatch
 {
-    private const string OverlayName = "Oshinogo_AiPhaseBackgroundOverlay";
-    private const string Phase1Path = "res://Oshinogo/images/backgrounds/ai_phase1.jpg";
-    private const string Phase2Path = "res://Oshinogo/images/backgrounds/ai_phase2.jpg";
-    private const string Phase3Path = "res://Oshinogo/images/backgrounds/ai_phase3.jpg";
-    private const string FullscreenVideoOverlayName = "Oshinogo_AiFullscreenVideoOverlay";
+    private const string OverlayName = "Oshinoko_AiPhaseBackgroundOverlay";
+    private const string Phase1Path = "res://Oshinoko/images/backgrounds/ai_phase1.jpg";
+    private const string Phase2Path = "res://Oshinoko/images/backgrounds/ai_phase2.jpg";
+    private const string Phase3Path = "res://Oshinoko/images/backgrounds/ai_phase3.jpg";
+    private const string FullscreenVideoOverlayName = "Oshinoko_AiFullscreenVideoOverlay";
 
     private static WeakReference<object>? _currentAiCombatRoom;
     private static bool _initialized;
@@ -75,7 +75,7 @@ public static class HoshinoAiBackgroundPatch
             return;
         }
 
-        var fade = new ColorRect { Name = "Oshinogo_AiPhaseFadeOverlay", Color = new Color(1f, 0.52f, 0.72f, 0f) };
+        var fade = new ColorRect { Name = "Oshinoko_AiPhaseFadeOverlay", Color = new Color(1f, 0.52f, 0.72f, 0f) };
         ConfigureFullscreenOverlay(fade, Control.MouseFilterEnum.Ignore);
         fade.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
         roomControl.AddChild(fade);

@@ -1,9 +1,9 @@
 using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.MonsterMoves.Intents;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
-using Oshinogo.Scripts.Patchs;
+using Oshinoko.Scripts.Patchs;
 
-namespace Oshinogo.Scripts.Monsters;
+namespace Oshinoko.Scripts.Monsters;
 
 [RegisterMonster]
 public class KamikiHikaru : ModMonsterTemplate
@@ -35,7 +35,7 @@ public class KamikiHikaru : ModMonsterTemplate
 
 
     public override MonsterAssetProfile AssetProfile => new(
-        VisualsScenePath: "res://Oshinogo/scenes/monster/hikaru.tscn"
+        VisualsScenePath: "res://Oshinoko/scenes/monster/hikaru.tscn"
     );
 
     public override async Task AfterAddedToRoom()

@@ -1,9 +1,9 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// ÃèÊö: »ñµÃ12(15)µã·ÀÓù£¬»ñµÃÒ»²ãÐéÈõ¡£
+// ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½12(15)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 public class HoldOnto : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("WEAK");

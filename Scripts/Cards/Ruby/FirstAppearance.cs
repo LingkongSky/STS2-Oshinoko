@@ -1,13 +1,13 @@
 using STS2RitsuLib.Keywords;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 获得12(16)点格挡，在卡组里增加1张眩晕。
 
 [RegisterCard(typeof(RubyCardPool))]
 public class FirstAppearance : RubyCardModel
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword(), CardKeyword.Exhaust];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword(), CardKeyword.Exhaust];
 
     public override bool GainsBlock => true;
 

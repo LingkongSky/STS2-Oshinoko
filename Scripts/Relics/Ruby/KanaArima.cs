@@ -1,9 +1,9 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Relics.Ruby;
-// Ã¿³¡Õ½¶·¿ªÊ¼Ê±»ñµÃÒ»µãÉÁÒ«Öµ
+namespace Oshinoko.Scripts.Relics.Ruby;
+// Ã¿ï¿½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½Ê¼Ê±ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ò«Öµ
 [RegisterRelic(typeof(RubyRelicPool))]
-public class KanaArima : OshinogoRelicModel
+public class KanaArima : OshinokoRelicModel
 {
     public override RelicRarity Rarity => RelicRarity.Event;
 

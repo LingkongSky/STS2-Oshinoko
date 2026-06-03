@@ -2,7 +2,7 @@
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.HoverTips;
 
-namespace Oshinogo.Scripts.Cards.Other;
+namespace Oshinoko.Scripts.Cards.Other;
 
 public class RevengeDynamicVar : DynamicVar
 {

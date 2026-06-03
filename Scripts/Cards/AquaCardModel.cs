@@ -1,6 +1,6 @@
 public abstract class AquaCardModel : ModCardTemplate
 {
-    public override string PortraitPath => $"res://Oshinogo/images/cards/aqua/{GetType().Name}.png";
+    public override string PortraitPath => $"res://Oshinoko/images/cards/aqua/{GetType().Name}.png";
 
 
     public AquaCardModel(int energyCost, CardType type, CardRarity rarity, TargetType targetType, bool shouldShowInCardLibrary) : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
@@ -11,13 +11,13 @@ public abstract class AquaCardModel : ModCardTemplate
     FramePath: Type switch
     {
         CardType.Attack =>
-            "res://Oshinogo/images/ui/card_frame/aqua_attack.png",
+            "res://Oshinoko/images/ui/card_frame/aqua_attack.png",
 
         CardType.Power =>
-            "res://Oshinogo/images/ui/card_frame/aqua_power.png",
+            "res://Oshinoko/images/ui/card_frame/aqua_power.png",
 
         _ =>
-            "res://Oshinogo/images/ui/card_frame/aqua_skill.png"
+            "res://Oshinoko/images/ui/card_frame/aqua_skill.png"
     }
 );
 

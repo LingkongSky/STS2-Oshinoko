@@ -1,11 +1,11 @@
 using MegaCrit.Sts2.Core.Entities.RestSite;
-using Oshinogo.Scripts.RestSite;
+using Oshinoko.Scripts.RestSite;
 
-namespace Oshinogo.Scripts.Relics.Ruby
+namespace Oshinoko.Scripts.Relics.Ruby
 {
     [RegisterRelic(typeof(RubyRelicPool))]
     [RegisterCharacterStarterRelic(typeof(Character.Ruby))]
-    public class Photo : OshinogoRelicModel
+    public class Photo : OshinokoRelicModel
     {
         public override RelicRarity Rarity => RelicRarity.Starter;
 

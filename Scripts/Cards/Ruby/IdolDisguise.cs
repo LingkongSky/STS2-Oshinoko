@@ -1,6 +1,6 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 场上每有一名敌人，额外获得4(6)点格挡。
 
@@ -9,7 +9,7 @@ public class IdolDisguise : RubyCardModel
 {
     private const string CalculatedBlockKey = "CalculatedBlock";
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
 
     public override bool GainsBlock => true;
 

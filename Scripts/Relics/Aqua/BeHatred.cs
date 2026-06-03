@@ -1,7 +1,7 @@
-namespace Oshinogo.Scripts.Relics.Aqua;
+namespace Oshinoko.Scripts.Relics.Aqua;
 
 [RegisterRelic(typeof(AquaRelicPool))]
-public class BeHatred : OshinogoRelicModel
+public class BeHatred : OshinokoRelicModel
 {
     // 战斗开始时，给予所有人一层陷阱
     public override RelicRarity Rarity => RelicRarity.Event;

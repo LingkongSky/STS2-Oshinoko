@@ -1,7 +1,7 @@
-namespace Oshinogo.Scripts.Relics.Ruby;
+namespace Oshinoko.Scripts.Relics.Ruby;
 
 [RegisterRelic(typeof(RubyRelicPool))]
-public class BeHoped : OshinogoRelicModel
+public class BeHoped : OshinokoRelicModel
 {
     // 战斗开始时，给予自己一层无实体
     public override RelicRarity Rarity => RelicRarity.Event;

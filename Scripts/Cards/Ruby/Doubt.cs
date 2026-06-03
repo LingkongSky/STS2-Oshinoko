@@ -1,8 +1,8 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
-// ÃèÊö: ¶ÔµĞÈËÔì³É9(12)µãÉËº¦£¬Èç¹ûÔì³ÉµÄÉËº¦´óÓÚ11(15)Ôò»ñµÃ2µãÁÙÊ±¸´³ğ¡£
+// ï¿½ï¿½ï¿½ï¿½: ï¿½Ôµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½9(12)ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½11(15)ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
 
 [RegisterCard(typeof(RubyCardPool))]
 public class Doubt : RubyCardModel

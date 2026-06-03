@@ -1,4 +1,4 @@
-namespace Oshinogo.Scripts.Cards.Other;
+namespace Oshinoko.Scripts.Cards.Other;
 
 [RegisterCard(typeof(RubyCardPool))]
 public class Stunned : RubyCardModel

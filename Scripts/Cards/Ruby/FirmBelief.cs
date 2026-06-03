@@ -1,8 +1,8 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
-// цХйЖ: ╫╚аый╠иар╚в╙╩╩н╙╩ь╨оиар╚ё╛╫╚╩ь╨оиар╚в╙╩╩н╙сю╬циар╚
+// О©╫О©╫О©╫О©╫: О©╫О©╫О©╫О©╫й╠О©╫О©╫р╚в╙О©╫О©╫н╙О©╫ь╨О©╫О©╫О©╫р╚О©╫О©╫О©╫О©╫О©╫ь╨О©╫О©╫О©╫р╚в╙О©╫О©╫н╙О©╫О©╫О©╫О©╫О©╫О©╫р╚
 
 [RegisterCard(typeof(RubyCardPool))]
 public class FirmBelief : RubyCardModel

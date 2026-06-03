@@ -1,7 +1,7 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 using MegaCrit.Sts2.Core.Combat.History.Entries;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 造成3点伤害1次，本场战斗中每使用一次闪耀，攻击次数+1。
 
@@ -9,7 +9,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 public class RubyShine : RubyCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -58,7 +58,7 @@ public class RubyShine : RubyCardModel
         return CombatManager.Instance.History.Entries
             .OfType<CardPlayFinishedEntry>()
             .Count(entry => entry.Actor == owner.Creature
-                && entry.CardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword())
+                && entry.CardPlay.Card.Keywords.Contains(OshinokoKeywords.Shine.GetModKeywordCardKeyword())
                 && entry.CardPlay.Card != excludeCard);
     }
 }

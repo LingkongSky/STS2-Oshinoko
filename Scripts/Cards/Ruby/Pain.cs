@@ -1,6 +1,6 @@
 ﻿using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 所有敌人失去9(13)点生命值。
 

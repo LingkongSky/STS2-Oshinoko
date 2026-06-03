@@ -1,6 +1,6 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
 // 描述: 获得13(17)点格挡，获得2张浸血花瓣。
@@ -10,7 +10,7 @@ public class PerfectOver : AquaCardModel
 
     private const string CalculatedBlockKey = "CalculatedBlock";
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword(), CardKeyword.Exhaust];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword(), CardKeyword.Exhaust];
 
     public override bool GainsBlock => true;
 

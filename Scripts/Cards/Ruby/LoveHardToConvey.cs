@@ -1,6 +1,6 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 鎶藉彇绛夊悓浜庨棯鑰€鏁伴噺鐨勫崱鐗屻€傛娊X寮犲崱銆?
 
@@ -10,7 +10,7 @@ public class LoveHardToConvey : RubyCardModel
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
     private const string CalculatedCardsKey = "CalculatedCards";
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

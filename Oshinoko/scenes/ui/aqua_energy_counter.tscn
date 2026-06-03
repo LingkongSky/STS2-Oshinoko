@@ -1,0 +1,150 @@
+[gd_scene load_steps=13 format=3 uid="uid://dvqbd0kt4lq3t"]
+
+[ext_resource type="Script" uid="uid://cj3us3tgs1ghk" path="res://Scripts/UI/OshinokoNEnergyCounter.cs" id="1_p0y73"]
+[ext_resource type="PackedScene" uid="uid://dkp3jmhbo5axx" path="res://Oshinoko/scenes/vfx/energy/energy_vfx_back.tscn" id="2_dgs5d"]
+[ext_resource type="Texture2D" uid="uid://b3v2s3cu3fklt" path="res://Oshinoko/images/ui/necrobinder_orb_layer_aqua_1.png" id="3_p0y73"]
+[ext_resource type="Texture2D" uid="uid://7pydntlxpyc0" path="res://Oshinoko/images/ui/necrobinder_orb_layer_aqua_2.png" id="4_dgs5d"]
+[ext_resource type="Texture2D" uid="uid://c0qprwuwgnr21" path="res://Oshinoko/images/ui/necrobinder_orb_layer_aqua_3.png" id="5_kdmla"]
+[ext_resource type="PackedScene" uid="uid://vc0rip4kaglo" path="res://Oshinoko/scenes/vfx/energy/energy_vfx_front.tscn" id="6_rjiak"]
+[ext_resource type="FontVariation" uid="uid://bylh0p8qhvsaa" path="res://Oshinoko/themes/kreon_bold_shared.tres" id="7_kd5u8"]
+[ext_resource type="Script" uid="uid://b0ch4kk11ev6y" path="res://Scripts/UI/OshinokoMegaLabel.cs" id="8_b0fn1"]
+[ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://Oshinoko/themes/canvas_item_material_additive_shared.tres" id="9_68bt2"]
+[ext_resource type="Texture2D" uid="uid://c7bobi572nyh8" path="res://Oshinoko/images/ui/vfx/sparkle.png" id="10_l3btd"]
+
+[sub_resource type="FontVariation" id="FontVariation_x0k5t"]
+base_font = ExtResource("7_kd5u8")
+spacing_glyph = 2
+
+[sub_resource type="Gradient" id="Gradient_7d3f0"]
+offsets = PackedFloat32Array(0, 0.35, 0.7, 1)
+colors = PackedColorArray(1, 0.917647, 0.964706, 0, 1, 0.901961, 0.956863, 1, 1, 0.956863, 0.988235, 1, 1, 0.917647, 0.964706, 0)
+
+[node name="AquaEnergyCounter" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 128.0
+pivot_offset = Vector2(64, 64)
+script = ExtResource("1_p0y73")
+metadata/_edit_lock_ = true
+
+[node name="EnergyVfxBack" parent="." instance=ExtResource("2_dgs5d")]
+unique_name_in_owner = true
+position = Vector2(64, 64)
+
+[node name="Layers" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Layer1" type="TextureRect" parent="Layers"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_p0y73")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_lock_ = true
+
+[node name="RotationLayers" type="Control" parent="Layers"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Layer2" type="TextureRect" parent="Layers/RotationLayers"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(64, 64)
+mouse_filter = 2
+texture = ExtResource("4_dgs5d")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_lock_ = true
+
+[node name="Layer3" type="TextureRect" parent="Layers"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_kdmla")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_lock_ = true
+
+[node name="EnergyVfxFront" parent="." instance=ExtResource("6_rjiak")]
+unique_name_in_owner = true
+position = Vector2(64, 64)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -29.0
+offset_right = -16.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.964706, 0.886275, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.188235)
+theme_override_colors/font_outline_color = Color(0.22458562, 0.23712713, 0.62500066, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 16
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = SubResource("FontVariation_x0k5t")
+theme_override_font_sizes/font_size = 36
+text = "3/3"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_b0fn1")
+MinFontSize = 32
+MaxFontSize = 36
+theme_override_colors/font_outline_color = Color(0.22458562, 0.23712713, 0.62500066, 1)
+metadata/_edit_lock_ = true
+
+[node name="Sparkle" type="CPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.101960786)
+material = ExtResource("9_68bt2")
+position = Vector2(64, 64)
+scale = Vector2(5, 5)
+amount = 4
+texture = ExtResource("10_l3btd")
+lifetime = 0.6
+preprocess = 0.6
+local_coords = true
+emission_shape = 2
+emission_sphere_radius = 1.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 6.0
+angle_max = 360.0
+scale_amount_min = 0.08
+scale_amount_max = 0.14
+color = Color(1, 0.9, 0.98, 0.7)
+color_ramp = SubResource("Gradient_7d3f0")
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+autoplay = "IdolPulse"

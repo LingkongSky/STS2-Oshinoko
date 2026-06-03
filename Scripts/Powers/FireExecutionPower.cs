@@ -1,9 +1,9 @@
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
 /// <summary>
 /// 对敌人造成未被格挡伤害时，给予流言。
 /// </summary>
-public class FireExecutionPower : OshinogoCustomPower
+public class FireExecutionPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;

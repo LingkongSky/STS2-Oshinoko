@@ -1,4 +1,4 @@
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 
 [RegisterCard(typeof(AquaCardPool))]
@@ -8,7 +8,7 @@ namespace Oshinogo.Scripts.Cards.Aqua;
 public class AquaDefend : AquaCardModel
 {
     private const string CalculatedBlockKey = "CalculatedBlock";
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Defend };
 

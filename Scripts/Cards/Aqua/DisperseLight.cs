@@ -1,5 +1,5 @@
 
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
 // 对一个敌人造成9(14)点伤害，并使其失去2(3)点力量

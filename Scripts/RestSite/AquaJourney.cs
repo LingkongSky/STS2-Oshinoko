@@ -1,10 +1,10 @@
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Map;
 using MegaCrit.Sts2.Core.Runs.History;
-using Oshinogo.Scripts.Relics.Aqua;
-using Oshinogo.Scripts.Relics.Ruby;
+using Oshinoko.Scripts.Relics.Aqua;
+using Oshinoko.Scripts.Relics.Ruby;
 
-namespace Oshinogo.Scripts.RestSite;
+namespace Oshinoko.Scripts.RestSite;
 
 public sealed class Journey : ModRestSiteOptionTemplate
 {
@@ -13,7 +13,7 @@ public sealed class Journey : ModRestSiteOptionTemplate
 
     private readonly int _useCount;
 
-    public const string IconPath = "res://Oshinogo/images/ui/rest_site/option_journey.png";
+    public const string IconPath = "res://Oshinoko/images/ui/rest_site/option_journey.png";
 
 
     public override string OptionId => OptionIdValue;

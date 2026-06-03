@@ -1,6 +1,6 @@
 using MegaCrit.Sts2.Core.Combat.History.Entries;
 
-namespace Oshinogo.Scripts.Cards.Other;
+namespace Oshinoko.Scripts.Cards.Other;
 
 public static class CombatHistoryHelper
 {
@@ -108,7 +108,7 @@ public static class CombatHistoryHelper
             }
 
             if (entry is CardPlayFinishedEntry playEntry
-                && playEntry.CardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword())
+                && playEntry.CardPlay.Card.Keywords.Contains(OshinokoKeywords.Shine.GetModKeywordCardKeyword())
                 && runningShine > 0)
             {
                 return true;

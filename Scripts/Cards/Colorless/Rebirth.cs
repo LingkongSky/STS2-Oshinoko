@@ -1,12 +1,12 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Colorless;
+namespace Oshinoko.Scripts.Cards.Colorless;
 
-// 洗去自身的所有Buff，回�?0点生命�?
+// 洗去自身的所有Buff，回�?0点生命�?
 [RegisterCard(typeof(RubyCardPool))]
 public class Rebirth : ModCardTemplate
 {
-    public override string PortraitPath => $"res://Oshinogo/images/cards/ruby/{GetType().Name}.png";
+    public override string PortraitPath => $"res://Oshinoko/images/cards/ruby/{GetType().Name}.png";
 
     public Rebirth() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
     {

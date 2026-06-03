@@ -3,13 +3,13 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Aqua;
+using Oshinoko.Scripts.Cards.Aqua;
 
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
 
-/// Ã¿´Î»ñµÃ½þÑª»¨°êÊ±£¬»ñµÃ¸ñµ²¡£
-public class EncorePower : OshinogoCustomPower
+/// Ã¿ï¿½Î»ï¿½Ã½ï¿½Ñªï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ã¸ñµ²¡ï¿½
+public class EncorePower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;

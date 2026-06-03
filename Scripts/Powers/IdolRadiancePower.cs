@@ -2,11 +2,11 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using Oshinogo.Scripts.Cards.Other;
+using Oshinoko.Scripts.Cards.Other;
 
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
-public class IdolRadiancePower : OshinogoCustomPower
+public class IdolRadiancePower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
@@ -40,7 +40,7 @@ public class IdolRadiancePower : OshinogoCustomPower
             return;
         }
 
-        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()))
+        if (!cardPlay.Card.Keywords.Contains(OshinokoKeywords.Shine.GetModKeywordCardKeyword()))
         {
             return;
         }

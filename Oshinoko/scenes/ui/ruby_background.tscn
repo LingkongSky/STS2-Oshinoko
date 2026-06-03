@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://rg6linnyhfp0"]
+
+[ext_resource type="Texture2D" uid="uid://dn6asu3e8s0n4" path="res://Oshinoko/images/ui/white_pixel.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://bpwv4b6n4mcai" path="res://Oshinoko/images/ui/ruby_background.jpg" id="2_3ualc"]
+[ext_resource type="Shader" uid="uid://6sg0i0rvk1rk" path="res://Oshinoko/shaders/ui/ruby_spotlight_beam.gdshader" id="6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_beam"]
+shader = ExtResource("6")
+shader_parameter/beam_color = Color(1, 0.55, 0.9, 1)
+shader_parameter/intensity = 1.0
+
+[node name="RubyBg" type="Control"]
+layout_mode = 3
+anchor_left = 1.0
+anchor_top = 0.952
+anchor_right = 1.0
+anchor_bottom = 0.952
+offset_left = -1920.0
+offset_top = -1011.16003
+offset_right = 640.0
+offset_bottom = 188.83997
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1280, 600)
+
+[node name="Backdrop" type="Sprite2D" parent="."]
+position = Vector2(-200, -26)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_3ualc")
+centered = false
+
+[node name="Lights" type="Node2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="BeamLeft" type="Sprite2D" parent="Lights"]
+material = SubResource("ShaderMaterial_beam")
+position = Vector2(-806, -592.00006)
+rotation = -0.74700093
+scale = Vector2(1159.2366, 1030.1455)
+texture = ExtResource("2")
+
+[node name="BeamRight" type="Sprite2D" parent="Lights"]
+material = SubResource("ShaderMaterial_beam")
+position = Vector2(587.8578, -534.44666)
+rotation = 0.7696902
+scale = Vector2(1212.2266, 902.5044)
+texture = ExtResource("2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
+autoplay = "idle"

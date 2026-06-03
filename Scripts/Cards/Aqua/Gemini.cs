@@ -1,9 +1,9 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// ÃèÊö: »ñµÃ2µã»ØºÏÉÁÒ«ºÍ2µã»ØºÏ¸´³ð¡£
+// ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½2ï¿½ï¿½Øºï¿½ï¿½ï¿½Ò«ï¿½ï¿½2ï¿½ï¿½ØºÏ¸ï¿½ï¿½ï¿½
 public class Gemini : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE", "REVENGE");

@@ -1,4 +1,4 @@
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 仅当闪耀大于6时才能打出。造成40(50)点伤害。下回合获得2点能量。
 
@@ -6,7 +6,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 public class StarfallOath : RubyCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
 
     private const int RequiredShine = 6;
 

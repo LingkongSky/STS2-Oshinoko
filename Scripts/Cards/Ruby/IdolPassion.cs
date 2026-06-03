@@ -1,4 +1,4 @@
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 获得2(3)点回合闪耀。
 

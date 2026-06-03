@@ -1,7 +1,7 @@
 ﻿using MegaCrit.Sts2.Core.CardSelection;
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
 // 描述: 选择两张手牌，本回合内降低1点费用。

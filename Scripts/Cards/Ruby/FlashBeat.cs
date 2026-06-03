@@ -1,6 +1,6 @@
 using STS2RitsuLib.Keywords;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 造成7(10)点伤害。本回合打出过闪耀牌，额外造成7(10)点伤害。
 
@@ -8,7 +8,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 public class FlashBeat : RubyCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

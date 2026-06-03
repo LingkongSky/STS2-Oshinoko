@@ -1,7 +1,7 @@
-namespace Oshinogo.Scripts.Relics.Ruby
+namespace Oshinoko.Scripts.Relics.Ruby
 {
     [RegisterRelic(typeof(RubyRelicPool))]
-    public class FamilyPhoto : OshinogoRelicModel
+    public class FamilyPhoto : OshinokoRelicModel
     {
         public override RelicRarity Rarity => RelicRarity.Ancient;
 

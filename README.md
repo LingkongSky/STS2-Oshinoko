@@ -1,4 +1,4 @@
-# STS2 Oshinogo Mod
+# STS2 Oshinoko Mod
 ## English
 
 ### MOD Overview

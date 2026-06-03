@@ -1,13 +1,13 @@
-using Oshinogo.Scripts.Encounters;
-using Oshinogo.Scripts.Monsters;
+using Oshinoko.Scripts.Encounters;
+using Oshinoko.Scripts.Monsters;
 
-namespace Oshinogo.Scripts.Patchs;
+namespace Oshinoko.Scripts.Patchs;
 
 public static class KamikiHikaruBackgroundPatch
 {
-    private const string OverlayName = "Oshinogo_KamikiPhaseBackgroundOverlay";
-    private const string Phase1Path = "res://Oshinogo/images/backgrounds/hikaru_phase1.jpg";
-    private const string Phase2Path = "res://Oshinogo/images/backgrounds/hikaru_phase2.jpg";
+    private const string OverlayName = "Oshinoko_KamikiPhaseBackgroundOverlay";
+    private const string Phase1Path = "res://Oshinoko/images/backgrounds/hikaru_phase1.jpg";
+    private const string Phase2Path = "res://Oshinoko/images/backgrounds/hikaru_phase2.jpg";
 
     private static WeakReference<object>? _currentCombatRoom;
     private static bool _initialized;
@@ -69,7 +69,7 @@ public static class KamikiHikaruBackgroundPatch
             return;
         }
 
-        var fade = new ColorRect { Name = "Oshinogo_KamikiPhaseFadeOverlay", Color = new Color(0f, 0f, 0f, 0f) };
+        var fade = new ColorRect { Name = "Oshinoko_KamikiPhaseFadeOverlay", Color = new Color(0f, 0f, 0f, 0f) };
         ConfigureFullscreenOverlay(fade);
         fade.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
         roomControl.AddChild(fade);

@@ -1,8 +1,8 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
-// цХйЖ: ц©╩ь╨о╣зр╩╢н╩Я╣циар╚й╠ё╛ЁИ2уееф╡╒╩Я╣ц6╣Ц╦Я╣╡║ё
+// О©╫О©╫О©╫О©╫: ц©О©╫ь╨о╣О©╫р╩О©╫н╩О©╫О©╫О©╫О©╫р╚й╠О©╫О©╫О©╫О©╫2О©╫О©╫О©╫ф╡О©╫О©╫О©╫О©╫6О©╫О©╫Я╣╡║О©╫
 
 [RegisterCard(typeof(RubyCardPool))]
 public class TakeTheStage : RubyCardModel

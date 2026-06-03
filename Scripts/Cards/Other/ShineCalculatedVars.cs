@@ -1,6 +1,6 @@
 using MegaCrit.Sts2.Core.Hooks;
 
-namespace Oshinogo.Scripts.Cards.Other;
+namespace Oshinoko.Scripts.Cards.Other;
 
 public enum ShineValueType
 {
@@ -97,7 +97,7 @@ public static class ShineScaling
             return 0;
         }
 
-        if (!card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()))
+        if (!card.Keywords.Contains(OshinokoKeywords.Shine.GetModKeywordCardKeyword()))
         {
             return 0;
         }
@@ -124,7 +124,7 @@ public static class ShineScaling
             return 0;
         }
 
-        if (!card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()))
+        if (!card.Keywords.Contains(OshinokoKeywords.Shine.GetModKeywordCardKeyword()))
         {
             return 0;
         }

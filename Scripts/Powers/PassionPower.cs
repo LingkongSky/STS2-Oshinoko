@@ -1,4 +1,4 @@
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
 // 热情：回合结束时增加1层，达到12层时立即死亡
 public class PassionPower : HoshinoAiIconPower

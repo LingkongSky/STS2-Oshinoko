@@ -1,7 +1,7 @@
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
 
-namespace Oshinogo.Scripts.Patchs
+namespace Oshinoko.Scripts.Patchs
 {
     // 能量表盘动画Patch
     public class NParticlesContainerPatch
@@ -12,7 +12,7 @@ namespace Oshinogo.Scripts.Patchs
         {
             static bool Prefix(NParticlesContainer __instance)
             {
-                if (__instance is Oshinogo.Scripts.UI.vfx.OshinogoNParticlesContainer custom)
+                if (__instance is Oshinoko.Scripts.UI.vfx.OshinokoNParticlesContainer custom)
                 {
                     custom.TriggerRoundStartRefillAnimation();
                     return false;

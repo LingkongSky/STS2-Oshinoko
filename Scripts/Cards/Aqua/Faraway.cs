@@ -1,9 +1,9 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// ÃèÊö: ÏÂ»ØºÏ¿ªÊ¼Ê±¶ÔËùÓĞµĞÈËÔì³É10(14)µãÉËº¦
+// ï¿½ï¿½ï¿½ï¿½: ï¿½Â»ØºÏ¿ï¿½Ê¼Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½10(14)ï¿½ï¿½ï¿½Ëºï¿½
 public class Faraway : AquaCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10, ValueProp.Move)];

@@ -1,9 +1,9 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// ÃèÊö: Ã¿ÓÐÒ»ÃûµÐÈË£¬Éú³ÉÒ»ÕÅ½þÑª»¨°ê¡£
+// ï¿½ï¿½ï¿½ï¿½: Ã¿ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Å½ï¿½Ñªï¿½ï¿½ï¿½ê¡£
 public class Persuade : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromCard<BloodFlower>()];

@@ -1,8 +1,8 @@
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
 
 /// 下一张被打出的牌改为回到手中。
-public class BackViewPower : OshinogoCustomPower
+public class BackViewPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;

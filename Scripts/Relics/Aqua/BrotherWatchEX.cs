@@ -1,9 +1,9 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Relics.Aqua;
+namespace Oshinoko.Scripts.Relics.Aqua;
 
 [RegisterRelic(typeof(AquaRelicPool))]
-public class BrotherWatchEX : OshinogoRelicModel
+public class BrotherWatchEX : OshinokoRelicModel
 {
     public override RelicRarity Rarity => RelicRarity.Ancient;
 

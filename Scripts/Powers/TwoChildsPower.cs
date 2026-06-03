@@ -1,11 +1,11 @@
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
 
-/// Ã¿»ØºÏ¿ªÊ¼Ê±»ñµÃÁÙÊ±ÉÁÒ«ÓëÁÙÊ±¸´³ð¡£
-public class TwoChildsPower : OshinogoCustomPower
+/// Ã¿ï¿½ØºÏ¿ï¿½Ê¼Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ò«ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
+public class TwoChildsPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;

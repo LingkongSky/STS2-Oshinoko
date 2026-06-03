@@ -1,8 +1,8 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
-// ÃèÊö: Ê§È¥2µãÉúÃü£¬È¥³ıËùÓĞµĞÈËµÄÈË¹¤ÖÆÆ·£¬²¢Ìí¼Ó3²ãÒ×ÉËºÍĞéÈõ¡£
+// ï¿½ï¿½ï¿½ï¿½: Ê§È¥2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½ï¿½Ëµï¿½ï¿½Ë¹ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 [RegisterCard(typeof(RubyCardPool))]
 public class SpikesOfLies : RubyCardModel

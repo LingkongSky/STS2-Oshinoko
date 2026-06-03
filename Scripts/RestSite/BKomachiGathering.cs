@@ -1,14 +1,14 @@
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Map;
 using MegaCrit.Sts2.Core.Runs.History;
-using Oshinogo.Scripts.Relics.Ruby;
+using Oshinoko.Scripts.Relics.Ruby;
 
-namespace Oshinogo.Scripts.RestSite;
+namespace Oshinoko.Scripts.RestSite;
 
 public sealed class BKomachiGathering : ModRestSiteOptionTemplate
 {
     public const string OptionIdValue = "BKOMACHI";
-    public const string IconPath = "res://Oshinogo/images/ui/rest_site/option_bkomachi.png";
+    public const string IconPath = "res://Oshinoko/images/ui/rest_site/option_bkomachi.png";
     private const int MaxUses = 3;
 
     private readonly int _useCount;

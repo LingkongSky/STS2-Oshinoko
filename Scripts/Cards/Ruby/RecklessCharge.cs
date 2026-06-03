@@ -1,7 +1,7 @@
 using MegaCrit.Sts2.Core.CardSelection;
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 [RegisterCard(typeof(RubyCardPool))]
 public class RecklessCharge : RubyCardModel

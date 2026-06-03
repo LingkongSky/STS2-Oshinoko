@@ -5,11 +5,11 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Rooms;
 
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
 
-/// Õ½¶·Ê¤Àûºó£¬¿É´Ó¿¨×éÖÐÓÀ¾ÃÒÆ³ý1ÕÅÅÆ¡£
-public class HandscrollPaintingPower : OshinogoCustomPower
+/// Õ½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½ó£¬¿É´Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ³ï¿½1ï¿½ï¿½ï¿½Æ¡ï¿½
+public class HandscrollPaintingPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;

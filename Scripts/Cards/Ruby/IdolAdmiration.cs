@@ -1,6 +1,6 @@
 using STS2RitsuLib.Keywords;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 造成9(13)点伤害，抽1张牌。
 [RegisterCard(typeof(RubyCardPool))]
@@ -16,7 +16,7 @@ public class IdolAdmiration : RubyCardModel
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
 
     public IdolAdmiration() : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy, true)
     {

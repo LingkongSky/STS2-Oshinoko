@@ -1,9 +1,9 @@
 
-namespace Oshinogo.Scripts.Relics.Aqua;
+namespace Oshinoko.Scripts.Relics.Aqua;
 
 [RegisterRelic(typeof(AquaRelicPool))]
 
-public class Akane : OshinogoRelicModel
+public class Akane : OshinokoRelicModel
 {
     private const int CycleLength = 4;
 

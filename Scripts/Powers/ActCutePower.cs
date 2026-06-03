@@ -1,6 +1,6 @@
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
-public class ActCuteNextTurnPower : OshinogoCustomPower
+public class ActCuteNextTurnPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -18,12 +18,12 @@ public class ActCuteNextTurnPower : OshinogoCustomPower
     }
 }
 
-public class ActCuteLockoutPower : OshinogoCustomPower
+public class ActCuteLockoutPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    public override string? CustomIconPath => "res://Oshinogo/images/powers/ActCuteNextTurnPower.png";
-    public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ActCuteNextTurnPower.png";
+    public override string? CustomIconPath => "res://Oshinoko/images/powers/ActCuteNextTurnPower.png";
+    public override string? CustomBigIconPath => "res://Oshinoko/images/powers/ActCuteNextTurnPower.png";
 
     public override bool ShouldPlay(CardModel card, AutoPlayType autoPlayType)
     {

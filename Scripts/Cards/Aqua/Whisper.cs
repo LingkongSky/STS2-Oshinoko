@@ -1,9 +1,9 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// ÃèÊö: Ïû³ıÒ»ÃûµĞÈËµÄÈË¹¤£¬²¢¸øÓè2(3)²ãĞéÈõ
+// ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½Ë¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2(3)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 public class Whisper : AquaCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Weak", 2)];

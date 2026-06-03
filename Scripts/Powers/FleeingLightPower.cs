@@ -2,11 +2,11 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using Oshinogo.Scripts.Cards.Other;
+using Oshinoko.Scripts.Cards.Other;
 
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
-public class FleeingLightPower : OshinogoCustomPower
+public class FleeingLightPower : OshinokoCustomPower
 {
     private class Data
     {

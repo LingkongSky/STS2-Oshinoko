@@ -1,8 +1,8 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
-// 描述: 下回合获得无实体，且不能出牌。下回合结束后回复5(7)点生命。
+// 锟斤拷锟斤拷: 锟铰回合伙拷锟斤拷锟绞碉拷澹拷也锟斤拷艹锟斤拷啤锟斤拷禄睾辖锟斤拷锟斤拷锟截革拷5(7)锟斤拷锟斤拷锟斤拷锟斤拷
 
 [RegisterCard(typeof(RubyCardPool))]
 public class ActCute : RubyCardModel

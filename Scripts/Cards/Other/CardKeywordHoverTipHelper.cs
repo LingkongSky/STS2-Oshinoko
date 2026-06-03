@@ -1,6 +1,6 @@
 using MegaCrit.Sts2.Core.Localization;
 
-namespace Oshinogo.Scripts.Cards.Other;
+namespace Oshinoko.Scripts.Cards.Other;
 
 public static class CardKeywordHoverTipHelper
 {

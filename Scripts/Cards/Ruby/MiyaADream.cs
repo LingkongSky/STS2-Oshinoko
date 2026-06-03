@@ -1,8 +1,8 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
-// ÃèÊö: »ñµÃ2(3)µãÁÙÊ±ÉÁÒ«¡£
+// ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½2(3)ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ò«ï¿½ï¿½
 
 [RegisterCard(typeof(RubyCardPool))]
 public class MiyaADream : RubyCardModel

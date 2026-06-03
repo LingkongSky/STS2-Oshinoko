@@ -6,19 +6,19 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
-using Oshinogo.Scripts.Cards.Other;
-namespace Oshinogo.Scripts.Powers;
+using Oshinoko.Scripts.Cards.Other;
+namespace Oshinoko.Scripts.Powers;
 
 // Permanent shine.
-public class ShinePower : OshinogoCustomPower
+public class ShinePower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override string? CustomIconPath => "res://Oshinogo/images/powers/ruby_energy.png";
+    public override string? CustomIconPath => "res://Oshinoko/images/powers/ruby_energy.png";
 
-    public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big.png";
+    public override string? CustomBigIconPath => "res://Oshinoko/images/powers/ruby_energy_big.png";
 
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
@@ -32,15 +32,15 @@ public class ShinePower : OshinogoCustomPower
 }
 
 // Turn shine: removed at end of turn.
-public class TurnShinePower : OshinogoCustomPower
+public class TurnShinePower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override string? CustomIconPath => "res://Oshinogo/images/powers/ruby_energy.png";
+    public override string? CustomIconPath => "res://Oshinoko/images/powers/ruby_energy.png";
 
-    public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big.png";
+    public override string? CustomBigIconPath => "res://Oshinoko/images/powers/ruby_energy_big.png";
 
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
@@ -62,7 +62,7 @@ public class TurnShinePower : OshinogoCustomPower
 }
 
 // Temp shine: removed after the next Shine card is played.
-public class TempShinePower : OshinogoCustomPower
+public class TempShinePower : OshinokoCustomPower
 {
     private readonly Dictionary<CardModel, int> _amountSnapshotBeforePlay = new();
 
@@ -70,9 +70,9 @@ public class TempShinePower : OshinogoCustomPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override string? CustomIconPath => "res://Oshinogo/images/powers/ruby_energy.png";
+    public override string? CustomIconPath => "res://Oshinoko/images/powers/ruby_energy.png";
 
-    public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big.png";
+    public override string? CustomBigIconPath => "res://Oshinoko/images/powers/ruby_energy_big.png";
 
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
@@ -91,7 +91,7 @@ public class TempShinePower : OshinogoCustomPower
             return Task.CompletedTask;
         }
 
-        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()))
+        if (!cardPlay.Card.Keywords.Contains(OshinokoKeywords.Shine.GetModKeywordCardKeyword()))
         {
             return Task.CompletedTask;
         }
@@ -111,7 +111,7 @@ public class TempShinePower : OshinogoCustomPower
             return;
         }
 
-        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()))
+        if (!cardPlay.Card.Keywords.Contains(OshinokoKeywords.Shine.GetModKeywordCardKeyword()))
         {
             return;
         }
@@ -146,7 +146,7 @@ public class TempShinePower : OshinogoCustomPower
     }
 }
 
-public class GainTempShineNextTurnPower : OshinogoCustomPower
+public class GainTempShineNextTurnPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -163,7 +163,7 @@ public class GainTempShineNextTurnPower : OshinogoCustomPower
     }
 }
 
-public class GainTurnShineNextTurnPower : OshinogoCustomPower
+public class GainTurnShineNextTurnPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -181,7 +181,7 @@ public class GainTurnShineNextTurnPower : OshinogoCustomPower
 }
 
 
-public class NextShineDiscountPower : OshinogoCustomPower
+public class NextShineDiscountPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -191,7 +191,7 @@ public class NextShineDiscountPower : OshinogoCustomPower
 
     public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
     {
-        if (card.Owner.Creature != Owner || !card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()))
+        if (card.Owner.Creature != Owner || !card.Keywords.Contains(OshinokoKeywords.Shine.GetModKeywordCardKeyword()))
         {
             modifiedCost = originalCost;
             return false;
@@ -218,7 +218,7 @@ public class NextShineDiscountPower : OshinogoCustomPower
             return;
         }
 
-        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()))
+        if (!cardPlay.Card.Keywords.Contains(OshinokoKeywords.Shine.GetModKeywordCardKeyword()))
         {
             return;
         }

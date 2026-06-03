@@ -1,9 +1,9 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// ÃèÊö: Ã¿´Î´ò³öÐéÎÞÅÆÊ±£¬»ñµÃ1µãÄÜÁ¿¡£
+// ï¿½ï¿½ï¿½ï¿½: Ã¿ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 public class TherebyShining : AquaCardModel
 {
     public TherebyShining() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true)

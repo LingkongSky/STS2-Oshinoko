@@ -1,6 +1,6 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 鎻忚堪: 閫犳垚8(10)鐐逛激瀹炽€傝嫢閫犳垚鐨勪激瀹冲ぇ浜?2(15)锛岃繑杩?(2)鐐硅垂鐢ㄣ€?
 
@@ -10,7 +10,7 @@ public class HeartFlutterAttack : RubyCardModel
     private const string ThresholdKey = "Threshold";
     private const string RefundEnergyKey = "RefundEnergy";
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

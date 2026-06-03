@@ -3,11 +3,11 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Models;
 
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
-/// Õ½¶·ÖÐÃ¿´ÎÉú³É¿¨ÅÆÊ±£¬»ñµÃÁÙÊ±ÉÁÒ«¡£
+/// Õ½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½É¿ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ò«ï¿½ï¿½
 
-public class BeautifulDreamPower : OshinogoCustomPower
+public class BeautifulDreamPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;

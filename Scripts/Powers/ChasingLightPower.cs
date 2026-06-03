@@ -1,6 +1,6 @@
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
-public class ChasingLightPower : OshinogoCustomPower
+public class ChasingLightPower : OshinokoCustomPower
 {
     private class Data
     {

@@ -1,8 +1,8 @@
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
 
 /// 每当消耗卡牌时，获得临时复仇。
-public class NightmaresPower : OshinogoCustomPower
+public class NightmaresPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;

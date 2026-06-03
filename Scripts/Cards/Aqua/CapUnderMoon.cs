@@ -1,9 +1,9 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// цХйЖ: ╩Я╣ц2╣Циар╚ё╛╩Я╣ц3╣Ц╩ь╨оиар╚║ё
+// О©╫О©╫О©╫О©╫: О©╫О©╫О©╫2О©╫О©╫О©╫О©╫р╚О©╫О©╫О©╫О©╫О©╫3О©╫О©╫ь╨О©╫О©╫О©╫р╚О©╫О©╫
 public class CapUnderMoon : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");

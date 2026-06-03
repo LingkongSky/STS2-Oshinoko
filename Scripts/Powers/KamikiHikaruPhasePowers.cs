@@ -1,11 +1,11 @@
 using MegaCrit.Sts2.Core.Entities.Powers;
 
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
-public abstract class KamikiHikaruIconPower : OshinogoCustomPower
+public abstract class KamikiHikaruIconPower : OshinokoCustomPower
 {
-    public override string? CustomIconPath => "res://Oshinogo/images/powers/ruby_energy_black.png";
-    public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big_black.png";
+    public override string? CustomIconPath => "res://Oshinoko/images/powers/ruby_energy_black.png";
+    public override string? CustomBigIconPath => "res://Oshinoko/images/powers/ruby_energy_big_black.png";
 }
 
 // Shows how much damage players still need to deal in phase 1 to trigger the stun interrupt.

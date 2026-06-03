@@ -3,11 +3,11 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
 
-// 下回合开始时死亡。
-public class UnderTheSeaPower : OshinogoCustomPower
+// 锟铰回合匡拷始时锟斤拷锟斤拷锟斤拷
+public class UnderTheSeaPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Single;

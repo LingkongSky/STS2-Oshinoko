@@ -7,19 +7,19 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
-using Oshinogo.Scripts.Cards.Other;
-namespace Oshinogo.Scripts.Powers;
+using Oshinoko.Scripts.Cards.Other;
+namespace Oshinoko.Scripts.Powers;
 
 // Permanent revenge: persists and triggers HP loss when a Shine card is played.
-public class RevengePower : OshinogoCustomPower
+public class RevengePower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override string? CustomIconPath => "res://Oshinogo/images/powers/ruby_energy_black.png";
+    public override string? CustomIconPath => "res://Oshinoko/images/powers/ruby_energy_black.png";
 
-    public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big_black.png";
+    public override string? CustomBigIconPath => "res://Oshinoko/images/powers/ruby_energy_big_black.png";
 
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
@@ -38,15 +38,15 @@ public class RevengePower : OshinogoCustomPower
 }
 
 // Turn revenge: expires at end of turn.
-public class TurnRevengePower : OshinogoCustomPower
+public class TurnRevengePower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override string? CustomIconPath => "res://Oshinogo/images/powers/ruby_energy_black.png";
+    public override string? CustomIconPath => "res://Oshinoko/images/powers/ruby_energy_black.png";
 
-    public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big_black.png";
+    public override string? CustomBigIconPath => "res://Oshinoko/images/powers/ruby_energy_big_black.png";
 
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
@@ -73,15 +73,15 @@ public class TurnRevengePower : OshinogoCustomPower
 }
 
 // Temp revenge: removed after the next Shine card is played.
-public class TempRevengePower : OshinogoCustomPower
+public class TempRevengePower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override string? CustomIconPath => "res://Oshinogo/images/powers/ruby_energy_black.png";
+    public override string? CustomIconPath => "res://Oshinoko/images/powers/ruby_energy_black.png";
 
-    public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ruby_energy_big_black.png";
+    public override string? CustomBigIconPath => "res://Oshinoko/images/powers/ruby_energy_big_black.png";
 
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
@@ -100,7 +100,7 @@ public class TempRevengePower : OshinogoCustomPower
             return;
         }
 
-        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()))
+        if (!cardPlay.Card.Keywords.Contains(OshinokoKeywords.Shine.GetModKeywordCardKeyword()))
         {
             return;
         }
@@ -220,7 +220,7 @@ public static class RevengePowerHelper
             return;
         }
 
-        if (!cardPlay.Card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword()))
+        if (!cardPlay.Card.Keywords.Contains(OshinokoKeywords.Shine.GetModKeywordCardKeyword()))
         {
             return;
         }
@@ -248,7 +248,7 @@ public static class RevengePowerHelper
 
 
 
-public class GainTempRevengeNextTurnPower : OshinogoCustomPower
+public class GainTempRevengeNextTurnPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -265,7 +265,7 @@ public class GainTempRevengeNextTurnPower : OshinogoCustomPower
     }
 }
 
-public class GainTurnRevengeNextTurnPower : OshinogoCustomPower
+public class GainTurnRevengeNextTurnPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;

@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Oshinogo"
+config/name="Oshinoko"
 run/main_scene="uid://rg6linnyhfp0"
 config/features=PackedStringArray("4.5", "C#", "Mobile")
 
@@ -21,7 +21,7 @@ window/size/viewport_height=1080
 
 [dotnet]
 
-project/assembly_name="Oshinogo"
+project/assembly_name="Oshinoko"
 
 [editor]
 

@@ -1,5 +1,5 @@
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 每使用6(5)点闪耀，获得1点能量。
 

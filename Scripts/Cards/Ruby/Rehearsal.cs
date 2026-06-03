@@ -1,6 +1,6 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 造成8(11)点伤害。从抽牌堆中检索1张闪耀牌置入手牌。
 
@@ -8,7 +8,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 public class Rehearsal : RubyCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -33,7 +33,7 @@ public class Rehearsal : RubyCardModel
             .Execute(choiceContext);
 
         var drawPile = PileType.Draw.GetPile(Owner);
-        var shineCards = drawPile.Cards.Where(card => card.Keywords.Contains(OshinogoKeywords.Shine.GetModKeywordCardKeyword())).ToList();
+        var shineCards = drawPile.Cards.Where(card => card.Keywords.Contains(OshinokoKeywords.Shine.GetModKeywordCardKeyword())).ToList();
         if (shineCards.Count == 0)
         {
             return;

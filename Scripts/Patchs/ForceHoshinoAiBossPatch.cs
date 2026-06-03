@@ -1,8 +1,8 @@
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Models.Acts;
-using Oshinogo.Scripts.Encounters;
+using Oshinoko.Scripts.Encounters;
 
-namespace Oshinogo.Scripts.Patchs;
+namespace Oshinoko.Scripts.Patchs;
 
 [HarmonyPatch(typeof(ActModel), nameof(ActModel.CreateMap))]
 public static class ForceHoshinoAiBossPatch

@@ -1,8 +1,8 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
-// ÃèÊö: ¶ÔËùÓĞµĞÈËÔì³É5(7)µãÉËº¦£¬¸øÓè1(2)²ãÒ×ÉË
+// ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½5(7)ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1(2)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 [RegisterCard(typeof(RubyCardPool))]
 public class Deterrence : RubyCardModel

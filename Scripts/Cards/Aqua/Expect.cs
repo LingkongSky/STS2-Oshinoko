@@ -1,9 +1,9 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// ÃèÊö: ±¾»ØºÏÄÚ´ò³öµÄÏûºÄÅÆ»á½øÈëÆúÅÆ¶Ñ¡£ Ä±»®2
+// ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½Øºï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶Ñ¡ï¿½ Ä±ï¿½ï¿½2
 public class Expect : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => PlanCostHelper.CreatePlanCostHoverTips(2);

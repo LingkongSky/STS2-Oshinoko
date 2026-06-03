@@ -1,9 +1,9 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// Õ½¶·Ê¤Àûºó£¬¿É´Ó¿¨×éÖÐÓÀ¾ÃÒÆ³ý1ÕÅÅÆ
+// Õ½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½ó£¬¿É´Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ³ï¿½1ï¿½ï¿½ï¿½ï¿½
 public class HandscrollPainting : AquaCardModel
 {
     public HandscrollPainting() : base(3, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)

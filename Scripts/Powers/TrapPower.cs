@@ -1,8 +1,8 @@
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
 
 /// 陷阱：目标受到的攻击伤害提高100%，并在怪物侧回合结束时减少1层。
-public class TrapPower : OshinogoCustomPower
+public class TrapPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;

@@ -1,15 +1,15 @@
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
-public abstract class HoshinoAiIconPower : OshinogoCustomPower
+public abstract class HoshinoAiIconPower : OshinokoCustomPower
 {
-    public override string? CustomIconPath => "res://Oshinogo/images/powers/ai_energy.png";
-    public override string? CustomBigIconPath => "res://Oshinogo/images/powers/ai_energy_big.png";
+    public override string? CustomIconPath => "res://Oshinoko/images/powers/ai_energy.png";
+    public override string? CustomBigIconPath => "res://Oshinoko/images/powers/ai_energy_big.png";
 }
 
-// »úÖÆËµÃ÷£º½öÓÃÓÚ¸øÍæ¼Ò²é¿´ Boss ¹æÔò¡£
+// ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½Ò²é¿´ Boss ï¿½ï¿½ï¿½ï¿½
 public class HoshinoAiMechanicsPower : HoshinoAiIconPower
 {
     public override PowerType Type => PowerType.Buff;

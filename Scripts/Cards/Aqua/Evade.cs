@@ -1,9 +1,9 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Aqua;
+namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// ÃèÊö: Ôì³É9(13)µãÉËº¦£¬³é2(3)ÕÅÅÆ¡£Ä±»®1
+// ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½9(13)ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½2(3)ï¿½ï¿½ï¿½Æ¡ï¿½Ä±ï¿½ï¿½1
 public class Evade : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => PlanCostHelper.CreatePlanCostHoverTips(1);

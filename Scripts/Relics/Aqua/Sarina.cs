@@ -1,10 +1,10 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Relics.Aqua;
+namespace Oshinoko.Scripts.Relics.Aqua;
 
 [RegisterRelic(typeof(AquaRelicPool))]
-// ÃèÊö: Õ½¶·¿ªÊ¼Ê±»ñµÃ3ÕÅ½þÑª»¨°ê¡£
-public class Sarina : OshinogoRelicModel
+// ï¿½ï¿½ï¿½ï¿½: Õ½ï¿½ï¿½ï¿½ï¿½Ê¼Ê±ï¿½ï¿½ï¿½3ï¿½Å½ï¿½Ñªï¿½ï¿½ï¿½ê¡£
+public class Sarina : OshinokoRelicModel
 {
     public override RelicRarity Rarity => RelicRarity.Event;
 

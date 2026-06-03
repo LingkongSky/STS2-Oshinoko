@@ -1,8 +1,8 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
-// ÃèÊö: ½«ÄãµÄ¸´³ðÈ«²¿×ª»»ÎªÉÁÒ«¡£³éµÈÁ¿¿¨ÅÆ£¬²¢»ñµÃ20µã¸ñµ²¡£
+// ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½È«ï¿½ï¿½×ªï¿½ï¿½Îªï¿½ï¿½Ò«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½20ï¿½ï¿½ñµ²¡ï¿½
 
 [RegisterCard(typeof(RubyCardPool))]
 public class SiblingsReunited : RubyCardModel

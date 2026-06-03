@@ -1,8 +1,8 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
-// ÃèÊö: Ôì³É6(9)µãÉËº¦,¸øÓè1(2)²ãĞéÈõ¡£
+// ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½6(9)ï¿½ï¿½ï¿½Ëºï¿½,ï¿½ï¿½ï¿½ï¿½1(2)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 [RegisterCard(typeof(RubyCardPool))]
 public class SideGlance : RubyCardModel

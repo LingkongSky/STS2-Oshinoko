@@ -1,7 +1,7 @@
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using STS2RitsuLib.Scaffolding.Godot;
 
-namespace Oshinogo.Scripts.Character;
+namespace Oshinoko.Scripts.Character;
 
 [RegisterCharacter]
 public class Ruby : ModCharacterTemplate<RubyCardPool, RubyRelicPool, RubyPotionPool>
@@ -28,28 +28,28 @@ public class Ruby : ModCharacterTemplate<RubyCardPool, RubyRelicPool, RubyPotion
         CharacterAssetProfiles.Ironclad(),
         new(
             Scenes: new(
-                VisualsPath: "res://Oshinogo/scenes/character/ruby.tscn",
-                EnergyCounterPath: "res://Oshinogo/scenes/ui/ruby_energy_counter.tscn",
-                MerchantAnimPath: "res://Oshinogo/scenes/merchant/characters/ruby_merchant.tscn",
-                RestSiteAnimPath: "res://Oshinogo/scenes/rest_site/characters/ruby_rest_site.tscn"
+                VisualsPath: "res://Oshinoko/scenes/character/ruby.tscn",
+                EnergyCounterPath: "res://Oshinoko/scenes/ui/ruby_energy_counter.tscn",
+                MerchantAnimPath: "res://Oshinoko/scenes/merchant/characters/ruby_merchant.tscn",
+                RestSiteAnimPath: "res://Oshinoko/scenes/rest_site/characters/ruby_rest_site.tscn"
             ),
             Ui: new(
-                IconTexturePath: "res://Oshinogo/images/ui/ruby.png",
-                IconOutlineTexturePath: "res://Oshinogo/images/ui/ruby_outline.png",
-                IconPath: "res://Oshinogo/scenes/ui/ruby_icon.tscn",
-                CharacterSelectBgPath: "res://Oshinogo/scenes/ui/ruby_background.tscn",
-                CharacterSelectIconPath: "res://Oshinogo/images/ui/ruby_icon.png",
-                CharacterSelectLockedIconPath: "res://Oshinogo/images/packed/character_select/char_select_ruby_locked.png",
-                MapMarkerPath: "res://Oshinogo/images/packed/map/icons/map_marker_ruby.png"
+                IconTexturePath: "res://Oshinoko/images/ui/ruby.png",
+                IconOutlineTexturePath: "res://Oshinoko/images/ui/ruby_outline.png",
+                IconPath: "res://Oshinoko/scenes/ui/ruby_icon.tscn",
+                CharacterSelectBgPath: "res://Oshinoko/scenes/ui/ruby_background.tscn",
+                CharacterSelectIconPath: "res://Oshinoko/images/ui/ruby_icon.png",
+                CharacterSelectLockedIconPath: "res://Oshinoko/images/packed/character_select/char_select_ruby_locked.png",
+                MapMarkerPath: "res://Oshinoko/images/packed/map/icons/map_marker_ruby.png"
             ),
             Vfx: new(
-                TrailPath: "res://Oshinogo/scenes/vfx/card_trail_ruby.tscn"
+                TrailPath: "res://Oshinoko/scenes/vfx/card_trail_ruby.tscn"
             ),
             Multiplayer: new(
-                ArmPointingTexturePath: "res://Oshinogo/images/ui/hands/multiplayer_hand_ruby_point.png",
-                ArmRockTexturePath: "res://Oshinogo/images/ui/hands/multiplayer_hand_ruby_rock.png",
-                ArmPaperTexturePath: "res://Oshinogo/images/ui/hands/multiplayer_hand_ruby_paper.png",
-                ArmScissorsTexturePath: "res://Oshinogo/images/ui/hands/multiplayer_hand_ruby_scissors.png"
+                ArmPointingTexturePath: "res://Oshinoko/images/ui/hands/multiplayer_hand_ruby_point.png",
+                ArmRockTexturePath: "res://Oshinoko/images/ui/hands/multiplayer_hand_ruby_rock.png",
+                ArmPaperTexturePath: "res://Oshinoko/images/ui/hands/multiplayer_hand_ruby_paper.png",
+                ArmScissorsTexturePath: "res://Oshinoko/images/ui/hands/multiplayer_hand_ruby_scissors.png"
             )
         )
     );

@@ -1,7 +1,7 @@
 using STS2RitsuLib.Interop.AutoRegistration;
 
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 对所有敌人造成14点伤害，获得2点回合闪耀
 
@@ -9,7 +9,7 @@ namespace Oshinogo.Scripts.Cards.Ruby;
 public class IdolSong : RubyCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

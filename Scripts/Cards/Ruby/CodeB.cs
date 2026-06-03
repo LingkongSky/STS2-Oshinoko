@@ -1,6 +1,6 @@
 using STS2RitsuLib.Keywords;
 
-namespace Oshinogo.Scripts.Cards.Ruby;
+namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 对所有敌人造成5(7)点伤害3次，自己获得5(7)点防御3次。
 
@@ -9,7 +9,7 @@ public class CodeB : RubyCardModel
 {
     private const string CalculatedBlockKey = "CalculatedBlock";
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinogoKeywords.Shine.GetModKeywordCardKeyword()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
 
     public override bool GainsBlock => true;
 

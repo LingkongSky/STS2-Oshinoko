@@ -4,11 +4,11 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace Oshinogo.Scripts.Powers;
+namespace Oshinoko.Scripts.Powers;
 
 
-/// 不再受到虚弱、脆弱、易伤影响�?
-public class MetamorphosisPower : OshinogoCustomPower
+/// 不再受到虚弱、脆弱、易伤影响�?
+public class MetamorphosisPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
