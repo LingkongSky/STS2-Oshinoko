@@ -220,22 +220,13 @@ public class HoshinoAi : ModMonsterTemplate
     {
         _phase3UseRebirthCard = false;
 
-        var combatState = Creature.CombatState;
-        if (combatState == null)
+        var targets = GetPlayerCreatures();
+        if (targets.Count == 0)
         {
             return;
         }
 
-        foreach (var playerCreature in GetPlayerCreatures())
-        {
-            if (playerCreature.Player == null)
-            {
-                continue;
-            }
-
-            var rebirth = combatState.CreateCard<Rebirth>(playerCreature.Player);
-            await CardPileCmd.AddGeneratedCardToCombat(rebirth, PileType.Discard, playerCreature.Player, CardPilePosition.Top);
-        }
+        await CardPileCmd.AddToCombatAndPreview<Rebirth>(targets, PileType.Discard, 1, null, CardPilePosition.Top);
     }
 
     private async Task Phase3NoDrawMove()

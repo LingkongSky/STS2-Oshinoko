@@ -3,7 +3,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// ����: ��һ�����ڴ��ʱ�ص����С�
+// 下一张打出的将会回到手中
 public class BackView : AquaCardModel
 {
     public BackView() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self, true)
