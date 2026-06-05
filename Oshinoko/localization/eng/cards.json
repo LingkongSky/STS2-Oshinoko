@@ -270,7 +270,7 @@
     "OSHINOKO_CARD_SAME_DESTINATION.title": "Different Paths To The Same Destination",
     "OSHINOKO_CARD_SAME_DESTINATION.description": "The next card played will be played twice.",
     "OSHINOKO_CARD_EMBRACE.title": "Embrace",
-    "OSHINOKO_CARD_EMBRACE.description": "Restore {Heal:diff()} blood points and gain {Gold:diff()} money.",
+    "OSHINOKO_CARD_EMBRACE.description": "Restore {CalculatedHeal:diff()} HP and gain {CalculatedGold:diff()} gold.",
     "OSHINOKO_CARD_FIRE_BODY.title": "Body Forged By Fire",
     "OSHINOKO_CARD_FIRE_BODY.description": "Lose 2 life points, wash away all negative effects, and gain {Block:diff()} points[gold]Block[/gold].",
     "OSHINOKO_CARD_SIDE_BY_SIDE.title": "Side By Side",
@@ -335,5 +335,4 @@
     "OSHINOKO_CARD_DEUS_EX_MACHINA.description": "All teammates gain 1 layer of [gold]Incorporeal[/gold].",
     "OSHINOKO_CARD_POISED_TO.selectionScreenPrompt": "Choose 1 card from your hand and give it to Nothingness."
 }
-
 

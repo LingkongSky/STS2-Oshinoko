@@ -8,6 +8,8 @@ public enum ShineValueType
     Block,
     Cards,
     Energy,
+    Heal,
+    Gold,
 }
 
 public class ShineCalculatedDamageVar : CalculatedVar
@@ -28,6 +30,8 @@ public class ShineCalculatedDamageVar : CalculatedVar
             ShineValueType.Block => card.DynamicVars.Block,
             ShineValueType.Cards => card.DynamicVars.Cards,
             ShineValueType.Energy => card.DynamicVars.Energy,
+            ShineValueType.Heal => card.DynamicVars.Heal,
+            ShineValueType.Gold => card.DynamicVars.Gold,
             _ => card.DynamicVars.Damage,
         };
     }
@@ -175,6 +179,8 @@ public static class ShineScaling
             ShineValueType.Block => card.DynamicVars.Block,
             ShineValueType.Cards => card.DynamicVars.Cards,
             ShineValueType.Energy => card.DynamicVars.Energy,
+            ShineValueType.Heal => card.DynamicVars.Heal,
+            ShineValueType.Gold => card.DynamicVars.Gold,
             _ => card.DynamicVars.Damage,
         };
     }

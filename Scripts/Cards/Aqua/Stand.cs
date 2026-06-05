@@ -1,3 +1,4 @@
+using MegaCrit.Sts2.Core.CardSelection;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinoko.Scripts.Cards.Aqua;
@@ -28,11 +29,20 @@ public class Stand : AquaCardModel
         var block = ShineScaling.Calculate(DynamicVars, CalculatedBlockKey, cardPlay.Target);
         await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move, cardPlay);
 
-        if (PileType.Hand.GetPile(Owner).Cards.Count == 0)
+        var handCount = PileType.Hand.GetPile(Owner).Cards.Count;
+        if (handCount <= 0)
         {
             return;
-        } var selected = PileType.Hand.GetPile(Owner).Cards.FirstOrDefault();
-        selected?.GiveSingleTurnRetain();
+        }
+
+        var selected = await CardSelectCmd.FromHand(
+            choiceContext,
+            Owner,
+            new CardSelectorPrefs(SelectionScreenPrompt, 1),
+            _ => true,
+            this);
+
+        selected.FirstOrDefault()?.GiveSingleTurnRetain();
     }
 
     protected override void OnUpgrade()
@@ -40,8 +50,6 @@ public class Stand : AquaCardModel
         DynamicVars.Block.UpgradeValueBy(3);
     }
 }
-
-
 
 
 

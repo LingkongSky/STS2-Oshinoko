@@ -2,7 +2,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinoko.Scripts.Cards.Ruby;
 
-// 描述: 场上每有一名敌人，额外获得4(6)点格挡。
+// 描述: 场上每有一名敌人，额外获得5(7)点格挡。
 
 [RegisterCard(typeof(RubyCardPool))]
 public class IdolDisguise : RubyCardModel
@@ -15,7 +15,7 @@ public class IdolDisguise : RubyCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(4m, ValueProp.Move),
+        new BlockVar(5m, ValueProp.Move),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),
     ];

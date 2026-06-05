@@ -270,7 +270,7 @@
   "OSHINOKO_CARD_SAME_DESTINATION.title": "殊途同归",
   "OSHINOKO_CARD_SAME_DESTINATION.description": "下一张被打出的牌将被打出两次。",
   "OSHINOKO_CARD_EMBRACE.title": "相拥",
-  "OSHINOKO_CARD_EMBRACE.description": "恢复{Heal:diff()}点血量，获得{Gold:diff()}金钱。",
+  "OSHINOKO_CARD_EMBRACE.description": "恢复{CalculatedHeal:diff()}点血量，获得{CalculatedGold:diff()}金钱。",
   "OSHINOKO_CARD_FIRE_BODY.title": "烈火铸就身躯",
   "OSHINOKO_CARD_FIRE_BODY.description": "失去2点生命，洗去所有负面效果，获得{Block:diff()}点[gold]格挡[/gold]。",
   "OSHINOKO_CARD_SIDE_BY_SIDE.title": "并肩",
@@ -335,4 +335,3 @@
   "OSHINOKO_CARD_DEUS_EX_MACHINA.description": "所有队友获得1层[gold]无实体[/gold]。",
   "OSHINOKO_CARD_POISED_TO.selectionScreenPrompt": "选择1张手牌，给予虚无。"
 }
-
