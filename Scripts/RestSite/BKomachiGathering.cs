@@ -12,9 +12,11 @@ public sealed class BKomachiGathering : ModRestSiteOptionTemplate
     private const int MaxUses = 3;
 
     private readonly int _useCount;
+    private readonly bool _isEnabled;
 
     public override string OptionId => OptionIdValue;
     public override string? CustomIconPath => IconPath;
+    public override bool IsEnabled => _isEnabled;
 
     public override LocString Description
     {
@@ -40,7 +42,7 @@ public sealed class BKomachiGathering : ModRestSiteOptionTemplate
         : base(owner)
     {
         _useCount = GetUsageCount(owner);
-        IsEnabled = _useCount < MaxUses;
+        _isEnabled = _useCount < MaxUses;
     }
 
     public override IEnumerable<string> AssetPaths => base.AssetPaths;
@@ -94,4 +96,3 @@ public sealed class BKomachiGathering : ModRestSiteOptionTemplate
         return count;
     }
 }
-

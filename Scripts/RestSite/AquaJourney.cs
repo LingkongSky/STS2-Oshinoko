@@ -12,12 +12,13 @@ public sealed class Journey : ModRestSiteOptionTemplate
     private const int MaxUses = 3;
 
     private readonly int _useCount;
+    private readonly bool _isEnabled;
 
     public const string IconPath = "res://Oshinoko/images/ui/rest_site/option_journey.png";
 
-
     public override string OptionId => OptionIdValue;
     public override string? CustomIconPath => IconPath;
+    public override bool IsEnabled => _isEnabled;
 
     public override LocString Description
     {
@@ -44,7 +45,7 @@ public sealed class Journey : ModRestSiteOptionTemplate
         : base(owner)
     {
         _useCount = GetUsageCount(owner);
-        IsEnabled = _useCount < MaxUses;
+        _isEnabled = _useCount < MaxUses;
     }
 
     public override async Task<bool> OnSelect()
@@ -96,4 +97,3 @@ public sealed class Journey : ModRestSiteOptionTemplate
         return count;
     }
 }
-
