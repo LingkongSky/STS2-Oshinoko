@@ -8,5 +8,15 @@
   "OPTION_JOURNEY.description1": "遇见纱里奈，获得遗物[gold]纱里奈的热情[/gold]",
   "OPTION_JOURNEY.description2": "初识有马加奈，获得遗物[gold]有马加奈的指导[/gold]",
   "OPTION_JOURNEY.description3": "与黑川交往，获得遗物[gold]恋人的支持[/gold]",
-  "OPTION_JOURNEY.descriptionDisabled": "旅途已到达终点"
+  "OPTION_JOURNEY.descriptionDisabled": "旅途已到达终点",
+  "OPTION_OSHINOKO_AQUA_JOURNEY.name": "踏上旅途",
+  "OPTION_OSHINOKO_AQUA_JOURNEY.description1": "遇见纱里奈，获得遗物[gold]纱里奈的热情[/gold]",
+  "OPTION_OSHINOKO_AQUA_JOURNEY.description2": "初识有马加奈，获得遗物[gold]有马加奈的指导[/gold]",
+  "OPTION_OSHINOKO_AQUA_JOURNEY.description3": "与黑川交往，获得遗物[gold]恋人的支持[/gold]",
+  "OPTION_OSHINOKO_AQUA_JOURNEY.descriptionDisabled": "旅途已到达终点",
+  "OPTION_OSHINOKO_RUBY_BKOMACHI.name": "召集B小町",
+  "OPTION_OSHINOKO_RUBY_BKOMACHI.description1": "邀请有马加奈，获得遗物[gold]有马加奈的指导[/gold]",
+  "OPTION_OSHINOKO_RUBY_BKOMACHI.description2": "邀请MEM，获得遗物[gold]MEM的运营[/gold]",
+  "OPTION_OSHINOKO_RUBY_BKOMACHI.description3": "邀请新生B小町，获得遗物[gold]新生B小町[/gold]",
+  "OPTION_OSHINOKO_RUBY_BKOMACHI.descriptionDisabled": "当前无法召集B小町"
 }

@@ -7,7 +7,7 @@ namespace Oshinoko.Scripts.RestSite;
 
 public sealed class BKomachiGathering : ModRestSiteOptionTemplate
 {
-    public const string OptionIdValue = "BKOMACHI";
+    public const string OptionIdValue = "OSHINOKO_RUBY_BKOMACHI";
     public const string IconPath = "res://Oshinoko/images/ui/rest_site/option_bkomachi.png";
     private const int MaxUses = 3;
 
@@ -15,7 +15,8 @@ public sealed class BKomachiGathering : ModRestSiteOptionTemplate
     private readonly bool _isEnabled;
 
     public override string OptionId => OptionIdValue;
-    public override string? CustomIconPath => IconPath;
+    public override RestSiteOptionAssetProfile AssetProfile => new(IconPath);
+    public override LocString? CustomTitle => OshinokoRestSiteLocalization.Key("OPTION_" + OptionIdValue + ".name");
     public override bool IsEnabled => _isEnabled;
 
     public override LocString Description
@@ -24,7 +25,7 @@ public sealed class BKomachiGathering : ModRestSiteOptionTemplate
         {
             if (!IsEnabled)
             {
-                return new LocString("rest_site_ui", "OPTION_" + OptionId + ".descriptionDisabled");
+                return OshinokoRestSiteLocalization.Key("OPTION_" + OptionIdValue + ".descriptionDisabled");
             }
 
             string key = _useCount switch
@@ -34,7 +35,7 @@ public sealed class BKomachiGathering : ModRestSiteOptionTemplate
                 2 => "description3",
                 _ => "descriptionDisabled"
             };
-            return new LocString("rest_site_ui", "OPTION_" + OptionId + "." + key);
+            return OshinokoRestSiteLocalization.Key("OPTION_" + OptionIdValue + "." + key);
         }
     }
 

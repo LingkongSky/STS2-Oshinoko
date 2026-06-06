@@ -1,0 +1,17 @@
+{
+  "oshinoko.title": "Oshinogo",
+  "oshinoko.display_name": "Oshinogo",
+  "general.title": "General",
+  "boss_appearance_mode.label": "Mod Boss Appearance",
+  "boss_appearance_mode.disabled": "Disabled",
+  "boss_appearance_mode.only_with_aqua_or_ruby": "Only With Aqua/Ruby",
+  "boss_appearance_mode.always": "All Characters",
+  "hoshino_ai_boss_mode.label": "Act 2 Hoshino Ai Boss Mode",
+  "hoshino_ai_boss_mode.disabled": "Disabled",
+  "hoshino_ai_boss_mode.random": "Random",
+  "hoshino_ai_boss_mode.forced": "Forced",
+  "kamiki_hikaru_boss_mode.label": "Act 3 Kamiki Hikaru Boss Mode",
+  "kamiki_hikaru_boss_mode.disabled": "Disabled",
+  "kamiki_hikaru_boss_mode.random": "Random",
+  "kamiki_hikaru_boss_mode.forced": "Forced"
+}

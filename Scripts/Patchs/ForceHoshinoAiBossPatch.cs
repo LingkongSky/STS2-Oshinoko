@@ -1,5 +1,6 @@
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Models.Acts;
+using MegaCrit.Sts2.Core.Runs;
 using Oshinoko.Scripts.Encounters;
 
 namespace Oshinoko.Scripts.Patchs;
@@ -7,21 +8,26 @@ namespace Oshinoko.Scripts.Patchs;
 [HarmonyPatch(typeof(ActModel), nameof(ActModel.CreateMap))]
 public static class ForceHoshinoAiBossPatch
 {
-    public static void Prefix(ActModel __instance)
+    public static void Prefix(ActModel __instance, RunState runState)
     {
         if (__instance is not Hive)
         {
             return;
         }
 
-        var mode = ModConfig.HoshinoAiBossMode;
-        if (mode == HoshinoAiBossMode.Random)
+        var aiEncounter = ModelDb.Encounter<AiEncounter>();
+        if (aiEncounter == null)
         {
             return;
         }
 
-        var aiEncounter = ModelDb.Encounter<AiEncounter>();
-        if (aiEncounter == null)
+        var mode = ModConfig.HoshinoAiBossMode;
+        if (!ModConfig.ShouldIncludeModBosses(runState))
+        {
+            mode = HoshinoAiBossMode.Disabled;
+        }
+
+        if (mode == HoshinoAiBossMode.Random)
         {
             return;
         }
@@ -52,7 +58,8 @@ public static class ForceHoshinoAiBossPatch
 
         if (__instance.HasSecondBoss && __instance.SecondBossEncounter is AiEncounter)
         {
-            var replacement = nonAiBosses.FirstOrDefault(encounter => encounter != __instance.BossEncounter) ?? nonAiBosses[0];
+            var replacement = nonAiBosses.FirstOrDefault(encounter => encounter != __instance.BossEncounter)
+                ?? nonAiBosses[0];
             __instance.SetSecondBossEncounter(replacement);
         }
     }

@@ -12,6 +12,13 @@ public class BrotherWatch : OshinokoRelicModel
 
     public override bool TryModifyRestSiteOptions(Player owner, ICollection<RestSiteOption> options)
     {
+        if (!ReferenceEquals(Owner, owner)
+            || Owner?.Character is not Oshinoko.Scripts.Character.Aqua
+            || owner.Character is not Oshinoko.Scripts.Character.Aqua)
+        {
+            return false;
+        }
+
         if (options.Any(option => option.OptionId == Journey.OptionIdValue))
         {
             return false;

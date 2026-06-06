@@ -11,6 +11,13 @@ namespace Oshinoko.Scripts.Relics.Ruby
 
         public override bool TryModifyRestSiteOptions(Player owner, ICollection<RestSiteOption> options)
         {
+            if (!ReferenceEquals(Owner, owner)
+                || Owner?.Character is not Oshinoko.Scripts.Character.Ruby
+                || owner.Character is not Oshinoko.Scripts.Character.Ruby)
+            {
+                return false;
+            }
+
             if (options.Any(option => option.OptionId == BKomachiGathering.OptionIdValue))
             {
                 return false;

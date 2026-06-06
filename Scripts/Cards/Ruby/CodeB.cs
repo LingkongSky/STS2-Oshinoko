@@ -1,5 +1,3 @@
-using STS2RitsuLib.Keywords;
-
 namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 对所有敌人造成5(7)点伤害3次，自己获得5(7)点防御3次。
@@ -8,10 +6,16 @@ namespace Oshinoko.Scripts.Cards.Ruby;
 public class CodeB : RubyCardModel
 {
     private const string CalculatedBlockKey = "CalculatedBlock";
+    private const string RareBannerMaterialPath = "res://materials/cards/banners/card_banner_rare_mat.tres";
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
 
     public override bool GainsBlock => true;
+
+    public override CardAssetProfile AssetProfile => base.AssetProfile with
+    {
+        BannerMaterialPath = RareBannerMaterialPath
+    };
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -22,7 +26,7 @@ public class CodeB : RubyCardModel
         ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),
     ];
 
-    public CodeB() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies, true)
+    public CodeB() : base(1, CardType.Attack, CardRarity.Event, TargetType.AllEnemies, true)
     {
     }
 
@@ -55,6 +59,5 @@ public class CodeB : RubyCardModel
         DynamicVars.Block.UpgradeValueBy(2);
     }
 }
-
 
 

@@ -1,5 +1,3 @@
-using STS2RitsuLib.Interop.AutoRegistration;
-
 namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 获得3(5)点格挡。你手牌中下一张闪耀牌费用-1。

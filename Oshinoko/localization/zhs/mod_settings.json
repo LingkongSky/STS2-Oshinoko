@@ -1,0 +1,17 @@
+{
+  "oshinoko.title": "我推的孩子",
+  "oshinoko.display_name": "我推的孩子",
+  "general.title": "通用",
+  "boss_appearance_mode.label": "模组 Boss 出现范围",
+  "boss_appearance_mode.disabled": "不出现",
+  "boss_appearance_mode.only_with_aqua_or_ruby": "仅在有 Aqua/Ruby 时出现",
+  "boss_appearance_mode.always": "在所有人物中都出现",
+  "hoshino_ai_boss_mode.label": "第二幕星野爱 Boss 出现模式",
+  "hoshino_ai_boss_mode.disabled": "禁用",
+  "hoshino_ai_boss_mode.random": "随机",
+  "hoshino_ai_boss_mode.forced": "强制",
+  "kamiki_hikaru_boss_mode.label": "第三幕神木光 Boss 出现模式",
+  "kamiki_hikaru_boss_mode.disabled": "禁用",
+  "kamiki_hikaru_boss_mode.random": "随机",
+  "kamiki_hikaru_boss_mode.forced": "强制"
+}

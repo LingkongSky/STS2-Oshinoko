@@ -1,7 +1,8 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models.Acts;
+using MegaCrit.Sts2.Core.Runs;
 using Oshinoko.Scripts.Encounters;
 
 namespace Oshinoko.Scripts.Patchs;
@@ -9,21 +10,26 @@ namespace Oshinoko.Scripts.Patchs;
 [HarmonyPatch(typeof(ActModel), nameof(ActModel.CreateMap))]
 public static class ForceKamikiHikaruBossPatch
 {
-    public static void Prefix(ActModel __instance)
+    public static void Prefix(ActModel __instance, RunState runState)
     {
         if (__instance is not Glory)
         {
             return;
         }
 
-        var mode = ModConfig.KamikiHikaruBossMode;
-        if (mode == KamikiHikaruBossMode.Random)
+        var kamikiEncounter = ModelDb.Encounter<KamikiHikaruEncounter>();
+        if (kamikiEncounter == null)
         {
             return;
         }
 
-        var kamikiEncounter = ModelDb.Encounter<KamikiHikaruEncounter>();
-        if (kamikiEncounter == null)
+        var mode = ModConfig.KamikiHikaruBossMode;
+        if (!ModConfig.ShouldIncludeModBosses(runState))
+        {
+            mode = KamikiHikaruBossMode.Disabled;
+        }
+
+        if (mode == KamikiHikaruBossMode.Random)
         {
             return;
         }
@@ -57,7 +63,8 @@ public static class ForceKamikiHikaruBossPatch
 
         if (__instance.HasSecondBoss && __instance.SecondBossEncounter is KamikiHikaruEncounter)
         {
-            var replacement = nonKamikiBosses.FirstOrDefault(encounter => encounter != __instance.BossEncounter) ?? nonKamikiBosses[0];
+            var replacement = nonKamikiBosses.FirstOrDefault(encounter => encounter != __instance.BossEncounter)
+                ?? nonKamikiBosses[0];
             __instance.SetSecondBossEncounter(replacement);
         }
     }

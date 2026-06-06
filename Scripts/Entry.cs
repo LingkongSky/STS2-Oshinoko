@@ -15,7 +15,6 @@ public static class Entry
     public const string HarmonyId = "sts2.lingkong.Oshinoko";
     public const string ModId = "Oshinoko";
     public static readonly MegaCrit.Sts2.Core.Logging.Logger Logger = RitsuLibFramework.CreateLogger(ModId);
-
     public static void Init()
     {
         ModConfig.Init();
