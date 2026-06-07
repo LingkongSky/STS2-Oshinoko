@@ -2,19 +2,20 @@ using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinoko.Scripts.Cards.Aqua;
 
+// 冷脸：给予所有敌人1(2)层易伤
+
 [RegisterCard(typeof(AquaCardPool))]
-// ����: �������е���1(2)�����ˡ�
 public class ColdFace : AquaCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Vulnerable", 1)];
-    protected override IEnumerable<IHoverTip> AdditionalHoverTips => PlanAndKeywordTips(1, "VULNERABLE");
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("VULNERABLE");
+
     public ColdFace() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies, true)
     {
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-
         var enemies = Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature) ?? Enumerable.Empty<Creature>();
         foreach (var enemy in enemies)
         {
@@ -27,5 +28,4 @@ public class ColdFace : AquaCardModel
         DynamicVars["Vulnerable"].UpgradeValueBy(1);
     }
 }
-
 

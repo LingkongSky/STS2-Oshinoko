@@ -10,13 +10,13 @@ public partial class OshinokoNCreatureVisuals : NCreatureVisuals
 
 	private Node2D? _deathPivot;
 	private Tween? _deathTween;
-    private readonly List<AnimationPlayer> _deathAnimationPlayers = [];
+	private readonly List<AnimationPlayer> _deathAnimationPlayers = [];
 
 	public override void _Ready()
 	{
 		base._Ready();
 		_deathPivot = GetNodeOrNull<Node2D>("%DeathPivot");
-        CacheDeathAnimationPlayers();
+		CacheDeathAnimationPlayers();
 		ResetDeathFallState();
 	}
 
@@ -37,7 +37,7 @@ public partial class OshinokoNCreatureVisuals : NCreatureVisuals
 		_deathTween.TweenProperty(_deathPivot, "rotation_degrees", DeathFallAngleDeg, DeathFallDuration)
 			.SetTrans(Tween.TransitionType.Cubic)
 			.SetEase(Tween.EaseType.Out);
-        _deathTween.Finished += PauseDeathAnimationPlayers;
+		_deathTween.Finished += PauseDeathAnimationPlayers;
 	}
 
 	public void ResetDeathFallState()
@@ -52,68 +52,68 @@ public partial class OshinokoNCreatureVisuals : NCreatureVisuals
 			_deathPivot.RotationDegrees = 0f;
 		}
 
-        ResumeDeathAnimationPlayers();
+		ResumeDeathAnimationPlayers();
 	}
 
-    private void CacheDeathAnimationPlayers()
-    {
-        _deathAnimationPlayers.Clear();
-        if (_deathPivot == null || !GodotObject.IsInstanceValid(_deathPivot))
-        {
-            return;
-        }
+	private void CacheDeathAnimationPlayers()
+	{
+		_deathAnimationPlayers.Clear();
+		if (_deathPivot == null || !GodotObject.IsInstanceValid(_deathPivot))
+		{
+			return;
+		}
 
-        foreach (var animationPlayer in FindAnimationPlayers(_deathPivot))
-        {
-            _deathAnimationPlayers.Add(animationPlayer);
-        }
-    }
+		foreach (var animationPlayer in FindAnimationPlayers(_deathPivot))
+		{
+			_deathAnimationPlayers.Add(animationPlayer);
+		}
+	}
 
-    private static IEnumerable<AnimationPlayer> FindAnimationPlayers(Node root)
-    {
-        if (root is AnimationPlayer animationPlayer)
-        {
-            yield return animationPlayer;
-        }
+	private static IEnumerable<AnimationPlayer> FindAnimationPlayers(Node root)
+	{
+		if (root is AnimationPlayer animationPlayer)
+		{
+			yield return animationPlayer;
+		}
 
-        foreach (Node child in root.GetChildren())
-        {
-            foreach (var nested in FindAnimationPlayers(child))
-            {
-                yield return nested;
-            }
-        }
-    }
+		foreach (Node child in root.GetChildren())
+		{
+			foreach (var nested in FindAnimationPlayers(child))
+			{
+				yield return nested;
+			}
+		}
+	}
 
-    private void PauseDeathAnimationPlayers()
-    {
-        foreach (var animationPlayer in _deathAnimationPlayers)
-        {
-            if (!GodotObject.IsInstanceValid(animationPlayer))
-            {
-                continue;
-            }
+	private void PauseDeathAnimationPlayers()
+	{
+		foreach (var animationPlayer in _deathAnimationPlayers)
+		{
+			if (!GodotObject.IsInstanceValid(animationPlayer))
+			{
+				continue;
+			}
 
-            animationPlayer.Pause();
-        }
-    }
+			animationPlayer.Pause();
+		}
+	}
 
-    private void ResumeDeathAnimationPlayers()
-    {
-        foreach (var animationPlayer in _deathAnimationPlayers)
-        {
-            if (!GodotObject.IsInstanceValid(animationPlayer))
-            {
-                continue;
-            }
+	private void ResumeDeathAnimationPlayers()
+	{
+		foreach (var animationPlayer in _deathAnimationPlayers)
+		{
+			if (!GodotObject.IsInstanceValid(animationPlayer))
+			{
+				continue;
+			}
 
-            var currentAnimation = animationPlayer.CurrentAnimation;
-            if (string.IsNullOrEmpty(currentAnimation))
-            {
-                continue;
-            }
+			var currentAnimation = animationPlayer.CurrentAnimation;
+			if (string.IsNullOrEmpty(currentAnimation))
+			{
+				continue;
+			}
 
-            animationPlayer.Play(currentAnimation);
-        }
-    }
+			animationPlayer.Play(currentAnimation);
+		}
+	}
 }

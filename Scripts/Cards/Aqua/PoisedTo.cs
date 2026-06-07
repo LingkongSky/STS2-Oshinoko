@@ -1,3 +1,4 @@
+using MegaCrit.Sts2.Core.CardSelection;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinoko.Scripts.Cards.Aqua;
@@ -32,7 +33,14 @@ public class PoisedTo : AquaCardModel
         if (PileType.Hand.GetPile(Owner).Cards.Count == 0)
         {
             return;
-        } var selected = PileType.Hand.GetPile(Owner).Cards.FirstOrDefault(card => !card.Keywords.Contains(CardKeyword.Ethereal));
+        }
+
+        var selected = (await CardSelectCmd.FromHand(
+            choiceContext,
+            Owner,
+            new CardSelectorPrefs(SelectionScreenPrompt, 1),
+            card => !card.GetKeywordsWithSources(KeywordSources.Local).Contains(CardKeyword.Ethereal),
+            this)).FirstOrDefault();
 
         if (selected != null)
         {
@@ -45,7 +53,6 @@ public class PoisedTo : AquaCardModel
         DynamicVars.Damage.UpgradeValueBy(4);
     }
 }
-
 
 
 

@@ -1,6 +1,7 @@
 using MegaCrit.Sts2.Core.Runs;
 using STS2RitsuLib;
 using STS2RitsuLib.Settings;
+using STS2RitsuLib.Utils;
 using STS2RitsuLib.Utils.Persistence;
 
 namespace Oshinoko.Scripts;
@@ -44,11 +45,17 @@ public static class ModConfig
 {
     private const string SettingsKey = "settings";
     private static bool _initialized;
+    private static I18N? _settingsI18N;
 
     private static class ModSettingsLocalization
     {
+        public static I18N I18N => _settingsI18N ??= RitsuLibFramework.CreateModLocalization(
+            modId: Entry.ModId,
+            instanceName: $"{Entry.ModId}.settings",
+            pckFolders: ["res://Oshinoko/localization"]);
+
         public static ModSettingsText Text(string key, string fallback)
-            => ModSettingsText.LocString("mod_settings", key, fallback);
+            => ModSettingsText.I18N(I18N, key, fallback);
     }
 
     public static ModBossAppearanceMode BossAppearanceMode
