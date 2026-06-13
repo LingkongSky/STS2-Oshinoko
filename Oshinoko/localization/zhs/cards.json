@@ -223,6 +223,8 @@
   "OSHINOKO_CARD_PERSUADE.description": "每有一名敌人，生成一张浸血花瓣。",
   "OSHINOKO_CARD_SUPPORT.title": "应援",
   "OSHINOKO_CARD_SUPPORT.description": "消耗手牌中的虚无牌。",
+  "OSHINOKO_CARD_LIGHT_STICK.title": "应援棒",
+  "OSHINOKO_CARD_LIGHT_STICK.description": "获得{Shine:diff()}点[gold]闪耀[/gold]，回复{Heal:diff()}点生命。",
   "OSHINOKO_CARD_GIVE_HOPE.title": "寄予希望",
   "OSHINOKO_CARD_GIVE_HOPE.description": "选择两张手牌，本回合内降低1点费用。",
   "OSHINOKO_CARD_STAND.title": "伫立",

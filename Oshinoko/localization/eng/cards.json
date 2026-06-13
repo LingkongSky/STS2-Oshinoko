@@ -221,9 +221,11 @@
     "OSHINOKO_CARD_SHUFFLING_STEP.description": "Get {Energy:diff()} points fee.\n[gold]Plan 1[/gold].",
     "OSHINOKO_CARD_PERSUADE.title": "Persuade",
     "OSHINOKO_CARD_PERSUADE.description": "For each enemy, a blood-soaked petal is generated.",
-    "OSHINOKO_CARD_SUPPORT.title": "Support",
-    "OSHINOKO_CARD_SUPPORT.description": "Consume the void cards in your hand.",
-    "OSHINOKO_CARD_GIVE_HOPE.title": "Place Hope",
+      "OSHINOKO_CARD_SUPPORT.title": "Support",
+      "OSHINOKO_CARD_SUPPORT.description": "Consume the void cards in your hand.",
+      "OSHINOKO_CARD_LIGHT_STICK.title": "Light Stick",
+      "OSHINOKO_CARD_LIGHT_STICK.description": "Gain {Shine:diff()} [gold]Shine[/gold] and heal {Heal:diff()} HP.",
+      "OSHINOKO_CARD_GIVE_HOPE.title": "Place Hope",
     "OSHINOKO_CARD_GIVE_HOPE.description": "Choose two cards in your hand and reduce the cost by 1 point this round.",
     "OSHINOKO_CARD_STAND.title": "Stand Still",
     "OSHINOKO_CARD_STAND.description": "Get {CalculatedBlock:diff()} points[gold] block[/gold], choose a card in your hand to keep.",
@@ -335,4 +337,3 @@
     "OSHINOKO_CARD_DEUS_EX_MACHINA.description": "All teammates gain 1 layer of [gold]Incorporeal[/gold].",
     "OSHINOKO_CARD_POISED_TO.selectionScreenPrompt": "Choose 1 card from your hand and give it to Nothingness."
 }
-
