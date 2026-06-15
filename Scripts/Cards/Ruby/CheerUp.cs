@@ -13,10 +13,10 @@ public class CheerUp : RubyCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-     new CardsVar(1),
+        new EnergyVar(1),
         new CalculationExtraVar(1m),
-   ShineScaling.CreateCalculatedVar(CalculatedEnergyKey, ShineValueType.Cards)
-        ];
+        ShineScaling.CreateCalculatedVar(CalculatedEnergyKey, ShineValueType.Energy)
+    ];
 
 
     public CheerUp() : base(2, CardType.Skill, CardRarity.Common, TargetType.Self, true)
@@ -35,6 +35,5 @@ public class CheerUp : RubyCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
-
 
 

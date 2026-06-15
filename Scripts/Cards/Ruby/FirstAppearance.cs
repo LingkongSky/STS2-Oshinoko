@@ -7,6 +7,8 @@ namespace Oshinoko.Scripts.Cards.Ruby;
 [RegisterCard(typeof(RubyCardPool))]
 public class FirstAppearance : RubyCardModel
 {
+    private const string CalculatedBlockKey = "CalculatedBlock";
+
     public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword(), CardKeyword.Exhaust];
 
     public override bool GainsBlock => true;
@@ -14,6 +16,8 @@ public class FirstAppearance : RubyCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(12m, ValueProp.Move),
+        new CalculationExtraVar(1m),
+        ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),
     ];
 
     public FirstAppearance() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self, true)
@@ -35,7 +39,8 @@ public class FirstAppearance : RubyCardModel
             return;
         }
 
-        await CreatureCmd.GainBlock(owner.Creature, DynamicVars.Block.BaseValue, ValueProp.Move, cardPlay);
+        var block = ShineScaling.Calculate(DynamicVars, CalculatedBlockKey, cardPlay.Target);
+        await CreatureCmd.GainBlock(owner.Creature, block, ValueProp.Move, cardPlay);
         if (CardScope == null)
         {
             // No card scope available to create status card.
@@ -54,6 +59,5 @@ public class FirstAppearance : RubyCardModel
         DynamicVars.Block.UpgradeValueBy(4);
     }
 }
-
 
 

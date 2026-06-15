@@ -2,7 +2,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinoko.Scripts.Cards.Ruby;
 
-// 鎻忚堪: 閫犳垚8(10)鐐逛激瀹炽€傝嫢閫犳垚鐨勪激瀹冲ぇ浜?2(15)锛岃繑杩?(2)鐐硅垂鐢ㄣ€?
+// 对单个敌人造成8(10)点伤害。若造成的伤害大于12(15)，则返还1(2)点能量
 
 [RegisterCard(typeof(RubyCardPool))]
 public class HeartFlutterAttack : RubyCardModel
@@ -18,7 +18,7 @@ public class HeartFlutterAttack : RubyCardModel
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedDamageVar(ValueProp.Move),
         new DynamicVar(ThresholdKey, 12),
-        new DynamicVar(RefundEnergyKey, 1),
+        new EnergyVar(RefundEnergyKey, 1),
     ];
 
     public HeartFlutterAttack() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, true)
@@ -58,6 +58,5 @@ public class HeartFlutterAttack : RubyCardModel
             .Sum(result => result.UnblockedDamage + result.OverkillDamage);
     }
 }
-
 
 
