@@ -1,12 +1,11 @@
-using STS2RitsuLib.Interop.AutoRegistration;
-
 namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// ս��ʤ���󣬿ɴӿ����������Ƴ�1����
+// 战斗结束从卡组中移除一张牌 谋划1
+
 public class HandscrollPainting : AquaCardModel
 {
-    public HandscrollPainting() : base(3, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
+    public HandscrollPainting() : base(3, CardType.Power, CardRarity.Rare, TargetType.Self, true)
     {
     }
 
