@@ -1,4 +1,4 @@
 {
-    "OSHINOKO_KEYWORD_SHINE.description": "In the shining state, add a value equal to the shining value to the card.\nIn the Revenge state, the card value is multiplied according to Revenge, and at the same time, it loses life equal to Revenge.",
-    "OSHINOKO_KEYWORD_SHINE.title": "Shine"
+  "OSHINOKO_KEYWORD_SHINE.description": "Cards with Shine gain bonus value equal to your Shine. While you have Revenge, those cards are multiplied by your Revenge, and playing them costs HP equal to your Revenge.",
+  "OSHINOKO_KEYWORD_SHINE.title": "Shine"
 }

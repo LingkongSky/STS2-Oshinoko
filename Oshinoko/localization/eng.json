@@ -1,10 +1,10 @@
 {
-  "oshinoko.title": "Oshinogo",
-  "oshinoko.display_name": "Oshinogo",
+  "oshinoko.title": "Oshinoko",
+  "oshinoko.display_name": "Oshinoko",
   "general.title": "General",
   "boss_appearance_mode.label": "Mod Boss Appearance",
   "boss_appearance_mode.disabled": "Disabled",
-  "boss_appearance_mode.only_with_aqua_or_ruby": "Only With Aqua/Ruby",
+  "boss_appearance_mode.only_with_aqua_or_ruby": "Only with Aqua/Ruby",
   "boss_appearance_mode.always": "All Characters",
   "hoshino_ai_boss_mode.label": "Act 2 Hoshino Ai Boss Mode",
   "hoshino_ai_boss_mode.disabled": "Disabled",

@@ -10,7 +10,7 @@ Have fun and enjoy the mod.
 - Two playable characters (Hoshino Aquamarine and Hoshino Ruby)
 - 100+ character cards
 - 10+ new relics
-- 2+ new events
+- 8+ new events
 - 2+ new boss(Kamiki Hikaru and Hoshino Ai)
 - The character BGM and animation
 - Chinese ,English and Japanese language support
@@ -54,7 +54,7 @@ QQ Group: 1094540186
 - 两名可游玩角色（星野爱久爱海、星野瑠美衣）
 - 100+ 张角色卡牌
 - 10+ 新遗物
-- 2+ 新事件
+- 8+ 新事件
 - 2+ 新BOSS（神木光，星野爱）
 - 专属BGM与演出CG
 - 支持中文与英语和日语
