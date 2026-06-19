@@ -1,0 +1,17 @@
+{
+  "oshinoko.title": "【推しの子】",
+  "oshinoko.display_name": "【推しの子】",
+  "general.title": "一般",
+  "boss_appearance_mode.label": "Modボスの出現範囲",
+  "boss_appearance_mode.disabled": "出現しない",
+  "boss_appearance_mode.only_with_aqua_or_ruby": "Aqua/Rubyがいる時のみ",
+  "boss_appearance_mode.always": "全キャラクターで出現",
+  "hoshino_ai_boss_mode.label": "第2幕 星野 アイBoss出現モード",
+  "hoshino_ai_boss_mode.disabled": "無効",
+  "hoshino_ai_boss_mode.random": "ランダム",
+  "hoshino_ai_boss_mode.forced": "強制",
+  "kamiki_hikaru_boss_mode.label": "第3幕 神木輝Boss出現モード",
+  "kamiki_hikaru_boss_mode.disabled": "無効",
+  "kamiki_hikaru_boss_mode.random": "ランダム",
+  "kamiki_hikaru_boss_mode.forced": "強制"
+}

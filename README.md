@@ -11,16 +11,14 @@ Have fun and enjoy the mod.
 - 100+ character cards
 - 10+ new relics
 - 2+ new events
-- 2+ new boss
-- Supporting art assets
-- Chinese and English language support
+- 2+ new boss(Kamiki Hikaru and Hoshino Ai)
+- The character BGM and animation
+- Chinese ,English and Japanese language support
 
 ### Development Plan
 - Add Hoshino Ai into the mod (playable character, boss, or Ancient route)
 - Add more character sound effects
 - Add special play effects for selected cards
-- Improve and expand art animations
-- Add brand-new bosses and normal enemies
 
 ### Contribution
 If you want to contribute code, please open an issue first to discuss your idea, or contact the author in the community group.
@@ -29,8 +27,8 @@ After confirming your idea fits this mod and no one else is already working on t
 ### See Also
 
 #### Contact
-Email: LingkongSky@gamil.com
-
+Email: LingkongSky@gmail.com
+Github: https://github.com/LingkongSky/STS2-Oshinoko/
 QQ Group: 1094540186
 
 #### Asset Credits
@@ -57,9 +55,9 @@ QQ Group: 1094540186
 - 100+ 张角色卡牌
 - 10+ 新遗物
 - 2+ 新事件
-- 2+ 新BOSS
-- 配套的美术素材
-- 支持中文与英语
+- 2+ 新BOSS（神木光，星野爱）
+- 专属BGM与演出CG
+- 支持中文与英语和日语
 
 ### 开发计划
 - 为角色添加各种音效
@@ -73,8 +71,8 @@ QQ Group: 1094540186
 ### 另见
 
 #### 联系作者
-Email: LingkongSky@gamil.com
-
+Email: LingkongSky@gmail.com
+Github: https://github.com/LingkongSky/STS2-Oshinoko/
 QQ 群：1094540186
 
 #### 借物表

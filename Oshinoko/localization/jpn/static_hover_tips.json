@@ -1,0 +1,14 @@
+{
+  "TRAP.title": "罠",
+  "TRAP.description": "受けるアタックダメージが100%増加する。",
+  "SHINE.title": "輝き",
+  "SHINE.description": "輝きを持つカードに有効。輝きと同値の数値を追加する。",
+  "REVENGE.title": "復讐",
+  "REVENGE.description": "輝きを持つカードに有効。復讐に応じてカード数値を乗算し、輝きカードをプレイした時に復讐と同値のHPを失う。",
+  "PLAN_COST.title": "謀略",
+  "PLAN_COST.description": "このカードをプレイするには謀略{Amount}が必要。",
+  "RUMOR.title": "噂",
+  "RUMOR.description": "1スタックごとに受けるアタックダメージが10%増加する。",
+  "ESCAPE.title": "離脱",
+  "ESCAPE.description": "受けるアタックダメージが50%減少する。"
+}

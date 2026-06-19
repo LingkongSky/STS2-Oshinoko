@@ -1,0 +1,22 @@
+{
+  "OPTION_BKOMACHI.name": "B小町を集める",
+  "OPTION_BKOMACHI.description1": "有馬かなを招き、レリック[gold]有馬かなの指導[/gold]を得る",
+  "OPTION_BKOMACHI.description2": "MEMを招き、レリック[gold]MEMの運営[/gold]を得る",
+  "OPTION_BKOMACHI.description3": "新生B小町を招き、レリック[gold]新生B小町[/gold]を得る",
+  "OPTION_BKOMACHI.descriptionDisabled": "今はB小町を集められない",
+  "OPTION_JOURNEY.name": "旅に出る",
+  "OPTION_JOURNEY.description1": "さりなと出会い、レリック[gold]さりなの情熱[/gold]を得る",
+  "OPTION_JOURNEY.description2": "有馬かなと出会い、レリック[gold]有馬かなの指導[/gold]を得る",
+  "OPTION_JOURNEY.description3": "黒川と付き合い、レリック[gold]恋人の支え[/gold]を得る",
+  "OPTION_JOURNEY.descriptionDisabled": "旅は終着点に着いた",
+  "OPTION_OSHINOKO_AQUA_JOURNEY.name": "旅に出る",
+  "OPTION_OSHINOKO_AQUA_JOURNEY.description1": "さりなと出会い、レリック[gold]さりなの情熱[/gold]を得る",
+  "OPTION_OSHINOKO_AQUA_JOURNEY.description2": "有馬かなと出会い、レリック[gold]有馬かなの指導[/gold]を得る",
+  "OPTION_OSHINOKO_AQUA_JOURNEY.description3": "黒川と付き合い、レリック[gold]恋人の支え[/gold]を得る",
+  "OPTION_OSHINOKO_AQUA_JOURNEY.descriptionDisabled": "旅は終着点に着いた",
+  "OPTION_OSHINOKO_RUBY_BKOMACHI.name": "B小町を集める",
+  "OPTION_OSHINOKO_RUBY_BKOMACHI.description1": "有馬かなを招き、レリック[gold]有馬かなの指導[/gold]を得る",
+  "OPTION_OSHINOKO_RUBY_BKOMACHI.description2": "MEMを招き、レリック[gold]MEMの運営[/gold]を得る",
+  "OPTION_OSHINOKO_RUBY_BKOMACHI.description3": "新生B小町を招き、レリック[gold]新生B小町[/gold]を得る",
+  "OPTION_OSHINOKO_RUBY_BKOMACHI.descriptionDisabled": "今はB小町を集められない"
+}
