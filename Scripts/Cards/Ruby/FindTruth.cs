@@ -1,3 +1,4 @@
+using MegaCrit.Sts2.Core.CardSelection;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinoko.Scripts.Cards.Ruby;
@@ -27,7 +28,14 @@ public class FindTruth : RubyCardModel
         if (exhaustPile.Cards.Count == 0)
         {
             return;
-        } var selected = exhaustPile.Cards.Take(DynamicVars.Cards.IntValue).ToList();
+        }
+
+        var selected = await CardSelectCmd.FromCombatPile(
+            choiceContext,
+            exhaustPile,
+            Owner,
+            new CardSelectorPrefs(SelectionScreenPrompt, DynamicVars.Cards.IntValue));
+
         foreach (var card in selected)
         {
             await CardPileCmd.Add(card, PileType.Hand);
@@ -40,7 +48,6 @@ public class FindTruth : RubyCardModel
         DynamicVars.Cards.UpgradeValueBy(1);
     }
 }
-
 
 
 

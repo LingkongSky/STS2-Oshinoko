@@ -154,7 +154,7 @@
   "OSHINOKO_CARD_REVEAL_TRUTH.title": "Reveal The Truth",
   "OSHINOKO_CARD_REVEAL_TRUTH.description": "Gain 2 points of [gold]Revenge[/gold]. At the beginning of the round, if your health is less than half, gain 1 point of [gold]Revenge[/gold].",
   "OSHINOKO_CARD_REHEARSAL.selectionScreenPrompt": "Choose 1 shining card and add it to your hand.",
-  "OSHINOKO_CARD_SMALL_TRICK.selectionScreenPrompt": "Choose 1 skill card and place it on top of the draw pile.",
+  "OSHINOKO_CARD_SMALL_TRICK.selectionScreenPrompt": "Choose 1 card and place it on top of the draw pile.",
   "OSHINOKO_CARD_CAREFUL_PLAN.selectionScreenPrompt": "Choose 1 card and place it on top of the draw pile.",
   "OSHINOKO_CARD_FIND_TRUTH.selectionScreenPrompt": "Select cards from the exhaust pile and add them to your hand.",
   "OSHINOKO_CARD_STUNNED.title": "Stunned",

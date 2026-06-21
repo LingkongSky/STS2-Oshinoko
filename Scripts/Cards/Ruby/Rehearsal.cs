@@ -1,3 +1,4 @@
+using MegaCrit.Sts2.Core.CardSelection;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinoko.Scripts.Cards.Ruby;
@@ -33,11 +34,13 @@ public class Rehearsal : RubyCardModel
             .Execute(choiceContext);
 
         var drawPile = PileType.Draw.GetPile(Owner);
-        var shineCards = drawPile.Cards.Where(card => card.Keywords.Contains(OshinokoKeywords.Shine.GetModKeywordCardKeyword())).ToList();
-        if (shineCards.Count == 0)
-        {
-            return;
-        } var selected = shineCards.FirstOrDefault();
+        var selected = (await CardSelectCmd.FromCombatPile(
+            choiceContext,
+            drawPile,
+            Owner,
+            new CardSelectorPrefs(SelectionScreenPrompt, 1),
+            card => card.Keywords.Contains(OshinokoKeywords.Shine.GetModKeywordCardKeyword()))).FirstOrDefault();
+
         if (selected != null)
         {
             await CardPileCmd.Add(selected, PileType.Hand);
@@ -49,7 +52,6 @@ public class Rehearsal : RubyCardModel
         DynamicVars.Damage.UpgradeValueBy(3);
     }
 }
-
 
 
 

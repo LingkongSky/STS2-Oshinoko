@@ -1,3 +1,4 @@
+using MegaCrit.Sts2.Core.CardSelection;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinoko.Scripts.Cards.Ruby;
@@ -17,7 +18,13 @@ public class CarefulPlan : RubyCardModel
         var drawPile = PileType.Draw.GetPile(Owner);
         var topCards = drawPile.Cards.Take(5).ToList();
         if (topCards.Count > 0)
-        { var selected = topCards.FirstOrDefault();
+        {
+            var selected = (await CardSelectCmd.FromSimpleGrid(
+                choiceContext,
+                topCards,
+                Owner,
+                new CardSelectorPrefs(SelectionScreenPrompt, 1))).FirstOrDefault();
+
             if (selected != null)
             {
                 await CardPileCmd.Add(selected, PileType.Draw, CardPilePosition.Top);
@@ -33,6 +40,5 @@ public class CarefulPlan : RubyCardModel
         EnergyCost.UpgradeBy(-1);
     }
 }
-
 
 

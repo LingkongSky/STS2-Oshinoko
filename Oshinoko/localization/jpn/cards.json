@@ -154,7 +154,7 @@
   "OSHINOKO_CARD_REVEAL_TRUTH.title": "真実を暴く",
   "OSHINOKO_CARD_REVEAL_TRUTH.description": "[gold]復讐[/gold]を2得る。ターン開始時、HPが半分未満なら[gold]復讐[/gold]を1得る。",
   "OSHINOKO_CARD_REHEARSAL.selectionScreenPrompt": "手札に加える輝きカードを1枚選ぶ。",
-  "OSHINOKO_CARD_SMALL_TRICK.selectionScreenPrompt": "山札の一番上に置くスキルカードを1枚選ぶ。",
+  "OSHINOKO_CARD_SMALL_TRICK.selectionScreenPrompt": "山札の一番上に置くカードを1枚選ぶ。",
   "OSHINOKO_CARD_CAREFUL_PLAN.selectionScreenPrompt": "山札の一番上に置くカードを1枚選ぶ。",
   "OSHINOKO_CARD_FIND_TRUTH.selectionScreenPrompt": "廃棄札から手札に加えるカードを選ぶ。",
   "OSHINOKO_CARD_STUNNED.title": "スタン",

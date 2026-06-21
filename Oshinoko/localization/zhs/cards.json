@@ -154,7 +154,7 @@
   "OSHINOKO_CARD_REVEAL_TRUTH.title": "揭露真相",
   "OSHINOKO_CARD_REVEAL_TRUTH.description": "获得2点[gold]复仇[/gold]。回合开始时，若你的生命低于一半，获得1点[gold]复仇[/gold]。",
   "OSHINOKO_CARD_REHEARSAL.selectionScreenPrompt": "选择1张闪耀牌加入手牌。",
-  "OSHINOKO_CARD_SMALL_TRICK.selectionScreenPrompt": "选择1张技能牌置于抽牌堆顶。",
+  "OSHINOKO_CARD_SMALL_TRICK.selectionScreenPrompt": "选择1张牌置于抽牌堆顶。",
   "OSHINOKO_CARD_CAREFUL_PLAN.selectionScreenPrompt": "选择1张牌置于抽牌堆顶。",
   "OSHINOKO_CARD_FIND_TRUTH.selectionScreenPrompt": "从消耗牌堆中选择卡牌加入手牌中。",
   "OSHINOKO_CARD_STUNNED.title": "晕眩",
