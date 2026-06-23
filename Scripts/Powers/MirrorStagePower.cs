@@ -1,3 +1,5 @@
+using MegaCrit.Sts2.Core.Models.Cards;
+
 namespace Oshinoko.Scripts.Powers;
 
 public class MirrorStagePower : OshinokoCustomPower
@@ -7,7 +9,7 @@ public class MirrorStagePower : OshinokoCustomPower
 
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (target == Owner && result.BlockedDamage > 0  && dealer != null)
+        if (target == Owner && result.BlockedDamage > 0 && dealer != null && (props.IsPoweredAttack() || cardSource is Omnislice))
         {
             await CreatureCmd.Damage(choiceContext, dealer, result.BlockedDamage, ValueProp.Unpowered, Owner, null);
         }
