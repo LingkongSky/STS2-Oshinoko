@@ -1,7 +1,3 @@
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-
-using MegaCrit.Sts2.Core.HoverTips;
-
 namespace Oshinoko.Scripts.Cards.Other
 {
     public class ShineDymicVar : DynamicVar
@@ -12,7 +8,7 @@ namespace Oshinoko.Scripts.Cards.Other
         public static readonly string LocKey = Key.ToUpperInvariant();
 
         public ShineDymicVar(decimal baseValue) : base(Key, baseValue)
-        {}
+        { }
     }
 
 }

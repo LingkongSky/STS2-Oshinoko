@@ -1,9 +1,9 @@
-using STS2RitsuLib.Interop.AutoRegistration;
+using MegaCrit.Sts2.Core.Models.CardPools;
 
 namespace Oshinoko.Scripts.Cards.Colorless;
 
-// 洗去自身的所有Buff，回�?0点生命�?
-[RegisterCard(typeof(RubyCardPool))]
+// 洗去自身的所有Buff，回复10点生命
+[RegisterCard(typeof(ColorlessCardPool))]
 public class Rebirth : ModCardTemplate
 {
     public override string PortraitPath => $"res://Oshinoko/images/cards/ruby/{GetType().Name}.png";
