@@ -38,7 +38,7 @@ public sealed class OshinokoSettings
 {
     public ModBossAppearanceMode BossAppearanceMode { get; set; } = ModBossAppearanceMode.OnlyWithAquaOrRuby;
     public HoshinoAiBossMode HoshinoAiBossMode { get; set; } = HoshinoAiBossMode.Random;
-    public KamikiHikaruBossMode KamikiHikaruBossMode { get; set; } = KamikiHikaruBossMode.Random;
+    public KamikiHikaruBossMode KamikiHikaruBossMode { get; set; } = KamikiHikaruBossMode.Forced;
 }
 
 public static class ModConfig
