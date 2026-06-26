@@ -19,11 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="STS2.RitsuLib">
-      <HintPath>$(Sts2Dir)\mods\STS2-RitsuLib\STS2-RitsuLib.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
+    <PackageReference Include="STS2.RitsuLib" Version="0.4.38" />
+  </ItemGroup>
 
+  <ItemGroup>
     <Reference Include="sts2">
       <HintPath>$(Sts2Dir)\data_sts2_windows_x86_64\sts2.dll</HintPath>
       <Private>false</Private>
