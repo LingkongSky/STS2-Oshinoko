@@ -3,7 +3,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// 描述: 获得8(11)点格挡，给予3(4)层流言�?
+// 描述: 获得8(11)点格挡，给予3(4)层流言
 public class Contemplating : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("RUMOR");

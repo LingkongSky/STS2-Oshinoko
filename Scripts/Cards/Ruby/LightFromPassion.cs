@@ -2,7 +2,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinoko.Scripts.Cards.Ruby;
 
-// 描述: 回合结束时获取等同于闪耀*6的格挡�?
+// 描述: 回合结束时获取等同于闪耀*6的格挡
 
 [RegisterCard(typeof(RubyCardPool))]
 public class LightFromPassion : RubyCardModel

@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Oshinoko.Scripts.Powers;
 
-/// 脱身：目标受到的攻击伤害降低50%，并在目标回合结束时减少1层�?
+/// 脱身：目标受到的攻击伤害降低50%，并在目标回合结束时减少1层
 public class EscapePower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;

@@ -3,7 +3,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// 描述: 造成4(6)点伤�?次，每造成未被格挡的伤害时获得一张浸血花瓣�?
+// 描述: 造成4(6)点伤害2次，每造成未被格挡的伤害时获得一张浸血花瓣
 public class WeaponRack : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromCard<BloodFlower>()];

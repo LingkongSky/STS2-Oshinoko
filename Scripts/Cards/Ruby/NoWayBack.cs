@@ -2,7 +2,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinoko.Scripts.Cards.Ruby;
 
-// 描述: 随机消耗手牌中�?张卡，获�?2(16)点防御�?
+// 描述: 随机消耗手牌中1张卡，获得12(16)点防御
 
 [RegisterCard(typeof(RubyCardPool))]
 public class NoWayBack : RubyCardModel

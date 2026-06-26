@@ -3,7 +3,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// 描述: 获得2点闪耀，获�?层覆甲�?
+// 描述: 获得2点闪耀，获得7层覆甲
 public class StageCenter : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");

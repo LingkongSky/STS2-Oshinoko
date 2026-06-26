@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace Oshinoko.Scripts.Powers;
 
 
-/// 不再受到虚弱、脆弱、易伤影响�?
+/// 不再受到虚弱、脆弱、易伤影响
 public class MetamorphosisPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;

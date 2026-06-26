@@ -3,7 +3,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// 描述: 对所有敌人造成7(10)点伤害，敌人在本回合失去2(3)点力量�?
+// 描述: 对所有敌人造成7(10)点伤害，敌人在本回合失去2(3)点力量
 public class DesolateBattlefield : AquaCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

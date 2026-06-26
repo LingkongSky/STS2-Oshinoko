@@ -3,7 +3,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// 描述: 造成9(13)点伤害，给予4(5)层流言�?
+// 描述: 造成9(13)点伤害，给予4(5)层流言
 public class StareAt : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("RUMOR");

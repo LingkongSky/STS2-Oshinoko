@@ -21,7 +21,7 @@ public class Destination : AquaCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await RevengePowerHelper.ApplyRevenge(Owner.Creature, DynamicVars[RevengeDynamicVar.Key].BaseValue, ValueDuration.Permanent, Owner.Creature, this);
-        await PowerCmd.Apply<TemporaryStrengthPower>(choiceContext, Owner.Creature, DynamicVars[StrengthKey].BaseValue, Owner.Creature, this, true);
+        await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, DynamicVars[StrengthKey].BaseValue, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

@@ -3,7 +3,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// 描述: 下回合开始时获得2(3)张浸血花瓣�?
+// 描述: 下回合开始时获得2(3)张浸血花瓣
 public class Trouble : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromCard<BloodFlower>()];

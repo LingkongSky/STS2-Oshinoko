@@ -7,7 +7,7 @@ using Oshinoko.Scripts.Cards.Aqua;
 namespace Oshinoko.Scripts.Powers;
 
 
-// 下回合开始时获得浸血花瓣�?
+// 下回合开始时获得浸血花瓣
 public class TroubleNextTurnPower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;

@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace Oshinoko.Scripts.Powers;
 
 /// <summary>
-/// 本回合临时失去力量，回合结束时返还�?
+/// 本回合临时失去力量，回合结束时返还
 /// </summary>
 public class DesolateBattlefieldPower : OshinokoCustomPower
 {
@@ -16,7 +16,7 @@ public class DesolateBattlefieldPower : OshinokoCustomPower
 
     public override async Task AfterApplied(MegaCrit.Sts2.Core.Entities.Creatures.Creature? applier, MegaCrit.Sts2.Core.Models.CardModel? cardSource)
     {
-        await PowerCmd.Apply<TemporaryStrengthPower>(new BlockingPlayerChoiceContext(), Owner, -Amount, applier, cardSource, false);
+        await PowerCmd.Apply<StrengthPower>(new BlockingPlayerChoiceContext(), Owner, -Amount, applier, cardSource, false);
     }
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
@@ -26,7 +26,7 @@ public class DesolateBattlefieldPower : OshinokoCustomPower
             return;
         }
 
-        await PowerCmd.Apply<TemporaryStrengthPower>(choiceContext, Owner, Amount, Owner, null, false);
+        await PowerCmd.Apply<StrengthPower>(choiceContext, Owner, Amount, Owner, null, false);
         await PowerCmd.Remove(this);
     }
 }
