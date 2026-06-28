@@ -2,7 +2,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace Oshinoko.Scripts.Cards.Ruby;
 
-// ����: �����е������5(7)���˺�������1(2)������
+// 对所有敌人造成5(7)点伤害，给予1层易伤
 
 [RegisterCard(typeof(RubyCardPool))]
 public class Deterrence : RubyCardModel
@@ -44,7 +44,6 @@ public class Deterrence : RubyCardModel
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(2);
-        DynamicVars[VulnerableKey].UpgradeValueBy(1);
     }
 }
 
