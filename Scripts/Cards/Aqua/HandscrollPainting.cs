@@ -13,11 +13,6 @@ public class HandscrollPainting : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (!await PlanCostHelper.TryConsumePlan(Owner, this, 1))
-        {
-            return;
-        }
-
         await PowerCmd.Apply<HandscrollPaintingPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 

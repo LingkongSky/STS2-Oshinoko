@@ -3,7 +3,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// ����: ���2(3)����á� ı��1
+// 
 public class ShufflingStep : AquaCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(2)];
@@ -17,11 +17,6 @@ public class ShufflingStep : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (!await PlanCostHelper.TryConsumePlan(Owner, this, 1))
-        {
-            return;
-        }
-
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
     }
 

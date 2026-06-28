@@ -25,10 +25,6 @@ public class ToukenRanbu : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (!await PlanCostHelper.TryConsumePlan(Owner, this, 2))
-        {
-            return;
-        }
 
         var combatState = Owner.Creature.CombatState;
         if (combatState == null)

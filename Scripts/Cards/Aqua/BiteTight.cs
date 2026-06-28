@@ -1,7 +1,7 @@
 namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-////
+//
 public class BiteTight : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => PlanAndKeywordTips(2, "TRAP");
@@ -19,10 +19,6 @@ public class BiteTight : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (!await PlanCostHelper.TryConsumePlan(Owner, this, 2))
-        {
-            return;
-        }
 
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 

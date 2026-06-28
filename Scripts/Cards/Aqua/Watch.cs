@@ -1,9 +1,7 @@
-using STS2RitsuLib.Interop.AutoRegistration;
-
 namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// ����: ���2(3)�������� ı��1
+//  
 public class Watch : AquaCardModel
 {
     private const string EscapeKey = "WatchEscape";
@@ -18,11 +16,6 @@ public class Watch : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (!await PlanCostHelper.TryConsumePlan(Owner, this, 1))
-        {
-            return;
-        }
-
         await PowerCmd.Apply<EscapePower>(choiceContext, Owner.Creature, DynamicVars[EscapeKey].BaseValue, Owner.Creature, this, true);
     }
 

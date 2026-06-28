@@ -29,11 +29,6 @@ public class Parry : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (!await PlanCostHelper.TryConsumePlan(Owner, this, 1))
-        {
-            return;
-        }
-
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
         var finalDamage = DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);

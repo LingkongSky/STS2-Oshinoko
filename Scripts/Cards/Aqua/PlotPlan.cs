@@ -26,10 +26,6 @@ public class PlotPlan : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (!await PlanCostHelper.TryConsumePlan(Owner, this, 1))
-        {
-            return;
-        }
 
         var finalCards = ShineScaling.Calculate(DynamicVars, CalculatedCardsKey, cardPlay.Target);
         await CardPileCmd.Draw(choiceContext, finalCards, Owner);
