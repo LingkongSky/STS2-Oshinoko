@@ -7,7 +7,6 @@ namespace Oshinoko.Scripts.Cards.Ruby;
 [RegisterCard(typeof(RubyCardPool))]
 public class SmallTrick : RubyCardModel
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [OshinokoKeywords.Shine.GetModKeywordCardKeyword()];
 
     public override bool GainsBlock => true;
 
