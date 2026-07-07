@@ -22,6 +22,13 @@ public class Evade : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+
+        if (!await PlanCostHelper.TryConsumePlan(Owner, this, 1))
+        {
+            return;
+        }
+
+
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)

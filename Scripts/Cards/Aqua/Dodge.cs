@@ -27,7 +27,10 @@ public class Dodge : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-
+        if (!await PlanCostHelper.TryConsumePlan(Owner, this, 1))
+        {
+            return;
+        }
         var block = ShineScaling.Calculate(DynamicVars, CalculatedBlockKey, cardPlay.Target);
         await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move, cardPlay);
         await PowerCmd.Apply<EscapePower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);

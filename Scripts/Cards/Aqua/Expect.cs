@@ -16,6 +16,12 @@ public class Expect : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        if (!await PlanCostHelper.TryConsumePlan(Owner, this, 2))
+        {
+            return;
+        }
+
+
         await PowerCmd.Apply<ExpectPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, true);
     }
 

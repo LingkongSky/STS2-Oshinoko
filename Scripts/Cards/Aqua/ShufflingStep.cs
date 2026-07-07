@@ -17,6 +17,12 @@ public class ShufflingStep : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+
+        if (!await PlanCostHelper.TryConsumePlan(Owner, this, 1))
+        {
+            return;
+        }
+                
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
     }
 

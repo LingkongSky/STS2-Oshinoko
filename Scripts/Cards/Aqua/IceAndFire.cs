@@ -29,6 +29,12 @@ public class IceAndFire : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+
+        if (!await PlanCostHelper.TryConsumePlan(Owner, this, 1))
+        {
+            return;
+        }
+                
         var combatState = Owner.Creature.CombatState;
         if (combatState == null)
         {
