@@ -252,7 +252,7 @@
   "OSHINOKO_CARD_SIDE_PROFILE.title": "横顔",
   "OSHINOKO_CARD_SIDE_PROFILE.description": "{CalculatedDamage:diff()}ダメージを与え、[gold]一時輝き[/gold]を2得る。",
   "OSHINOKO_CARD_DAZZLING_DEFEND.title": "眩い防御",
-  "OSHINOKO_CARD_DAZZLING_DEFEND.description": "{CalculatedBlock:diff()}[gold]ブロック[/gold]を得て、[gold]一時輝き[/gold]を2得る。",
+  "OSHINOKO_CARD_DAZZLING_DEFEND.description": "{CalculatedBlock:diff()}[gold]ブロック[/gold]を得て、[gold]一時輝き[/gold]を1得る。",
   "OSHINOKO_CARD_CRY_IN10_SEC.title": "10秒で泣ける",
   "OSHINOKO_CARD_CRY_IN10_SEC.description": "{CalculatedBlock:diff()}[gold]ブロック[/gold]を得る。[gold]ターン輝き[/gold]を1得る。",
   "OSHINOKO_CARD_DODGE.title": "回避",

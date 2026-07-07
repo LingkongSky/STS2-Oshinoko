@@ -252,7 +252,7 @@
   "OSHINOKO_CARD_SIDE_PROFILE.title": "侧颜",
   "OSHINOKO_CARD_SIDE_PROFILE.description": "造成{CalculatedDamage:diff()}点伤害，获得2点[gold]临时闪耀[/gold]。",
   "OSHINOKO_CARD_DAZZLING_DEFEND.title": "眩目格挡",
-  "OSHINOKO_CARD_DAZZLING_DEFEND.description": "获得{CalculatedBlock:diff()}点[gold]格挡[/gold]，获得2点[gold]临时闪耀[/gold]。",
+  "OSHINOKO_CARD_DAZZLING_DEFEND.description": "获得{CalculatedBlock:diff()}点[gold]格挡[/gold]，获得1点[gold]临时闪耀[/gold]。",
   "OSHINOKO_CARD_CRY_IN10_SEC.title": "10秒就能哭出来",
   "OSHINOKO_CARD_CRY_IN10_SEC.description": "获得{CalculatedBlock:diff()}点[gold]格挡[/gold]，获得1点[gold]回合闪耀[/gold]。",
   "OSHINOKO_CARD_DODGE.title": "躲闪",

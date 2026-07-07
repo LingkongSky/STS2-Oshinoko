@@ -252,7 +252,7 @@
   "OSHINOKO_CARD_SIDE_PROFILE.title": "Profile",
   "OSHINOKO_CARD_SIDE_PROFILE.description": "Deal {CalculatedDamage:diff()} damage and gains 2 [gold]Temporary Shine[/gold].",
   "OSHINOKO_CARD_DAZZLING_DEFEND.title": "Dazzling Block",
-  "OSHINOKO_CARD_DAZZLING_DEFEND.description": "Gain {CalculatedBlock:diff()} [gold]Block[/gold]. Gain 2 [gold]Temporary Shine[/gold].",
+  "OSHINOKO_CARD_DAZZLING_DEFEND.description": "Gain {CalculatedBlock:diff()} [gold]Block[/gold]. Gain 1 [gold]Temporary Shine[/gold].",
   "OSHINOKO_CARD_CRY_IN10_SEC.title": "You Can Cry In 10 Seconds",
   "OSHINOKO_CARD_CRY_IN10_SEC.description": "Gain {CalculatedBlock:diff()} [gold]Block[/gold]. Gain 1 [gold]Turn Shine[/gold].",
   "OSHINOKO_CARD_DODGE.title": "Dodge",

@@ -3,7 +3,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace Oshinoko.Scripts.Cards.Aqua;
 
 [RegisterCard(typeof(AquaCardPool))]
-// 鎻忚堪: 鑾峰緱7(10)鐐规牸鎸★紝鑾峰緱5鐐逛复鏃堕棯鑰€銆?
+// 描述: 获得8(11)点防御，获得1点临时闪耀。
 public class DazzlingDefend : AquaCardModel
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => KeywordTips("SHINE");
@@ -15,7 +15,8 @@ public class DazzlingDefend : AquaCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(7, ValueProp.Move),
+        new BlockVar(8, ValueProp.Move),
+        new ShineDymicVar(1m),
         new CalculationExtraVar(1m),
         ShineScaling.CreateCalculatedVar(CalculatedBlockKey, ShineValueType.Block),
     ];
@@ -28,7 +29,7 @@ public class DazzlingDefend : AquaCardModel
     {
         var block = ShineScaling.Calculate(DynamicVars, CalculatedBlockKey, cardPlay.Target);
         await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move, cardPlay);
-        await ShinePowerHelper.ApplyShine(Owner.Creature, 5, ValueDuration.Temp, Owner.Creature, this);
+        await ShinePowerHelper.ApplyShine(Owner.Creature,DynamicVars[ShineDymicVar.Key].BaseValue, ValueDuration.Temp, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
