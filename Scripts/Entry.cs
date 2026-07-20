@@ -18,6 +18,7 @@ public static class Entry
     public static void Init()
     {
         ModConfig.Init();
+        BossEncounterCoordinator.Init();
 
         var harmony = new Harmony(HarmonyId);
         harmony.PatchAll();

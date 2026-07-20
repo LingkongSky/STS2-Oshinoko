@@ -1,5 +1,6 @@
 using MegaCrit.Sts2.Core.Runs;
 using STS2RitsuLib;
+using STS2RitsuLib.RunData;
 using STS2RitsuLib.Settings;
 using STS2RitsuLib.Utils;
 using STS2RitsuLib.Utils.Persistence;
@@ -41,11 +42,22 @@ public sealed class OshinokoSettings
     public KamikiHikaruBossMode KamikiHikaruBossMode { get; set; } = KamikiHikaruBossMode.Forced;
 }
 
+public sealed class OshinokoRunBossSettings
+{
+    public ModBossAppearanceMode BossAppearanceMode { get; set; } = ModBossAppearanceMode.OnlyWithAquaOrRuby;
+    public HoshinoAiBossMode HoshinoAiBossMode { get; set; } = HoshinoAiBossMode.Random;
+    public KamikiHikaruBossMode KamikiHikaruBossMode { get; set; } = KamikiHikaruBossMode.Forced;
+}
+
 public static class ModConfig
 {
     private const string SettingsKey = "settings";
+    private const string RunBossSettingsKey = "boss_settings";
     private static bool _initialized;
     private static I18N? _settingsI18N;
+    private static RunSavedData<OshinokoRunBossSettings>? _runBossSettings;
+    private static IDisposable? _lobbyBossSettingsSubscription;
+    private static IDisposable? _runBossSettingsPreparingSubscription;
 
     private static class ModSettingsLocalization
     {
@@ -84,13 +96,37 @@ public static class ModConfig
 
     public static bool ShouldIncludeModBosses(RunState runState)
     {
-        return BossAppearanceMode switch
+        return ShouldIncludeModBosses(runState, GetBossSettingsForRun(runState));
+    }
+
+    internal static bool ShouldIncludeModBosses(RunState runState, OshinokoRunBossSettings settings)
+    {
+        return settings.BossAppearanceMode switch
         {
             ModBossAppearanceMode.Disabled => false,
             ModBossAppearanceMode.Always => true,
             ModBossAppearanceMode.OnlyWithAquaOrRuby => runState.Players.Any(HasAquaOrRubyCharacter),
             _ => false,
         };
+    }
+
+    public static OshinokoRunBossSettings GetBossSettingsForRun(RunState runState)
+    {
+        ArgumentNullException.ThrowIfNull(runState);
+
+        if (_runBossSettings != null && _runBossSettings.TryGet(runState, out var settings))
+        {
+            return settings;
+        }
+
+        if (runState.Players.Count > 1)
+        {
+            // Legacy multiplayer saves have no run-scoped settings. Never fall back to each peer's
+            // local settings here; the versioned defaults keep all peers deterministic.
+            return new OshinokoRunBossSettings();
+        }
+
+        return CaptureLocalBossSettings();
     }
 
     public static HoshinoAiBossMode HoshinoAiBossMode
@@ -158,6 +194,16 @@ public static class ModConfig
                 scope: SaveScope.Global,
                 defaultFactory: () => new OshinokoSettings(),
                 autoCreateIfMissing: true);
+
+            var runStore = RitsuLibFramework.GetRunSavedDataStore(Entry.ModId);
+            _runBossSettings = runStore.Register(
+                key: RunBossSettingsKey,
+                defaultFactory: () => new OshinokoRunBossSettings(),
+                options: new RunSavedDataOptions
+                {
+                    SchemaVersion = 1,
+                    WritePolicy = RunSavedDataWritePolicy.WhenSet,
+                });
         }
 
         var bossAppearanceModeBinding = new ModSettingsValueBinding<OshinokoSettings, ModBossAppearanceMode>(
@@ -239,6 +285,44 @@ public static class ModConfig
                     })));
 
         _initialized = true;
+        _lobbyBossSettingsSubscription = RitsuLibFramework.SubscribeLifecycle<RunSavedDataLobbyStagingEvent>(
+            OnRunSavedDataLobbyStaging,
+            replayCurrentState: false);
+        _runBossSettingsPreparingSubscription = RitsuLibFramework.SubscribeLifecycle<RunSavedDataPreparingEvent>(
+            OnRunSavedDataPreparing,
+            replayCurrentState: false);
+    }
+
+    private static void OnRunSavedDataLobbyStaging(RunSavedDataLobbyStagingEvent evt)
+    {
+        if (!evt.IsHost || evt.Reason != RunSavedDataLobbyStagingReason.Committing || _runBossSettings == null)
+        {
+            return;
+        }
+
+        // Shared run data accepts only the host's contribution. RitsuLib includes it in the begin-run
+        // payload before every peer initializes its RunState and preserves it through save/rejoin.
+        _runBossSettings.Lobby.Set(evt.Lobby, CaptureLocalBossSettings());
+    }
+
+    private static void OnRunSavedDataPreparing(RunSavedDataPreparingEvent evt)
+    {
+        if (evt.IsMultiplayer || _runBossSettings == null)
+        {
+            return;
+        }
+
+        _runBossSettings.Set(evt.RunState, CaptureLocalBossSettings());
+    }
+
+    private static OshinokoRunBossSettings CaptureLocalBossSettings()
+    {
+        return new OshinokoRunBossSettings
+        {
+            BossAppearanceMode = BossAppearanceMode,
+            HoshinoAiBossMode = HoshinoAiBossMode,
+            KamikiHikaruBossMode = KamikiHikaruBossMode,
+        };
     }
 
     private static bool HasAquaOrRubyCharacter(Player player)
