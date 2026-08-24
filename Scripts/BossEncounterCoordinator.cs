@@ -1,5 +1,3 @@
-using MegaCrit.Sts2.Core.Entities.Ascension;
-using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models.Acts;
 using MegaCrit.Sts2.Core.Runs;
 using Oshinoko.Scripts.Encounters;
@@ -112,16 +110,7 @@ internal static class BossEncounterCoordinator
 
         if (mode == KamikiHikaruBossMode.Forced)
         {
-            act.SetBossEncounter(kamikiEncounter);
-
-            // At A10 (Double Boss), keep at most one Kamiki in the pair.
-            var isDoubleBossAscension =
-                AscensionHelper.GetValueIfAscension(AscensionLevel.DoubleBoss, 1, 0) == 1;
-            if (act.HasSecondBoss && !isDoubleBossAscension)
-            {
-                act.SetSecondBossEncounter(kamikiEncounter);
-            }
-
+            SetForcedKamikiBoss(act, kamikiEncounter);
             return;
         }
 
@@ -144,5 +133,19 @@ internal static class BossEncounterCoordinator
                 ?? nonKamikiBosses[0];
             act.SetSecondBossEncounter(replacement);
         }
+    }
+
+    internal static void SetForcedKamikiBoss(Glory act, EncounterModel kamikiEncounter)
+    {
+        act.SetBossEncounter(kamikiEncounter);
+
+        if (!act.HasSecondBoss || act.SecondBossEncounter?.Id != kamikiEncounter.Id)
+        {
+            return;
+        }
+
+        var replacement = act.AllBossEncounters
+            .FirstOrDefault(encounter => encounter.Id != kamikiEncounter.Id);
+        act.SetSecondBossEncounter(replacement);
     }
 }

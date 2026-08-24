@@ -3,13 +3,13 @@
   "name": "我推的孩子",
   "author": "凌空",
   "description": "我爱你，这句话绝不是谎言。",
-  "version": "0.6.8",
+  "version": "0.6.10",
   "min_game_version": "0.107.1",
   "has_pck": true,
   "has_dll": true,
   "affects_gameplay": true,
   "dependencies": [{ 
     "id": "STS2-RitsuLib",
-    "min_version": "v0.4.40"
+    "min_version": "v0.5.14"
   }]
 }

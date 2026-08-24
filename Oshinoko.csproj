@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="STS2.RitsuLib" Version="0.4.38" />
+    <PackageReference Include="STS2.RitsuLib" Version="0.5.14" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,4 +41,3 @@
     <Copy SourceFiles="$(MSBuildProjectName).json" DestinationFolder="$(Sts2Dir)/mods/$(MSBuildProjectName)/" />
   </Target>
 </Project>
-

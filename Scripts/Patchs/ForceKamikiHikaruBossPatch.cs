@@ -1,6 +1,4 @@
 using HarmonyLib;
-using MegaCrit.Sts2.Core.Entities.Ascension;
-using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models.Acts;
 using MegaCrit.Sts2.Core.Runs;
 using Oshinoko.Scripts.Encounters;
@@ -12,7 +10,7 @@ public static class ForceKamikiHikaruBossPatch
 {
     public static void Prefix(ActModel __instance, RunState runState)
     {
-        if (__instance is not Glory)
+        if (__instance is not Glory glory)
         {
             return;
         }
@@ -36,15 +34,7 @@ public static class ForceKamikiHikaruBossPatch
 
         if (mode == KamikiHikaruBossMode.Forced)
         {
-            __instance.SetBossEncounter(kamikiEncounter);
-
-            // At A10 (Double Boss), keep at most one Kamiki in the pair.
-            var isDoubleBossAscension = AscensionHelper.GetValueIfAscension(AscensionLevel.DoubleBoss, 1, 0) == 1;
-            if (__instance.HasSecondBoss && !isDoubleBossAscension)
-            {
-                __instance.SetSecondBossEncounter(kamikiEncounter);
-            }
-
+            BossEncounterCoordinator.SetForcedKamikiBoss(glory, kamikiEncounter);
             return;
         }
 

@@ -7,18 +7,30 @@ public partial class OshinokoNCreatureVisuals : NCreatureVisuals
 {
 	[Export] public float DeathFallAngleDeg { get; set; } = 90f;
 	[Export] public double DeathFallDuration { get; set; } = 0.28d;
+	[Export] public float AttackMoveDistance { get; set; } = 48f;
+	[Export] public float HurtMoveDistance { get; set; } = 28f;
+
+	private const double MotionOutDuration = 0.1d;
+	private const double MotionReturnDuration = 0.14d;
 
 	private Node2D? _deathPivot;
 	private Tween? _deathTween;
+	private Tween? _motionTween;
+	private Vector2 _motionOrigin;
 	private readonly List<AnimationPlayer> _deathAnimationPlayers = [];
 
 	public override void _Ready()
 	{
 		base._Ready();
 		_deathPivot = GetNodeOrNull<Node2D>("%DeathPivot");
+		_motionOrigin = _deathPivot?.Position ?? Vector2.Zero;
 		CacheDeathAnimationPlayers();
 		ResetDeathFallState();
 	}
+
+	public void PlayAttackMotion() => PlayCombatMotion(AttackMoveDistance);
+
+	public void PlayHurtMotion() => PlayCombatMotion(-HurtMoveDistance);
 
 	public void PlayDeathFallAnim()
 	{
@@ -32,6 +44,7 @@ public partial class OshinokoNCreatureVisuals : NCreatureVisuals
 			_deathTween.Kill();
 		}
 
+		ResetCombatMotion();
 		_deathPivot.RotationDegrees = 0f;
 		_deathTween = CreateTween();
 		_deathTween.TweenProperty(_deathPivot, "rotation_degrees", DeathFallAngleDeg, DeathFallDuration)
@@ -47,12 +60,54 @@ public partial class OshinokoNCreatureVisuals : NCreatureVisuals
 			_deathTween.Kill();
 		}
 
+		ResetCombatMotion();
 		if (_deathPivot != null && GodotObject.IsInstanceValid(_deathPivot))
 		{
 			_deathPivot.RotationDegrees = 0f;
 		}
 
 		ResumeDeathAnimationPlayers();
+	}
+
+	private void PlayCombatMotion(float horizontalOffset)
+	{
+		if (_deathPivot == null || !GodotObject.IsInstanceValid(_deathPivot))
+		{
+			return;
+		}
+
+		if (_deathTween != null && GodotObject.IsInstanceValid(_deathTween) && _deathTween.IsRunning())
+		{
+			return;
+		}
+
+		ResetCombatMotion();
+		_motionTween = CreateTween();
+		_motionTween.TweenProperty(
+			_deathPivot,
+			"position",
+			_motionOrigin + Vector2.Right * horizontalOffset,
+			MotionOutDuration
+		).SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.Out);
+		_motionTween.TweenProperty(
+			_deathPivot,
+			"position",
+			_motionOrigin,
+			MotionReturnDuration
+		).SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.InOut);
+	}
+
+	private void ResetCombatMotion()
+	{
+		if (_motionTween != null && GodotObject.IsInstanceValid(_motionTween))
+		{
+			_motionTween.Kill();
+		}
+
+		if (_deathPivot != null && GodotObject.IsInstanceValid(_deathPivot))
+		{
+			_deathPivot.Position = _motionOrigin;
+		}
 	}
 
 	private void CacheDeathAnimationPlayers()
