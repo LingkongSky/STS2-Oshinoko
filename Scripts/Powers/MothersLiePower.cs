@@ -33,7 +33,7 @@ public class MothersLiePower : OshinokoCustomPower
         }
 
         var opponents = combatState.GetOpponentsOf(Owner).ToList();
-        await CreatureCmd.Damage(choiceContext, opponents, Amount, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, Owner, null);
+        await CreatureCmd.Damage(choiceContext, opponents, Amount, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, Owner, null, null);
     }
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)

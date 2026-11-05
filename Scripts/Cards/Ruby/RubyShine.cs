@@ -37,7 +37,7 @@ public class RubyShine : RubyCardModel
         var hitCount = 1 + Math.Max(0, bonusHits);
 
         await DamageCmd.Attack(DynamicVars.CalculatedDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .WithHitCount(hitCount)
             .Execute(choiceContext);

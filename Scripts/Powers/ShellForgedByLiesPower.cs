@@ -37,7 +37,7 @@ public class ShellForgedByLiesPower : OshinokoCustomPower
             damage += 8;
         }
         var opponents = combatState.GetOpponentsOf(Owner).ToList();
-        await CreatureCmd.Damage(choiceContext, opponents, damage, ValueProp.Move, Owner, null);
+        await CreatureCmd.Damage(choiceContext, opponents, damage, ValueProp.Move, Owner, null, null);
     }
 }
 

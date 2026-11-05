@@ -30,7 +30,7 @@ public class Clash : AquaCardModel
 
         var finalDamage = DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);
         await DamageCmd.Attack(finalDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
@@ -38,7 +38,7 @@ public class Clash : AquaCardModel
         {
             var bonusDamage = CalculateBonusDamage();
             await DamageCmd.Attack(bonusDamage)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(cardPlay.Target)
                 .Execute(choiceContext);
         }

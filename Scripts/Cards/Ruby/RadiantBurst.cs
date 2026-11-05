@@ -31,7 +31,7 @@ public class RadiantBurst : RubyCardModel
         }
 
         await DamageCmd.Attack(DynamicVars.CalculatedDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .TargetingAllOpponents(combatState)
             .WithHitCount(2)
             .Execute(choiceContext);

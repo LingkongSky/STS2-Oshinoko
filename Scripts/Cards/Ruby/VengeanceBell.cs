@@ -30,7 +30,7 @@ public class VengeanceBell : RubyCardModel
         );
 
         var opponents = Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature) ?? Enumerable.Empty<Creature>();
-        await CreatureCmd.Damage(choiceContext, opponents, DynamicVars.Damage.BaseValue, DynamicVars.Damage.Props, null, null);
+        await CreatureCmd.Damage(choiceContext, opponents, DynamicVars.Damage.BaseValue, DynamicVars.Damage.Props, null, null, cardPlay);
 
         await RevengePowerHelper.ApplyRevenge(
             Owner.Creature,

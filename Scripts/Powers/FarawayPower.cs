@@ -29,7 +29,7 @@ public class FarawayPower : OshinokoCustomPower
         }
 
         var opponents = combatState.GetOpponentsOf(Owner).ToList();
-        await CreatureCmd.Damage(new BlockingPlayerChoiceContext(), opponents, Amount, ValueProp.Move, Owner, null);
+        await CreatureCmd.Damage(new BlockingPlayerChoiceContext(), opponents, Amount, ValueProp.Move, Owner, null, null);
 
         await PowerCmd.Remove(this);
     }

@@ -27,7 +27,7 @@ public class FinalPose : RubyCardModel
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
         var finalDamage = DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);
         await DamageCmd.Attack(finalDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 

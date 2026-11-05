@@ -43,7 +43,7 @@ public class CodeB : RubyCardModel
         }
 
         await DamageCmd.Attack(finalDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .TargetingAllOpponents(combatState)
             .WithHitCount(3)
             .Execute(choiceContext);

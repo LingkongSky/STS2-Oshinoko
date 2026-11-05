@@ -21,7 +21,7 @@ public class TrueWords : RubyCardModel
         var block = cardPlay.Target.Block;
         if (block > 0)
         {
-            await CreatureCmd.LoseBlock(cardPlay.Target, block);
+            await CreatureCmd.LoseBlock(choiceContext, cardPlay.Target, block, Owner.Creature);
         }
 
         if (block > 15)

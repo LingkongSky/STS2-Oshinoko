@@ -14,20 +14,19 @@ public class ExpectPower : OshinokoCustomPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
 
-    public override (PileType, CardPilePosition) ModifyCardPlayResultPileTypeAndPosition(
+    public override CardLocation ModifyCardPlayResultLocation(
         CardModel card,
         bool isAutoPlay,
         ResourceInfo resources,
-        PileType pileType,
-        CardPilePosition position
+        CardLocation location
     )
     {
-        if (card.Owner.Creature != Owner || pileType != PileType.Exhaust)
+        if (card.Owner.Creature != Owner || location.pileType != PileType.Exhaust)
         {
-            return (pileType, position);
+            return location;
         }
 
-        return (PileType.Discard, position);
+        return location with { pileType = PileType.Discard };
     }
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)

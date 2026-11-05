@@ -68,6 +68,16 @@ QQ Group: 1094540186
 如果您想要为本项目贡献代码，请先在 issue 中提出您的想法，或是在交流群中与作者沟通。
 在确保您的想法可以加入到该 MOD，且没有其他人正在进行同样的工作时，您方可开始编写代码并提交 PR 等待审阅。
 
+### 开发与兼容性验证
+
+当前源码面向游戏 `v0.111.0`，依赖 RitsuLib `0.6.10`，目标框架保持 `net10.0`。运行时需安装 RitsuLib 完整目录，包括 `shared/`、`compat/` 和 `assets.zip`。更新游戏 API 后，可运行以下命令检查构建、API 引用和出牌上下文，并回归验证回手、能力牌复制、消耗转弃牌、伤害倍率及持续回合：
+
+```powershell
+pwsh -File tools/test-compatibility.ps1 -Sts2Dir "E:\SteamLibrary\steamapps\common\Slay the Spire 2"
+```
+
+脚本禁用构建后的自动部署，在独立程序集副本中把游戏命令替换为记录器；这些检查不涵盖实机战斗、存档和画面验收。原始构建 DLL 位于 `.godot/mono/temp/bin/Release/Oshinoko.dll`；`.godot/compatibility-tests` 中的 DLL 仅供测试。
+
 ### 另见
 
 #### 联系作者

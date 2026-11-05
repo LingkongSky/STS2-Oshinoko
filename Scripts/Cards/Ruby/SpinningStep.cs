@@ -33,7 +33,7 @@ public class SpinningStep : RubyCardModel
         var hitCount = shinePlaysThisTurn >= 2 ? 4 : 3;
 
         await DamageCmd.Attack(DynamicVars.CalculatedDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .TargetingRandomOpponents(combatState)
             .WithHitCount(hitCount)
             .Execute(choiceContext);

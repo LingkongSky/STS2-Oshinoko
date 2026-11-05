@@ -27,7 +27,7 @@ public class VengeanceBellPower : OshinokoCustomPower
 
         var opponents = combatState.GetOpponentsOf(Owner).ToList();
 
-        await CreatureCmd.Damage(new BlockingPlayerChoiceContext(), opponents, 10, ValueProp.Move, null, null);
+        await CreatureCmd.Damage(new BlockingPlayerChoiceContext(), opponents, 10, ValueProp.Move, null, null, null);
 
         await PowerCmd.Remove(this);
     }

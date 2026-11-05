@@ -11,7 +11,7 @@ public class MirrorStagePower : OshinokoCustomPower
     {
         if (target == Owner && result.BlockedDamage > 0 && dealer != null && (props.IsPoweredAttack() || cardSource is Omnislice))
         {
-            await CreatureCmd.Damage(choiceContext, dealer, result.BlockedDamage, ValueProp.Unpowered, Owner, null);
+            await CreatureCmd.Damage(choiceContext, dealer, result.BlockedDamage, ValueProp.Unpowered, Owner, null, null);
         }
     }
 

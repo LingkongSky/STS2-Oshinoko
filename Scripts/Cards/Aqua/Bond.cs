@@ -42,7 +42,7 @@ public class Bond : AquaCardModel
         }
 
         await DamageCmd.Attack(DynamicVars.CalculatedDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .TargetingAllOpponents(combatState)
             .Execute(choiceContext);
     }

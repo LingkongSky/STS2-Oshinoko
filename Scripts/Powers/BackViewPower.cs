@@ -9,34 +9,33 @@ public class BackViewPower : OshinokoCustomPower
 
     private readonly HashSet<CardModel> _pendingPowerClones = [];
 
-    public override (PileType, CardPilePosition) ModifyCardPlayResultPileTypeAndPosition(
+    public override CardLocation ModifyCardPlayResultLocation(
         CardModel card,
         bool isAutoPlay,
         ResourceInfo resources,
-        PileType pileType,
-        CardPilePosition position
+        CardLocation location
     )
     {
         if (card.Owner.Creature != Owner)
         {
-            return (pileType, position);
+            return location;
         }
 
         if (card.Type == CardType.Power)
         {
             _pendingPowerClones.Add(card);
-            return (pileType, position);
+            return location;
         }
 
-        if (pileType != PileType.Discard)
+        if (location.pileType != PileType.Discard)
         {
-            return (pileType, position);
+            return location;
         }
 
-        return (PileType.Hand, CardPilePosition.Top);
+        return location with { pileType = PileType.Hand, position = CardPilePosition.Top };
     }
 
-    public override async Task AfterModifyingCardPlayResultPileOrPosition(CardModel card, PileType pileType, CardPilePosition position)
+    public override async Task AfterModifyingCardPlayResultLocation(CardModel card, CardLocation location)
     {
         if (card.Owner.Creature == Owner && !_pendingPowerClones.Contains(card))
         {

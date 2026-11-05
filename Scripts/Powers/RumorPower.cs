@@ -16,7 +16,7 @@ public class RumorPower : OshinokoCustomPower
     public override string? CustomIconPath => "res://Oshinoko/images/powers/RumorNetworkPower.png";
     public override string? CustomBigIconPath => "res://Oshinoko/images/powers/RumorNetworkPower.png";
 
-    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
     {
         if (target != Owner || !props.IsPoweredAttack())
         {

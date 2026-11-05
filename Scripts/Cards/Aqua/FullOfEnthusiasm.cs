@@ -33,10 +33,10 @@ public class FullOfEnthusiasm : AquaCardModel
                 
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
-        await CreatureCmd.LoseBlock(cardPlay.Target, cardPlay.Target.Block);
+        await CreatureCmd.LoseBlock(choiceContext, cardPlay.Target, cardPlay.Target.Block, Owner.Creature);
         var finalDamage = DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);
         await DamageCmd.Attack(finalDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
     }

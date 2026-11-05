@@ -32,7 +32,7 @@ public class ScarletEncore : RubyCardModel
         var hitCount = drewThisTurn ? 2 : 1;
 
         await DamageCmd.Attack(DynamicVars.CalculatedDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .TargetingAllOpponents(combatState)
             .WithHitCount(hitCount)
             .Execute(choiceContext);

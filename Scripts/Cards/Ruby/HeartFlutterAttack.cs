@@ -32,7 +32,7 @@ public class HeartFlutterAttack : RubyCardModel
         var finalDamage = DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);
 
         var command = await DamageCmd.Attack(finalDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 

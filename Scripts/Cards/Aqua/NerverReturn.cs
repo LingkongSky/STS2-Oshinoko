@@ -28,7 +28,7 @@ public class NerverReturn : AquaCardModel
         {
             await CardCmd.Exhaust(choiceContext, card);
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .TargetingAllOpponents(combatState)
                 .Execute(choiceContext);
         }

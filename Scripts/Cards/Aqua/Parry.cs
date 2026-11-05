@@ -39,7 +39,7 @@ public class Parry : AquaCardModel
 
         var finalDamage = DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);
         await DamageCmd.Attack(finalDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 

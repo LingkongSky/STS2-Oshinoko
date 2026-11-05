@@ -35,7 +35,7 @@ public class FlashBeat : RubyCardModel
         }
 
         await DamageCmd.Attack(finalDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
     }
