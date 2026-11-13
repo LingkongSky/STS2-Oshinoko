@@ -13,3 +13,4 @@ migration_checkpoints/
 *.import
 *.uid
 RepaireUID.gd
+tools/

@@ -1,4 +1,5 @@
 ﻿using STS2RitsuLib.Interop.AutoRegistration;
+using Oshinoko.Scripts.Compatibility;
 
 namespace Oshinoko.Scripts.Cards.Ruby;
 
@@ -18,7 +19,7 @@ public class Pain : RubyCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var opponents = Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature) ?? Enumerable.Empty<Creature>();
-        await CreatureCmd.Damage(choiceContext, opponents, DynamicVars.Damage.BaseValue, DynamicVars.Damage.Props, null, null, cardPlay);
+        await CreatureDamageCompat.Damage(choiceContext, opponents, DynamicVars.Damage.BaseValue, DynamicVars.Damage.Props, null, null, cardPlay);
     }
 
     protected override void OnUpgrade()

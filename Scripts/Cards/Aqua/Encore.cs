@@ -12,7 +12,7 @@ public class Encore : AquaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<EncorePower>(choiceContext, Owner.Creature, 2, Owner.Creature, this, true);
+        await PowerCmd.Apply<OshinokoEncorePower>(choiceContext, Owner.Creature, 2, Owner.Creature, this, true);
     }
 
     protected override void OnUpgrade()

@@ -9,7 +9,7 @@ namespace Oshinoko.Scripts.Powers;
 
 
 /// ÿ�λ�ý�Ѫ����ʱ����ø񵲡�
-public class EncorePower : OshinokoCustomPower
+public class OshinokoEncorePower : OshinokoCustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;

@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.ValueProps;
 using Oshinoko.Scripts.Cards.Other;
+using Oshinoko.Scripts.Compatibility;
 
 namespace Oshinoko.Scripts.Powers;
 
@@ -37,7 +38,7 @@ public class ShellForgedByLiesPower : OshinokoCustomPower
             damage += 8;
         }
         var opponents = combatState.GetOpponentsOf(Owner).ToList();
-        await CreatureCmd.Damage(choiceContext, opponents, damage, ValueProp.Move, Owner, null, null);
+        await CreatureDamageCompat.Damage(choiceContext, opponents, damage, ValueProp.Move, Owner, null, null);
     }
 }
 

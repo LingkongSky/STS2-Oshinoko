@@ -71,7 +71,7 @@ public class KamikiHikaru : ModMonsterTemplate
         return true;
     }
 
-    public override Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
+    internal Task AfterDeathCompat(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
     {
         if (!wasRemovalPrevented && creature == Creature && _phase == BossPhase.Phase1)
         {

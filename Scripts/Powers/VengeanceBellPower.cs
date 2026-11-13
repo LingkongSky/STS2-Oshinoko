@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.ValueProps;
+using Oshinoko.Scripts.Compatibility;
 
 namespace Oshinoko.Scripts.Powers;
 
@@ -27,7 +28,7 @@ public class VengeanceBellPower : OshinokoCustomPower
 
         var opponents = combatState.GetOpponentsOf(Owner).ToList();
 
-        await CreatureCmd.Damage(new BlockingPlayerChoiceContext(), opponents, 10, ValueProp.Move, null, null, null);
+        await CreatureDamageCompat.Damage(new BlockingPlayerChoiceContext(), opponents, 10, ValueProp.Move, null, null, null);
 
         await PowerCmd.Remove(this);
     }

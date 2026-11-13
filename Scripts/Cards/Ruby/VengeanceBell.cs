@@ -1,3 +1,5 @@
+using Oshinoko.Scripts.Compatibility;
+
 namespace Oshinoko.Scripts.Cards.Ruby;
 
 // 描述: 失去1点生命，令所有敌人失去10点生命，下回合开始时再失去10点生命。获得2(3)点临时复仇。
@@ -30,7 +32,7 @@ public class VengeanceBell : RubyCardModel
         );
 
         var opponents = Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature) ?? Enumerable.Empty<Creature>();
-        await CreatureCmd.Damage(choiceContext, opponents, DynamicVars.Damage.BaseValue, DynamicVars.Damage.Props, null, null, cardPlay);
+        await CreatureDamageCompat.Damage(choiceContext, opponents, DynamicVars.Damage.BaseValue, DynamicVars.Damage.Props, null, null, cardPlay);
 
         await RevengePowerHelper.ApplyRevenge(
             Owner.Creature,
