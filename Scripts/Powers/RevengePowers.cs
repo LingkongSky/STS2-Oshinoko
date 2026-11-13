@@ -23,7 +23,7 @@ public class RevengePower : OshinokoCustomPower
 
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
-        if (Owner.Player != null)
+        if (power == this && Owner.Player != null)
         {
             ResourceUsageTracker.OnRevengeChanged(Owner.Player, (int)amount);
         }
@@ -50,7 +50,7 @@ public class TurnRevengePower : OshinokoCustomPower
 
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
-        if (Owner.Player != null)
+        if (power == this && Owner.Player != null)
         {
             ResourceUsageTracker.OnRevengeChanged(Owner.Player, (int)amount);
         }
@@ -85,7 +85,7 @@ public class TempRevengePower : OshinokoCustomPower
 
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
-        if (Owner.Player != null)
+        if (power == this && Owner.Player != null)
         {
             ResourceUsageTracker.OnRevengeChanged(Owner.Player, (int)amount);
         }

@@ -22,7 +22,7 @@ public class ShinePower : OshinokoCustomPower
 
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
-        if (Owner.Player != null)
+        if (power == this && Owner.Player != null)
         {
             ResourceUsageTracker.OnShineChanged(Owner.Player, (int)amount);
         }
@@ -44,7 +44,7 @@ public class TurnShinePower : OshinokoCustomPower
 
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
-        if (Owner.Player != null)
+        if (power == this && Owner.Player != null)
         {
             ResourceUsageTracker.OnShineChanged(Owner.Player, (int)amount);
         }
@@ -76,7 +76,7 @@ public class TempShinePower : OshinokoCustomPower
 
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
-        if (Owner.Player != null)
+        if (power == this && Owner.Player != null)
         {
             ResourceUsageTracker.OnShineChanged(Owner.Player, (int)amount);
         }

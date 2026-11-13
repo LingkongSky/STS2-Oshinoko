@@ -30,6 +30,7 @@ public static class RuntimeChecks
             // This is the same PatchAll registration performed by Entry.Init.
             harmony.PatchAll(mod);
             CheckPowerRegistration(mod);
+            await ResourceUsageChecks.Run(mod, harmony);
             await DominionChecks.Run(mod, harmony);
             BossEncounterChecks.Run(mod);
             await CheckDeathHook(mod, harmony);
