@@ -15,6 +15,8 @@ Have fun and enjoy the mod.
 - The character BGM and animation
 - Chinese ,English and Japanese language support
 
+Forced Kamiki Hikaru mode places him second in an Act 3 double-boss fight. If there is only one boss, he occupies the single boss slot.
+
 ### Development Plan
 - Add Hoshino Ai into the mod (playable character, boss, or Ancient route)
 - Add more character sound effects
@@ -58,6 +60,8 @@ QQ Group: 1094540186
 - 2+ 新BOSS（神木光，星野爱）
 - 专属BGM与演出CG
 - 支持中文与英语和日语
+
+第三幕神木光设为“强制”时，双 BOSS 固定由他担任第二位；只有一个 BOSS 时仍由他出场。
 
 ### 开发计划
 - 为角色添加各种音效

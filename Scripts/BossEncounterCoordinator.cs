@@ -137,15 +137,29 @@ internal static class BossEncounterCoordinator
 
     internal static void SetForcedKamikiBoss(Glory act, EncounterModel kamikiEncounter)
     {
-        act.SetBossEncounter(kamikiEncounter);
-
-        if (!act.HasSecondBoss || act.SecondBossEncounter?.Id != kamikiEncounter.Id)
+        if (!act.HasSecondBoss)
         {
+            act.SetBossEncounter(kamikiEncounter);
             return;
         }
 
-        var replacement = act.AllBossEncounters
-            .FirstOrDefault(encounter => encounter.Id != kamikiEncounter.Id);
-        act.SetSecondBossEncounter(replacement);
+        if (act.BossEncounter.Id == kamikiEncounter.Id)
+        {
+            var firstBoss = act.SecondBossEncounter;
+            if (firstBoss?.Id == kamikiEncounter.Id)
+            {
+                firstBoss = act.AllBossEncounters
+                    .FirstOrDefault(encounter => encounter.Id != kamikiEncounter.Id);
+            }
+
+            if (firstBoss == null)
+            {
+                return;
+            }
+
+            act.SetBossEncounter(firstBoss);
+        }
+
+        act.SetSecondBossEncounter(kamikiEncounter);
     }
 }

@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)../../.godot/dual-version-validation/runner-build/obj/</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(MSBuildThisFileDirectory)../../.godot/dual-version-validation/runner-build/bin/</BaseOutputPath>
+  </PropertyGroup>
+</Project>

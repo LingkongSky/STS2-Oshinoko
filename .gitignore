@@ -13,4 +13,11 @@ migration_checkpoints/
 *.import
 *.uid
 RepaireUID.gd
-tools/
+tools/*
+!tools/test-dual-version.ps1
+!tools/DualVersionTests/
+tools/DualVersionTests/*
+!tools/DualVersionTests/*.cs
+!tools/DualVersionTests/*.csproj
+!tools/DualVersionTests/*.props
+!tools/DualVersionTests/*.targets

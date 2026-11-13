@@ -1,5 +1,6 @@
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
+using Oshinoko.Scripts.Compatibility;
 using Oshinoko.Scripts.Relics.Aqua;
 using Oshinoko.Scripts.Relics.Ruby;
 using STS2RitsuLib;
@@ -19,6 +20,7 @@ public static class Entry
     {
         ModConfig.Init();
         BossEncounterCoordinator.Init();
+        BossDominionCompat.Initialize();
 
         var harmony = new Harmony(HarmonyId);
         harmony.PatchAll();

@@ -1,0 +1,5 @@
+<Project>
+  <Target Name="Copy Mod" AfterTargets="PostBuildEvent">
+    <Message Text="Dual-version validation: game-directory deployment disabled." Importance="high" />
+  </Target>
+</Project>
